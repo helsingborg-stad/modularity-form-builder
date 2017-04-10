@@ -6,6 +6,7 @@ class PostType
 {
     public function __construct()
     {
+        add_action('init', array($this, 'registerTaxonomy'));
         add_action('init', array($this, 'register'));
         add_action('add_meta_boxes', array($this, 'formdata'), 10, 2);
     }
@@ -31,7 +32,7 @@ class PostType
             'labels'              => $labels,
             'hierarchical'        => false,
             'description'         => 'Modularity Form Builder form submissions',
-            'taxonomies'          => array(),
+            'taxonomies'          => array('form-id'),
             'public'              => false,
             'show_ui'             => true,
             'show_in_menu'        => true,
@@ -54,6 +55,52 @@ class PostType
         );
 
         register_post_type('form-submissions', $args);
+    }
+
+    /**
+     * Create a taxonomy
+     *
+     * @uses  Inserts new taxonomy object into the list
+     * @uses  Adds query vars
+     *
+     * @param string  Name of taxonomy object
+     * @param array|string  Name of the object type for the taxonomy object.
+     * @param array|string  Taxonomy arguments
+     * @return null|WP_Error WP_Error if errors, otherwise null.
+     */
+    public function registerTaxonomy()
+    {
+        $labels = array(
+            'name'                    => _x('Forms', 'Taxonomy plural name', 'modularity-form-builder'),
+            'singular_name'            => _x('Form', 'Taxonomy singular name', 'modularity-form-builder'),
+            'search_items'            => __('Search Forms', 'modularity-form-builder'),
+            'popular_items'            => __('Popular Forms', 'modularity-form-builder'),
+            'all_items'                => __('All Forms', 'modularity-form-builder'),
+            'parent_item'            => __('Parent Form', 'modularity-form-builder'),
+            'parent_item_colon'        => __('Parent Form', 'modularity-form-builder'),
+            'edit_item'                => __('Edit Form', 'modularity-form-builder'),
+            'update_item'            => __('Update Form', 'modularity-form-builder'),
+            'add_new_item'            => __('Add New Form', 'modularity-form-builder'),
+            'new_item_name'            => __('New Form Name', 'modularity-form-builder'),
+            'add_or_remove_items'    => __('Add or remove Forms', 'modularity-form-builder'),
+            'choose_from_most_used'    => __('Choose from most used modularity-form-builder', 'modularity-form-builder'),
+            'menu_name'                => __('Form', 'modularity-form-builder'),
+        );
+
+        $args = array(
+            'labels'            => $labels,
+            'public'            => true,
+            'show_in_nav_menus' => false,
+            'show_admin_column' => false,
+            'hierarchical'      => false,
+            'show_tagcloud'     => false,
+            'show_ui'           => false,
+            'query_var'         => true,
+            'rewrite'           => false,
+            'capabilities'      => array(),
+        );
+
+        register_taxonomy('form-id', array( 'post' ), $args);
     }
 
     public function formdata($postType, $post)

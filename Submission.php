@@ -27,7 +27,9 @@ class Submission
         ));
 
         update_post_meta($submission, 'form-data', $_POST);
-        update_post_meta('modularity-form-id', $_POST['modularity-form-id']);
+        update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
+
+        wp_set_object_terms($submission, $_POST['modularity-form-id'], 'form-id');
 
         if (strpos($referer, '?') > -1) {
             $referer .= '&form=success';
