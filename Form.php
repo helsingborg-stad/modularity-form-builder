@@ -15,8 +15,6 @@ class Form extends \Modularity\Module
     public $hideTitle  = false;
     public $isDeprecated = false;
 
-    public $templateDir = FORM_BUILDER_MODULE_PATH . 'templates';
-
     /**
      * Available "magic" methods for modules:
      * init()            What to do on initialization (if you must, use __construct with care, this will probably break stuff!!)
@@ -29,6 +27,8 @@ class Form extends \Modularity\Module
 
     public function init()
     {
-
+        $this->nameSingular = __('Form', 'modularity-form-builder');
+        $this->namePlural = __('Forms', 'modularity-form-builder');
+        $this->description = __('Build submittable forms', 'modularity-form-builder');
     }
 }
