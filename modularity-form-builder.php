@@ -10,6 +10,11 @@
 define('FORM_BUILDER_MODULE_PATH', plugin_dir_path(__FILE__));
 
 require_once FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php';
+require_once FORM_BUILDER_MODULE_PATH . 'PostType.php';
+require_once FORM_BUILDER_MODULE_PATH . 'Submission.php';
+
+new \ModularityFormBuilder\PostType();
+new \ModularityFormBuilder\Submission();
 
 // Acf auto import and export
 $acfExportManager = new \AcfExportManager\AcfExportManager();
