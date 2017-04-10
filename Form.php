@@ -38,8 +38,6 @@ class Form extends \Modularity\Module
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
         $data['module_id'] = $this->ID;
 
-        var_dump($data['form_fields']);
-
         return $data;
     }
 }
