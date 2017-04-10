@@ -664,6 +664,45 @@
                 "class": "",
                 "id": ""
             }
+        },
+        {
+            "sub_fields": [
+                {
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "key": "field_58eb6f389aa7d",
+                    "label": "Email address",
+                    "name": "email",
+                    "type": "email",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add email",
+            "collapsed": "",
+            "key": "field_58eb6ee89aa7c",
+            "label": "Notifications on form submission",
+            "name": "notify",
+            "type": "repeater",
+            "instructions": "Notifications will be sent to below added email addresses when receiving a new form submission.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
