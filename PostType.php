@@ -7,6 +7,7 @@ class PostType
     public function __construct()
     {
         add_action('init', array($this, 'register'));
+        add_action('add_meta_boxes', array($this, 'formdata'), 10, 2);
     }
 
     public function register()
@@ -45,9 +46,72 @@ class PostType
             'can_export'          => true,
             'rewrite'             => false,
             'capability_type'     => 'post',
+            'capabilities' => array(
+                'create_posts' => 'do_not_allow',
+                'delete_posts' => 'delete_posts'
+            ),
             'supports'            => array('title')
         );
 
         register_post_type('form-submissions', $args);
+    }
+
+    public function formdata($postType, $post)
+    {
+        add_meta_box('formdata', 'Submission data', array($this, 'formdataDisplay'), $postType, 'normal', 'default');
+    }
+
+    public function formdataDisplay()
+    {
+        global $post;
+
+        $data = array();
+        $indata = get_post_meta($post->ID, 'form-data', true);
+        $fields = get_fields($indata['modularity-form-id']);
+
+        foreach ($fields['form_fields'] as $field) {
+            if ($field['acf_fc_layout'] === 'sender') {
+                foreach ($field['fields'] as $subfield) {
+                    $data[] = array(
+                        'type' => 'sender-' . $subfield,
+                        'label' => $this->getTranslatedSenderField($subfield),
+                        'value' => $indata[$subfield]
+                    );
+                }
+
+                continue;
+            }
+
+            $data[] = array(
+                'type' => $field['acf_fc_layout'],
+                'label' => $field['label'],
+                'value' => $indata[sanitize_title($field['label'])]
+            );
+        }
+
+        include FORM_BUILDER_MODULE_PATH . 'views/admin/formdata.php';
+    }
+
+    public function getTranslatedSenderField($what)
+    {
+        switch ($what) {
+            case 'firstname':
+                return __('Firstname', 'modularity-form-builder');
+
+            case 'lastname':
+                return __('Lastname', 'modularity-form-builder');
+
+            case 'address':
+                return __('Address', 'modularity-form-builder');
+
+            case 'phone':
+                return __('Phone', 'modularity-form-builder');
+
+            case 'email':
+                return __('Email', 'modularity-form-builder');
+
+            default:
+                return $what;
+        }
     }
 }

@@ -708,6 +708,25 @@
                 'id' => '',
             ),
         ),
+        3 => array(
+            'default_value' => 'The for was submitted, thank you!',
+            'maxlength' => '',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => '',
+            'key' => 'field_58eb7b11cc4f5',
+            'label' => __('Subimission notice', 'modularity-form-builder'),
+            'name' => 'subimission_notice',
+            'type' => 'text',
+            'instructions' => __('Text to display when form is submitted.', 'modularity-form-builder'),
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
     ),
     'location' => array(
         0 => array(

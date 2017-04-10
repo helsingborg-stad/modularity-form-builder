@@ -703,6 +703,25 @@
                 "class": "",
                 "id": ""
             }
+        },
+        {
+            "default_value": "The for was submitted, thank you!",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "key": "field_58eb7b11cc4f5",
+            "label": "Subimission notice",
+            "name": "subimission_notice",
+            "type": "text",
+            "instructions": "Text to display when form is submitted.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
