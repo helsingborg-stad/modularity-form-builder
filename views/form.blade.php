@@ -3,7 +3,9 @@
     <h4 class="box-title">{!! apply_filters('the_title', $post_title) !!}</h4>
     @endif
 
-    <form class="box-content">
+    <form class="box-content" action="">
+        <?php wp_nonce_field('submit', 'modularity-form'); ?>
+
         @foreach ($form_fields as $field)
             @include('fields.' . $field['acf_fc_layout'])
         @endforeach
