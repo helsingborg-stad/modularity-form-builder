@@ -31,4 +31,15 @@ class Form extends \Modularity\Module
         $this->namePlural = __('Forms', 'modularity-form-builder');
         $this->description = __('Build submittable forms', 'modularity-form-builder');
     }
+
+    public function data() : array
+    {
+        $data = get_fields($this->ID);
+        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
+        $data['module_id'] = $this->ID;
+
+        var_dump($data['form_fields']);
+
+        return $data;
+    }
 }

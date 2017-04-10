@@ -6,17 +6,191 @@
             "layouts": [
                 {
                     "key": "58eb3033e588f",
-                    "name": "firstname_lastname",
-                    "label": "Firstname & lastname",
+                    "name": "sender",
+                    "label": "Sender",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "layout": "vertical",
+                            "choices": {
+                                "firstname": "Firstname",
+                                "lastname": "Lastname",
+                                "email": "Email",
+                                "phone": "Phone",
+                                "address": "Address"
+                            },
+                            "default_value": [
+                                "firstname",
+                                "lastname",
+                                "email"
+                            ],
+                            "allow_custom": 0,
+                            "save_custom": 0,
+                            "toggle": 0,
+                            "return_format": "value",
+                            "key": "field_58eb3944f7086",
+                            "label": "Fields to display",
+                            "name": "fields",
+                            "type": "checkbox",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "layout": "vertical",
+                            "choices": {
+                                "firstname": "Firstname",
+                                "lastname": "Lastname",
+                                "email": "Email",
+                                "phone": "Phone",
+                                "address": "Address"
+                            },
+                            "default_value": [
+                                "firstname",
+                                "lastname",
+                                "email"
+                            ],
+                            "allow_custom": 0,
+                            "save_custom": 0,
+                            "toggle": 0,
+                            "return_format": "value",
+                            "key": "field_58eb3a9bf7087",
+                            "label": "Required fields",
+                            "name": "required_fields",
+                            "type": "checkbox",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58eb3f2cd914a",
+                    "name": "message",
+                    "label": "Message",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "default_value": "Message",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "key": "field_58eb3f37d914b",
+                            "label": "Field label",
+                            "name": "label",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
                         {
                             "default_value": 0,
                             "message": "Required field",
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": "",
-                            "key": "field_58eb31c8d6672",
+                            "key": "field_58eb3f5ed914c",
+                            "label": "Required",
+                            "name": "required",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "58eb552a8189e",
+                    "name": "text",
+                    "label": "Text field",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "key": "field_58eb55338189f",
+                            "label": "Field label",
+                            "name": "label",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "choices": {
+                                "text": "Text",
+                                "number": "Number",
+                                "email": "Email",
+                                "tel": "Phone number",
+                                "color": "Color",
+                                "date": "Date",
+                                "month": "Month",
+                                "week": "Week",
+                                "range": "Range",
+                                "search": "Search",
+                                "time": "Time",
+                                "url": "Url"
+                            },
+                            "default_value": [],
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "key": "field_58eb5547818a0",
+                            "label": "Field value type",
+                            "name": "value_type",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "default_value": 0,
+                            "message": "Required",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "key": "field_58eb5614c5514",
                             "label": "Required",
                             "name": "required",
                             "type": "true_false",
@@ -43,6 +217,25 @@
             "type": "flexible_content",
             "instructions": "",
             "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": "Send",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "key": "field_58eb3700191e7",
+            "label": "Text on submit button",
+            "name": "submit_button_text",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
