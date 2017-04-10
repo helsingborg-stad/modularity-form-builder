@@ -30,6 +30,45 @@ class Form extends \Modularity\Module
         $this->nameSingular = __('Form', 'modularity-form-builder');
         $this->namePlural = __('Forms', 'modularity-form-builder');
         $this->description = __('Build submittable forms', 'modularity-form-builder');
+
+        add_action('add_meta_boxes', array($this, 'metaBoxResponses'), 10, 2);
+    }
+
+    public function metaBoxResponses($postType, $post)
+    {
+        if (!$postType === 'mod-form') {
+            return;
+        }
+
+        add_meta_box('form-responses', __('Responses', 'modularity-form-builder'), array($this, 'showResponses'), $postType, 'normal', 'high');
+    }
+
+    public function showResponses()
+    {
+        global $post;
+
+        $query = new \WP_Query(array(
+            'post_type' => 'form-submissions',
+            'meta_query' => array(
+                'relation' => 'OR',
+                array(
+                    'key' => 'modularity-form-id',
+                    'value' => $post->ID,
+                    'compare' => '='
+                )
+            )
+        ));
+
+        $submissions = $query->posts;
+
+        if (empty($submissions)) {
+            echo '<p>' . __('There is no submissions for this form.', 'modularity-form-builder') . '</p>';
+            return;
+        }
+
+        echo '<p>';
+        echo sprintf(__('There is %d submissions to this form.', 'modularity-form-builder'), count($submissions));
+        echo '</p><p><a href="' . admin_url('edit.php?post_type=form-submissions&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a></p>';
     }
 
     public function data() : array

@@ -73,6 +73,10 @@ class PostType
      */
     public function formdata($postType, $post)
     {
+        if ($postType !== 'form-submissions') {
+            return;
+        }
+
         add_meta_box('formdata', 'Submission data', array($this, 'formdataDisplay'), $postType, 'normal', 'default');
     }
 
