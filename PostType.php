@@ -11,8 +11,15 @@ class PostType
         add_action('restrict_manage_posts', array($this, 'formFilter'));
 
         add_action('pre_get_posts', array($this, 'queryFilter'));
+
+        add_filter('manage_edit-form-submissions_columns', array($this, 'tableColumns'));
+        add_action('manage_form-submissions_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
     }
 
+    /**
+     * Registers submissions post type
+     * @return void
+     */
     public function register()
     {
         $labels = array(
@@ -58,11 +65,21 @@ class PostType
         register_post_type('form-submissions', $args);
     }
 
+    /**
+     * Adds meta box for viewing submission data
+     * @param  string $postType
+     * @param  WP_Post $post
+     * @return void
+     */
     public function formdata($postType, $post)
     {
         add_meta_box('formdata', 'Submission data', array($this, 'formdataDisplay'), $postType, 'normal', 'default');
     }
 
+    /**
+     * Displays the form data
+     * @return void
+     */
     public function formdataDisplay()
     {
         global $post;
@@ -94,6 +111,10 @@ class PostType
         include FORM_BUILDER_MODULE_PATH . 'views/admin/formdata.php';
     }
 
+    /**
+     * Filters admin list table
+     * @return void
+     */
     public function formFilter()
     {
         global $typenow;
@@ -117,6 +138,11 @@ class PostType
         echo '</select>';
     }
 
+    /**
+     * Filter the wp query
+     * @param  WP_Query $query
+     * @return void
+     */
     public function queryFilter($query)
     {
         global $pagenow;
@@ -140,6 +166,43 @@ class PostType
         ));
     }
 
+    /**
+     * Table columns
+     * @param  array $columns
+     * @return array
+     */
+    public function tableColumns($columns)
+    {
+        return array(
+            'cb' => '',
+            'title' => __('Title'),
+            'form' => __('Form', 'modularity-form-builder'),
+            'date' => __('Date')
+        );
+    }
+
+    /**
+     * Content for table columns
+     * @param  string $column
+     * @param  int $postId
+     * @return void
+     */
+    public function tableColumnsContent($column, $postId)
+    {
+        switch ($column) {
+            case 'form':
+                $form = get_post_meta($postId, 'modularity-form-id', true);
+                $form = get_post($form);
+                echo edit_post_link($form->post_title, null, null, $form->ID);
+                break;
+        }
+    }
+
+    /**
+     * Translate fields for sender
+     * @param  string $what
+     * @return string
+     */
     public function getTranslatedSenderField($what)
     {
         switch ($what) {
