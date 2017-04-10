@@ -1,0 +1,54 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f39160f844b49070eee9765b5f9a2ffb",
+    "packages": [
+        {
+            "name": "helsingborg-stad/acf-export-manager",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/helsingborg-stad/acf-export-manager.git",
+                "reference": "2a348edf346272b2b372cd64766e9ac5e11ae1ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/helsingborg-stad/acf-export-manager/zipball/2a348edf346272b2b372cd64766e9ac5e11ae1ea",
+                "reference": "2a348edf346272b2b372cd64766e9ac5e11ae1ea",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AcfExportManager\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kristoffer Svanmark",
+                    "email": "kristoffer.svanmark@knowit.se"
+                }
+            ],
+            "description": "ACF Export Manager is a extension that let's you automatically export specified your ACF fields on save.",
+            "support": {
+                "source": "https://github.com/helsingborg-stad/acf-export-manager/tree/1.0.7",
+                "issues": "https://github.com/helsingborg-stad/acf-export-manager/issues"
+            },
+            "time": "2017-04-05T06:52:58+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
