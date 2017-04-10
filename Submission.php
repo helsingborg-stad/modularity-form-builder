@@ -23,13 +23,11 @@ class Submission
         $submission = wp_insert_post(array(
             'post_title' => get_the_title($_POST['modularity-form-id']),
             'post_type' => 'form-submissions',
-            'post_status' => 'pending'
+            'post_status' => 'publish'
         ));
 
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
-
-        wp_set_object_terms($submission, $_POST['modularity-form-id'], 'form-id');
 
         if (strpos($referer, '?') > -1) {
             $referer .= '&form=success';
