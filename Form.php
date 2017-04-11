@@ -49,6 +49,7 @@ class Form extends \Modularity\Module
 
         $query = new \WP_Query(array(
             'post_type' => 'form-submissions',
+            'posts_per_page' => -1,
             'meta_query' => array(
                 'relation' => 'OR',
                 array(
