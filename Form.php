@@ -34,6 +34,12 @@ class Form extends \Modularity\Module
         add_action('add_meta_boxes', array($this, 'metaBoxResponses'), 10, 2);
     }
 
+    /**
+     * Add responses metabox
+     * @param  string $postType
+     * @param  WP_Post $post
+     * @return void
+     */
     public function metaBoxResponses($postType, $post)
     {
         if (!$postType === 'mod-form') {
@@ -43,6 +49,10 @@ class Form extends \Modularity\Module
         add_meta_box('form-responses', __('Responses', 'modularity-form-builder'), array($this, 'showResponses'), $postType, 'normal', 'high');
     }
 
+    /**
+     * Show responses
+     * @return void
+     */
     public function showResponses()
     {
         global $post;
@@ -72,6 +82,10 @@ class Form extends \Modularity\Module
         echo '</p><p><a href="' . admin_url('edit.php?post_type=form-submissions&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a></p>';
     }
 
+    /**
+     * View data
+     * @return array
+     */
     public function data() : array
     {
         $data = get_fields($this->ID);
