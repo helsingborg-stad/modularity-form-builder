@@ -42,7 +42,7 @@ class Form extends \Modularity\Module
      */
     public function metaBoxResponses($postType, $post)
     {
-        if (!$postType === 'mod-form') {
+        if ($postType !== 'mod-form') {
             return;
         }
 
