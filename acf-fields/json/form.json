@@ -628,6 +628,134 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "58eccdd75ad90",
+                    "name": "file_upload",
+                    "label": "File upload",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "key": "field_58ecce8a5ad93",
+                            "label": "Field label",
+                            "name": "label",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "layout": "horizontal",
+                            "choices": {
+                                "single": "Single",
+                                "multiple": "Multiple"
+                            },
+                            "default_value": "",
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "allow_null": 0,
+                            "return_format": "value",
+                            "key": "field_58eccde65ad91",
+                            "label": "Type",
+                            "name": "type",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "default_value": -1,
+                            "min": "",
+                            "max": "",
+                            "step": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "key": "field_58ece6685df9c",
+                            "label": "Max number of files",
+                            "name": "files_max",
+                            "type": "number",
+                            "instructions": "-1 for no limit",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "layout": "vertical",
+                            "choices": {
+                                "video\/*": "All video types",
+                                "image\/*": "All image types",
+                                ".jpg": "jpg",
+                                ".png": "png",
+                                ".gif": "gif",
+                                ".mov": "mov",
+                                ".webm": "webm",
+                                ".mp4": "mp4",
+                                ".doc": "doc",
+                                ".docx": "docx",
+                                ".xls": "xls",
+                                ".xlsx": "xlsx",
+                                ".pdf": "pdf"
+                            },
+                            "default_value": [],
+                            "allow_custom": 0,
+                            "save_custom": 0,
+                            "toggle": 0,
+                            "return_format": "value",
+                            "key": "field_58ecce105ad92",
+                            "label": "Allowed filetypes",
+                            "name": "filetypes",
+                            "type": "checkbox",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "default_value": 0,
+                            "message": "Required",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "key": "field_58ecd86751bf6",
+                            "label": "Required",
+                            "name": "required",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ],
             "min": 1,
