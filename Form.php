@@ -91,6 +91,14 @@ class Form extends \Modularity\Module
         $data = get_fields($this->ID);
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
         $data['module_id'] = $this->ID;
+        $data['hasFileUpload'] = false;
+
+        foreach ($data['form_fields'] as $field) {
+            if ($field['acf_fc_layout'] === 'file_upload') {
+                $data['hasFileUpload'] = true;
+                break;
+            }
+        }
 
         return $data;
     }
