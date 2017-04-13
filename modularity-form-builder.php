@@ -16,6 +16,9 @@ require_once FORM_BUILDER_MODULE_PATH . 'Submission.php';
 new \ModularityFormBuilder\PostType();
 new \ModularityFormBuilder\Submission();
 
+//Load lang
+load_plugin_textdomain('modularity-form-builder', false, plugin_basename(dirname(__FILE__)) . '/languages');
+
 // Acf auto import and export
 $acfExportManager = new \AcfExportManager\AcfExportManager();
 $acfExportManager->setTextdomain('modularity-form-builder');
