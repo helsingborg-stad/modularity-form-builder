@@ -4,7 +4,7 @@
  * Plugin URI: http://github.com/helsingborg-stad
  * Description: Build submittable form(s) to display with module
  * Version: 1.0
- * Author: Kristoffer Svanmark
+ * Author: Kristoffer Svanmark, Sebastian Thulin
  */
 
 define('FORM_BUILDER_MODULE_PATH', plugin_dir_path(__FILE__));
