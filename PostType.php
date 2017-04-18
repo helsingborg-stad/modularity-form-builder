@@ -181,6 +181,7 @@ class PostType
             'cb' => '',
             'title' => __('Title'),
             'form' => __('Form', 'modularity-form-builder'),
+            'referer' => __('Referer', 'modularity-form-builder'),
             'date' => __('Date')
         );
     }
@@ -198,6 +199,13 @@ class PostType
                 $form = get_post_meta($postId, 'modularity-form-id', true);
                 $form = get_post($form);
                 echo edit_post_link($form->post_title, null, null, $form->ID);
+                break;
+
+            case 'referer':
+                $referer = get_post_meta($postId, 'modularity-form-referer', true);
+                if ($referer) {
+                    echo '<a href="' . $referer . '" target="_blank">' . $referer . '</a>';
+                }
                 break;
         }
     }
