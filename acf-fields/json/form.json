@@ -833,20 +833,58 @@
             }
         },
         {
-            "default_value": "The for was submitted, thank you!",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0,
             "key": "field_58eb7b11cc4f5",
             "label": "Subimission notice",
             "name": "subimission_notice",
-            "type": "text",
+            "type": "wysiwyg",
             "instructions": "Text to display when form is submitted.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": 1,
+            "message": "Show submission data in notice content",
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "key": "field_58f5b1a066797",
+            "label": "Submission notice content",
+            "name": "submission_notice_content",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": 0,
+            "message": "Yes, allow user to get a copy of the submission",
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "key": "field_58f5b1c266798",
+            "label": "Allow sender copy",
+            "name": "allow_sender_copy",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
                 "class": "",
                 "id": ""
             }
