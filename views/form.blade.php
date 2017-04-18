@@ -19,6 +19,10 @@
             @include('fields.' . $field['acf_fc_layout'])
         @endforeach
 
+        @if ($allow_sender_copy)
+            @include('fields.sender-copy')
+        @endif
+
         <div class="grid">
             <div class="grid-md-12">
                 <input type="submit" value="{{ $submit_button_text ? $submit_button_text : 'Send' }}" class="btn btn-primary">

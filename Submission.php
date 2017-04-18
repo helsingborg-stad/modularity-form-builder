@@ -24,6 +24,15 @@ class Submission
         $referer = $_POST['_wp_http_referer'];
         unset($_POST['_wp_http_referer']);
 
+        $senderCopy = false;
+        if (isset($_POST['sender-copy'])) {
+            if ($_POST['sender-copy'] === 'on') {
+                $senderCopy = true;
+            }
+
+            unset($_POST['sender-copy']);
+        }
+
         // Upload files
         $files = array();
         if (!empty($_FILES)) {
@@ -42,10 +51,23 @@ class Submission
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
 
+        // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
 
+        // Get from email
+        $from = null;
+        if (isset($_POST['email']) && !empty($_POST['email'])) {
+            $from = $_POST['email'];
+        }
+
+        // Send notifications
         foreach ($notify as $email) {
-            $this->notify($email['email'], $_POST['modularity-form-id'], $submission);
+            $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
+        }
+
+        // Send user copy
+        if ($senderCopy) {
+            $this->sendCopy($email['email'], $_POST['modularity-form-id'], $submission);
         }
 
         // Redirect
@@ -175,14 +197,16 @@ class Submission
      * @param  int    $submissionId
      * @return void
      */
-    public function notify($email, $formId, $submissionId, $showData = null)
+    public function notify($email, $formId, $submissionId, $from = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
-        $data = $this->getSubmissionData($submissionId);
 
-        if (is_null($showData)) {
-            $showData = get_field('submission_notice_content', $formId);
+        if ($from) {
+            $headers[] = 'From:' . $from;
         }
+
+        $data = $this->getSubmissionData($submissionId);
+        $showData = get_field('submission_notice_content', $formId);
 
         $message = sprintf(
             __('Hi, this is a notification about a new form submission to the form "%s".<br><br><a href="%s">Read the full submission here</a>.', 'modularity-form-builder'),
@@ -207,6 +231,34 @@ class Submission
 
         $subject = apply_filters('ModularityFormBuilder/notice/subject', __('New form submission', 'modularity-form-builder'), $email, $formId, $submissionId, $showData, $data);
         $message = apply_filters('ModularityFormBuilder/notice/message', $message, $email, $formId, $submissionId, $showData, $data);
+
+        wp_mail(
+            $email,
+            $subject,
+            $message,
+            $headers
+        );
+    }
+
+    public function sendCopy($email, $formId, $submissionId)
+    {
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        $data = $this->getSubmissionData($submissionId);
+        $message = '';
+
+        $i = 0;
+        foreach ($data as $key => $value) {
+            if ($i > 0) {
+                $message .= '<br><br>';
+            }
+
+            $message .= '<strong>' . $key . '</strong><br>' . $value;
+
+            $i++;
+        }
+
+        $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', __('Form submission copy', 'modularity-form-builder'), $email, $formId, $submissionId, $showData, $data);
+        $message = apply_filters('ModularityFormBuilder/sender_copy/message', $message, $email, $formId, $submissionId, $showData, $data);
 
         wp_mail(
             $email,
