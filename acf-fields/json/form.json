@@ -3,6 +3,22 @@
     "title": "Form",
     "fields": [
         {
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_58f5c009ee909",
+            "label": "Form fields",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "layouts": [
                 {
                     "key": "58eb3033e588f",
@@ -775,6 +791,22 @@
             }
         },
         {
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_58f5c12da612a",
+            "label": "Submission",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "default_value": "Send",
             "maxlength": "",
             "placeholder": "",
@@ -786,6 +818,41 @@
             "type": "text",
             "instructions": "",
             "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0,
+            "key": "field_58eb7b11cc4f5",
+            "label": "Subimission notice",
+            "name": "subimission_notice",
+            "type": "wysiwyg",
+            "instructions": "Text to display when form is submitted.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_58f5c029ee90a",
+            "label": "Notifications",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -833,32 +900,13 @@
             }
         },
         {
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "default_value": "",
-            "delay": 0,
-            "key": "field_58eb7b11cc4f5",
-            "label": "Subimission notice",
-            "name": "subimission_notice",
-            "type": "wysiwyg",
-            "instructions": "Text to display when form is submitted.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
             "default_value": 1,
             "message": "Show submission data in notice content",
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": "",
             "key": "field_58f5b1a066797",
-            "label": "Submission notice content",
+            "label": "Notification content",
             "name": "submission_notice_content",
             "type": "true_false",
             "instructions": "",
@@ -866,6 +914,22 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_58f5c0bbee90c",
+            "label": "Sender copy",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
                 "class": "",
                 "id": ""
             }
@@ -880,11 +944,27 @@
             "label": "Allow sender copy",
             "name": "allow_sender_copy",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Send copy of the submitted form data to the sender email.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "placement": "top",
+            "endpoint": 0,
+            "key": "field_58f5c0abee90b",
+            "label": "Auto-reply",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
                 "class": "",
                 "id": ""
             }

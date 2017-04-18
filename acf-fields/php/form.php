@@ -6,6 +6,22 @@
     'title' => __('Form', 'modularity-form-builder'),
     'fields' => array(
         0 => array(
+            'placement' => 'top',
+            'endpoint' => 0,
+            'key' => 'field_58f5c009ee909',
+            'label' => __('Form fields', 'modularity-form-builder'),
+            'name' => '',
+            'type' => 'tab',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        1 => array(
             'layouts' => array(
                 0 => array(
                     'key' => '58eb3033e588f',
@@ -779,7 +795,23 @@
                 'id' => '',
             ),
         ),
-        1 => array(
+        2 => array(
+            'placement' => 'top',
+            'endpoint' => 0,
+            'key' => 'field_58f5c12da612a',
+            'label' => __('Submission', 'modularity-form-builder'),
+            'name' => '',
+            'type' => 'tab',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        3 => array(
             'default_value' => 'Send',
             'maxlength' => '',
             'placeholder' => '',
@@ -798,7 +830,42 @@
                 'id' => '',
             ),
         ),
-        2 => array(
+        4 => array(
+            'tabs' => 'all',
+            'toolbar' => 'full',
+            'media_upload' => 1,
+            'default_value' => '',
+            'delay' => 0,
+            'key' => 'field_58eb7b11cc4f5',
+            'label' => __('Subimission notice', 'modularity-form-builder'),
+            'name' => 'subimission_notice',
+            'type' => 'wysiwyg',
+            'instructions' => __('Text to display when form is submitted.', 'modularity-form-builder'),
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        5 => array(
+            'placement' => 'top',
+            'endpoint' => 0,
+            'key' => 'field_58f5c029ee90a',
+            'label' => __('Notifications', 'modularity-form-builder'),
+            'name' => '',
+            'type' => 'tab',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        6 => array(
             'sub_fields' => array(
                 0 => array(
                     'default_value' => '',
@@ -837,33 +904,14 @@
                 'id' => '',
             ),
         ),
-        3 => array(
-            'tabs' => 'all',
-            'toolbar' => 'full',
-            'media_upload' => 1,
-            'default_value' => '',
-            'delay' => 0,
-            'key' => 'field_58eb7b11cc4f5',
-            'label' => __('Subimission notice', 'modularity-form-builder'),
-            'name' => 'subimission_notice',
-            'type' => 'wysiwyg',
-            'instructions' => __('Text to display when form is submitted.', 'modularity-form-builder'),
-            'required' => 1,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-        ),
-        4 => array(
+        7 => array(
             'default_value' => 1,
             'message' => __('Show submission data in notice content', 'modularity-form-builder'),
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
             'key' => 'field_58f5b1a066797',
-            'label' => __('Submission notice content', 'modularity-form-builder'),
+            'label' => __('Notification content', 'modularity-form-builder'),
             'name' => 'submission_notice_content',
             'type' => 'true_false',
             'instructions' => '',
@@ -875,7 +923,23 @@
                 'id' => '',
             ),
         ),
-        5 => array(
+        8 => array(
+            'placement' => 'top',
+            'endpoint' => 0,
+            'key' => 'field_58f5c0bbee90c',
+            'label' => __('Sender copy', 'modularity-form-builder'),
+            'name' => '',
+            'type' => 'tab',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        9 => array(
             'default_value' => 0,
             'message' => __('Yes, allow user to get a copy of the submission', 'modularity-form-builder'),
             'ui' => 0,
@@ -885,7 +949,7 @@
             'label' => __('Allow sender copy', 'modularity-form-builder'),
             'name' => 'allow_sender_copy',
             'type' => 'true_false',
-            'instructions' => '',
+            'instructions' => __('Send copy of the submitted form data to the sender email.', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -894,7 +958,23 @@
                 'id' => '',
             ),
         ),
-        6 => array(
+        10 => array(
+            'placement' => 'top',
+            'endpoint' => 0,
+            'key' => 'field_58f5c0abee90b',
+            'label' => __('Auto-reply', 'modularity-form-builder'),
+            'name' => '',
+            'type' => 'tab',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        11 => array(
             'default_value' => 0,
             'message' => __('Send auto-reply on form submission', 'modularity-form-builder'),
             'ui' => 0,
@@ -913,7 +993,7 @@
                 'id' => '',
             ),
         ),
-        7 => array(
+        12 => array(
             'default_value' => '',
             'maxlength' => '',
             'placeholder' => '',
@@ -940,7 +1020,7 @@
                 'id' => '',
             ),
         ),
-        8 => array(
+        13 => array(
             'tabs' => 'all',
             'toolbar' => 'full',
             'media_upload' => 1,
