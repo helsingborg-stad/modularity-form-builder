@@ -89,10 +89,6 @@ class Submission
      */
     public function uploadFiles($fileslist, $formId)
     {
-        if (empty($fileslist)) {
-            return array();
-        }
-
         $uploadsFolder = wp_upload_dir();
         $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder';
         $this->maybeCreateFolder($uploadsFolder);
@@ -101,6 +97,10 @@ class Submission
 
         foreach ($fileslist as $key => $files) {
             for ($i = 0; $i < count($files['name']); $i++) {
+                if (empty($files['name'][$i])) {
+                    continue;
+                }
+
                 $targetFile = $uploadsFolder . '/' . uniqid() . '-' . basename($files['name'][$i]);
                 $fileext = pathinfo($targetFile, PATHINFO_EXTENSION);
 
@@ -162,6 +162,11 @@ class Submission
         return $path;
     }
 
+    /**
+     * Get data of a submission
+     * @param  int    $submissionId
+     * @return array
+     */
     public function getSubmissionData(int $submissionId) : array
     {
         $formId = get_post_meta($submissionId, 'modularity-form-id', true);
@@ -183,7 +188,7 @@ class Submission
                     $formdata[$label] = $data[$subfield];
                 }
             } else {
-                $formdata[$field['label']] = $data[sanitize_title($field['label'])];
+                $formdata[$field['label']] = isset($data[sanitize_title($field['label'])]) ? $data[sanitize_title($field['label'])] : '';
             }
         }
 
@@ -240,6 +245,13 @@ class Submission
         );
     }
 
+    /**
+     * Send submission data copy to sender email
+     * @param  string $email        Email to send to
+     * @param  int    $formId       Form id
+     * @param  int    $submissionId Submission id
+     * @return void
+     */
     public function sendCopy($email, $formId, $submissionId)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');

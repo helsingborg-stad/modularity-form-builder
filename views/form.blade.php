@@ -10,7 +10,7 @@
         @if (isset($_GET['form']) && $_GET['form'] == 'success')
             <div class="grid">
                 <div class="grid-md-12">
-                    <div class="notice success"><i class="pricon pricon-check"></i> <?php echo get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'); ?></div>
+                    <div class="notice success"><i class="pricon pricon-check pull-left"></i> <?php echo get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'); ?></div>
                 </div>
             </div>
         @endif
