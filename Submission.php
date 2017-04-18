@@ -66,8 +66,12 @@ class Submission
         }
 
         // Send user copy
-        if ($senderCopy) {
-            $this->sendCopy($email['email'], $_POST['modularity-form-id'], $submission);
+        if ($senderCopy && isset($_POST['email'])) {
+            $this->sendCopy($_POST['email'], $_POST['modularity-form-id'], $submission);
+        }
+
+        if (get_field('autoreply', $_POST['modularity-form-id'])) {
+            $this->autoreply($_POST['email'], $submission);
         }
 
         // Redirect
@@ -271,6 +275,28 @@ class Submission
 
         $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', __('Form submission copy', 'modularity-form-builder'), $email, $formId, $submissionId, $showData, $data);
         $message = apply_filters('ModularityFormBuilder/sender_copy/message', $message, $email, $formId, $submissionId, $showData, $data);
+
+        wp_mail(
+            $email,
+            $subject,
+            $message,
+            $headers
+        );
+    }
+
+    /**
+     * Send autoreply to sender
+     * @param  string $email
+     * @param  int    $submissionId
+     * @return void
+     */
+    public function autoreply($email, $submissionId)
+    {
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        $formId = get_post_meta($submissionId, 'modularity-form-id', true);
+
+        $subject = apply_filters('ModularityFormBuilder/autoreply/subject', get_field('auto_reply_subject', $formId), $email, $submissionId);
+        $message = apply_filters('ModularityFormBuilder/autoreply/message', get_field('auto_reply_content', $formId), $email, $submissionId);
 
         wp_mail(
             $email,
