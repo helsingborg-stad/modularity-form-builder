@@ -32,6 +32,89 @@ class Form extends \Modularity\Module
         $this->description = __('Build submittable forms', 'modularity-form-builder');
 
         add_action('add_meta_boxes', array($this, 'metaBoxResponses'), 10, 2);
+        add_action('current_screen', array($this, 'export'));
+    }
+
+    /**
+     * Export from submissions
+     * @return void
+     */
+    public function export()
+    {
+        if (!is_admin()) {
+            return;
+        }
+
+        $screen = get_current_screen();
+
+        if ($screen->post_type !== 'mod-form' || !isset($_GET['post']) || !isset($_GET['export'])) {
+            return;
+        }
+
+        $formId = $_GET['post'];
+        $form = get_post($formId);
+        $submissions = new \WP_Query(array(
+            'posts_per_page' => -1,
+            'post_type' => 'form-submissions',
+            'post_status' => 'publish',
+            'meta_query' => array(
+                'relation' => 'OR',
+                array(
+                    'key' => 'modularity-form-id',
+                    'value' => $formId,
+                    'compare' => '='
+                )
+            )
+        ));
+
+        $submissions = $submissions->posts;
+        $csvData = array();
+
+        foreach ($submissions as $submission) {
+            $data = \ModularityFormBuilder\Submission::getSubmissionData($submission->ID);
+            $csvData[] = $data;
+        }
+
+        $this->downloadSendHeaders(sanitize_title($form->post_title) . '_' . date('Y-m-d') . '.csv');
+        echo chr(239) . chr(187) . chr(191);
+        echo $this->array2csv($csvData);
+        die();
+    }
+
+    public function array2csv(array &$array)
+    {
+        if (count($array) == 0) {
+            return null;
+        }
+
+        ob_start();
+        $df = fopen("php://output", 'w');
+        fputcsv($df, array_keys(reset($array)), ';');
+
+        foreach ($array as $row) {
+            fputcsv($df, $row, ';');
+        }
+
+        fclose($df);
+        return ob_get_clean();
+    }
+
+    public function downloadSendHeaders($filename)
+    {
+        // disable caching
+        $now = gmdate("D, d M Y H:i:s");
+        header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
+        header("Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate");
+        header("Last-Modified: {$now} GMT");
+
+        // force download
+        header("Content-Type: application/force-download");
+        header("Content-Type: application/octet-stream");
+        header("Content-Type: application/download");
+
+        // disposition / encoding on response body
+        header("Content-Disposition: attachment;filename={$filename}");
+        header("Content-Transfer-Encoding: binary");
     }
 
     /**
@@ -79,7 +162,10 @@ class Form extends \Modularity\Module
 
         echo '<p>';
         echo sprintf(__('There is %d submissions to this form.', 'modularity-form-builder'), count($submissions));
-        echo '</p><p><a href="' . admin_url('edit.php?post_type=form-submissions&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a></p>';
+        echo '</p><p>';
+        echo '<a href="' . admin_url('edit.php?post_type=form-submissions&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a>';
+        echo ' <a href="' . admin_url('post.php?post=' . $post->ID . '&action=edit&export=csv') . '" class="button" target="_blank">' . __('Export csv', 'modularity-form-builder') . '</a>';
+        echo '</p>';
     }
 
     /**

@@ -171,7 +171,7 @@ class Submission
      * @param  int    $submissionId
      * @return array
      */
-    public function getSubmissionData(int $submissionId) : array
+    public static function getSubmissionData(int $submissionId) : array
     {
         $formId = get_post_meta($submissionId, 'modularity-form-id', true);
 
@@ -214,7 +214,7 @@ class Submission
             $headers[] = 'From:' . $from;
         }
 
-        $data = $this->getSubmissionData($submissionId);
+        $data = self::getSubmissionData($submissionId);
         $showData = get_field('submission_notice_content', $formId);
 
         $message = sprintf(
@@ -259,7 +259,7 @@ class Submission
     public function sendCopy($email, $formId, $submissionId)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
-        $data = $this->getSubmissionData($submissionId);
+        $data = self::getSubmissionData($submissionId);
         $message = '';
 
         $i = 0;
