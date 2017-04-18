@@ -20,13 +20,15 @@ new \ModularityFormBuilder\Submission();
 load_plugin_textdomain('modularity-form-builder', false, plugin_basename(dirname(__FILE__)) . '/languages');
 
 // Acf auto import and export
-$acfExportManager = new \AcfExportManager\AcfExportManager();
-$acfExportManager->setTextdomain('modularity-form-builder');
-$acfExportManager->setExportFolder(FORM_BUILDER_MODULE_PATH . 'acf-fields/');
-$acfExportManager->autoExport(array(
-    'form' => 'group_58eb301ecb36a'
-));
-$acfExportManager->import();
+add_action('plugins_loaded', function () {
+    $acfExportManager = new \AcfExportManager\AcfExportManager();
+    $acfExportManager->setTextdomain('modularity-form-builder');
+    $acfExportManager->setExportFolder(FORM_BUILDER_MODULE_PATH . 'acf-fields/');
+    $acfExportManager->autoExport(array(
+        'form' => 'group_58eb301ecb36a'
+    ));
+    $acfExportManager->import();
+});
 
 /**
  * Registers the module
