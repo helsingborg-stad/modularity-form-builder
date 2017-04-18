@@ -97,7 +97,7 @@ class PostType
                 foreach ($field['fields'] as $subfield) {
                     $data[] = array(
                         'type' => 'sender-' . $subfield,
-                        'label' => $this->getTranslatedSenderField($subfield),
+                        'label' => self::getTranslatedSenderField($subfield),
                         'value' => $indata[$subfield]
                     );
                 }
@@ -207,7 +207,7 @@ class PostType
      * @param  string $what
      * @return string
      */
-    public function getTranslatedSenderField($what)
+    public static function getTranslatedSenderField($what)
     {
         switch ($what) {
             case 'firstname':

@@ -13,6 +13,10 @@ class Submission
         });
     }
 
+    /**
+     * Handle form submission
+     * @return void
+     */
     public function submit()
     {
         unset($_POST['modularity-form']);
@@ -63,6 +67,10 @@ class Submission
      */
     public function uploadFiles($fileslist, $formId)
     {
+        if (empty($fileslist)) {
+            return array();
+        }
+
         $uploadsFolder = wp_upload_dir();
         $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder';
         $this->maybeCreateFolder($uploadsFolder);
@@ -132,6 +140,34 @@ class Submission
         return $path;
     }
 
+    public function getSubmissionData(int $submissionId) : array
+    {
+        $formId = get_post_meta($submissionId, 'modularity-form-id', true);
+
+        if (!$formId) {
+            return array();
+        }
+
+        $fields = get_fields($formId);
+        $fields = $fields['form_fields'];
+        $data = get_post_meta($submissionId, 'form-data', true);
+
+        $formdata = array();
+
+        foreach ($fields as $field) {
+            if ($field['acf_fc_layout'] === 'sender') {
+                foreach ($field['fields'] as $subfield) {
+                    $label = \ModularityFormBuilder\PostType::getTranslatedSenderField($subfield);
+                    $formdata[$label] = $data[$subfield];
+                }
+            } else {
+                $formdata[$field['label']] = $data[sanitize_title($field['label'])];
+            }
+        }
+
+        return $formdata;
+    }
+
     /**
      * Notify users about new submission
      * @param  string $email
@@ -139,18 +175,43 @@ class Submission
      * @param  int    $submissionId
      * @return void
      */
-    public function notify($email, $formId, $submissionId)
+    public function notify($email, $formId, $submissionId, $showData = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
+        $data = $this->getSubmissionData($submissionId);
+
+        if (is_null($showData)) {
+            $showData = get_field('submission_notice_content', $formId);
+        }
+
+        $message = sprintf(
+            __('Hi, this is a notification about a new form submission to the form "%s".<br><br><a href="%s">Read the full submission here</a>.', 'modularity-form-builder'),
+            get_the_title($formId),
+            get_edit_post_link($submissionId)
+        );
+
+        if ($showData) {
+            $message = '';
+
+            $i = 0;
+            foreach ($data as $key => $value) {
+                if ($i > 0) {
+                    $message .= '<br><br>';
+                }
+
+                $message .= '<strong>' . $key . '</strong><br>' . $value;
+
+                $i++;
+            }
+        }
+
+        $subject = apply_filters('ModularityFormBuilder/notice/subject', __('New form submission', 'modularity-form-builder'), $email, $formId, $submissionId, $showData, $data);
+        $message = apply_filters('ModularityFormBuilder/notice/message', $message, $email, $formId, $submissionId, $showData, $data);
 
         wp_mail(
             $email,
-            __('New form submission', 'modularity-form-builder'),
-            sprintf(
-                __('Hi, this is a notification about a new form submission to the form "%s".<br><br><a href="%s">Read the full submission here</a>.', 'modularity-form-builder'),
-                get_the_title($formId),
-                get_edit_post_link($submissionId)
-            ),
+            $subject,
+            $message,
             $headers
         );
     }
