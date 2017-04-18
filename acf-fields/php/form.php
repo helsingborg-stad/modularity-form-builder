@@ -905,14 +905,33 @@
             ),
         ),
         7 => array(
+            'tabs' => 'all',
+            'toolbar' => 'full',
+            'media_upload' => 1,
+            'default_value' => '',
+            'delay' => 0,
+            'key' => 'field_58f5d00332436',
+            'label' => __('Notification message', 'modularity-form-builder'),
+            'name' => 'notification_message',
+            'type' => 'wysiwyg',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        8 => array(
             'default_value' => 1,
             'message' => __('Show submission data in notice content', 'modularity-form-builder'),
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
             'key' => 'field_58f5b1a066797',
-            'label' => __('Notification content', 'modularity-form-builder'),
-            'name' => 'submission_notice_content',
+            'label' => __('Notification data', 'modularity-form-builder'),
+            'name' => 'submission_notice_data',
             'type' => 'true_false',
             'instructions' => '',
             'required' => 0,
@@ -923,7 +942,7 @@
                 'id' => '',
             ),
         ),
-        8 => array(
+        9 => array(
             'placement' => 'top',
             'endpoint' => 0,
             'key' => 'field_58f5c0bbee90c',
@@ -939,7 +958,7 @@
                 'id' => '',
             ),
         ),
-        9 => array(
+        10 => array(
             'default_value' => 0,
             'message' => __('Yes, allow user to get a copy of the submission', 'modularity-form-builder'),
             'ui' => 0,
@@ -958,7 +977,7 @@
                 'id' => '',
             ),
         ),
-        10 => array(
+        11 => array(
             'placement' => 'top',
             'endpoint' => 0,
             'key' => 'field_58f5c0abee90b',
@@ -974,7 +993,7 @@
                 'id' => '',
             ),
         ),
-        11 => array(
+        12 => array(
             'default_value' => 0,
             'message' => __('Send auto-reply on form submission', 'modularity-form-builder'),
             'ui' => 0,
@@ -993,7 +1012,7 @@
                 'id' => '',
             ),
         ),
-        12 => array(
+        13 => array(
             'default_value' => '',
             'maxlength' => '',
             'placeholder' => '',
@@ -1020,7 +1039,7 @@
                 'id' => '',
             ),
         ),
-        13 => array(
+        14 => array(
             'tabs' => 'all',
             'toolbar' => 'full',
             'media_upload' => 1,

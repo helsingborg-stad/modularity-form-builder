@@ -215,10 +215,11 @@ class Submission
         }
 
         $data = self::getSubmissionData($submissionId);
-        $showData = get_field('submission_notice_content', $formId);
+        $showData = get_field('submission_notice_data', $formId);
+        $messagePrefix = get_field('notification_message', $formId);
 
         $message = sprintf(
-            __('Hi, this is a notification about a new form submission to the form "%s".<br><br><a href="%s">Read the full submission here</a>.', 'modularity-form-builder'),
+            __('This is a notification about a new form submission to the form "%s".<br><br><a href="%s">Read the full submission here</a>.', 'modularity-form-builder'),
             get_the_title($formId),
             get_edit_post_link($submissionId)
         );
@@ -236,6 +237,10 @@ class Submission
 
                 $i++;
             }
+        }
+
+        if ($messagePrefix) {
+            $message = $messagePrefix . '<br><br>' . $message;
         }
 
         $subject = apply_filters('ModularityFormBuilder/notice/subject', __('New form submission', 'modularity-form-builder'), $email, $formId, $submissionId, $showData, $data);
