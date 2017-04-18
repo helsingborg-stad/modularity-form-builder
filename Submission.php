@@ -278,6 +278,10 @@ class Submission
             $i++;
         }
 
+        if ($prefix = get_field('sender_copy_message', $formId)) {
+            $message = $prefix . '<br><br>' . $message;
+        }
+
         $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', __('Form submission copy', 'modularity-form-builder'), $email, $formId, $submissionId, $showData, $data);
         $message = apply_filters('ModularityFormBuilder/sender_copy/message', $message, $email, $formId, $submissionId, $showData, $data);
 

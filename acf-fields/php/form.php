@@ -978,6 +978,33 @@
             ),
         ),
         11 => array(
+            'tabs' => 'all',
+            'toolbar' => 'full',
+            'media_upload' => 1,
+            'default_value' => '',
+            'delay' => 0,
+            'key' => 'field_58f5d09142d94',
+            'label' => __('Sender copy message', 'modularity-form-builder'),
+            'name' => 'sender_copy_message',
+            'type' => 'wysiwyg',
+            'instructions' => __('The message that will be sent to the user together with a list of the submitted data.', 'modularity-form-builder'),
+            'required' => 0,
+            'conditional_logic' => array(
+                0 => array(
+                    0 => array(
+                        'field' => 'field_58f5b1c266798',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+        ),
+        12 => array(
             'placement' => 'top',
             'endpoint' => 0,
             'key' => 'field_58f5c0abee90b',
@@ -993,7 +1020,7 @@
                 'id' => '',
             ),
         ),
-        12 => array(
+        13 => array(
             'default_value' => 0,
             'message' => __('Send auto-reply on form submission', 'modularity-form-builder'),
             'ui' => 0,
@@ -1012,7 +1039,7 @@
                 'id' => '',
             ),
         ),
-        13 => array(
+        14 => array(
             'default_value' => '',
             'maxlength' => '',
             'placeholder' => '',
@@ -1039,7 +1066,7 @@
                 'id' => '',
             ),
         ),
-        14 => array(
+        15 => array(
             'tabs' => 'all',
             'toolbar' => 'full',
             'media_upload' => 1,

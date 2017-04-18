@@ -973,6 +973,33 @@
             }
         },
         {
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0,
+            "key": "field_58f5d09142d94",
+            "label": "Sender copy message",
+            "name": "sender_copy_message",
+            "type": "wysiwyg",
+            "instructions": "The message that will be sent to the user together with a list of the submitted data.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58f5b1c266798",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "placement": "top",
             "endpoint": 0,
             "key": "field_58f5c0abee90b",
