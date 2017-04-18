@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2017-04-13 10:11+0200\n"
-"PO-Revision-Date: 2017-04-13 10:11+0200\n"
+"POT-Creation-Date: 2017-04-18 10:42+0200\n"
+"PO-Revision-Date: 2017-04-18 10:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: modularity-form-builder.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -32,22 +32,26 @@ msgstr "Formulär"
 msgid "Build submittable forms"
 msgstr "Bygg webbformulär"
 
-#: Form.php:49
+#: Form.php:132
 msgid "Responses"
 msgstr "Svar"
 
-#: Form.php:76
+#: Form.php:159
 msgid "There is no submissions for this form."
 msgstr "Det finns inga svar på detta formulär"
 
-#: Form.php:81
+#: Form.php:164
 #, php-format
 msgid "There is %d submissions to this form."
 msgstr "Det finns %d svar på det här formuläret."
 
-#: Form.php:82
+#: Form.php:166
 msgid "View submissions"
 msgstr "Visa svar"
+
+#: Form.php:167
+msgid "Export csv"
+msgstr "Exportera csv"
 
 #: PostType.php:26 PostType.php:37
 msgid "Form submissions"
@@ -130,53 +134,125 @@ msgstr "Telefonnummer"
 msgid "Email"
 msgstr "Epost"
 
-#: Submission.php:148
+#: Submission.php:222
+#, php-format
+msgid ""
+"This is a notification about a new form submission to the form \"%s\"."
+"<br><br><a href=\"%s\">Read the full submission here</a>."
+msgstr ""
+"Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
+"notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
+
+#: Submission.php:246
 msgid "New form submission"
 msgstr "Nytt formulärsvar"
 
-#: Submission.php:150
-#, php-format
-msgid ""
-"Hi, this is a notification about a new form submission to the form \"%s\"."
-"<br><br><a href=\"%s\">Read the full submission here</a>."
-msgstr ""
-"Hej! Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
-"notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
+#: Submission.php:285
+msgid "Form submission copy"
+msgstr "Svarskopia"
 
-#: acf-fields/php/form.php:770
+#: acf-fields/php/form.php:12
+msgid "Form fields"
+msgstr "Formulärsfält"
+
+#: acf-fields/php/form.php:786
 msgid "Fields"
 msgstr "Fält"
 
-#: acf-fields/php/form.php:789
+#: acf-fields/php/form.php:802
+#, fuzzy
+#| msgid "Form submission"
+msgid "Submission"
+msgstr "Formulärsvar"
+
+#: acf-fields/php/form.php:821
 msgid "Text on submit button"
 msgstr "Text på skicka-knapp"
 
-#: acf-fields/php/form.php:809
+#: acf-fields/php/form.php:840
+msgid "Subimission notice"
+msgstr "Meddela följande epostadresser vid nytt svar"
+
+#: acf-fields/php/form.php:843
+msgid "Text to display when form is submitted."
+msgstr "Text som visas när ett formulär skickas in. "
+
+#: acf-fields/php/form.php:856
+msgid "Notifications"
+msgstr "Notiser"
+
+#: acf-fields/php/form.php:876
 msgid "Email address"
 msgstr "Epostadress"
 
-#: acf-fields/php/form.php:825
+#: acf-fields/php/form.php:892
 msgid "Add email"
 msgstr "Lägg till epostadress"
 
-#: acf-fields/php/form.php:828
+#: acf-fields/php/form.php:895
 msgid "Notifications on form submission"
 msgstr "Notifikation när formulär skickas"
 
-#: acf-fields/php/form.php:831
+#: acf-fields/php/form.php:898
 msgid ""
 "Notifications will be sent to below added email addresses when receiving a "
 "new form submission."
 msgstr ""
 "Ett mail skickas ut till nedanstående användare med innehållet i svaret."
 
-#: acf-fields/php/form.php:847
-msgid "Subimission notice"
-msgstr "Meddela följande epostadresser vid nytt svar"
+#: acf-fields/php/form.php:914
+msgid "Notification message"
+msgstr "Meddelande i notis"
 
-#: acf-fields/php/form.php:850
-msgid "Text to display when form is submitted."
-msgstr "Text som visas när ett formulär skickas in. "
+#: acf-fields/php/form.php:928
+msgid "Show submission data in notice content"
+msgstr "Visa svarsdata i notisens innehåll"
+
+#: acf-fields/php/form.php:933
+msgid "Notification data"
+msgstr "Notisdata"
+
+#: acf-fields/php/form.php:949
+msgid "Sender copy"
+msgstr "Svarskopia"
+
+#: acf-fields/php/form.php:963
+msgid "Yes, allow user to get a copy of the submission"
+msgstr "Ja, tillåt användare att få en svarskopia"
+
+#: acf-fields/php/form.php:968
+msgid "Allow sender copy"
+msgstr "Tillåt svarskopia"
+
+#: acf-fields/php/form.php:971
+msgid "Send copy of the submitted form data to the sender email."
+msgstr "Skicka en kopia av svaret till avsändarens e-postadress."
+
+#: acf-fields/php/form.php:987
+msgid "Sender copy message"
+msgstr "Meddelande i svarskopia"
+
+#: acf-fields/php/form.php:990
+msgid ""
+"The message that will be sent to the user together with a list of the "
+"submitted data."
+msgstr "Meddelandet kommer att skickas tillsammans med svarsdatan."
+
+#: acf-fields/php/form.php:1011 acf-fields/php/form.php:1030
+msgid "Auto-reply"
+msgstr "Autosvar"
+
+#: acf-fields/php/form.php:1025
+msgid "Send auto-reply on form submission"
+msgstr "Skicka autosvar när formuläret har skickats"
+
+#: acf-fields/php/form.php:1049
+msgid "Auto-reply subject"
+msgstr "Ämne för autosvar"
+
+#: acf-fields/php/form.php:1076
+msgid "Auto-reply content"
+msgstr "Meddelande för autosvar"
 
 #: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:357
 msgid "Export with AcfExportManager"
@@ -195,6 +271,10 @@ msgstr "Välj en fil"
 msgid "No file selected"
 msgstr "Ingen fil vald"
 
+#: views/fields/sender-copy.blade.php:5
+msgid "Send copy of this submission to my email address"
+msgstr "Skicka en kopia till mig"
+
 #: views/fields/sender.blade.php:78
 msgid "Street address"
 msgstr "Gatuadress"
@@ -209,7 +289,7 @@ msgstr "Stad"
 
 #: views/form.blade.php:13
 msgid "The for was submitted, thank you!"
-msgstr "Tack! Formuläret har skickats iväg till mottagaren. "
+msgstr "Tack! Formuläret har skickats iväg till mottagaren."
 
 #. Plugin Name of the plugin/theme
 msgid "Modularity Form Builder"
@@ -224,5 +304,5 @@ msgid "Build submittable form(s) to display with module"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Kristoffer Svanmark"
+msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr ""
