@@ -33,7 +33,11 @@ add_action('plugins_loaded', function () {
 /**
  * Registers the module
  */
-modularity_register_module(
-    FORM_BUILDER_MODULE_PATH,
-    'Form'
-);
+add_action('init', function () {
+    if (function_exists('modularity_register_module')) {
+        modularity_register_module(
+            FORM_BUILDER_MODULE_PATH,
+            'Form'
+        );
+    }
+});
