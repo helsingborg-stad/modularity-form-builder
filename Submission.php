@@ -62,8 +62,10 @@ class Submission
         }
 
         // Send notifications
-        foreach ($notify as $email) {
-            $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
+        if ($notify) {
+            foreach ($notify as $email) {
+                $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
+            }
         }
 
         // Send user copy
