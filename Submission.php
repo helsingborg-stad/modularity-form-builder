@@ -233,10 +233,17 @@ class Submission
             $i = 0;
             foreach ($data as $key => $value) {
                 if ($i > 0) {
-                    $message .= '<br><br>';
+                    $message .= '<br>';
                 }
 
-                $message .= '<strong>' . $key . '</strong><br>' . $value;
+                if (is_array($value) && !empty($value)) {
+                    $message .= '<strong>' . $key . '</strong><br>';
+                    foreach ($value as $subvalue) {
+                        $message .= $subvalue . '<br>';
+                    }
+                } else {
+                    $message .= '<strong>' . $key . '</strong><br>' . $value . '<br>';
+                }
 
                 $i++;
             }
@@ -273,10 +280,17 @@ class Submission
         $i = 0;
         foreach ($data as $key => $value) {
             if ($i > 0) {
-                $message .= '<br><br>';
+                $message .= '<br>';
             }
 
-            $message .= '<strong>' . $key . '</strong><br>' . $value;
+            if (is_array($value) && !empty($value)) {
+                $message .= '<strong>' . $key . '</strong><br>';
+                foreach ($value as $subvalue) {
+                    $message .= $subvalue . '<br>';
+                }
+            } else {
+                $message .= '<strong>' . $key . '</strong><br>' . $value . '<br>';
+            }
 
             $i++;
         }
