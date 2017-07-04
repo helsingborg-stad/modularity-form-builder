@@ -5,7 +5,7 @@
 
             @foreach ($field['values'] as $value)
             <label class="checkbox">
-                <input type="checkbox" name="{{ sanitize_title($field['label']) }}" value="{{ $value['value'] }}"> {{ $value['value'] }}
+                <input type="checkbox" name="{{ sanitize_title($field['label']) }}[]" value="{{ $value['value'] }}"> {{ $value['value'] }}
             </label>
             @endforeach
         </div>

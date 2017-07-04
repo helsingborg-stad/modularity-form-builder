@@ -238,8 +238,10 @@ class Submission
 
                 if (is_array($value) && !empty($value)) {
                     $message .= '<strong>' . $key . '</strong><br>';
+                    $last = end($value);
                     foreach ($value as $subvalue) {
-                        $message .= (!empty($subvalue)) ? $subvalue . '<br>' : '';
+                        $lineBreak = ($subvalue == $last) ? '' : '<br>';
+                        $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
                     }
                 } else {
                     $message .= '<strong>' . $key . '</strong><br>' . $value;
@@ -280,16 +282,18 @@ class Submission
         $i = 0;
         foreach ($data as $key => $value) {
             if ($i > 0) {
-                $message .= '<br>';
+                $message .= '<br><br>';
             }
 
             if (is_array($value) && !empty($value)) {
                 $message .= '<strong>' . $key . '</strong><br>';
+                $last = end($value);
                 foreach ($value as $subvalue) {
-                    $message .= (!empty($subvalue)) ? $subvalue . '<br>' : '';
+                    $lineBreak = ($subvalue == $last) ? '' : '<br>';
+                    $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
                 }
             } else {
-                $message .= '<strong>' . $key . '</strong><br>' . $value . '<br>';
+                $message .= '<strong>' . $key . '</strong><br>' . $value;
             }
 
             $i++;
