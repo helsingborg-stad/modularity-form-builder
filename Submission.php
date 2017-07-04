@@ -101,6 +101,8 @@ class Submission
         $this->maybeCreateFolder($uploadsFolder);
         $fields = $this->getFileFields($formId);
         $uploaded = array();
+        $allowedImageTypes = array('.jpeg', '.jpg', '.png', '.gif', '.svg');
+        $allowedVideoTypes = array('.mov', '.mpeg4', '.mp4', '.avi', '.wmv', '.mpegps', '.flv', '.3gpp', '.webm');
 
         foreach ($fileslist as $key => $files) {
             for ($i = 0; $i < count($files['name']); $i++) {
@@ -109,7 +111,15 @@ class Submission
                 }
 
                 $targetFile = $uploadsFolder . '/' . uniqid() . '-' . basename($files['name'][$i]);
-                $fileext = pathinfo($targetFile, PATHINFO_EXTENSION);
+                $fileext = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+                if (in_array('image/*', $fields[$key]['filetypes'])) {
+                    $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'], $allowedImageTypes));
+                }
+
+                if (in_array('video/*', $fields[$key]['filetypes'])) {
+                    $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'], $allowedVideoTypes));
+                }
 
                 if (!in_array('.' . $fileext, $fields[$key]['filetypes'])) {
                     trigger_error('Filetype not allowed');
