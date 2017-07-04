@@ -7,6 +7,7 @@ class PostType
     public function __construct()
     {
         add_action('init', array($this, 'register'));
+        add_action('admin_menu', array($this, 'removePublishBox'));
         add_action('add_meta_boxes', array($this, 'formdata'), 10, 2);
         add_action('restrict_manage_posts', array($this, 'formFilter'));
 
@@ -56,13 +57,17 @@ class PostType
             'rewrite'             => false,
             'capability_type'     => 'post',
             'capabilities' => array(
-                'create_posts' => 'do_not_allow',
-                'delete_posts' => 'delete_posts'
+                'create_posts'       => 'do_not_allow',
             ),
+            'map_meta_cap'         => true,
             'supports'            => array('title')
         );
 
         register_post_type('form-submissions', $args);
+    }
+
+    public function removePublishBox() {
+        remove_meta_box('submitdiv', 'form-submissions', 'side');
     }
 
     /**
