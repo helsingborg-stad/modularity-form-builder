@@ -14,7 +14,7 @@
             }
         } elseif (is_array($item['value'])) {
             foreach ($item['value'] as $value) {
-                echo nl2br($value) . '<br>';
+                if (! empty($value)) echo nl2br($value) . '<br>';
             }
         } else {
             echo nl2br($item['value']);
