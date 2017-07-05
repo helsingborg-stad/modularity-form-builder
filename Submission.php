@@ -195,7 +195,6 @@ class Submission
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
         $data = get_post_meta($submissionId, 'form-data', true);
-
         $formdata = array();
 
         foreach ($fields as $field) {
@@ -230,6 +229,8 @@ class Submission
         $data = self::getSubmissionData($submissionId);
         $showData = get_field('submission_notice_data', $formId);
         $messagePrefix = get_field('notification_message', $formId);
+        $uploadFolder = wp_upload_dir();
+        $uploadFolder = $uploadFolder['baseurl'] . '/modularity-form-builder/';
 
         $message = sprintf(
             __('This is a notification about a new form submission to the form "%s".<br><br><a href="%s">Read the full submission here</a>.', 'modularity-form-builder'),
@@ -251,7 +252,11 @@ class Submission
                     $last = end($value);
                     foreach ($value as $subvalue) {
                         $lineBreak = ($subvalue == $last) ? '' : '<br>';
-                        $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
+                        if (strpos($subvalue, '/modularity-form-builder/') !== false) {
+                            $message .= 'Öppna fil: <a target="_blank" href="' . $uploadFolder . basename($subvalue) . '">' . basename($subvalue) . '</a>' . $lineBreak;
+                        } else {
+                            $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
+                        }
                     }
                 } else {
                     $message .= '<strong>' . $key . '</strong><br>' . $value;
@@ -288,8 +293,11 @@ class Submission
         $headers = array('Content-Type: text/html; charset=UTF-8');
         $data = self::getSubmissionData($submissionId);
         $message = '';
+        $uploadFolder = wp_upload_dir();
+        $uploadFolder = $uploadFolder['baseurl'] . '/modularity-form-builder/';
 
         $i = 0;
+
         foreach ($data as $key => $value) {
             if ($i > 0) {
                 $message .= '<br><br>';
@@ -300,7 +308,11 @@ class Submission
                 $last = end($value);
                 foreach ($value as $subvalue) {
                     $lineBreak = ($subvalue == $last) ? '' : '<br>';
-                    $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
+                    if (strpos($subvalue, '/modularity-form-builder/') !== false) {
+                        $message .= 'Öppna fil: <a target="_blank" href="' . $uploadFolder . basename($subvalue) . '">' . basename($subvalue) . '</a>' . $lineBreak;
+                    } else {
+                        $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
+                    }
                 }
             } else {
                 $message .= '<strong>' . $key . '</strong><br>' . $value;

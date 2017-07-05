@@ -10,7 +10,7 @@
             foreach ($item['value'] as $file) {
                 $i++;
                 if ($i > 1) echo '<br>';
-                echo 'Öppna fil: <a target="_blank" href="' . $uploadFolder . '/' . basename($file) . '">' . basename($file) . '</a>';
+                echo 'Öppna fil: <a target="_blank" href="' . $uploadFolder . basename($file) . '">' . basename($file) . '</a>';
             }
         } elseif (is_array($item['value'])) {
             foreach ($item['value'] as $value) {
