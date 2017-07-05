@@ -179,7 +179,11 @@ class Form extends \Modularity\Module
         $data['module_id'] = $this->ID;
         $data['hasFileUpload'] = false;
 
-        foreach ($data['form_fields'] as $field) {
+        foreach ($data['form_fields'] as &$field) {
+            if (isset($field['required_fields']) && empty($field['required_fields'])) {
+                $field['required_fields'] = array();
+            }
+
             if ($field['acf_fc_layout'] === 'file_upload') {
                 $data['hasFileUpload'] = true;
                 break;
