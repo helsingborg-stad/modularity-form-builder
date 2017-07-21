@@ -229,6 +229,7 @@ class Submission
         $data = self::getSubmissionData($submissionId);
         $showData = get_field('submission_notice_data', $formId);
         $messagePrefix = get_field('notification_message', $formId);
+        $subject = (get_field('notification_custom_subject', $formId) == true) ? get_field('notification_subject', $formId) : __('New form submission', 'modularity-form-builder');
         $uploadFolder = wp_upload_dir();
         $uploadFolder = $uploadFolder['baseurl'] . '/modularity-form-builder/';
 
@@ -270,7 +271,7 @@ class Submission
             $message = $messagePrefix . '<br><br>' . $message;
         }
 
-        $subject = apply_filters('ModularityFormBuilder/notice/subject', __('New form submission', 'modularity-form-builder'), $email, $formId, $submissionId, $showData, $data);
+        $subject = apply_filters('ModularityFormBuilder/notice/subject', $subject, $email, $formId, $submissionId, $showData, $data);
         $message = apply_filters('ModularityFormBuilder/notice/message', $message, $email, $formId, $submissionId, $showData, $data);
 
         wp_mail(

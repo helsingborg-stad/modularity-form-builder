@@ -3,8 +3,6 @@
     "title": "Form",
     "fields": [
         {
-            "placement": "top",
-            "endpoint": 0,
             "key": "field_58f5c009ee909",
             "label": "Form fields",
             "name": "",
@@ -16,9 +14,26 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
+            "key": "field_58eb302883a68",
+            "label": "Fields",
+            "name": "form_fields",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 1,
+            "max": "",
+            "button_label": "Add form field",
             "layouts": [
                 {
                     "key": "58eb3033e588f",
@@ -27,23 +42,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "layout": "vertical",
-                            "choices": {
-                                "firstname": "Firstname",
-                                "lastname": "Lastname",
-                                "email": "Email",
-                                "phone": "Phone",
-                                "address": "Address"
-                            },
-                            "default_value": [
-                                "firstname",
-                                "lastname",
-                                "email"
-                            ],
-                            "allow_custom": 0,
-                            "save_custom": 0,
-                            "toggle": 0,
-                            "return_format": "value",
                             "key": "field_58eb3944f7086",
                             "label": "Fields to display",
                             "name": "fields",
@@ -55,9 +53,7 @@
                                 "width": "50",
                                 "class": "",
                                 "id": ""
-                            }
-                        },
-                        {
+                            },
                             "layout": "vertical",
                             "choices": {
                                 "firstname": "Firstname",
@@ -74,7 +70,9 @@
                             "allow_custom": 0,
                             "save_custom": 0,
                             "toggle": 0,
-                            "return_format": "value",
+                            "return_format": "value"
+                        },
+                        {
                             "key": "field_58eb3a9bf7087",
                             "label": "Required fields",
                             "name": "required_fields",
@@ -86,7 +84,24 @@
                                 "width": "50",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "layout": "vertical",
+                            "choices": {
+                                "firstname": "Firstname",
+                                "lastname": "Lastname",
+                                "email": "Email",
+                                "phone": "Phone",
+                                "address": "Address"
+                            },
+                            "default_value": [
+                                "firstname",
+                                "lastname",
+                                "email"
+                            ],
+                            "allow_custom": 0,
+                            "save_custom": 0,
+                            "toggle": 0,
+                            "return_format": "value"
                         }
                     ],
                     "min": "",
@@ -99,11 +114,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "default_value": "Message",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58eb3f37d914b",
                             "label": "Field label",
                             "name": "label",
@@ -115,14 +125,14 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": "Message",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
-                            "default_value": 0,
-                            "message": "Required field",
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
                             "key": "field_58eb3f5ed914c",
                             "label": "Required",
                             "name": "required",
@@ -134,7 +144,12 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": 0,
+                            "message": "Required field",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -147,11 +162,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58eb55338189f",
                             "label": "Field label",
                             "name": "label",
@@ -163,9 +173,26 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
+                            "key": "field_58eb5547818a0",
+                            "label": "Field value type",
+                            "name": "value_type",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
                             "multiple": 0,
                             "allow_null": 0,
                             "choices": {
@@ -186,28 +213,9 @@
                             "ui": 0,
                             "ajax": 0,
                             "placeholder": "",
-                            "return_format": "value",
-                            "key": "field_58eb5547818a0",
-                            "label": "Field value type",
-                            "name": "value_type",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            }
+                            "return_format": "value"
                         },
                         {
-                            "default_value": "",
-                            "min": "",
-                            "max": "",
-                            "step": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58eb572440304",
                             "label": "Min value",
                             "name": "min_value",
@@ -234,16 +242,16 @@
                                 "width": "33.3333",
                                 "class": "",
                                 "id": ""
-                            }
-                        },
-                        {
+                            },
                             "default_value": "",
                             "min": "",
                             "max": "",
                             "step": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_58eb574140305",
                             "label": "Max value",
                             "name": "max_value",
@@ -270,16 +278,16 @@
                                 "width": "33.3333",
                                 "class": "",
                                 "id": ""
-                            }
-                        },
-                        {
+                            },
                             "default_value": "",
                             "min": "",
                             "max": "",
                             "step": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_58eb57a645640",
                             "label": "Step",
                             "name": "step",
@@ -306,12 +314,16 @@
                                 "width": "33.3333",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": "",
+                            "min": "",
+                            "max": "",
+                            "step": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
-                            "display_format": "Y-m-d",
-                            "return_format": "Y-m-d",
-                            "first_day": 1,
                             "key": "field_58eb62d1ec890",
                             "label": "Min date",
                             "name": "min_value",
@@ -331,12 +343,12 @@
                                 "width": "50",
                                 "class": "",
                                 "id": ""
-                            }
-                        },
-                        {
+                            },
                             "display_format": "Y-m-d",
                             "return_format": "Y-m-d",
-                            "first_day": 1,
+                            "first_day": 1
+                        },
+                        {
                             "key": "field_58eb62feec891",
                             "label": "Max date",
                             "name": "max_value",
@@ -356,14 +368,12 @@
                                 "width": "50",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "display_format": "Y-m-d",
+                            "return_format": "Y-m-d",
+                            "first_day": 1
                         },
                         {
-                            "default_value": 0,
-                            "message": "Required",
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
                             "key": "field_58eb5614c5514",
                             "label": "Required",
                             "name": "required",
@@ -375,7 +385,12 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": 0,
+                            "message": "Required",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -388,11 +403,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58eb675039ff1",
                             "label": "Field label",
                             "name": "label",
@@ -404,35 +414,14 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
-                            "sub_fields": [
-                                {
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "key": "field_58eb672c39ff0",
-                                    "label": "Value",
-                                    "name": "value",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    }
-                                }
-                            ],
-                            "min": 2,
-                            "max": 0,
-                            "layout": "table",
-                            "button_label": "",
-                            "collapsed": "",
                             "key": "field_58eb670d39fef",
                             "label": "Field values",
                             "name": "values",
@@ -444,14 +433,35 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "min": 2,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "",
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_58eb672c39ff0",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                }
+                            ]
                         },
                         {
-                            "default_value": 0,
-                            "message": "Required",
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
                             "key": "field_58eb699755795",
                             "label": "Required",
                             "name": "required",
@@ -463,7 +473,12 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": 0,
+                            "message": "Required",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -476,11 +491,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58eb6b023b077",
                             "label": "Field label",
                             "name": "label",
@@ -492,35 +502,14 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
-                            "sub_fields": [
-                                {
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "key": "field_58eb6b023b079",
-                                    "label": "Value",
-                                    "name": "value",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    }
-                                }
-                            ],
-                            "min": 1,
-                            "max": 0,
-                            "layout": "table",
-                            "button_label": "",
-                            "collapsed": "",
                             "key": "field_58eb6b023b078",
                             "label": "Field values",
                             "name": "values",
@@ -532,14 +521,35 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "min": 1,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "",
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_58eb6b023b079",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                }
+                            ]
                         },
                         {
-                            "default_value": 0,
-                            "message": "Required",
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
                             "key": "field_58eb6b023b07a",
                             "label": "Required",
                             "name": "required",
@@ -551,7 +561,12 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": 0,
+                            "message": "Required",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -564,11 +579,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58eb6bd334c1a",
                             "label": "Field label",
                             "name": "label",
@@ -580,35 +590,14 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
-                            "sub_fields": [
-                                {
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "key": "field_58eb6bd334c1c",
-                                    "label": "Value",
-                                    "name": "value",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    }
-                                }
-                            ],
-                            "min": 1,
-                            "max": 0,
-                            "layout": "table",
-                            "button_label": "",
-                            "collapsed": "",
                             "key": "field_58eb6bd334c1b",
                             "label": "Field values",
                             "name": "values",
@@ -620,14 +609,35 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "min": 1,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "",
+                            "collapsed": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_58eb6bd334c1c",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                }
+                            ]
                         },
                         {
-                            "default_value": 0,
-                            "message": "Required",
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
                             "key": "field_58eb6bd334c1d",
                             "label": "Required",
                             "name": "required",
@@ -639,7 +649,12 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": 0,
+                            "message": "Required",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -652,11 +667,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58ecce8a5ad93",
                             "label": "Field label",
                             "name": "label",
@@ -668,19 +678,14 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
-                        },
-                        {
-                            "layout": "horizontal",
-                            "choices": {
-                                "single": "Single",
-                                "multiple": "Multiple"
                             },
                             "default_value": "",
-                            "other_choice": 0,
-                            "save_other_choice": 0,
-                            "allow_null": 0,
-                            "return_format": "value",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_58eccde65ad91",
                             "label": "Type",
                             "name": "type",
@@ -692,16 +697,19 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "layout": "horizontal",
+                            "choices": {
+                                "single": "Single",
+                                "multiple": "Multiple"
+                            },
+                            "default_value": "",
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "allow_null": 0,
+                            "return_format": "value"
                         },
                         {
-                            "default_value": -1,
-                            "min": "",
-                            "max": "",
-                            "step": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
                             "key": "field_58ece6685df9c",
                             "label": "Max number of files",
                             "name": "files_max",
@@ -713,9 +721,28 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": -1,
+                            "min": "",
+                            "max": "",
+                            "step": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
+                            "key": "field_58ecce105ad92",
+                            "label": "Allowed filetypes",
+                            "name": "filetypes",
+                            "type": "checkbox",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
                             "layout": "vertical",
                             "choices": {
                                 "video\/*": "All video types",
@@ -736,26 +763,9 @@
                             "allow_custom": 0,
                             "save_custom": 0,
                             "toggle": 0,
-                            "return_format": "value",
-                            "key": "field_58ecce105ad92",
-                            "label": "Allowed filetypes",
-                            "name": "filetypes",
-                            "type": "checkbox",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            }
+                            "return_format": "value"
                         },
                         {
-                            "default_value": 0,
-                            "message": "Required",
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
                             "key": "field_58ecd86751bf6",
                             "label": "Required",
                             "name": "required",
@@ -767,32 +777,20 @@
                                 "width": "",
                                 "class": "",
                                 "id": ""
-                            }
+                            },
+                            "default_value": 0,
+                            "message": "Required",
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
                     "max": ""
                 }
-            ],
-            "min": 1,
-            "max": "",
-            "button_label": "Add form field",
-            "key": "field_58eb302883a68",
-            "label": "Fields",
-            "name": "form_fields",
-            "type": "flexible_content",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
+            ]
         },
         {
-            "placement": "top",
-            "endpoint": 0,
             "key": "field_58f5c12da612a",
             "label": "Submission",
             "name": "",
@@ -804,14 +802,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
-            "default_value": "Send",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
             "key": "field_58eb3700191e7",
             "label": "Text on submit button",
             "name": "submit_button_text",
@@ -823,14 +818,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "default_value": "Send",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "default_value": "",
-            "delay": 0,
             "key": "field_58eb7b11cc4f5",
             "label": "Subimission notice",
             "name": "subimission_notice",
@@ -842,11 +837,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0
         },
         {
-            "placement": "top",
-            "endpoint": 0,
             "key": "field_58f5c029ee90a",
             "label": "Notifications",
             "name": "",
@@ -858,34 +856,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
-            "sub_fields": [
-                {
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "key": "field_58eb6f389aa7d",
-                    "label": "Email address",
-                    "name": "email",
-                    "type": "email",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ],
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "Add email",
-            "collapsed": "",
             "key": "field_58eb6ee89aa7c",
             "label": "Notifications on form submission",
             "name": "notify",
@@ -897,14 +872,80 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add email",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_58eb6f389aa7d",
+                    "label": "Email address",
+                    "name": "email",
+                    "type": "email",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
         },
         {
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
+            "key": "field_59720c161a3a1",
+            "label": "Custom email subject",
+            "name": "notification_custom_subject",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Check this box if you want to enter a custom email subject.",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5972079df9f04",
+            "label": "Email subject",
+            "name": "notification_subject",
+            "type": "text",
+            "instructions": "Enter custom email subject. Default is \"New form submission\".",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59720c161a3a1",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
-            "delay": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_58f5d00332436",
             "label": "Notification message",
             "name": "notification_message",
@@ -916,14 +957,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0
         },
         {
-            "default_value": 1,
-            "message": "Show submission data in notice content",
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
             "key": "field_58f5b1a066797",
             "label": "Notification data",
             "name": "submission_notice_data",
@@ -935,11 +976,14 @@
                 "width": "50",
                 "class": "",
                 "id": ""
-            }
+            },
+            "default_value": 1,
+            "message": "Show submission data in notice content",
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
-            "placement": "top",
-            "endpoint": 0,
             "key": "field_58f5c0bbee90c",
             "label": "Sender copy",
             "name": "",
@@ -951,14 +995,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
-            "default_value": 0,
-            "message": "Yes, allow user to get a copy of the submission",
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
             "key": "field_58f5b1c266798",
             "label": "Allow sender copy",
             "name": "allow_sender_copy",
@@ -970,14 +1011,14 @@
                 "width": "50",
                 "class": "",
                 "id": ""
-            }
+            },
+            "default_value": 0,
+            "message": "Yes, allow user to get a copy of the submission",
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "default_value": "",
-            "delay": 0,
             "key": "field_58f5d09142d94",
             "label": "Sender copy message",
             "name": "sender_copy_message",
@@ -997,11 +1038,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0
         },
         {
-            "placement": "top",
-            "endpoint": 0,
             "key": "field_58f5c0abee90b",
             "label": "Auto-reply",
             "name": "",
@@ -1013,14 +1057,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
-            "default_value": 0,
-            "message": "Send auto-reply on form submission",
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
             "key": "field_58f5be7475dbf",
             "label": "Auto-reply",
             "name": "autoreply",
@@ -1032,14 +1073,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "default_value": 0,
+            "message": "Send auto-reply on form submission",
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
             "key": "field_58f5bf7329b3f",
             "label": "Auto-reply subject",
             "name": "auto_reply_subject",
@@ -1059,14 +1100,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "default_value": "",
-            "delay": 0,
             "key": "field_58f5bea775dc0",
             "label": "Auto-reply content",
             "name": "auto_reply_content",
@@ -1086,7 +1127,12 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0
         }
     ],
     "location": [
