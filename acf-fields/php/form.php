@@ -3,7 +3,7 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_58eb301ecb36a',
-    'title' => __('Form', 'modularity-form-builder'),
+    'title' => 'Form',
     'fields' => array(
         0 => array(
             'key' => 'field_58f5c009ee909',
@@ -34,9 +34,9 @@
                 'class' => '',
                 'id' => '',
             ),
+            'button_label' => 'Add form field',
             'min' => 1,
             'max' => '',
-            'button_label' => 'Add form field',
             'layouts' => array(
                 0 => array(
                     'key' => '58eb3033e588f',
@@ -46,7 +46,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb3944f7086',
-                            'label' => 'Fields to display',
+                            'label' => __('Fields to display', 'modularity-form-builder'),
                             'name' => 'fields',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -59,11 +59,11 @@
                             ),
                             'layout' => 'vertical',
                             'choices' => array(
-                                'firstname' => 'Firstname',
-                                'lastname' => 'Lastname',
-                                'email' => 'Email',
-                                'phone' => 'Phone',
-                                'address' => 'Address',
+                                'firstname' => __('Firstname', 'modularity-form-builder'),
+                                'lastname' => __('Lastname', 'modularity-form-builder'),
+                                'email' => __('Email', 'modularity-form-builder'),
+                                'phone' => __('Phone', 'modularity-form-builder'),
+                                'address' => __('Address', 'modularity-form-builder'),
                             ),
                             'default_value' => array(
                                 0 => 'firstname',
@@ -77,7 +77,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eb3a9bf7087',
-                            'label' => 'Required fields',
+                            'label' => __('Required fields', 'modularity-form-builder'),
                             'name' => 'required_fields',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -90,11 +90,11 @@
                             ),
                             'layout' => 'vertical',
                             'choices' => array(
-                                'firstname' => 'Firstname',
-                                'lastname' => 'Lastname',
-                                'email' => 'Email',
-                                'phone' => 'Phone',
-                                'address' => 'Address',
+                                'firstname' => __('Firstname', 'modularity-form-builder'),
+                                'lastname' => __('Lastname', 'modularity-form-builder'),
+                                'email' => __('Email', 'modularity-form-builder'),
+                                'phone' => __('Phone', 'modularity-form-builder'),
+                                'address' => __('Address', 'modularity-form-builder'),
                             ),
                             'default_value' => array(
                                 0 => 'firstname',
@@ -118,7 +118,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb3f37d914b',
-                            'label' => 'Field label',
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -137,7 +137,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eb3f5ed914c',
-                            'label' => 'Required',
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -149,7 +149,7 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => 'Required field',
+                            'message' => __('Required field', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
@@ -166,7 +166,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb55338189f',
-                            'label' => 'Field label',
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -185,7 +185,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eb5547818a0',
-                            'label' => 'Field value type',
+                            'label' => __('Field value type', 'modularity-form-builder'),
                             'name' => 'value_type',
                             'type' => 'select',
                             'instructions' => '',
@@ -199,18 +199,18 @@
                             'multiple' => 0,
                             'allow_null' => 0,
                             'choices' => array(
-                                'text' => 'Text',
-                                'number' => 'Number',
-                                'email' => 'Email',
-                                'tel' => 'Phone number',
-                                'color' => 'Color',
-                                'date' => 'Date',
-                                'month' => 'Month',
-                                'week' => 'Week',
-                                'range' => 'Range',
-                                'search' => 'Search',
-                                'time' => 'Time',
-                                'url' => 'Url',
+                                'text' => __('Text', 'modularity-form-builder'),
+                                'number' => __('Number', 'modularity-form-builder'),
+                                'email' => __('Email', 'modularity-form-builder'),
+                                'tel' => __('Phone number', 'modularity-form-builder'),
+                                'color' => __('Color', 'modularity-form-builder'),
+                                'date' => __('Date', 'modularity-form-builder'),
+                                'month' => __('Month', 'modularity-form-builder'),
+                                'week' => __('Week', 'modularity-form-builder'),
+                                'range' => __('Range', 'modularity-form-builder'),
+                                'search' => __('Search', 'modularity-form-builder'),
+                                'time' => __('Time', 'modularity-form-builder'),
+                                'url' => __('Url', 'modularity-form-builder'),
                             ),
                             'default_value' => array(
                             ),
@@ -221,7 +221,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb572440304',
-                            'label' => 'Min value',
+                            'label' => __('Min value', 'modularity-form-builder'),
                             'name' => 'min_value',
                             'type' => 'number',
                             'instructions' => '',
@@ -257,7 +257,7 @@
                         ),
                         3 => array(
                             'key' => 'field_58eb574140305',
-                            'label' => 'Max value',
+                            'label' => __('Max value', 'modularity-form-builder'),
                             'name' => 'max_value',
                             'type' => 'number',
                             'instructions' => '',
@@ -293,7 +293,7 @@
                         ),
                         4 => array(
                             'key' => 'field_58eb57a645640',
-                            'label' => 'Step',
+                            'label' => __('Step', 'modularity-form-builder'),
                             'name' => 'step',
                             'type' => 'number',
                             'instructions' => '',
@@ -329,7 +329,7 @@
                         ),
                         5 => array(
                             'key' => 'field_58eb62d1ec890',
-                            'label' => 'Min date',
+                            'label' => __('Min date', 'modularity-form-builder'),
                             'name' => 'min_value',
                             'type' => 'date_picker',
                             'instructions' => '',
@@ -354,7 +354,7 @@
                         ),
                         6 => array(
                             'key' => 'field_58eb62feec891',
-                            'label' => 'Max date',
+                            'label' => __('Max date', 'modularity-form-builder'),
                             'name' => 'max_value',
                             'type' => 'date_picker',
                             'instructions' => '',
@@ -379,7 +379,7 @@
                         ),
                         7 => array(
                             'key' => 'field_58eb5614c5514',
-                            'label' => 'Required',
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -391,7 +391,7 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => 'Required',
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
@@ -408,7 +408,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb675039ff1',
-                            'label' => 'Field label',
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -427,7 +427,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eb670d39fef',
-                            'label' => 'Field values',
+                            'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -446,7 +446,7 @@
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb672c39ff0',
-                                    'label' => 'Value',
+                                    'label' => __('Value', 'modularity-form-builder'),
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -467,7 +467,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb699755795',
-                            'label' => 'Required',
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -479,7 +479,7 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => 'Required',
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
@@ -496,7 +496,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb6b023b077',
-                            'label' => 'Field label',
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -515,7 +515,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eb6b023b078',
-                            'label' => 'Field values',
+                            'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -534,7 +534,7 @@
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb6b023b079',
-                                    'label' => 'Value',
+                                    'label' => __('Value', 'modularity-form-builder'),
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -555,7 +555,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb6b023b07a',
-                            'label' => 'Required',
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -567,7 +567,7 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => 'Required',
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
@@ -584,7 +584,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb6bd334c1a',
-                            'label' => 'Field label',
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -603,7 +603,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eb6bd334c1b',
-                            'label' => 'Field values',
+                            'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -622,7 +622,7 @@
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb6bd334c1c',
-                                    'label' => 'Value',
+                                    'label' => __('Value', 'modularity-form-builder'),
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -643,7 +643,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb6bd334c1d',
-                            'label' => 'Required',
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -655,7 +655,7 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => 'Required',
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
@@ -672,7 +672,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58ecce8a5ad93',
-                            'label' => 'Field label',
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -691,7 +691,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eccde65ad91',
-                            'label' => 'Type',
+                            'label' => __('Type', 'modularity-form-builder'),
                             'name' => 'type',
                             'type' => 'radio',
                             'instructions' => '',
@@ -704,8 +704,8 @@
                             ),
                             'layout' => 'horizontal',
                             'choices' => array(
-                                'single' => 'Single',
-                                'multiple' => 'Multiple',
+                                'single' => __('Single', 'modularity-form-builder'),
+                                'multiple' => __('Multiple', 'modularity-form-builder'),
                             ),
                             'default_value' => '',
                             'other_choice' => 0,
@@ -715,10 +715,10 @@
                         ),
                         2 => array(
                             'key' => 'field_58ece6685df9c',
-                            'label' => 'Max number of files',
+                            'label' => __('Max number of files', 'modularity-form-builder'),
                             'name' => 'files_max',
                             'type' => 'number',
-                            'instructions' => '-1 for no limit',
+                            'instructions' => __('-1 for no limit', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -736,7 +736,7 @@
                         ),
                         3 => array(
                             'key' => 'field_58ecce105ad92',
-                            'label' => 'Allowed filetypes',
+                            'label' => __('Allowed filetypes', 'modularity-form-builder'),
                             'name' => 'filetypes',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -749,19 +749,19 @@
                             ),
                             'layout' => 'vertical',
                             'choices' => array(
-                                'video/*' => 'All video types',
-                                'image/*' => 'All image types',
-                                '.jpg' => 'jpg',
-                                '.png' => 'png',
-                                '.gif' => 'gif',
-                                '.mov' => 'mov',
-                                '.webm' => 'webm',
-                                '.mp4' => 'mp4',
-                                '.doc' => 'doc',
-                                '.docx' => 'docx',
-                                '.xls' => 'xls',
-                                '.xlsx' => 'xlsx',
-                                '.pdf' => 'pdf',
+                                'video/*' => __('All video types', 'modularity-form-builder'),
+                                'image/*' => __('All image types', 'modularity-form-builder'),
+                                '.jpg' => __('jpg', 'modularity-form-builder'),
+                                '.png' => __('png', 'modularity-form-builder'),
+                                '.gif' => __('gif', 'modularity-form-builder'),
+                                '.mov' => __('mov', 'modularity-form-builder'),
+                                '.webm' => __('webm', 'modularity-form-builder'),
+                                '.mp4' => __('mp4', 'modularity-form-builder'),
+                                '.doc' => __('doc', 'modularity-form-builder'),
+                                '.docx' => __('docx', 'modularity-form-builder'),
+                                '.xls' => __('xls', 'modularity-form-builder'),
+                                '.xlsx' => __('xlsx', 'modularity-form-builder'),
+                                '.pdf' => __('pdf', 'modularity-form-builder'),
                             ),
                             'default_value' => array(
                             ),
@@ -772,7 +772,7 @@
                         ),
                         4 => array(
                             'key' => 'field_58ecd86751bf6',
-                            'label' => 'Required',
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -784,10 +784,39 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => 'Required',
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
+                        ),
+                    ),
+                    'min' => '',
+                    'max' => '',
+                ),
+                7 => array(
+                    'key' => '597af62ef47e7',
+                    'name' => 'custom_content',
+                    'label' => 'Custom content',
+                    'display' => 'block',
+                    'sub_fields' => array(
+                        0 => array(
+                            'key' => 'field_597af6b1f47ea',
+                            'label' => __('Content', 'modularity-form-builder'),
+                            'name' => 'content',
+                            'type' => 'wysiwyg',
+                            'instructions' => __('Add custom content to the form. This will not be sent in e-mail messages.', 'modularity-form-builder'),
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'tabs' => 'all',
+                            'toolbar' => 'full',
+                            'media_upload' => 1,
+                            'delay' => 0,
                         ),
                     ),
                     'min' => '',
@@ -886,7 +915,7 @@
             'sub_fields' => array(
                 0 => array(
                     'key' => 'field_58eb6f389aa7d',
-                    'label' => __(__(__(__(__(__(__('Email address', 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'),
+                    'label' => __('Email address', 'modularity-form-builder'),
                     'name' => 'email',
                     'type' => 'email',
                     'instructions' => '',

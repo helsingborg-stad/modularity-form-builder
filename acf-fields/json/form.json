@@ -31,9 +31,9 @@
                 "class": "",
                 "id": ""
             },
+            "button_label": "Add form field",
             "min": 1,
             "max": "",
-            "button_label": "Add form field",
             "layouts": [
                 {
                     "key": "58eb3033e588f",
@@ -783,6 +783,35 @@
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "597af62ef47e7",
+                    "name": "custom_content",
+                    "label": "Custom content",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_597af6b1f47ea",
+                            "label": "Content",
+                            "name": "content",
+                            "type": "wysiwyg",
+                            "instructions": "Add custom content to the form. This will not be sent in e-mail messages.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
                         }
                     ],
                     "min": "",

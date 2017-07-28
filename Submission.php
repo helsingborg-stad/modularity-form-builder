@@ -203,6 +203,8 @@ class Submission
                     $label = \ModularityFormBuilder\PostType::getTranslatedSenderField($subfield);
                     $formdata[$label] = $data[$subfield];
                 }
+            } elseif ($field['acf_fc_layout'] === 'custom_content') {
+                continue;
             } else {
                 $formdata[$field['label']] = isset($data[sanitize_title($field['label'])]) ? $data[sanitize_title($field['label'])] : '';
             }
