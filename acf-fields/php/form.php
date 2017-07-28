@@ -136,6 +136,25 @@
                             'append' => '',
                         ),
                         1 => array(
+                            'key' => 'field_597b20d5392bc',
+                            'label' => __('Field description', 'modularity-form-builder'),
+                            'name' => 'description',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        2 => array(
                             'key' => 'field_58eb3f5ed914c',
                             'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
@@ -184,6 +203,25 @@
                             'append' => '',
                         ),
                         1 => array(
+                            'key' => 'field_597b2100392bd',
+                            'label' => __('Field description', 'modularity-form-builder'),
+                            'name' => 'description',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        2 => array(
                             'key' => 'field_58eb5547818a0',
                             'label' => __('Field value type', 'modularity-form-builder'),
                             'name' => 'value_type',
@@ -219,7 +257,7 @@
                             'placeholder' => '',
                             'return_format' => 'value',
                         ),
-                        2 => array(
+                        3 => array(
                             'key' => 'field_58eb572440304',
                             'label' => __('Min value', 'modularity-form-builder'),
                             'name' => 'min_value',
@@ -255,7 +293,7 @@
                             'prepend' => '',
                             'append' => '',
                         ),
-                        3 => array(
+                        4 => array(
                             'key' => 'field_58eb574140305',
                             'label' => __('Max value', 'modularity-form-builder'),
                             'name' => 'max_value',
@@ -291,7 +329,7 @@
                             'prepend' => '',
                             'append' => '',
                         ),
-                        4 => array(
+                        5 => array(
                             'key' => 'field_58eb57a645640',
                             'label' => __('Step', 'modularity-form-builder'),
                             'name' => 'step',
@@ -327,7 +365,7 @@
                             'prepend' => '',
                             'append' => '',
                         ),
-                        5 => array(
+                        6 => array(
                             'key' => 'field_58eb62d1ec890',
                             'label' => __('Min date', 'modularity-form-builder'),
                             'name' => 'min_value',
@@ -352,7 +390,7 @@
                             'return_format' => 'Y-m-d',
                             'first_day' => 1,
                         ),
-                        6 => array(
+                        7 => array(
                             'key' => 'field_58eb62feec891',
                             'label' => __('Max date', 'modularity-form-builder'),
                             'name' => 'max_value',
@@ -377,7 +415,7 @@
                             'return_format' => 'Y-m-d',
                             'first_day' => 1,
                         ),
-                        7 => array(
+                        8 => array(
                             'key' => 'field_58eb5614c5514',
                             'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
@@ -426,6 +464,25 @@
                             'append' => '',
                         ),
                         1 => array(
+                            'key' => 'field_597b2112392be',
+                            'label' => __('Field description', 'modularity-form-builder'),
+                            'name' => 'description',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        2 => array(
                             'key' => 'field_58eb670d39fef',
                             'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
@@ -465,7 +522,7 @@
                                 ),
                             ),
                         ),
-                        2 => array(
+                        3 => array(
                             'key' => 'field_58eb699755795',
                             'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
@@ -514,6 +571,25 @@
                             'append' => '',
                         ),
                         1 => array(
+                            'key' => 'field_597b211f392bf',
+                            'label' => __('Field description', 'modularity-form-builder'),
+                            'name' => 'description',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        2 => array(
                             'key' => 'field_58eb6b023b078',
                             'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
@@ -553,7 +629,7 @@
                                 ),
                             ),
                         ),
-                        2 => array(
+                        3 => array(
                             'key' => 'field_58eb6b023b07a',
                             'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
@@ -602,6 +678,25 @@
                             'append' => '',
                         ),
                         1 => array(
+                            'key' => 'field_597b2132392c0',
+                            'label' => __('Field description', 'modularity-form-builder'),
+                            'name' => 'description',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        2 => array(
                             'key' => 'field_58eb6bd334c1b',
                             'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
@@ -641,7 +736,7 @@
                                 ),
                             ),
                         ),
-                        2 => array(
+                        3 => array(
                             'key' => 'field_58eb6bd334c1d',
                             'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
@@ -690,6 +785,25 @@
                             'append' => '',
                         ),
                         1 => array(
+                            'key' => 'field_597b213f392c1',
+                            'label' => __('Field description', 'modularity-form-builder'),
+                            'name' => 'description',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                        2 => array(
                             'key' => 'field_58eccde65ad91',
                             'label' => __('Type', 'modularity-form-builder'),
                             'name' => 'type',
@@ -713,7 +827,7 @@
                             'allow_null' => 0,
                             'return_format' => 'value',
                         ),
-                        2 => array(
+                        3 => array(
                             'key' => 'field_58ece6685df9c',
                             'label' => __('Max number of files', 'modularity-form-builder'),
                             'name' => 'files_max',
@@ -734,7 +848,7 @@
                             'prepend' => '',
                             'append' => '',
                         ),
-                        3 => array(
+                        4 => array(
                             'key' => 'field_58ecce105ad92',
                             'label' => __('Allowed filetypes', 'modularity-form-builder'),
                             'name' => 'filetypes',
@@ -770,7 +884,7 @@
                             'toggle' => 0,
                             'return_format' => 'value',
                         ),
-                        4 => array(
+                        5 => array(
                             'key' => 'field_58ecd86751bf6',
                             'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
