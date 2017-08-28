@@ -1004,8 +1004,25 @@
             "endpoint": 0
         },
         {
-            "key": "field_58eb6ee89aa7c",
+            "key": "field_59a4259acfea0",
             "label": "Notifications on form submission",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_58eb6ee89aa7c",
+            "label": "Notify email addresses",
             "name": "notify",
             "type": "repeater",
             "instructions": "Notifications will be sent to below added email addresses when receiving a new form submission.",
@@ -1016,11 +1033,11 @@
                 "class": "",
                 "id": ""
             },
+            "collapsed": "",
             "min": 0,
             "max": 0,
             "layout": "table",
             "button_label": "Add email",
-            "collapsed": "",
             "sub_fields": [
                 {
                     "key": "field_58eb6f389aa7d",
