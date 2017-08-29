@@ -134,8 +134,10 @@ class PostType
         }
 
         $forms = get_posts(array(
-            'post_type' => 'mod-form',
-            'post_status' => 'publish'
+            'post_type'      => 'mod-form',
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'numberposts'    => -1
         ));
 
         echo '<select name="form"><option value="-1">' . __('Select form…', 'modularity-form-builder') . '</option>';
