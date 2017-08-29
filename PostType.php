@@ -95,9 +95,7 @@ class PostType
 
         $data = array();
         $indata = get_post_meta($post->ID, 'form-data', true);
-        var_dump($indata);
         $fields = get_fields($indata['modularity-form-id']);
-        var_dump($fields);
 
         foreach ($fields['form_fields'] as $field) {
             if ($field['acf_fc_layout'] === 'sender') {
