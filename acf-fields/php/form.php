@@ -1190,7 +1190,15 @@
             'type' => 'true_false',
             'instructions' => '',
             'required' => 0,
-            'conditional_logic' => 0,
+            'conditional_logic' => array(
+                0 => array(
+                    0 => array(
+                        'field' => 'field_58f5b1c266798',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
             'wrapper' => array(
                 'width' => '',
                 'class' => '',
@@ -1213,6 +1221,11 @@
                 0 => array(
                     0 => array(
                         'field' => 'field_59a561ed8a256',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                    1 => array(
+                        'field' => 'field_58f5b1c266798',
                         'operator' => '==',
                         'value' => '1',
                     ),

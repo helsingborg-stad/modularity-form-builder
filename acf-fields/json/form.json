@@ -1185,7 +1185,15 @@
             "type": "true_false",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58f5b1c266798",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1208,6 +1216,11 @@
                 [
                     {
                         "field": "field_59a561ed8a256",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_58f5b1c266798",
                         "operator": "==",
                         "value": "1"
                     }
