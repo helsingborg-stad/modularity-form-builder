@@ -58,7 +58,7 @@ class Submission
         // Get from email
         $from = null;
         if (isset($_POST['email']) && !empty($_POST['email'])) {
-            $from = $_POST['email'];
+            $from = (!empty($_POST['firstname']) && !empty($_POST['lastname'])) ? $_POST['firstname'] . ' ' . $_POST['lastname'] . ' <' . $_POST['email'] . '>' : $_POST['email'];
         }
 
         // Send notifications
@@ -70,7 +70,7 @@ class Submission
 
         // Send user copy
         if ($senderCopy && isset($_POST['email'])) {
-            $this->sendCopy($_POST['email'], $_POST['modularity-form-id'], $submission);
+            $this->sendCopy($_POST['email'], $_POST['modularity-form-id'], $submission, $from);
         }
 
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
@@ -223,7 +223,6 @@ class Submission
     public function notify($email, $formId, $submissionId, $from = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
-
         if ($from) {
             $headers[] = 'From:' . $from;
         }
@@ -291,11 +290,15 @@ class Submission
      * @param  int    $submissionId Submission id
      * @return void
      */
-    public function sendCopy($email, $formId, $submissionId)
+    public function sendCopy($email, $formId, $submissionId, $from = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
+        if ($from) {
+            $headers[] = 'From:' . $from;
+        }
         $data = self::getSubmissionData($submissionId);
         $message = '';
+        $subject = (get_field('copy_custom_subject', $formId) == true) ? get_field('copy_subject', $formId) : __('Form submission copy', 'modularity-form-builder');
         $uploadFolder = wp_upload_dir();
         $uploadFolder = $uploadFolder['baseurl'] . '/modularity-form-builder/';
 
@@ -328,7 +331,7 @@ class Submission
             $message = $prefix . '<br><br>' . $message;
         }
 
-        $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', __('Form submission copy', 'modularity-form-builder'), $email, $formId, $submissionId, $data);
+        $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', $subject, $email, $formId, $submissionId, $data);
         $message = apply_filters('ModularityFormBuilder/sender_copy/message', $message, $email, $formId, $submissionId, $data);
 
         wp_mail(

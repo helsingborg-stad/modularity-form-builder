@@ -1179,6 +1179,52 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_59a561ed8a256",
+            "label": "Custom email subject for submission copy",
+            "name": "copy_custom_subject",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Check this box if you want to enter a custom email subject.",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_59a562508a257",
+            "label": "Email subject",
+            "name": "copy_subject",
+            "type": "text",
+            "instructions": "Enter custom email subject. Default is \"Form submission copy\".",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59a561ed8a256",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_58f5d09142d94",
             "label": "Sender copy message",
             "name": "sender_copy_message",
