@@ -495,11 +495,11 @@
                                 'class' => '',
                                 'id' => '',
                             ),
+                            'collapsed' => '',
                             'min' => 2,
                             'max' => 0,
                             'layout' => 'table',
                             'button_label' => '',
-                            'collapsed' => '',
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb672c39ff0',
@@ -908,13 +908,13 @@
                     'max' => '',
                 ),
                 7 => array(
-                    'key' => '597af62ef47e7',
+                    'key' => '59b13312b61ac',
                     'name' => 'custom_content',
                     'label' => 'Custom content',
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
-                            'key' => 'field_597af6b1f47ea',
+                            'key' => 'field_59b13312b61ad',
                             'label' => 'Content',
                             'name' => 'content',
                             'type' => 'wysiwyg',
@@ -931,6 +931,57 @@
                             'toolbar' => 'full',
                             'media_upload' => 1,
                             'delay' => 0,
+                        ),
+                        1 => array(
+                            'key' => 'field_59b134beb61b0',
+                            'label' => 'Conditional logic',
+                            'name' => 'conditional_logic',
+                            'type' => 'true_false',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'message' => '',
+                            'default_value' => 0,
+                            'ui' => 0,
+                            'ui_on_text' => '',
+                            'ui_off_text' => '',
+                        ),
+                        2 => array(
+                            'key' => 'field_59b13579b61b1',
+                            'label' => 'Conditional field',
+                            'name' => 'conditonal_field',
+                            'type' => 'select',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => array(
+                                0 => array(
+                                    0 => array(
+                                        'field' => 'field_59b134beb61b0',
+                                        'operator' => '==',
+                                        'value' => '1',
+                                    ),
+                                ),
+                            ),
+                            'wrapper' => array(
+                                'width' => '40',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'choices' => array(
+                            ),
+                            'default_value' => array(
+                            ),
+                            'allow_null' => 0,
+                            'multiple' => 0,
+                            'ui' => 0,
+                            'ajax' => 0,
+                            'return_format' => 'value',
+                            'placeholder' => '',
                         ),
                     ),
                     'min' => '',
@@ -1046,7 +1097,7 @@
             'sub_fields' => array(
                 0 => array(
                     'key' => 'field_58eb6f389aa7d',
-                    'label' => __(__(__(__(__(__(__('Email address', 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'),
+                    'label' => __(__(__(__(__(__(__(__('Email address', 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'), 'modularity-form-builder'),
                     'name' => 'email',
                     'type' => 'email',
                     'instructions' => '',

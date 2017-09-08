@@ -1,4 +1,4 @@
-<div class="grid">
+<div class="grid" {!! $field['conditional_hidden'] !!}>
     <div class="grid-md-12">
         <div class="form-group">
             <label class="checkbox">

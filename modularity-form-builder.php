@@ -8,6 +8,7 @@
  */
 
 define('FORM_BUILDER_MODULE_PATH', plugin_dir_path(__FILE__));
+define('FORM_BUILDER_MODULE_URL', plugins_url('', __FILE__));
 
 require_once FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php';
 require_once FORM_BUILDER_MODULE_PATH . 'PostType.php';

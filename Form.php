@@ -180,6 +180,19 @@ class Form extends \Modularity\Module
         $data['hasFileUpload'] = false;
 
         foreach ($data['form_fields'] as &$field) {
+            $field['conditional_hidden'] = '';
+            if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
+                $field['conditional_hidden'] = 'style="display:none;" conditional-target="' . $field['conditonal_field'] . '"';
+            }
+
+            if ($field['acf_fc_layout'] === 'radio') {
+                foreach ($field['values'] as &$value) {
+                    $label = $this->conditionalString($field['label']);
+                    $conditional_value = $this->conditionalString($value['value']);
+                    $value['conditional_value'] = $label . '[#]' . $conditional_value;
+                }
+            }
+
             if (isset($field['required_fields']) && empty($field['required_fields'])) {
                 $field['required_fields'] = array();
             }
@@ -191,5 +204,38 @@ class Form extends \Modularity\Module
         }
 
         return $data;
+    }
+
+    /**
+     * Replace spaces and specials chars from string
+     * @param  string $string String to be replaced
+     * @return string         Modified string
+     */
+    public function conditionalString($string)
+    {
+        $string = str_replace(' ', '_', $string);
+        $string = preg_replace('/[^A-Za-z0-9\_]/', '', $string);
+
+        return strtolower($string);
+    }
+
+    /**
+     * Enqueue required styles and scripts for admin ui
+     * @return void
+     */
+    public function adminEnqueue()
+    {
+        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.dev.js', true);
+        wp_enqueue_script('form-builder');
+    }
+
+    /**
+     * Enqueue required scripts for front ui
+     * @return void
+     */
+    public function script()
+    {
+        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.dev.js', array('jquery'), false, true);
+        wp_enqueue_script('form-builder');
     }
 }

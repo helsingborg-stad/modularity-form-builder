@@ -33,11 +33,19 @@ gulp.task('sass-dev', function() {
 // Concatenate & Minify JS
 gulp.task('scripts-dist', function() {
     gulp.src([
-            'source/js/*.js',
+            'source/js/form-builder-admin.js',
         ])
-        .pipe(concat('form-builder.dev.js'))
+        .pipe(concat('form-builder-admin.dev.js'))
         .pipe(gulp.dest('dist/js'))
-        .pipe(rename('form-builder.min.js'))
+        .pipe(rename('form-builder-admin.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
+    gulp.src([
+            'source/js/form-builder-front.js',
+        ])
+        .pipe(concat('form-builder-front.dev.js'))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(rename('form-builder-front.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
