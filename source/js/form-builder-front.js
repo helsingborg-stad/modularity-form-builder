@@ -11,14 +11,12 @@ FormBuilder.Front.handleConditions = (function ($) {
 
     handleConditions.prototype.handleEvents = function () {
         $('input[type=radio]', '.modularity-mod-form').change(function() {
-            var conditional = this.getAttribute('conditional');
-            var conditions = conditional.split('[#]');
-            console.log(conditions[0]);
-            console.log(conditions[1]);
-
-            $('div[conditional-target^="' + conditions[0] + '"]').hide();
-            $('div[conditional-target^="' + conditions[0] + '"][conditional-target$="' + conditions[1] + '"]').show();
-
+            var conditional = $(this).attr('conditional');
+            if (typeof conditional == 'string') {
+                var conditions = conditional.split('[#]');
+                $('div[conditional-target^="' + conditions[0] + '"]').hide();
+                $('div[conditional-target^="' + conditions[0] + '"][conditional-target$="' + conditions[1] + '"]').show();
+            }
         });
     };
 

@@ -169,6 +169,55 @@
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69b14e2abf",
+                            "label": "Conditional logic",
+                            "name": "conditional_logic",
+                            "type": "true_false",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add conditional logic",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69b16e2ac0",
+                            "label": "Conditonal field",
+                            "name": "conditonal_field",
+                            "type": "select",
+                            "instructions": "Display field if this value is selected.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_59b69b14e2abf",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -429,6 +478,55 @@
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69ae3e2abd",
+                            "label": "Conditional logic",
+                            "name": "conditional_logic",
+                            "type": "true_false",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add conditional logic",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69ae6e2abe",
+                            "label": "Conditonal field",
+                            "name": "conditonal_field",
+                            "type": "select",
+                            "instructions": "Display field if this value is selected.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_59b69ae3e2abd",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -536,6 +634,55 @@
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69ac9e2abb",
+                            "label": "Conditional logic",
+                            "name": "conditional_logic",
+                            "type": "true_false",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add conditional logic",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69acbe2abc",
+                            "label": "Conditonal field",
+                            "name": "conditonal_field",
+                            "type": "select",
+                            "instructions": "Display field if this value is selected.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_59b69ac9e2abb",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -643,6 +790,55 @@
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69ab2e2ab9",
+                            "label": "Conditional logic",
+                            "name": "conditional_logic",
+                            "type": "true_false",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add conditional logic",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69ab5e2aba",
+                            "label": "Conditonal field",
+                            "name": "conditonal_field",
+                            "type": "select",
+                            "instructions": "Display field if this value is selected.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_59b69ab2e2ab9",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -750,6 +946,55 @@
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69a93e2ab7",
+                            "label": "Conditional logic",
+                            "name": "conditional_logic",
+                            "type": "true_false",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add conditional logic",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69a96e2ab8",
+                            "label": "Conditonal field",
+                            "name": "conditonal_field",
+                            "type": "select",
+                            "instructions": "Display field if this value is selected.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_59b69a93e2ab7",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -892,11 +1137,60 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": 0,
                             "message": "Required",
+                            "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69a7ae2ab5",
+                            "label": "Conditional logic",
+                            "name": "conditional_logic",
+                            "type": "true_false",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add conditional logic",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_59b69a7de2ab6",
+                            "label": "Conditonal field",
+                            "name": "conditonal_field",
+                            "type": "select",
+                            "instructions": "Display field if this value is selected.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_59b69a7ae2ab5",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -932,7 +1226,7 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -940,18 +1234,18 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "",
+                            "message": "Add conditional logic",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
                         },
                         {
-                            "key": "field_59b13579b61b1",
-                            "label": "Conditional field",
+                            "key": "field_59b635765e86b",
+                            "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "",
+                            "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -963,7 +1257,7 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "40",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },

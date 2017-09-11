@@ -1,6 +1,6 @@
 {{-- Firstname and/or lastname --}}
 @if (in_array('firstname', $field['fields']) && in_array('lastname', $field['fields']))
-    <div class="grid hidden">
+    <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-firstname"><?php _e('Firstname', 'modularity-form-builder'); ?>{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
