@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2017-08-29 15:09+0200\n"
-"PO-Revision-Date: 2017-08-29 15:11+0200\n"
+"POT-Creation-Date: 2017-09-12 09:01+0200\n"
+"PO-Revision-Date: 2017-09-12 09:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: Form.php:30 PostType.php:185 acf-fields/php/form.php:6
+#: Form.php:30 PostType.php:185
 msgid "Form"
 msgstr "Formulär"
 
@@ -32,26 +32,32 @@ msgstr "Formulär"
 msgid "Build submittable forms"
 msgstr "Bygg webbformulär"
 
-#: Form.php:132
+#: Form.php:134
 msgid "Responses"
 msgstr "Svar"
 
-#: Form.php:159
+#: Form.php:161
 msgid "There is no submissions for this form."
 msgstr "Det finns inga svar på detta formulär"
 
-#: Form.php:164
+#: Form.php:166
 #, php-format
 msgid "There is %d submissions to this form."
 msgstr "Det finns %d svar på det här formuläret."
 
-#: Form.php:166
+#: Form.php:168
 msgid "View submissions"
 msgstr "Visa svar"
 
-#: Form.php:167
+#: Form.php:169
 msgid "Export csv"
 msgstr "Exportera csv"
+
+#: Form.php:232
+msgid "Please create radio selections before adding conditional logic."
+msgstr ""
+"Vänligen skapa formulärfält med radioknappar innan du lägger till "
+"visningsvillkor."
 
 #: PostType.php:27 PostType.php:38
 msgid "Form submissions"
@@ -110,30 +116,31 @@ msgstr "Titel"
 msgid "Referer"
 msgstr ""
 
-#: PostType.php:187
+#: PostType.php:187 acf-fields/php/form.php:296
 msgid "Date"
 msgstr "Datum"
 
-#: PostType.php:224 views/fields/sender.blade.php:6
-#: views/fields/sender.blade.php:21
+#: PostType.php:224 acf-fields/php/form.php:62 acf-fields/php/form.php:93
+#: views/fields/sender.blade.php:6 views/fields/sender.blade.php:21
 msgid "Firstname"
 msgstr "Förnamn"
 
-#: PostType.php:227 views/fields/sender.blade.php:12
-#: views/fields/sender.blade.php:30
+#: PostType.php:227 acf-fields/php/form.php:63 acf-fields/php/form.php:94
+#: views/fields/sender.blade.php:12 views/fields/sender.blade.php:30
 msgid "Lastname"
 msgstr "Efternamn"
 
-#: PostType.php:230
+#: PostType.php:230 acf-fields/php/form.php:66 acf-fields/php/form.php:97
 msgid "Address"
 msgstr "Adress"
 
-#: PostType.php:233 views/fields/sender.blade.php:48
-#: views/fields/sender.blade.php:66
+#: PostType.php:233 acf-fields/php/form.php:65 acf-fields/php/form.php:96
+#: views/fields/sender.blade.php:48 views/fields/sender.blade.php:66
 msgid "Phone"
 msgstr "Telefonnummer"
 
-#: PostType.php:236 views/fields/sender.blade.php:42
+#: PostType.php:236 acf-fields/php/form.php:64 acf-fields/php/form.php:95
+#: acf-fields/php/form.php:293 views/fields/sender.blade.php:42
 #: views/fields/sender.blade.php:57
 msgid "Email"
 msgstr "Epost"
@@ -163,124 +170,357 @@ msgstr "Formulärsfält"
 msgid "Fields"
 msgstr "Fält"
 
-#: acf-fields/php/form.php:943
+#: acf-fields/php/form.php:49
+msgid "Fields to display"
+msgstr "Visa fält"
+
+#: acf-fields/php/form.php:80
+msgid "Required fields"
+msgstr "Obligatoriska fält"
+
+#: acf-fields/php/form.php:121 acf-fields/php/form.php:239
+#: acf-fields/php/form.php:551 acf-fields/php/form.php:709
+#: acf-fields/php/form.php:867 acf-fields/php/form.php:1025
+msgid "Field label"
+msgstr "Fältetikett"
+
+#: acf-fields/php/form.php:140 acf-fields/php/form.php:258
+#: acf-fields/php/form.php:570 acf-fields/php/form.php:728
+#: acf-fields/php/form.php:886 acf-fields/php/form.php:1044
+msgid "Field description"
+msgstr "Fältbeskrivning"
+
+#: acf-fields/php/form.php:159 acf-fields/php/form.php:471
+#: acf-fields/php/form.php:483 acf-fields/php/form.php:629
+#: acf-fields/php/form.php:641 acf-fields/php/form.php:787
+#: acf-fields/php/form.php:799 acf-fields/php/form.php:945
+#: acf-fields/php/form.php:957 acf-fields/php/form.php:1144
+#: acf-fields/php/form.php:1155
+msgid "Required"
+msgstr "Obligatoriskt"
+
+#: acf-fields/php/form.php:171
+msgid "Required field"
+msgstr "Obligatoriskt fält"
+
+#: acf-fields/php/form.php:178 acf-fields/php/form.php:490
+#: acf-fields/php/form.php:648 acf-fields/php/form.php:806
+#: acf-fields/php/form.php:964 acf-fields/php/form.php:1163
+#: acf-fields/php/form.php:1243
+msgid "Conditional logic"
+msgstr "Visningsvillkor"
+
+#: acf-fields/php/form.php:181 acf-fields/php/form.php:493
+#: acf-fields/php/form.php:651 acf-fields/php/form.php:809
+#: acf-fields/php/form.php:967 acf-fields/php/form.php:1166
+#: acf-fields/php/form.php:1246
+msgid ""
+"Use conditional logic statement to display the field depending on other "
+"choices in the form. Works only with \"Radio\" form field type."
+msgstr ""
+"Använd visningsvillkor för att visa fältet beroende på andra val i "
+"formuläret. Fungerar endast med fälttyp \"Radio\"."
+
+#: acf-fields/php/form.php:189 acf-fields/php/form.php:501
+#: acf-fields/php/form.php:659 acf-fields/php/form.php:817
+#: acf-fields/php/form.php:975 acf-fields/php/form.php:1174
+#: acf-fields/php/form.php:1254
+msgid "Add conditional logic"
+msgstr "Lägg till visningsvillkor"
+
+#: acf-fields/php/form.php:197 acf-fields/php/form.php:509
+#: acf-fields/php/form.php:667 acf-fields/php/form.php:825
+#: acf-fields/php/form.php:983 acf-fields/php/form.php:1182
+#: acf-fields/php/form.php:1262
+msgid "Conditonal field"
+msgstr "Villkorsfält"
+
+#: acf-fields/php/form.php:200 acf-fields/php/form.php:512
+#: acf-fields/php/form.php:670 acf-fields/php/form.php:828
+#: acf-fields/php/form.php:986 acf-fields/php/form.php:1185
+#: acf-fields/php/form.php:1265
+msgid "Display field if this value is selected."
+msgstr "Visa fältet om detta värde är valt."
+
+#: acf-fields/php/form.php:277
+msgid "Field value type"
+msgstr "Fälttyp"
+
+#: acf-fields/php/form.php:291
+msgid "Text"
+msgstr ""
+
+#: acf-fields/php/form.php:292
+msgid "Number"
+msgstr "Siffror"
+
+#: acf-fields/php/form.php:294
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: acf-fields/php/form.php:295
+msgid "Color"
+msgstr "Färg"
+
+#: acf-fields/php/form.php:297
+msgid "Month"
+msgstr "Månad"
+
+#: acf-fields/php/form.php:298
+msgid "Week"
+msgstr "Vecka"
+
+#: acf-fields/php/form.php:299
+msgid "Range"
+msgstr "Intervall"
+
+#: acf-fields/php/form.php:300
+msgid "Search"
+msgstr "Sök"
+
+#: acf-fields/php/form.php:301
+msgid "Time"
+msgstr "Tid"
+
+#: acf-fields/php/form.php:302
+msgid "Url"
+msgstr ""
+
+#: acf-fields/php/form.php:313
+msgid "Min value"
+msgstr "Minsta värde"
+
+#: acf-fields/php/form.php:349
+msgid "Max value"
+msgstr "Maxvärde"
+
+#: acf-fields/php/form.php:385
+msgid "Step"
+msgstr "Steg"
+
+#: acf-fields/php/form.php:421
+msgid "Min date"
+msgstr "Datum från"
+
+#: acf-fields/php/form.php:446
+msgid "Max date"
+msgstr "Datum till"
+
+#: acf-fields/php/form.php:589 acf-fields/php/form.php:747
+#: acf-fields/php/form.php:905
+msgid "Field values"
+msgstr "Fältvärden"
+
+#: acf-fields/php/form.php:608 acf-fields/php/form.php:766
+#: acf-fields/php/form.php:924
+msgid "Value"
+msgstr "Värde"
+
+#: acf-fields/php/form.php:1063
+msgid "Type"
+msgstr "Typ"
+
+#: acf-fields/php/form.php:1076
+msgid "Single"
+msgstr "Enskilt"
+
+#: acf-fields/php/form.php:1077
+msgid "Multiple"
+msgstr "Flera"
+
+#: acf-fields/php/form.php:1087
+msgid "Max number of files"
+msgstr "Max antal filer"
+
+#: acf-fields/php/form.php:1090
+msgid "-1 for no limit"
+msgstr "-1 är lika med ingen gräns"
+
+#: acf-fields/php/form.php:1108
+msgid "Allowed filetypes"
+msgstr "Tillåtna filtyper"
+
+#: acf-fields/php/form.php:1121
+msgid "All video types"
+msgstr "Alla videoformat"
+
+#: acf-fields/php/form.php:1122
+msgid "All image types"
+msgstr "Alla bildformat"
+
+#: acf-fields/php/form.php:1123
+msgid "jpg"
+msgstr ""
+
+#: acf-fields/php/form.php:1124
+msgid "png"
+msgstr ""
+
+#: acf-fields/php/form.php:1125
+msgid "gif"
+msgstr ""
+
+#: acf-fields/php/form.php:1126
+msgid "mov"
+msgstr ""
+
+#: acf-fields/php/form.php:1127
+msgid "webm"
+msgstr ""
+
+#: acf-fields/php/form.php:1128
+msgid "mp4"
+msgstr ""
+
+#: acf-fields/php/form.php:1129
+msgid "doc"
+msgstr ""
+
+#: acf-fields/php/form.php:1130
+msgid "docx"
+msgstr ""
+
+#: acf-fields/php/form.php:1131
+msgid "xls"
+msgstr ""
+
+#: acf-fields/php/form.php:1132
+msgid "xlsx"
+msgstr ""
+
+#: acf-fields/php/form.php:1133
+msgid "pdf"
+msgstr ""
+
+#: acf-fields/php/form.php:1224
+msgid "Content"
+msgstr "Innehåll"
+
+#: acf-fields/php/form.php:1227
+msgid ""
+"Add custom content to the form. This will not be sent in e-mail messages."
+msgstr ""
+"Lägg till eget innehåll till formuläret. Detta kommer inte skickas med i e-"
+"postmeddelanden."
+
+#: acf-fields/php/form.php:1300
 msgid "Submission"
 msgstr "Formulärsvar"
 
-#: acf-fields/php/form.php:959
+#: acf-fields/php/form.php:1316
 msgid "Text on submit button"
 msgstr "Text på skicka-knapp"
 
-#: acf-fields/php/form.php:978
+#: acf-fields/php/form.php:1335
 msgid "Subimission notice"
 msgstr "Utskicksnotis"
 
-#: acf-fields/php/form.php:981
+#: acf-fields/php/form.php:1338
 msgid "Text to display when form is submitted."
 msgstr "Text som visas när ett formulär skickats."
 
-#: acf-fields/php/form.php:997
+#: acf-fields/php/form.php:1354
 msgid "Notifications"
 msgstr "Notiser"
 
-#: acf-fields/php/form.php:1013
+#: acf-fields/php/form.php:1370
 msgid "Notifications on form submission"
 msgstr "Notifikation när formulär skickas"
 
-#: acf-fields/php/form.php:1030
+#: acf-fields/php/form.php:1387
 msgid "Notify email addresses"
 msgstr "Notifiera e-postadresser"
 
-#: acf-fields/php/form.php:1033
+#: acf-fields/php/form.php:1390
 msgid ""
 "Notifications will be sent to below added email addresses when receiving a "
 "new form submission."
 msgstr ""
 "Ett mail skickas ut till nedanstående användare med innehållet i svaret."
 
-#: acf-fields/php/form.php:1045
+#: acf-fields/php/form.php:1402
 msgid "Add email"
 msgstr "Lägg till e-postadress"
 
-#: acf-fields/php/form.php:1049
+#: acf-fields/php/form.php:1406
 msgid "Email address"
 msgstr "E-postadress"
 
-#: acf-fields/php/form.php:1069
+#: acf-fields/php/form.php:1426
 msgid "Custom email subject"
 msgstr "Egen ämnesrad"
 
-#: acf-fields/php/form.php:1080 acf-fields/php/form.php:1199
+#: acf-fields/php/form.php:1437 acf-fields/php/form.php:1564
 msgid "Check this box if you want to enter a custom email subject."
 msgstr "Kryssa i rutan för att ange egen ämnesrad."
 
-#: acf-fields/php/form.php:1088 acf-fields/php/form.php:1207
+#: acf-fields/php/form.php:1445 acf-fields/php/form.php:1572
 msgid "Email subject"
 msgstr "Ämnesrad"
 
-#: acf-fields/php/form.php:1091
+#: acf-fields/php/form.php:1448
 msgid "Enter custom email subject. Default is \"New form submission\"."
 msgstr "Ange egen ämnesrad. Standardvärde är “Nytt formulärsvar”."
 
-#: acf-fields/php/form.php:1115
+#: acf-fields/php/form.php:1472
 msgid "Notification message"
 msgstr "Meddelande i notis"
 
-#: acf-fields/php/form.php:1134
+#: acf-fields/php/form.php:1491
 msgid "Notification data"
 msgstr "Notisdata"
 
-#: acf-fields/php/form.php:1146
+#: acf-fields/php/form.php:1503
 msgid "Show submission data in notice content"
 msgstr "Visa svarsdata i notisens innehåll"
 
-#: acf-fields/php/form.php:1153
+#: acf-fields/php/form.php:1510
 msgid "Sender copy"
 msgstr "Svarskopia"
 
-#: acf-fields/php/form.php:1169
+#: acf-fields/php/form.php:1526
 msgid "Allow sender copy"
 msgstr "Tillåt svarskopia"
 
-#: acf-fields/php/form.php:1172
+#: acf-fields/php/form.php:1529
 msgid "Send copy of the submitted form data to the sender email."
 msgstr "Skicka en kopia av svaret till avsändarens e-postadress."
 
-#: acf-fields/php/form.php:1181
+#: acf-fields/php/form.php:1538
 msgid "Yes, allow user to get a copy of the submission"
 msgstr "Ja, tillåt användare att få en svarskopia"
 
-#: acf-fields/php/form.php:1188
+#: acf-fields/php/form.php:1545
 msgid "Custom email subject for submission copy"
 msgstr "Egen ämnesrad för svarskopia"
 
-#: acf-fields/php/form.php:1210
+#: acf-fields/php/form.php:1575
 msgid "Enter custom email subject. Default is \"Form submission copy\"."
 msgstr "Ange egen ämnesrad. Standardvärde är “Svarskopia”."
 
-#: acf-fields/php/form.php:1234
+#: acf-fields/php/form.php:1604
 msgid "Sender copy message"
 msgstr "Meddelande i svarskopia"
 
-#: acf-fields/php/form.php:1237
+#: acf-fields/php/form.php:1607
 msgid ""
 "The message that will be sent to the user together with a list of the "
 "submitted data."
 msgstr "Meddelandet kommer att skickas tillsammans med svarsdatan."
 
-#: acf-fields/php/form.php:1261 acf-fields/php/form.php:1277
+#: acf-fields/php/form.php:1631 acf-fields/php/form.php:1647
 msgid "Auto-reply"
 msgstr "Autosvar"
 
-#: acf-fields/php/form.php:1289
+#: acf-fields/php/form.php:1659
 msgid "Send auto-reply on form submission"
 msgstr "Skicka autosvar när formuläret har skickats"
 
-#: acf-fields/php/form.php:1296
+#: acf-fields/php/form.php:1666
 msgid "Auto-reply subject"
 msgstr "Ämne för autosvar"
 
-#: acf-fields/php/form.php:1323
+#: acf-fields/php/form.php:1693
 msgid "Auto-reply content"
 msgstr "Meddelande för autosvar"
 
@@ -336,48 +576,6 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr ""
-
-#~ msgid "Fields to display"
-#~ msgstr "Visa fält"
-
-#~ msgid "Required fields"
-#~ msgstr "Obligatoriska fält"
-
-#~ msgid "Field label"
-#~ msgstr "Fältetikett"
-
-#~ msgid "Field description"
-#~ msgstr "Fältbeskrivning"
-
-#~ msgid "Required"
-#~ msgstr "Obligatoriskt"
-
-#~ msgid "Required field"
-#~ msgstr "Obligatoriskt fält"
-
-#, fuzzy
-#~| msgid "Fields"
-#~ msgid "Field value type"
-#~ msgstr "Fält"
-
-#, fuzzy
-#~| msgid "Fields"
-#~ msgid "Min value"
-#~ msgstr "Fält"
-
-#, fuzzy
-#~| msgid "Fields"
-#~ msgid "Field values"
-#~ msgstr "Fält"
-
-#~ msgid "Content"
-#~ msgstr "Innehåll"
-
-#~ msgid ""
-#~ "Add custom content to the form. This will not be sent in e-mail messages."
-#~ msgstr ""
-#~ "Lägg till eget innehåll till formuläret. Detta kommer inte skickas med i "
-#~ "e-postmeddelanden."
 
 #~ msgid "Custom email subject."
 #~ msgstr "Egen ämnesrad."
