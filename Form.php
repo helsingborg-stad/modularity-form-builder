@@ -227,7 +227,10 @@ class Form extends \Modularity\Module
      */
     public function adminEnqueue()
     {
-        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.dev.js', true);
+        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js', true);
+        wp_localize_script('form-builder', 'formbuilder', array(
+            'selections_missing' => __("Please create radio selections before adding conditional logic.", 'modularity-form-builder'),
+        ));
         wp_enqueue_script('form-builder');
     }
 
@@ -237,7 +240,7 @@ class Form extends \Modularity\Module
      */
     public function script()
     {
-        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.dev.js', array('jquery'), false, true);
+        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
         wp_enqueue_script('form-builder');
     }
 

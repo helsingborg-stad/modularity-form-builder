@@ -25,6 +25,7 @@ FormBuilder.Admin.Conditional = (function ($) {
         	// Check if selected value is set or exist in db
 			var selected  = '',
 				$selected = $(':selected', element);
+
 			if ($selected.val()) {
 				selected = $selected.val();
 			} else {
@@ -49,8 +50,10 @@ FormBuilder.Admin.Conditional = (function ($) {
 			// Reset select options
             $('optgroup, option', element).remove();
 
+            // Populate select options
             var options = this.getOptions();
             if (typeof options !== 'undefined' && options.length > 0) {
+            	$('.condition-missing').remove();
 	            $.each(options, function(key, value) {
 	            	var selectvalues = '';
 
@@ -70,7 +73,8 @@ FormBuilder.Admin.Conditional = (function ($) {
 
 				}.bind(this));
 	        } else {
-	        	$('<p>Radio selectors is missing.</p>').insertBefore(element);
+	        	$('.condition-missing').remove();
+	        	$('<p class="condition-missing">' + formbuilder.selections_missing + '</p>').insertBefore(element);
 	        }
 
         }.bind(this));
