@@ -6,8 +6,7 @@
 
             @foreach ($field['values'] as $value)
             <label class="checkbox">
-                <input type="radio" name="{{ sanitize_title($field['label']) }}" value="{{ $value['value'] }}" {{ $field['required'] ? 'required' : '' }}
-                conditional="{{ $value['conditional_value'] }}"> {{ $value['value'] }}
+                <input type="radio" name="{{ sanitize_title($field['label']) }}" value="{{ $value['value'] }}" {{ $field['required'] ? 'required' : '' }} conditional='{{ $value['conditional_value'] }}'> {{ $value['value'] }}
             </label>
             @endforeach
         </div>

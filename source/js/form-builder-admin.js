@@ -41,7 +41,7 @@ FormBuilder.Admin.Conditional = (function ($) {
 		            },
 		            success: function(response) {
 		            	if (response != 'error') {
-		            		$('option[value="' + response + '"]', element).prop('selected', true);
+		            		$("option[value='" + response + "']", element).prop('selected', true);
 		            	}
 		            }
 		        });
@@ -58,17 +58,20 @@ FormBuilder.Admin.Conditional = (function ($) {
 	            	var selectvalues = '';
 
 	            	$.each(value.selectvalues, function(key, option) {
-	            		var groubLabel 	= this.conditionalString(value.groupLabel),
-	            			optionText 	= option.toLowerCase().replace(/[^A-Z0-9]+/ig, "_"),
-	            			newValue 	= groubLabel + '[#]' + optionText;
-	            		selectvalues += '<option value="' + newValue + '">' + option + '</option>'
+	            		var groubLabel = this.conditionalString(value.groupLabel),
+	            			optionValue = this.conditionalString(option),
+	            			optionObj = {
+	            				label: groubLabel,
+	            				value: optionValue
+	            			};
+	            		selectvalues += "<option value='" + JSON.stringify(optionObj) + "'>" + option + "</option>";
 		            }.bind(this));
 
 		            var optgroup = '<optgroup label="' + value.groupLabel + '">' + selectvalues + '</optgroup>';
 		            $(element).append(optgroup);
 
 		            if (selected) {
-		            	$('option[value="' + selected + '"]', element).prop('selected', true);
+		            	$("option[value='" + selected + "']", element).prop('selected', true);
 		            }
 
 				}.bind(this));
@@ -105,8 +108,8 @@ FormBuilder.Admin.Conditional = (function ($) {
 
     Conditional.prototype.conditionalString = function(string) {
     	string = string.toLowerCase();
-    	string = string.replace(/[^A-Z0-9]+/ig, '_');
-    	string = string.replace(/_+$/, "");
+    	string = string.replace(/[^a-z0-9]+/ig, '_');
+    	string = string.replace(/_+$/, '');
 
     	return string;
     };

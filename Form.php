@@ -33,7 +33,6 @@ class Form extends \Modularity\Module
 
         add_action('add_meta_boxes', array($this, 'metaBoxResponses'), 10, 2);
         add_action('current_screen', array($this, 'export'));
-        add_action('wp_ajax_nopriv_get_selected_field', array($this, 'getSelectedField'));
         add_action('wp_ajax_get_selected_field', array($this, 'getSelectedField'));
     }
 
@@ -184,14 +183,18 @@ class Form extends \Modularity\Module
         foreach ($data['form_fields'] as &$field) {
             $field['conditional_hidden'] = '';
             if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
-                $field['conditional_hidden'] = 'style="display:none;" conditional-target="' . $field['conditonal_field'] . '"';
+                $field['conditional_hidden'] = "style='display:none;' conditional-target='" . $field['conditonal_field'] . "'";
             }
 
             if ($field['acf_fc_layout'] === 'radio') {
                 foreach ($field['values'] as &$value) {
                     $label = $this->conditionalString($field['label']);
-                    $conditional_value = $this->conditionalString($value['value']);
-                    $value['conditional_value'] = $label . '[#]' . $conditional_value;
+                    $option_value = $this->conditionalString($value['value']);
+                    $conditional_value = array(
+                                        'label' => $label,
+                                        'value' => $option_value
+                                    );
+                    $value['conditional_value'] = json_encode($conditional_value);
                 }
             }
 
@@ -201,7 +204,6 @@ class Form extends \Modularity\Module
 
             if ($field['acf_fc_layout'] === 'file_upload') {
                 $data['hasFileUpload'] = true;
-                break;
             }
         }
 
