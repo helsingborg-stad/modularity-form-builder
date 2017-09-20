@@ -158,7 +158,7 @@ class PostType
     {
         global $pagenow;
 
-        if (!is_admin() || !$pagenow || $pagenow !== 'edit.php' || !isset($_GET['form']) || !$_GET['form'] || (isset($query->query['post_type']) && $query->query['post_type'] != 'form-submissions') || !is_main_query()) {
+        if (!is_admin() || !$pagenow || $pagenow !== 'edit.php' || !isset($_GET['form']) || !$_GET['form'] || (isset($query->query['post_type']) && $query->query['post_type'] != 'form-submissions') || !$query->is_main_query()) {
             return;
         }
 
