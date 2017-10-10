@@ -4,17 +4,21 @@ namespace ModularityFormBuilder;
 
 class PostType
 {
+    public $postTypeSlug = 'form-submissions';
+
     public function __construct()
     {
         add_action('init', array($this, 'register'));
         add_action('admin_menu', array($this, 'removePublishBox'));
         add_action('add_meta_boxes', array($this, 'formdata'), 10, 2);
         add_action('restrict_manage_posts', array($this, 'formFilter'));
+        add_action('edit_form_after_title', array($this, 'displayFeedbackId'), 10, 1);
 
         add_action('pre_get_posts', array($this, 'queryFilter'));
 
-        add_filter('manage_edit-form-submissions_columns', array($this, 'tableColumns'));
-        add_action('manage_form-submissions_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
+        add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
+        add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
+        add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
     }
 
     /**
@@ -63,11 +67,11 @@ class PostType
             'supports'            => array('title')
         );
 
-        register_post_type('form-submissions', $args);
+        register_post_type($this->postTypeSlug, $args);
     }
 
     public function removePublishBox() {
-        remove_meta_box('submitdiv', 'form-submissions', 'side');
+        remove_meta_box('submitdiv', $this->postTypeSlug, 'side');
     }
 
     /**
@@ -78,7 +82,7 @@ class PostType
      */
     public function formdata($postType, $post)
     {
-        if ($postType !== 'form-submissions') {
+        if ($postType !== $this->postTypeSlug) {
             return;
         }
 
@@ -111,9 +115,9 @@ class PostType
             }
 
             $data[] = array(
-                'type' => $field['acf_fc_layout'],
+                'type'  => $field['acf_fc_layout'],
                 'label' => $field['label'],
-                'value' => $indata[sanitize_title($field['label'])]
+                'value' => (!empty($indata[sanitize_title($field['label'])])) ? $indata[sanitize_title($field['label'])] : '',
             );
         }
 
@@ -129,7 +133,7 @@ class PostType
         global $typenow;
         global $wp_query;
 
-        if ($typenow !== 'form-submissions') {
+        if ($typenow !== $this->postTypeSlug) {
             return;
         }
 
@@ -158,7 +162,7 @@ class PostType
     {
         global $pagenow;
 
-        if (!is_admin() || !$pagenow || $pagenow !== 'edit.php' || !isset($_GET['form']) || !$_GET['form'] || (isset($query->query['post_type']) && $query->query['post_type'] != 'form-submissions') || !$query->is_main_query()) {
+        if (!is_admin() || !$pagenow || $pagenow !== 'edit.php' || !isset($_GET['form']) || !$_GET['form'] || (isset($query->query['post_type']) && $query->query['post_type'] != $this->postTypeSlug) || !$query->is_main_query()) {
             return;
         }
 
@@ -182,6 +186,7 @@ class PostType
         return array(
             'cb' => '',
             'title' => __('Title'),
+            'id' => __('ID'),
             'form' => __('Form', 'modularity-form-builder'),
             'referer' => __('Referer', 'modularity-form-builder'),
             'date' => __('Date')
@@ -202,7 +207,9 @@ class PostType
                 $form = get_post($form);
                 echo edit_post_link($form->post_title, null, null, $form->ID);
                 break;
-
+            case 'id':
+                echo $postId;
+                break;
             case 'referer':
                 $referer = get_post_meta($postId, 'modularity-form-referer', true);
                 if ($referer) {
@@ -210,6 +217,17 @@ class PostType
                 }
                 break;
         }
+    }
+
+    /**
+     * Setup list table sorting
+     * @param  array $columns  Sortable columns
+     * @return array           Modified sortable columns
+     */
+    public function listColumnsSorting($columns)
+    {
+        $columns['id'] = 'id';
+        return $columns;
     }
 
     /**
@@ -237,6 +255,18 @@ class PostType
 
             default:
                 return $what;
+        }
+    }
+
+    /**
+     * Display feedback ID
+     * @param  obj $post Current post object
+     * @return void
+     */
+    public function displayFeedbackId($post)
+    {
+        if ($post->post_type == $this->postTypeSlug) {
+            echo '<div class="inside"><span><strong>' . __('Feedback ID') . ':</strong> ' . $post->ID . '</span></div>';
         }
     }
 }
