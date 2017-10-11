@@ -108,7 +108,8 @@ FormBuilder.Admin.Conditional = (function ($) {
 
     Conditional.prototype.conditionalString = function(string) {
     	string = string.toLowerCase();
-    	string = string.replace(/[^a-z0-9]+/ig, '_');
+    	string = string.replace(/\s+/g, '_');
+    	string = string.replace(/[^a-z0-9_]+/ig, '');
     	string = string.replace(/_+$/, '');
 
     	return string;

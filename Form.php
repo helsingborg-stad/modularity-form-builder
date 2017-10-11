@@ -217,10 +217,10 @@ class Form extends \Modularity\Module
      */
     public function conditionalString($string)
     {
-        $string = str_replace(' ', '_', $string);
-        $string = preg_replace('/[^A-Za-z0-9\_]/', '', $string);
+        $string = str_replace(' ', '_', strtolower($string));
+        $string = preg_replace('/[^a-z0-9\_]/', '', $string);
 
-        return strtolower($string);
+        return $string;
     }
 
     /**
