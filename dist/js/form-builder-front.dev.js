@@ -10,12 +10,13 @@ FormBuilder.Front.handleConditions = (function ($) {
     }
 
     handleConditions.prototype.handleEvents = function () {
-        $('input[type=radio]', '.modularity-mod-form').change(function() {
+        $('input[conditional]').change(function(e) {
+            $target = $(e.target).parents('[class*="mod-form"]');
             var conditional = $(this).attr('conditional');
             if (typeof conditional !== 'undefined' && conditional.length > 0) {
                 var conditionObj = JSON.parse(conditional);
-                $("div[conditional-target^='{\"label\":\"" + conditionObj.label + "\",']").hide();
-                $("div[conditional-target='" + conditional + "']").show();
+                $target.find("div[conditional-target^='{\"label\":\"" + conditionObj.label + "\",']").hide();
+                $target.find("div[conditional-target='" + conditional + "']").show();
             }
         });
     };
