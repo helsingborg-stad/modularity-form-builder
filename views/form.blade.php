@@ -26,7 +26,7 @@
         <div class="grid">
             <div class="grid-md-12">
                 @if (!empty($submission_public_act))
-                    <p class="gutter gutter-sm gutter-bottom"><?php _e('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'); ?></p>
+                    <p class="text-sm gutter gutter-sm gutter-bottom"><?php _e('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'); ?></p>
                 @endif
                 <input type="submit" value="{{ $submit_button_text ? $submit_button_text : 'Send' }}" class="btn btn-primary">
             </div>
