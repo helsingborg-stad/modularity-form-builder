@@ -1312,6 +1312,25 @@
             "append": ""
         },
         {
+            "key": "field_59df53ac189b8",
+            "label": "Public act notice",
+            "name": "submission_public_act",
+            "type": "true_false",
+            "instructions": "Adds a notice that informs the user that the submission will become a public act.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Add public act notice",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_58eb7b11cc4f5",
             "label": "Subimission notice",
             "name": "subimission_notice",
