@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
 "POT-Creation-Date: 2017-10-12 14:29+0200\n"
-"PO-Revision-Date: 2017-10-12 14:32+0200\n"
+"PO-Revision-Date: 2017-10-12 14:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -187,19 +187,19 @@ msgstr "Text på skicka-knapp"
 
 #: acf-fields/php/form.php:1335
 msgid "Public act notice"
-msgstr "Notis om offentlig handling"
+msgstr "Notis om allmän handling"
 
 #: acf-fields/php/form.php:1338
 msgid ""
 "Adds a notice that informs the user that the submission will become a public "
 "act."
 msgstr ""
-"Lägger till ett meddelande som informerar användaren om att formulärssvaret "
-"blir en offentlig handling."
+"Lägger till ett meddelande som informerar användaren om att formulärsvaret "
+"blir en allmän handling."
 
 #: acf-fields/php/form.php:1346
 msgid "Add public act notice"
-msgstr "Lägg till notis om offentlig handling"
+msgstr "Lägg till notis om allmän handling"
 
 #: acf-fields/php/form.php:1354
 msgid "Subimission notice"
