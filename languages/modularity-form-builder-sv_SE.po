@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2017-10-12 14:29+0200\n"
-"PO-Revision-Date: 2017-10-12 14:41+0200\n"
+"POT-Creation-Date: 2017-11-10 16:11+0100\n"
+"PO-Revision-Date: 2017-11-10 16:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: Form.php:30 PostType.php:190 acf-fields/php/form.php:6
+#: Form.php:30 PostType.php:192 acf-fields/php/form.php:6
 msgid "Form"
 msgstr "Formulär"
 
@@ -53,102 +53,102 @@ msgstr "Visa svar"
 msgid "Export csv"
 msgstr "Exportera csv"
 
-#: Form.php:234
+#: Form.php:235
 msgid "Please create radio selections before adding conditional logic."
 msgstr ""
 "Vänligen skapa formulärfält med radioknappar innan du lägger till "
 "visningsvillkor."
 
-#: PostType.php:31 PostType.php:42
+#: PostType.php:33 PostType.php:44 PostType.php:282
 msgid "Form submissions"
 msgstr "Formulärsvar"
 
-#: PostType.php:32
+#: PostType.php:34
 msgid "Form submission"
 msgstr "Formulärsvar"
 
-#: PostType.php:33
+#: PostType.php:35
 msgctxt "modularity-form-builder"
 msgid "Add New Form submission"
 msgstr "Lägg till nytt formulärsvar"
 
-#: PostType.php:34
+#: PostType.php:36
 msgid "Add New Form submission"
 msgstr "Lägg till  nytt formulärsvar"
 
-#: PostType.php:35
+#: PostType.php:37
 msgid "Edit Form submission"
 msgstr "Redigera formulärsvar"
 
-#: PostType.php:36
+#: PostType.php:38
 msgid "New Form submission"
 msgstr "Nytt formulärsvar"
 
-#: PostType.php:37
+#: PostType.php:39
 msgid "View Form submission"
 msgstr "Visa formulärsvar"
 
-#: PostType.php:38
+#: PostType.php:40
 msgid "Search Form submissions"
 msgstr "Sök formulärsvar"
 
-#: PostType.php:39
+#: PostType.php:41
 msgid "No Form submissions found"
 msgstr "Inga formulärsvar hittades"
 
-#: PostType.php:40
+#: PostType.php:42
 msgid "No Form submissions found in Trash"
 msgstr "Inga formulärsvar hittades i papperskorgen"
 
-#: PostType.php:41
+#: PostType.php:43
 msgid "Parent Form submission:"
 msgstr "Föräldersvar:"
 
-#: PostType.php:147
+#: PostType.php:149
 msgid "Select form…"
 msgstr "Välj formulär"
 
-#: PostType.php:188
+#: PostType.php:190
 msgid "Title"
 msgstr "Titel"
 
-#: PostType.php:189
+#: PostType.php:191
 msgid "ID"
 msgstr ""
 
-#: PostType.php:191
+#: PostType.php:193
 msgid "Referer"
 msgstr ""
 
-#: PostType.php:192
+#: PostType.php:194
 msgid "Date"
 msgstr "Datum"
 
-#: PostType.php:242 views/fields/sender.blade.php:6
+#: PostType.php:244 views/fields/sender.blade.php:6
 #: views/fields/sender.blade.php:21
 msgid "Firstname"
 msgstr "Förnamn"
 
-#: PostType.php:245 views/fields/sender.blade.php:12
+#: PostType.php:247 views/fields/sender.blade.php:12
 #: views/fields/sender.blade.php:30
 msgid "Lastname"
 msgstr "Efternamn"
 
-#: PostType.php:248
+#: PostType.php:250
 msgid "Address"
 msgstr "Adress"
 
-#: PostType.php:251 views/fields/sender.blade.php:48
+#: PostType.php:253 views/fields/sender.blade.php:48
 #: views/fields/sender.blade.php:66
 msgid "Phone"
 msgstr "Telefonnummer"
 
-#: PostType.php:254 views/fields/sender.blade.php:42
+#: PostType.php:256 views/fields/sender.blade.php:42
 #: views/fields/sender.blade.php:57
 msgid "Email"
 msgstr "E-post"
 
-#: PostType.php:269
+#: PostType.php:271
 msgid "Feedback ID"
 msgstr ""
 
@@ -177,19 +177,63 @@ msgstr "Formulärsfält"
 msgid "Fields"
 msgstr "Fält"
 
-#: acf-fields/php/form.php:1300
+#: acf-fields/php/form.php:38
+#, fuzzy
+#| msgid "Form fields"
+msgid "Add form field"
+msgstr "Formulärsfält"
+
+#: acf-fields/php/form.php:45
+#, fuzzy
+#| msgid "Sender copy"
+msgid "Sender"
+msgstr "Svarskopia"
+
+#: acf-fields/php/form.php:119
+msgid "Message"
+msgstr ""
+
+#: acf-fields/php/form.php:242
+msgid "Input"
+msgstr ""
+
+#: acf-fields/php/form.php:565
+msgid "Radio"
+msgstr ""
+
+#: acf-fields/php/form.php:730
+msgid "Checkbox"
+msgstr ""
+
+#: acf-fields/php/form.php:895
+#, fuzzy
+#| msgid "Select file"
+msgid "Select"
+msgstr "Välj en fil"
+
+#: acf-fields/php/form.php:1060
+msgid "File upload"
+msgstr ""
+
+#: acf-fields/php/form.php:1270
+#, fuzzy
+#| msgid "Auto-reply content"
+msgid "Custom content"
+msgstr "Meddelande för autosvar"
+
+#: acf-fields/php/form.php:1354
 msgid "Submission"
 msgstr "Formulärsvar"
 
-#: acf-fields/php/form.php:1316
+#: acf-fields/php/form.php:1370
 msgid "Text on submit button"
 msgstr "Text på skicka-knapp"
 
-#: acf-fields/php/form.php:1335
+#: acf-fields/php/form.php:1390
 msgid "Public act notice"
 msgstr "Notis om allmän handling"
 
-#: acf-fields/php/form.php:1338
+#: acf-fields/php/form.php:1394
 msgid ""
 "Adds a notice that informs the user that the submission will become a public "
 "act."
@@ -197,120 +241,132 @@ msgstr ""
 "Lägger till ett meddelande som informerar användaren om att formulärsvaret "
 "blir en allmän handling."
 
-#: acf-fields/php/form.php:1346
+#: acf-fields/php/form.php:1402
 msgid "Add public act notice"
 msgstr "Lägg till notis om allmän handling"
 
-#: acf-fields/php/form.php:1354
+#: acf-fields/php/form.php:1410
+#, fuzzy
+#| msgid "Subimission notice"
+msgid "Submission post type"
+msgstr "Utskicksnotis"
+
+#: acf-fields/php/form.php:1414
+#, fuzzy
+#| msgid "Form submission copy"
+msgid "Save form submission to a custom post type."
+msgstr "Svarskopia"
+
+#: acf-fields/php/form.php:1436
 msgid "Subimission notice"
 msgstr "Utskicksnotis"
 
-#: acf-fields/php/form.php:1357
+#: acf-fields/php/form.php:1440
 msgid "Text to display when form is submitted."
 msgstr "Text som visas när ett formulär skickats."
 
-#: acf-fields/php/form.php:1373
+#: acf-fields/php/form.php:1456
 msgid "Notifications"
 msgstr "Notiser"
 
-#: acf-fields/php/form.php:1389
+#: acf-fields/php/form.php:1472
 msgid "Notifications on form submission"
 msgstr "Notifikation när formulär skickas"
 
-#: acf-fields/php/form.php:1406
+#: acf-fields/php/form.php:1489
 msgid "Notify email addresses"
 msgstr "Notifiera e-postadresser"
 
-#: acf-fields/php/form.php:1409
+#: acf-fields/php/form.php:1493
 msgid ""
 "Notifications will be sent to below added email addresses when receiving a "
 "new form submission."
 msgstr ""
 "Ett mail skickas ut till nedanstående användare med innehållet i svaret."
 
-#: acf-fields/php/form.php:1421
+#: acf-fields/php/form.php:1505
 msgid "Add email"
 msgstr "Lägg till e-postadress"
 
-#: acf-fields/php/form.php:1425
+#: acf-fields/php/form.php:1509
 msgid "Email address"
 msgstr "E-postadress"
 
-#: acf-fields/php/form.php:1445
+#: acf-fields/php/form.php:1530
 msgid "Custom email subject"
 msgstr "Egen ämnesrad"
 
-#: acf-fields/php/form.php:1456 acf-fields/php/form.php:1583
+#: acf-fields/php/form.php:1542 acf-fields/php/form.php:1674
 msgid "Check this box if you want to enter a custom email subject."
 msgstr "Kryssa i rutan för att ange egen ämnesrad."
 
-#: acf-fields/php/form.php:1464 acf-fields/php/form.php:1591
+#: acf-fields/php/form.php:1550 acf-fields/php/form.php:1682
 msgid "Email subject"
 msgstr "Ämnesrad"
 
-#: acf-fields/php/form.php:1467
+#: acf-fields/php/form.php:1554
 msgid "Enter custom email subject. Default is \"New form submission\"."
 msgstr "Ange egen ämnesrad. Standardvärde är “Nytt formulärsvar”."
 
-#: acf-fields/php/form.php:1491
+#: acf-fields/php/form.php:1578
 msgid "Notification message"
 msgstr "Meddelande i notis"
 
-#: acf-fields/php/form.php:1510
+#: acf-fields/php/form.php:1598
 msgid "Notification data"
 msgstr "Notisdata"
 
-#: acf-fields/php/form.php:1522
+#: acf-fields/php/form.php:1611
 msgid "Show submission data in notice content"
 msgstr "Visa svarsdata i notisens innehåll"
 
-#: acf-fields/php/form.php:1529
+#: acf-fields/php/form.php:1618
 msgid "Sender copy"
 msgstr "Svarskopia"
 
-#: acf-fields/php/form.php:1545
+#: acf-fields/php/form.php:1634
 msgid "Allow sender copy"
 msgstr "Tillåt svarskopia"
 
-#: acf-fields/php/form.php:1548
+#: acf-fields/php/form.php:1638
 msgid "Send copy of the submitted form data to the sender email."
 msgstr "Skicka en kopia av svaret till avsändarens e-postadress."
 
-#: acf-fields/php/form.php:1557
+#: acf-fields/php/form.php:1647
 msgid "Yes, allow user to get a copy of the submission"
 msgstr "Ja, tillåt användare att få en svarskopia"
 
-#: acf-fields/php/form.php:1564
+#: acf-fields/php/form.php:1654
 msgid "Custom email subject for submission copy"
 msgstr "Egen ämnesrad för svarskopia"
 
-#: acf-fields/php/form.php:1594
+#: acf-fields/php/form.php:1686
 msgid "Enter custom email subject. Default is \"Form submission copy\"."
 msgstr "Ange egen ämnesrad. Standardvärde är “Svarskopia”."
 
-#: acf-fields/php/form.php:1623
+#: acf-fields/php/form.php:1715
 msgid "Sender copy message"
 msgstr "Meddelande i svarskopia"
 
-#: acf-fields/php/form.php:1626
+#: acf-fields/php/form.php:1719
 msgid ""
 "The message that will be sent to the user together with a list of the "
 "submitted data."
 msgstr "Meddelandet kommer att skickas tillsammans med svarsdatan."
 
-#: acf-fields/php/form.php:1650 acf-fields/php/form.php:1666
+#: acf-fields/php/form.php:1743 acf-fields/php/form.php:1759
 msgid "Auto-reply"
 msgstr "Autosvar"
 
-#: acf-fields/php/form.php:1678
+#: acf-fields/php/form.php:1772
 msgid "Send auto-reply on form submission"
 msgstr "Skicka autosvar när formuläret har skickats"
 
-#: acf-fields/php/form.php:1685
+#: acf-fields/php/form.php:1779
 msgid "Auto-reply subject"
 msgstr "Ämne för autosvar"
 
-#: acf-fields/php/form.php:1712
+#: acf-fields/php/form.php:1807
 msgid "Auto-reply content"
 msgstr "Meddelande för autosvar"
 
@@ -339,19 +395,23 @@ msgstr "Skicka en kopia till mig"
 msgid "Street address"
 msgstr "Gatuadress"
 
-#: views/fields/sender.blade.php:86
+#: views/fields/sender.blade.php:80
+msgid "Find my location"
+msgstr "Hitta min position"
+
+#: views/fields/sender.blade.php:87
 msgid "Postal code"
 msgstr "Postnummer"
 
-#: views/fields/sender.blade.php:92
+#: views/fields/sender.blade.php:93
 msgid "City"
 msgstr "Stad"
 
-#: views/form.blade.php:13
+#: views/form.blade.php:14
 msgid "The for was submitted, thank you!"
 msgstr "Tack! Formuläret har skickats iväg till mottagaren."
 
-#: views/form.blade.php:29
+#: views/form.blade.php:30
 msgid ""
 "Note that your comment will become a public act that can be read by others."
 msgstr ""
