@@ -16,7 +16,7 @@
             </ul>
             @else
                 <label class="input-file">
-                    <input type="file" name="{{ sanitize_title($field['label']) }}[]" {!! $field['filetypes'] && is_array($field['filetypes']) ? 'accept="' . implode('|', $field['filetypes']) . '"' : '' !!} {{ $field['required'] ? 'required' : '' }}>
+                    <input type="file" name="{{ sanitize_title($field['label']) }}[]" {!! $field['filetypes'] && is_array($field['filetypes']) ? 'accept="' . implode(',', $field['filetypes']) . '"' : '' !!} {{ $field['required'] ? 'required' : '' }}>
                     <span class="btn"><?php _e('Select file', 'modularity-form-builder'); ?></span>
                     <span class="input-file-selected"><?php _e('No file selected', 'modularity-form-builder'); ?></span>
                 </label>
