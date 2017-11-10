@@ -1,5 +1,3 @@
-var FormBuilder = FormBuilder || {};
-
 FormBuilder = FormBuilder || {};
 FormBuilder.Front = FormBuilder.Front || {};
 

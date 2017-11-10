@@ -33,7 +33,7 @@ gulp.task('sass-dev', function() {
 // Concatenate & Minify JS
 gulp.task('scripts-dist', function() {
     gulp.src([
-            'source/js/form-builder-admin.js',
+            'source/js/admin/*.js',
         ])
         .pipe(concat('form-builder-admin.dev.js'))
         .pipe(gulp.dest('dist/js'))
@@ -41,7 +41,7 @@ gulp.task('scripts-dist', function() {
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
     gulp.src([
-            'source/js/form-builder-front.js',
+            'source/js/front/*.js',
         ])
         .pipe(concat('form-builder-front.dev.js'))
         .pipe(gulp.dest('dist/js'))
@@ -52,7 +52,7 @@ gulp.task('scripts-dist', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('source/js/*.js', ['scripts-dist']);
+    gulp.watch('source/js/**/*.js', ['scripts-dist']);
     gulp.watch('source/sass/**/*.scss', ['sass-dist', 'sass-dev']);
 });
 
