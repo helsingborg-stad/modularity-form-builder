@@ -44,7 +44,7 @@ class Submission
         // Save submission
         $submission = wp_insert_post(array(
             'post_title' => get_the_title($_POST['modularity-form-id']),
-            'post_type' => 'form-submissions',
+            'post_type' => $_POST['modularity-form-post-type'],
             'post_status' => 'publish'
         ));
 

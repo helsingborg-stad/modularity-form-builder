@@ -179,6 +179,7 @@ class Form extends \Modularity\Module
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
         $data['module_id'] = $this->ID;
         $data['hasFileUpload'] = false;
+        $data['submissionPostType'] = !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
 
         foreach ($data['form_fields'] as &$field) {
             $field['conditional_hidden'] = '';
