@@ -19,6 +19,8 @@ class PostType
         add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
         add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
+
+        add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
     }
 
     /**
@@ -268,5 +270,25 @@ class PostType
         if ($post->post_type == $this->postTypeSlug) {
             echo '<div class="inside"><span><strong>' . __('Feedback ID') . ':</strong> ' . $post->ID . '</span></div>';
         }
+    }
+
+    /**
+     * Add custom post types to post type list
+     * @param  array $field Field data
+     * @return array        Modified field data
+     */
+    public function submissionPostTypes($field)
+    {
+        $field['choices'][$postTypeSlug] = __('Form submissions', 'modularity-form-builder');
+
+        if (current_user_can('administrator')) {
+            $postTypes = get_post_types(array('_builtin' => false, 'public' => true));
+            foreach ($postTypes as $postType) {
+                $postTypeObj = get_post_type_object($postType);
+                $field['choices'][$postTypeObj->name] = $postTypeObj->labels->singular_name;
+            }
+        }
+
+        return $field;
     }
 }

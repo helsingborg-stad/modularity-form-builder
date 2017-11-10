@@ -1387,6 +1387,31 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_5a059dcc4c2a0",
+            "label": "Submission post type",
+            "name": "submission_post_type",
+            "type": "select",
+            "value": null,
+            "instructions": "Save form submission to a custom post type.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": [],
+            "default_value": [
+                "form-submissions"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
             "key": "field_58eb7b11cc4f5",
             "label": "Subimission notice",
             "name": "subimission_notice",
