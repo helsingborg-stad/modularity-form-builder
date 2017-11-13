@@ -76,15 +76,18 @@
         <div class="grid-md-12">
             <div class="form-group">
                 <label for="{{ $module_id }}-address-street"><?php _e('Street address', 'modularity-form-builder'); ?>{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="address[street]" id="{{ $module_id }}-address-street" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
+                <input type="text" name="address[street-address]" id="{{ $module_id }}-address-street" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
+                @if ($googleGeocoding)
+                    <a href="#" class="btn btn-sm" id="form-get-location"><i class="pricon pricon-location-pin"></i> <?php _e('Find my location', 'modularity-form-builder'); ?></a>
+                @endif
             </div>
         </div>
     </div>
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-address-postalcode"><?php _e('Postal code', 'modularity-form-builder'); ?>{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="address[postalcode]" id="{{ $module_id }}-address-postalcode" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-address-postal_code"><?php _e('Postal code', 'modularity-form-builder'); ?>{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="text" name="address[postal-code]" id="{{ $module_id }}-address-postal_code" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
         <div class="grid-md-6">
