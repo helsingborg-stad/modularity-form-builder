@@ -180,6 +180,7 @@ class Form extends \Modularity\Module
         $data['module_id'] = $this->ID;
         $data['hasFileUpload'] = false;
         $data['submissionPostType'] = !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
+        $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
 
         foreach ($data['form_fields'] as &$field) {
             $field['conditional_hidden'] = '';
@@ -243,7 +244,14 @@ class Form extends \Modularity\Module
      */
     public function script()
     {
-        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
+        if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
+            wp_register_script('google-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
+        }
+
+        wp_enqueue_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
+        wp_localize_script('form-builder', 'formbuilder', array(
+            'something_went_wrong' => __("Something went wrong, please try again later.", 'modularity-form-builder'),
+        ));
         wp_enqueue_script('form-builder');
     }
 
