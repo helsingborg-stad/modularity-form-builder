@@ -245,12 +245,12 @@ class Form extends \Modularity\Module
     public function script()
     {
         if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
-            wp_register_script('google-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
+            wp_enqueue_script('google-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
         }
 
-        wp_enqueue_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
+        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
         wp_localize_script('form-builder', 'formbuilder', array(
-            'something_went_wrong' => __("Something went wrong, please try again later.", 'modularity-form-builder'),
+            'something_went_wrong' => __("Something went wrong", 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder');
     }
