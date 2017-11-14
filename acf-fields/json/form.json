@@ -23,7 +23,6 @@
             "label": "Fields",
             "name": "form_fields",
             "type": "flexible_content",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -32,11 +31,8 @@
                 "class": "",
                 "id": ""
             },
-            "button_label": "Add form field",
-            "min": 1,
-            "max": "",
-            "layouts": [
-                {
+            "layouts": {
+                "58eb3033e588f": {
                     "key": "58eb3033e588f",
                     "name": "sender",
                     "label": "Sender",
@@ -47,16 +43,14 @@
                             "label": "Fields to display",
                             "name": "fields",
                             "type": "checkbox",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "25",
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "vertical",
                             "choices": {
                                 "firstname": "Firstname",
                                 "lastname": "Lastname",
@@ -64,13 +58,14 @@
                                 "phone": "Phone",
                                 "address": "Address"
                             },
+                            "allow_custom": 0,
+                            "save_custom": 0,
                             "default_value": [
                                 "firstname",
                                 "lastname",
                                 "email"
                             ],
-                            "allow_custom": 0,
-                            "save_custom": 0,
+                            "layout": "vertical",
                             "toggle": 0,
                             "return_format": "value"
                         },
@@ -79,16 +74,14 @@
                             "label": "Required fields",
                             "name": "required_fields",
                             "type": "checkbox",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "25",
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "vertical",
                             "choices": {
                                 "firstname": "Firstname",
                                 "lastname": "Lastname",
@@ -96,21 +89,247 @@
                                 "phone": "Phone",
                                 "address": "Address"
                             },
+                            "allow_custom": 0,
+                            "save_custom": 0,
                             "default_value": [
                                 "firstname",
                                 "lastname",
                                 "email"
                             ],
-                            "allow_custom": 0,
-                            "save_custom": 0,
+                            "layout": "vertical",
                             "toggle": 0,
                             "return_format": "value"
+                        },
+                        {
+                            "key": "field_5a0abd4a4342a",
+                            "label": "Custom labels",
+                            "name": "custom_sender_labels",
+                            "type": "group",
+                            "instructions": "Check this box to add custom labels for sender input fields. Leave empty to use default labels",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5a0ac34055126",
+                                    "label": "Add labels",
+                                    "name": "add_sender_labels",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_5a0abd5f4342b",
+                                    "label": "Firstname",
+                                    "name": "firstname",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_5a0ac34055126",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5a0abd804342c",
+                                    "label": "Lastname",
+                                    "name": "lastname",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_5a0ac34055126",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5a0abe977e028",
+                                    "label": "Email",
+                                    "name": "email",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_5a0ac34055126",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5a0ac1fda1240",
+                                    "label": "Phone",
+                                    "name": "phone",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_5a0ac34055126",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5a0ac216a1241",
+                                    "label": "Street address",
+                                    "name": "street_address",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_5a0ac34055126",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5a0ac228a1242",
+                                    "label": "Postal code",
+                                    "name": "postal_code",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_5a0ac34055126",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5a0ac236a1243",
+                                    "label": "City",
+                                    "name": "city",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_5a0ac34055126",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ]
                         }
                     ],
                     "min": "",
                     "max": ""
                 },
-                {
+                "58eb3f2cd914a": {
                     "key": "58eb3f2cd914a",
                     "name": "message",
                     "label": "Message",
@@ -121,7 +340,6 @@
                             "label": "Field label",
                             "name": "label",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -141,7 +359,6 @@
                             "label": "Field description",
                             "name": "description",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -161,7 +378,6 @@
                             "label": "Required",
                             "name": "required",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -181,7 +397,6 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -201,7 +416,6 @@
                             "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "value": null,
                             "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
@@ -231,7 +445,7 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "58eb552a8189e": {
                     "key": "58eb552a8189e",
                     "name": "input",
                     "label": "Input",
@@ -242,7 +456,6 @@
                             "label": "Field label",
                             "name": "label",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -262,7 +475,6 @@
                             "label": "Field description",
                             "name": "description",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -282,7 +494,6 @@
                             "label": "Field value type",
                             "name": "value_type",
                             "type": "select",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -318,7 +529,6 @@
                             "label": "Min value",
                             "name": "min_value",
                             "type": "number",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -355,7 +565,6 @@
                             "label": "Max value",
                             "name": "max_value",
                             "type": "number",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -392,7 +601,6 @@
                             "label": "Step",
                             "name": "step",
                             "type": "number",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -429,7 +637,6 @@
                             "label": "Min date",
                             "name": "min_value",
                             "type": "date_picker",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -455,7 +662,6 @@
                             "label": "Max date",
                             "name": "max_value",
                             "type": "date_picker",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
@@ -481,7 +687,6 @@
                             "label": "Required",
                             "name": "required",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -501,7 +706,6 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -521,7 +725,6 @@
                             "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "value": null,
                             "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
@@ -551,7 +754,7 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "58eb670839fee": {
                     "key": "58eb670839fee",
                     "name": "radio",
                     "label": "Radio",
@@ -562,7 +765,6 @@
                             "label": "Field label",
                             "name": "label",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -582,7 +784,6 @@
                             "label": "Field description",
                             "name": "description",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -602,7 +803,6 @@
                             "label": "Field values",
                             "name": "values",
                             "type": "repeater",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -622,7 +822,6 @@
                                     "label": "Value",
                                     "name": "value",
                                     "type": "text",
-                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -644,7 +843,6 @@
                             "label": "Required",
                             "name": "required",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -664,7 +862,6 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -684,7 +881,6 @@
                             "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "value": null,
                             "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
@@ -714,7 +910,7 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "58eb6b023b076": {
                     "key": "58eb6b023b076",
                     "name": "checkbox",
                     "label": "Checkbox",
@@ -725,7 +921,6 @@
                             "label": "Field label",
                             "name": "label",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -745,7 +940,6 @@
                             "label": "Field description",
                             "name": "description",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -765,7 +959,6 @@
                             "label": "Field values",
                             "name": "values",
                             "type": "repeater",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -785,7 +978,6 @@
                                     "label": "Value",
                                     "name": "value",
                                     "type": "text",
-                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -807,7 +999,6 @@
                             "label": "Required",
                             "name": "required",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -827,7 +1018,6 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -847,7 +1037,6 @@
                             "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "value": null,
                             "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
@@ -877,7 +1066,7 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "58eb6bd234c19": {
                     "key": "58eb6bd234c19",
                     "name": "select",
                     "label": "Select",
@@ -888,7 +1077,6 @@
                             "label": "Field label",
                             "name": "label",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -908,7 +1096,6 @@
                             "label": "Field description",
                             "name": "description",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -928,7 +1115,6 @@
                             "label": "Field values",
                             "name": "values",
                             "type": "repeater",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -948,7 +1134,6 @@
                                     "label": "Value",
                                     "name": "value",
                                     "type": "text",
-                                    "value": null,
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -970,7 +1155,6 @@
                             "label": "Required",
                             "name": "required",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -990,7 +1174,6 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1010,7 +1193,6 @@
                             "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "value": null,
                             "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
@@ -1040,7 +1222,7 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "58eccdd75ad90": {
                     "key": "58eccdd75ad90",
                     "name": "file_upload",
                     "label": "File upload",
@@ -1051,7 +1233,6 @@
                             "label": "Field label",
                             "name": "label",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -1071,7 +1252,6 @@
                             "label": "Field description",
                             "name": "description",
                             "type": "text",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1091,7 +1271,6 @@
                             "label": "Type",
                             "name": "type",
                             "type": "radio",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -1116,7 +1295,6 @@
                             "label": "Max number of files",
                             "name": "files_max",
                             "type": "number",
-                            "value": null,
                             "instructions": "-1 for no limit",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1138,7 +1316,6 @@
                             "label": "Allowed filetypes",
                             "name": "filetypes",
                             "type": "checkbox",
-                            "value": null,
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -1177,7 +1354,6 @@
                             "label": "Required",
                             "name": "required",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1197,7 +1373,6 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1217,7 +1392,6 @@
                             "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "value": null,
                             "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
@@ -1247,7 +1421,7 @@
                     "min": "",
                     "max": ""
                 },
-                {
+                "59b13312b61ac": {
                     "key": "59b13312b61ac",
                     "name": "custom_content",
                     "label": "Custom content",
@@ -1258,7 +1432,6 @@
                             "label": "Content",
                             "name": "content",
                             "type": "wysiwyg",
-                            "value": null,
                             "instructions": "Add custom content to the form. This will not be sent in e-mail messages.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1278,7 +1451,6 @@
                             "label": "Conditional logic",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "value": null,
                             "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1298,7 +1470,6 @@
                             "label": "Conditonal field",
                             "name": "conditonal_field",
                             "type": "select",
-                            "value": null,
                             "instructions": "Display field if this value is selected.",
                             "required": 0,
                             "conditional_logic": [
@@ -1328,7 +1499,10 @@
                     "min": "",
                     "max": ""
                 }
-            ]
+            },
+            "button_label": "Add form field",
+            "min": 1,
+            "max": ""
         },
         {
             "key": "field_58f5c12da612a",
@@ -1351,7 +1525,6 @@
             "label": "Text on submit button",
             "name": "submit_button_text",
             "type": "text",
-            "value": null,
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -1371,7 +1544,6 @@
             "label": "Public act notice",
             "name": "submission_public_act",
             "type": "true_false",
-            "value": null,
             "instructions": "Adds a notice that informs the user that the submission will become a public act.",
             "required": 0,
             "conditional_logic": 0,
@@ -1391,7 +1563,6 @@
             "label": "Submission post type",
             "name": "submission_post_type",
             "type": "select",
-            "value": null,
             "instructions": "Save form submission to a custom post type.",
             "required": 0,
             "conditional_logic": 0,
@@ -1400,7 +1571,13 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "": "Form submissions",
+                "event": "Evenemang",
+                "idea": "Idea",
+                "ticket": "Ticket",
+                "listing": "Listing"
+            },
             "default_value": [
                 "form-submissions"
             ],
@@ -1416,7 +1593,6 @@
             "label": "Subimission notice",
             "name": "subimission_notice",
             "type": "wysiwyg",
-            "value": null,
             "instructions": "Text to display when form is submitted.",
             "required": 1,
             "conditional_logic": 0,
@@ -1469,7 +1645,6 @@
             "label": "Notify email addresses",
             "name": "notify",
             "type": "repeater",
-            "value": null,
             "instructions": "Notifications will be sent to below added email addresses when receiving a new form submission.",
             "required": 0,
             "conditional_logic": 0,
@@ -1489,7 +1664,6 @@
                     "label": "Email address",
                     "name": "email",
                     "type": "email",
-                    "value": null,
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -1510,7 +1684,6 @@
             "label": "Custom email subject",
             "name": "notification_custom_subject",
             "type": "true_false",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -1530,7 +1703,6 @@
             "label": "Email subject",
             "name": "notification_subject",
             "type": "text",
-            "value": null,
             "instructions": "Enter custom email subject. Default is \"New form submission\".",
             "required": 1,
             "conditional_logic": [
@@ -1558,7 +1730,6 @@
             "label": "Notification message",
             "name": "notification_message",
             "type": "wysiwyg",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -1578,7 +1749,6 @@
             "label": "Notification data",
             "name": "submission_notice_data",
             "type": "true_false",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -1614,7 +1784,6 @@
             "label": "Allow sender copy",
             "name": "allow_sender_copy",
             "type": "true_false",
-            "value": null,
             "instructions": "Send copy of the submitted form data to the sender email.",
             "required": 0,
             "conditional_logic": 0,
@@ -1634,7 +1803,6 @@
             "label": "Custom email subject for submission copy",
             "name": "copy_custom_subject",
             "type": "true_false",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": [
@@ -1662,7 +1830,6 @@
             "label": "Email subject",
             "name": "copy_subject",
             "type": "text",
-            "value": null,
             "instructions": "Enter custom email subject. Default is \"Form submission copy\".",
             "required": 1,
             "conditional_logic": [
@@ -1695,7 +1862,6 @@
             "label": "Sender copy message",
             "name": "sender_copy_message",
             "type": "wysiwyg",
-            "value": null,
             "instructions": "The message that will be sent to the user together with a list of the submitted data.",
             "required": 0,
             "conditional_logic": [
@@ -1739,7 +1905,6 @@
             "label": "Auto-reply",
             "name": "autoreply",
             "type": "true_false",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -1759,7 +1924,6 @@
             "label": "Auto-reply subject",
             "name": "auto_reply_subject",
             "type": "text",
-            "value": null,
             "instructions": "",
             "required": 1,
             "conditional_logic": [
@@ -1787,7 +1951,6 @@
             "label": "Auto-reply content",
             "name": "auto_reply_content",
             "type": "wysiwyg",
-            "value": null,
             "instructions": "",
             "required": 1,
             "conditional_logic": [

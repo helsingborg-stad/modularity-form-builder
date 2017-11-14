@@ -188,6 +188,25 @@ class Form extends \Modularity\Module
                 $field['conditional_hidden'] = "style='display:none;' conditional-target='" . $field['conditonal_field'] . "'";
             }
 
+            // Set sender labels
+            if ($field['acf_fc_layout'] === 'sender') {
+                // Default labels
+                $data['labels'] = array(
+                    'firstname'      => __('Firstname', 'modularity-form-builder'),
+                    'lastname'       => __('Lastname', 'modularity-form-builder'),
+                    'email'          => __('Email', 'modularity-form-builder'),
+                    'phone'          => __('Phone', 'modularity-form-builder'),
+                    'street_address' => __('Street address', 'modularity-form-builder'),
+                    'postal_code'    => __('Postal code', 'modularity-form-builder'),
+                    'city'           => __('City', 'modularity-form-builder')
+                );
+
+                // Merge default and custom labels
+                if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
+                    $data['labels'] = array_merge($data['labels'], array_filter($field['custom_sender_labels']));
+                }
+            }
+
             if ($field['acf_fc_layout'] === 'radio') {
                 foreach ($field['values'] as &$value) {
                     $label = $this->conditionalString($field['label']);
