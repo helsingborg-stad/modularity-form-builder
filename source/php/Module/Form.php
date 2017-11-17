@@ -251,7 +251,8 @@ class Form extends \Modularity\Module
     {
         wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js', true);
         wp_localize_script('form-builder', 'formbuilder', array(
-            'selections_missing' => __("Please create radio selections before adding conditional logic.", 'modularity-form-builder'),
+            'mod_form_authorized'   => (get_option('options_mod_form_access_token') == true) ? true : false,
+            'selections_missing'    => __("Please create radio selections before adding conditional logic.", 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder');
     }
