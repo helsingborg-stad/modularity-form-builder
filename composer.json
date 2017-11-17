@@ -10,16 +10,25 @@
         {
             "name": "Sebastian Thulin",
             "email": "sebastian.thulin@helsingborg.se"
+        },
+        {
+            "name": "Jonatan Hanson",
+            "email": "jonatan.hanson@hiq.se"
         }
     ],
     "minimum-stability": "stable",
     "require": {
-        "helsingborg-stad/acf-export-manager": ">=1.0.0"
+        "helsingborg-stad/acf-export-manager": ">=1.0.0",
+        "google/apiclient": "^2.0"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/helsingborg-stad/acf-export-manager.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/google/google-api-php-client.git"
         }
     ]
 }
