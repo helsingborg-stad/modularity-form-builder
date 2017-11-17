@@ -40,7 +40,7 @@ class Submission
             $files = $this->uploadFiles($_FILES, $_POST['modularity-form-id']);
 
             // Return to form if upload failed
-            if (empty($files)) {
+            if (isset($files['error'])) {
                 if (strpos($referer, '?') > -1) {
                     $referer .= '&form=failed';
                 } else {
@@ -138,6 +138,7 @@ class Submission
 
                 if (!in_array('.' . $fileext, $fields[$key]['filetypes'])) {
                     error_log('Filetype not allowed');
+                    $uploaded['error'] = true;
                     continue;
                 }
 
@@ -151,6 +152,7 @@ class Submission
                     }
                 } else {
                     error_log('File not uploaded');
+                    $uploaded['error'] = true;
                     continue;
                 }
 
