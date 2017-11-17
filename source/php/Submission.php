@@ -21,7 +21,8 @@ class Submission
     {
         unset($_POST['modularity-form']);
 
-        $referer = $_POST['_wp_http_referer'];
+        $referer = remove_query_arg('form', $_POST['_wp_http_referer']);
+
         unset($_POST['_wp_http_referer']);
 
         $senderCopy = false;
@@ -37,6 +38,17 @@ class Submission
         $files = array();
         if (!empty($_FILES)) {
             $files = $this->uploadFiles($_FILES, $_POST['modularity-form-id']);
+
+            // Return to form if upload failed
+            if (empty($files)) {
+                if (strpos($referer, '?') > -1) {
+                    $referer .= '&form=failed';
+                } else {
+                    $referer .= '?form=failed';
+                }
+                wp_redirect($referer);
+                exit;
+            }
         }
 
         $_POST = array_merge($_POST, $files);
@@ -100,9 +112,11 @@ class Submission
         $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder';
         $this->maybeCreateFolder($uploadsFolder);
         $fields = $this->getFileFields($formId);
-        $uploaded = array();
         $allowedImageTypes = array('.jpeg', '.jpg', '.png', '.gif', '.svg');
         $allowedVideoTypes = array('.mov', '.mpeg4', '.mp4', '.avi', '.wmv', '.mpegps', '.flv', '.3gpp', '.webm');
+
+        // Data to be returned
+        $uploaded = array();
 
         foreach ($fileslist as $key => $files) {
             for ($i = 0; $i < count($files['name']); $i++) {
@@ -111,6 +125,7 @@ class Submission
                 }
 
                 $targetFile = $uploadsFolder . '/' . uniqid() . '-' . basename($files['name'][$i]);
+
                 $fileext = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
                 if (in_array('image/*', $fields[$key]['filetypes'])) {
@@ -122,13 +137,21 @@ class Submission
                 }
 
                 if (!in_array('.' . $fileext, $fields[$key]['filetypes'])) {
-                    trigger_error('Filetype not allowed');
-                    exit;
+                    error_log('Filetype not allowed');
+                    continue;
                 }
 
-                if (!move_uploaded_file($files['tmp_name'][$i], $targetFile)) {
-                    trigger_error('File not uploaded');
-                    exit;
+                // Upload the file to server
+                if (move_uploaded_file($files['tmp_name'][$i], $targetFile)) {
+                    // Upload video to YouTube
+                    if (!empty($fields[$key]['upload_videos_external']) && in_array('.' . $fileext, $allowedVideoTypes)) {
+                        $fileName = ucwords(pathinfo($files['name'][$i], PATHINFO_FILENAME));
+                        $uploadVideo = \ModularityFormBuilder\Helper\youtubeUploader::uploadVideo($targetFile, $fileName, '', '22');
+                        $targetFile  = ($uploadVideo) ? $uploadVideo : $targetFile;
+                    }
+                } else {
+                    error_log('File not uploaded');
+                    continue;
                 }
 
                 if (!isset($uploaded[$key])) {
@@ -363,4 +386,6 @@ class Submission
             $headers
         );
     }
+
+
 }
