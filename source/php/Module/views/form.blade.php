@@ -16,6 +16,14 @@
             </div>
         @endif
 
+        @if (isset($_GET['form']) && $_GET['form'] == 'failed')
+            <div class="grid">
+                <div class="grid-md-12">
+                    <div class="notice warning"><i class="pricon pricon-notice-warning pull-left"></i> <?php _e('Something went wrong, please try again.', 'modularity-form-builder'); ?></div>
+                </div>
+            </div>
+        @endif
+
         @foreach ($form_fields as $field)
             @include('fields.' . $field['acf_fc_layout'])
         @endforeach

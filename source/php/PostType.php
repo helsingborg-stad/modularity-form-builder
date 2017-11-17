@@ -123,7 +123,7 @@ class PostType
             );
         }
 
-        include FORM_BUILDER_MODULE_PATH . 'views/admin/formdata.php';
+        include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
     }
 
     /**

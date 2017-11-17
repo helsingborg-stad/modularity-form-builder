@@ -9,16 +9,16 @@
 
 define('FORM_BUILDER_MODULE_PATH', plugin_dir_path(__FILE__));
 define('FORM_BUILDER_MODULE_URL', plugins_url('', __FILE__));
-
-require_once FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php';
-require_once FORM_BUILDER_MODULE_PATH . 'PostType.php';
-require_once FORM_BUILDER_MODULE_PATH . 'Submission.php';
-
-new \ModularityFormBuilder\PostType();
-new \ModularityFormBuilder\Submission();
+define('FORM_BUILDER_MODULE_TEMPLATE_PATH', FORM_BUILDER_MODULE_PATH . 'templates/');
 
 //Load lang
 load_plugin_textdomain('modularity-form-builder', false, plugin_basename(dirname(__FILE__)) . '/languages');
+
+require_once FORM_BUILDER_MODULE_PATH . 'source/php/Vendor/Psr4ClassLoader.php';
+require_once FORM_BUILDER_MODULE_PATH . 'Public.php';
+if (file_exists(FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php')) {
+    require_once FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php';
+}
 
 // Acf auto import and export
 add_action('plugins_loaded', function () {
@@ -31,14 +31,12 @@ add_action('plugins_loaded', function () {
     $acfExportManager->import();
 });
 
-/**
- * Registers the module
- */
-add_action('plugins_loaded', function () {
-    if (function_exists('modularity_register_module')) {
-        modularity_register_module(
-            FORM_BUILDER_MODULE_PATH,
-            'Form'
-        );
-    }
-});
+// Instantiate and register the autoloader
+$loader = new ModularityFormBuilder\Vendor\Psr4ClassLoader();
+$loader->addPrefix('ModularityFormBuilder', FORM_BUILDER_MODULE_PATH);
+$loader->addPrefix('ModularityFormBuilder', FORM_BUILDER_MODULE_PATH . 'source/php/');
+$loader->register();
+
+
+// Start application
+new ModularityFormBuilder\App();

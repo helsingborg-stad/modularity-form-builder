@@ -24,7 +24,6 @@ class Form extends \Modularity\Module
      * adminEnqueue()    Enqueue scripts for the module edit/add page in admin
      * template()        Return the view template (blade) the module should use when displayed
      */
-
     public function init()
     {
         $this->nameSingular = __('Form', 'modularity-form-builder');
@@ -264,7 +263,9 @@ class Form extends \Modularity\Module
     public function script()
     {
         if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
-            wp_enqueue_script('google-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
+            wp_enqueue_script('google-maps-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
+            wp_enqueue_script('youtube-api', '//apis.google.com/js/client:plusone.js', array(), false, true);
+
         }
 
         wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
