@@ -1350,6 +1350,54 @@
                             "return_format": "value"
                         },
                         {
+                            "key": "field_5a0c48839fa5d",
+                            "label": "Upload videos to external service",
+                            "name": "upload_videos_external",
+                            "type": "true_false",
+                            "instructions": "Check this box to upload upload videos to an external service instead of locally.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_58ecce105ad92",
+                                        "operator": "==",
+                                        "value": "video\/*"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "field": "field_58ecce105ad92",
+                                        "operator": "==",
+                                        "value": ".mov"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "field": "field_58ecce105ad92",
+                                        "operator": "==",
+                                        "value": ".webm"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "field": "field_58ecce105ad92",
+                                        "operator": "==",
+                                        "value": ".mp4"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Upload external",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_58ecd86751bf6",
                             "label": "Required",
                             "name": "required",

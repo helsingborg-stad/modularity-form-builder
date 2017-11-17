@@ -1365,6 +1365,54 @@
                             'return_format' => 'value',
                         ),
                         5 => array(
+                            'key' => 'field_5a0c48839fa5d',
+                            'label' => 'Upload videos to external service',
+                            'name' => 'upload_videos_external',
+                            'type' => 'true_false',
+                            'instructions' => 'Check this box to upload upload videos to an external service instead of locally.',
+                            'required' => 0,
+                            'conditional_logic' => array(
+                                0 => array(
+                                    0 => array(
+                                        'field' => 'field_58ecce105ad92',
+                                        'operator' => '==',
+                                        'value' => 'video/*',
+                                    ),
+                                ),
+                                1 => array(
+                                    0 => array(
+                                        'field' => 'field_58ecce105ad92',
+                                        'operator' => '==',
+                                        'value' => '.mov',
+                                    ),
+                                ),
+                                2 => array(
+                                    0 => array(
+                                        'field' => 'field_58ecce105ad92',
+                                        'operator' => '==',
+                                        'value' => '.webm',
+                                    ),
+                                ),
+                                3 => array(
+                                    0 => array(
+                                        'field' => 'field_58ecce105ad92',
+                                        'operator' => '==',
+                                        'value' => '.mp4',
+                                    ),
+                                ),
+                            ),
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'message' => 'Upload external',
+                            'default_value' => 0,
+                            'ui' => 0,
+                            'ui_on_text' => '',
+                            'ui_off_text' => '',
+                        ),
+                        6 => array(
                             'key' => 'field_58ecd86751bf6',
                             'label' => 'Required',
                             'name' => 'required',
@@ -1383,7 +1431,7 @@
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
-                        6 => array(
+                        7 => array(
                             'key' => 'field_59b69a7ae2ab5',
                             'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
@@ -1402,7 +1450,7 @@
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
-                        7 => array(
+                        8 => array(
                             'key' => 'field_59b69a7de2ab6',
                             'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
