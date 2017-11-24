@@ -182,27 +182,19 @@ class Form extends \Modularity\Module
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
 
         foreach ($data['form_fields'] as &$field) {
+            $field['name'] = sanitize_title($field['label']);
+
             $field['conditional_hidden'] = '';
             if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
                 $field['conditional_hidden'] = "style='display:none;' conditional-target='" . $field['conditonal_field'] . "'";
             }
 
-            // Set sender labels
             if ($field['acf_fc_layout'] === 'sender') {
-                // Default labels
-                $data['labels'] = array(
-                    'firstname'      => __('Firstname', 'modularity-form-builder'),
-                    'lastname'       => __('Lastname', 'modularity-form-builder'),
-                    'email'          => __('Email', 'modularity-form-builder'),
-                    'phone'          => __('Phone', 'modularity-form-builder'),
-                    'street_address' => __('Street address', 'modularity-form-builder'),
-                    'postal_code'    => __('Postal code', 'modularity-form-builder'),
-                    'city'           => __('City', 'modularity-form-builder')
-                );
+                $field['labels'] = \ModularityFormBuilder\PostType::getSenderLabels();
 
                 // Merge default and custom labels
                 if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
-                    $data['labels'] = array_merge($data['labels'], array_filter($field['custom_sender_labels']));
+                    $field['labels'] = array_merge($field['labels'], array_filter($field['custom_sender_labels']));
                 }
             }
 
@@ -252,7 +244,9 @@ class Form extends \Modularity\Module
         wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js', true);
         wp_localize_script('form-builder', 'formbuilder', array(
             'mod_form_authorized'   => (get_option('options_mod_form_access_token') == true) ? true : false,
-            'selections_missing'    => __("Please create radio selections before adding conditional logic.", 'modularity-form-builder'),
+            'selections_missing'    => __('Please create radio selections before adding conditional logic.', 'modularity-form-builder'),
+            'delete_confirm'        => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
+            'uploading'             => __('Uploading', 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder');
     }
