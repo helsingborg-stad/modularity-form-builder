@@ -21,6 +21,11 @@ class PostType
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
 
         add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
+
+        add_action('save_post_' . $this->postTypeSlug, array($this, 'updateForm'));
+
+        add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
+        add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
     }
 
     /**
@@ -72,8 +77,14 @@ class PostType
         register_post_type($this->postTypeSlug, $args);
     }
 
-    public function removePublishBox() {
-        remove_meta_box('submitdiv', $this->postTypeSlug, 'side');
+    public function removePublishBox()
+    {
+        if (isset($_GET['post']) && is_numeric($_GET['post'])) {
+            $parent = get_post_meta($_GET['post'], 'modularity-form-id', true);
+            if (get_field('editable_back_end', $parent) == false) {
+                remove_meta_box('submitdiv', $this->postTypeSlug, 'side');
+            }
+        }
     }
 
     /**
@@ -99,31 +110,59 @@ class PostType
     {
         global $post;
 
-        $data = array();
         $indata = get_post_meta($post->ID, 'form-data', true);
         $fields = get_fields($indata['modularity-form-id']);
+        $data['form_fields'] = array();
+        $data['post_id'] = $post->ID;
+        $data['module_id'] = $indata['modularity-form-id'];
+        $uploadFolder = wp_upload_dir();
+        $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
 
         foreach ($fields['form_fields'] as $field) {
+            if ($field['acf_fc_layout'] === 'custom_content') {
+                continue;
+            }
+
             if ($field['acf_fc_layout'] === 'sender') {
+
+                $field['labels'] = self::getSenderLabels();
+                // Merge default and custom labels
+                if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
+                    $field['labels'] = array_merge($field['labels'], array_filter($field['custom_sender_labels']));
+                }
+
                 foreach ($field['fields'] as $subfield) {
-                    $data[] = array(
-                        'type' => 'sender-' . $subfield,
-                        'label' => self::getTranslatedSenderField($subfield),
-                        'value' => $indata[$subfield]
+                    $data['form_fields'][] = array(
+                        'acf_fc_layout' => 'sender-' . $subfield,
+                        'label'         => $field['labels'][$subfield],
+                        'labels'        => $field['labels'],
+                        'name'          => sanitize_title($field['labels'][$subfield]),
+                        'required'      => in_array($subfield, $field['required_fields']),
+                        'value'         => (!empty($indata[sanitize_title($field['labels'][$subfield])])) ? $indata[sanitize_title($field['labels'][$subfield])] : '',
                     );
                 }
 
                 continue;
             }
 
-            $data[] = array(
-                'type'  => $field['acf_fc_layout'],
-                'label' => $field['label'],
-                'value' => (!empty($indata[sanitize_title($field['label'])])) ? $indata[sanitize_title($field['label'])] : '',
+            $data['form_fields'][] = array_merge(
+                $field,
+                array(
+                    'name'     => sanitize_title($field['label']),
+                    'value'    => (!empty($indata[sanitize_title($field['label'])])) ? $indata[sanitize_title($field['label'])] : '',
+                )
             );
         }
 
-        include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
+        if (isset($fields['editable_front_end']) && $fields['editable_front_end'] == true) {
+            $template = new \Municipio\template;
+            $view = \Municipio\Helper\Template::locateTemplate('form-edit.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
+            $view = $template->cleanViewPath($view);
+
+            $template->render($view, $data);
+        } else {
+            include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
+        }
     }
 
     /**
@@ -135,7 +174,7 @@ class PostType
         global $typenow;
         global $wp_query;
 
-        if ($typenow !== $this->postTypeSlug) {
+        if ($typenow !== 'form-submissions') {
             return;
         }
 
@@ -233,31 +272,23 @@ class PostType
     }
 
     /**
-     * Translate fields for sender
-     * @param  string $what
-     * @return string
+     * Translated sender labels
+     * @return array
      */
-    public static function getTranslatedSenderField($what)
+    public static function getSenderLabels()
     {
-        switch ($what) {
-            case 'firstname':
-                return __('Firstname', 'modularity-form-builder');
+        $labels = array(
+            'firstname'      => __('Firstname', 'modularity-form-builder'),
+            'lastname'       => __('Lastname', 'modularity-form-builder'),
+            'email'          => __('Email', 'modularity-form-builder'),
+            'phone'          => __('Phone', 'modularity-form-builder'),
+            'address'        => __('Address', 'modularity-form-builder'),
+            'street_address' => __('Street address', 'modularity-form-builder'),
+            'postal_code'    => __('Postal code', 'modularity-form-builder'),
+            'city'           => __('City', 'modularity-form-builder')
+        );
 
-            case 'lastname':
-                return __('Lastname', 'modularity-form-builder');
-
-            case 'address':
-                return __('Address', 'modularity-form-builder');
-
-            case 'phone':
-                return __('Phone', 'modularity-form-builder');
-
-            case 'email':
-                return __('Email', 'modularity-form-builder');
-
-            default:
-                return $what;
-        }
+        return $labels;
     }
 
     /**
@@ -267,7 +298,7 @@ class PostType
      */
     public function displayFeedbackId($post)
     {
-        if ($post->post_type == $this->postTypeSlug) {
+        if ($post->post_type == 'form-submissions') {
             echo '<div class="inside"><span><strong>' . __('Feedback ID') . ':</strong> ' . $post->ID . '</span></div>';
         }
     }
@@ -290,5 +321,103 @@ class PostType
         }
 
         return $field;
+    }
+
+    /**
+     * Update form data
+     * @param  int $postId The post ID.
+     * @return void
+     */
+    public function updateForm($postId)
+    {
+        // Deny for autosave function
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return;
+        }
+
+        if (!wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
+            return;
+        }
+
+        if (isset($_POST) && isset($postId) && get_post_type($postId) == $this->postTypeSlug) {
+            $indata = get_post_meta($postId, 'form-data', true);
+
+            foreach ($indata as $key => &$field) {
+                $field = (isset($_POST[$key])) ? $_POST[$key] : $field;
+            }
+
+            update_post_meta($postId, 'form-data', $indata);
+        }
+    }
+
+    /**
+     * Delete a file (Ajax)
+     * @return void
+     */
+    public function deleteFile()
+    {
+        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['filePath']) ||!isset($_POST['fieldName'])) {
+            echo _e('Missing arguments', 'modularity-form-builder');
+            die();
+        }
+
+        $postId     = $_POST['postId'];
+        $formId     = $_POST['formId'];
+        $filePath   = $_POST['filePath'];
+        $fieldName  = $_POST['fieldName'];
+        $formData   = get_post_meta($postId, 'form-data', true);
+
+        if (is_array($formData[$fieldName])) {
+            foreach ($formData[$fieldName] as $key => $file) {
+                if ($filePath == $file) {
+                    unset($formData[$fieldName][$key]);
+
+                    if (file_exists($filePath)) {
+                        unlink($filePath);
+                    }
+                }
+            }
+        }
+
+        update_post_meta($postId, 'form-data', $formData);
+
+        echo 'success';
+        die();
+    }
+
+    /**
+     * Upload files (Ajax)
+     * @return void
+     */
+    public function uploadFiles()
+    {
+        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['fieldName'])) {
+            wp_send_json_error(__('Missing arguments', 'modularity-form-builder'));
+        }
+
+        $postId     = (int)$_POST['postId'];
+        $formId     = (int)$_POST['formId'];
+        $fieldName  = $_POST['fieldName'];
+        $formData   = get_post_meta($postId, 'form-data', true);
+
+        if (!empty($_FILES)) {
+            $files = \ModularityFormBuilder\Submission::uploadFiles($_FILES, $formId);
+
+            // Return if upload failed
+            if (isset($files['error'])) {
+                wp_send_json_error(__('Something went wrong, please try again.', 'modularity-form-builder'));
+            }
+
+            // Save new file to array or marge with existing
+            if (is_array($formData[$fieldName]) && !empty($formData[$fieldName])) {
+                $formData[$fieldName] = array_merge($formData[$fieldName], $files[$fieldName]);
+            } else {
+                $formData[$fieldName] = $files[$fieldName];
+            }
+
+            update_post_meta($postId, 'form-data', $formData);
+        }
+
+        wp_send_json_success(__('Upload succeeded', 'modularity-form-builder'));
     }
 }
