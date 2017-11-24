@@ -10,6 +10,8 @@ class App
 		new \ModularityFormBuilder\Submission();
 		new \ModularityFormBuilder\Options();
 
+		add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
+
 		/**
 		 * Registers the module
 		 */
@@ -21,5 +23,15 @@ class App
 		        );
 		    }
 		});
+    }
+
+    /**
+     * Add searchable blade template paths
+     * @param array $array Template paths
+     */
+    public function addTemplatePaths($array)
+    {
+        $array[] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views';
+        return $array;
     }
 }
