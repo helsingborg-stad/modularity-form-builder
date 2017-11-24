@@ -349,10 +349,10 @@
                                 "id": ""
                             },
                             "default_value": "Message",
-                            "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "maxlength": ""
                         },
                         {
                             "key": "field_597b20d5392bc",
@@ -502,8 +502,6 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "multiple": 0,
-                            "allow_null": 0,
                             "choices": {
                                 "text": "Text",
                                 "number": "Number",
@@ -519,10 +517,12 @@
                                 "url": "Url"
                             },
                             "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
                             "ui": 0,
                             "ajax": 0,
-                            "placeholder": "",
-                            "return_format": "value"
+                            "return_format": "value",
+                            "placeholder": ""
                         },
                         {
                             "key": "field_58eb572440304",
@@ -749,6 +749,35 @@
                             "ajax": 0,
                             "return_format": "value",
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_5a18388b007a2",
+                            "label": "Custom post type title",
+                            "name": "custom_post_type_title",
+                            "type": "checkbox",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a1837b50079f",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "allow_custom": 0,
+                            "save_custom": 0,
+                            "default_value": [],
+                            "layout": "vertical",
+                            "toggle": 0,
+                            "return_format": "value"
                         }
                     ],
                     "min": "",
@@ -2008,13 +2037,40 @@
             "endpoint": 0
         },
         {
+            "key": "field_5a1837b50079f",
+            "label": "Custom submission post type",
+            "name": "custom_submission_post_type",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Save form submissions to a custom post type.",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_5a059dcc4c2a0",
             "label": "Submission post type",
             "name": "submission_post_type",
             "type": "select",
-            "instructions": "Save form submissions to a custom post type. When using this option it's recommended to only have one form connected to the post type.",
+            "instructions": "Select post type",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a1837b50079f",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",

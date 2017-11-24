@@ -352,10 +352,10 @@
                                 'id' => '',
                             ),
                             'default_value' => 'Message',
-                            'maxlength' => '',
                             'placeholder' => '',
                             'prepend' => '',
                             'append' => '',
+                            'maxlength' => '',
                         ),
                         1 => array(
                             'key' => 'field_597b20d5392bc',
@@ -507,8 +507,6 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'multiple' => 0,
-                            'allow_null' => 0,
                             'choices' => array(
                                 'text' => 'Text',
                                 'number' => 'Number',
@@ -525,10 +523,12 @@
                             ),
                             'default_value' => array(
                             ),
+                            'allow_null' => 0,
+                            'multiple' => 0,
                             'ui' => 0,
                             'ajax' => 0,
-                            'placeholder' => '',
                             'return_format' => 'value',
+                            'placeholder' => '',
                         ),
                         3 => array(
                             'key' => 'field_58eb572440304',
@@ -757,6 +757,37 @@
                             'ajax' => 0,
                             'return_format' => 'value',
                             'placeholder' => '',
+                        ),
+                        11 => array(
+                            'key' => 'field_5a18388b007a2',
+                            'label' => 'Custom post type title',
+                            'name' => 'custom_post_type_title',
+                            'type' => 'checkbox',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => array(
+                                0 => array(
+                                    0 => array(
+                                        'field' => 'field_5a1837b50079f',
+                                        'operator' => '==',
+                                        'value' => '1',
+                                    ),
+                                ),
+                            ),
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'choices' => array(
+                            ),
+                            'allow_custom' => 0,
+                            'save_custom' => 0,
+                            'default_value' => array(
+                            ),
+                            'layout' => 'vertical',
+                            'toggle' => 0,
+                            'return_format' => 'value',
                         ),
                     ),
                     'min' => '',
@@ -2027,13 +2058,40 @@
             'endpoint' => 0,
         ),
         23 => array(
+            'key' => 'field_5a1837b50079f',
+            'label' => __('Custom submission post type', 'modularity-form-builder'),
+            'name' => 'custom_submission_post_type',
+            'type' => 'true_false',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => __('Save form submissions to a custom post type.', 'modularity-form-builder'),
+            'default_value' => 0,
+            'ui' => 0,
+            'ui_on_text' => '',
+            'ui_off_text' => '',
+        ),
+        24 => array(
             'key' => 'field_5a059dcc4c2a0',
             'label' => __('Submission post type', 'modularity-form-builder'),
             'name' => 'submission_post_type',
             'type' => 'select',
-            'instructions' => __('Save form submissions to a custom post type. When using this option it\'s recommended to only have one form connected to the post type.', 'modularity-form-builder'),
+            'instructions' => __('Select post type', 'modularity-form-builder'),
             'required' => 0,
-            'conditional_logic' => 0,
+            'conditional_logic' => array(
+                0 => array(
+                    0 => array(
+                        'field' => 'field_5a1837b50079f',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
             'wrapper' => array(
                 'width' => '',
                 'class' => '',
@@ -2057,7 +2115,7 @@
             'return_format' => 'value',
             'placeholder' => '',
         ),
-        24 => array(
+        25 => array(
             'key' => 'field_5a12ae16f9445',
             'label' => __('Editable on front end', 'modularity-form-builder'),
             'name' => 'editable_front_end',
@@ -2076,7 +2134,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        25 => array(
+        26 => array(
             'key' => 'field_5a12afecf9446',
             'label' => __('Editable on back end', 'modularity-form-builder'),
             'name' => 'editable_back_end',
