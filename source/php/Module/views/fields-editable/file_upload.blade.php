@@ -11,7 +11,6 @@
                 <span style="display: block;">
                     <a href="#" target="_blank" class="delete-form-file delete" filepath="{{ $file }}" fieldname="{{ $field['name'] }}" formid="{{ $module_id }}" postid="{{ $post_id }}"><?php _e('Delete', 'modularity-form-builder'); ?></a>
                 </span>
-                <input type="hidden" name="{{ $field['name'] }}[]" value="{{ $file }}">
             </li>
         @endforeach
     </ul>
