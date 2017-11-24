@@ -3,14 +3,14 @@
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-firstname">{{ $labels['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="firstname" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="text" name="{{ sanitize_title($field['labels']['firstname']) }}" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-lastname">{{ $labels['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="lastname" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-lastname">{{ $field['labels']['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="text" name="{{ sanitize_title($field['labels']['lastname']) }}" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -18,8 +18,8 @@
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-firstname">{{ $labels['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="firstname" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="text" name="{{ sanitize_title($field['labels']['firstname']) }}" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -27,8 +27,8 @@
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-lastname">{{ $labels['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="lastname" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-lastname">{{ $field['labels']['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="text" name="{{ sanitize_title($field['labels']['lastname']) }}" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -39,14 +39,14 @@
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-email">{{ $labels['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="email" name="email" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="email" name="{{ sanitize_title($field['labels']['email']) }}" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-phone">{{ $labels['phone'] }}{!! in_array('phone', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="tel" name="phone" id="{{ $module_id }}-phone" {{ in_array('phone', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-phone">{{ $field['labels']['phone'] }}{!! in_array('phone', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="tel" name="{{ sanitize_title($field['labels']['phone']) }}" id="{{ $module_id }}-phone" {{ in_array('phone', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -54,8 +54,8 @@
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-email">{{ $labels['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="email" name="email" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="email" name="{{ sanitize_title($field['labels']['email']) }}" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -63,8 +63,8 @@
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-phone">{{ $labels['phone'] }}{!! in_array('phone', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="tel" name="phone" id="{{ $module_id }}-phone" {{ in_array('phone', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-phone">{{ $field['labels']['phone'] }}{!! in_array('phone', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="tel" name="{{ sanitize_title($field['labels']['phone']) }}" id="{{ $module_id }}-phone" {{ in_array('phone', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -75,14 +75,14 @@
     <div class="grid">
         <div class="grid-md-12">
             <div class="form-group">
-                <label for="{{ $module_id }}-address-street">{{ $labels['street_address'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <label for="{{ $module_id }}-address-street">{{ $field['labels']['street_address'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @if ($googleGeocoding)
                 <div class="input-group">
-                    <input type="text" name="address[street-address]" class="form-control" id="{{ $module_id }}-address-street" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
+                    <input type="text" name="{{ sanitize_title($field['labels']['address']) }}[{{ sanitize_title($field['labels']['street_address']) }}]" class="form-control" id="{{ $module_id }}-address-street" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
                     <span class="input-group-addon-btn"><button id="form-get-location" class="btn"><i class="pricon pricon-location-pin"></i> <?php _e('Find my location', 'modularity-form-builder'); ?></button></span>
                 </div>
                 @else
-                    <input type="text" name="address[street-address]" class="form-control" id="{{ $module_id }}-address-street" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
+                    <input type="text" name="{{ sanitize_title($field['labels']['address']) }}[{{ sanitize_title($field['labels']['street_address']) }}]" class="form-control" id="{{ $module_id }}-address-street" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
                 @endif
             </div>
         </div>
@@ -90,14 +90,14 @@
     <div class="grid">
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-address-postal_code">{{ $labels['postal_code'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="address[postal-code]" id="{{ $module_id }}-address-postal_code" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-address-postal-code">{{ $field['labels']['postal_code'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="text" name="{{ sanitize_title($field['labels']['address']) }}[{{ sanitize_title($field['labels']['postal_code']) }}]" id="{{ $module_id }}-address-postal-code" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
         <div class="grid-md-6">
             <div class="form-group">
-                <label for="{{ $module_id }}-address-city">{{ $labels['city'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="address[city]" id="{{ $module_id }}-address-city" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
+                <label for="{{ $module_id }}-address-city">{{ $field['labels']['city'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+                <input type="text" name="{{ sanitize_title($field['labels']['address']) }}[{{ sanitize_title($field['labels']['city']) }}]" id="{{ $module_id }}-address-city" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
