@@ -37,7 +37,7 @@ class Submission
         // Upload files
         $files = array();
         if (!empty($_FILES)) {
-            $files = $this->uploadFiles($_FILES, $_POST['modularity-form-id']);
+            $files = self::uploadFiles($_FILES, $_POST['modularity-form-id']);
 
             // Return to form if upload failed
             if (isset($files['error'])) {
@@ -106,15 +106,14 @@ class Submission
      * @param  int   $formId
      * @return array
      */
-    public function uploadFiles($fileslist, $formId)
+    public static function uploadFiles($fileslist, $formId)
     {
         $uploadsFolder = wp_upload_dir();
         $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder';
-        $this->maybeCreateFolder($uploadsFolder);
-        $fields = $this->getFileFields($formId);
+        self::maybeCreateFolder($uploadsFolder);
+        $fields = self::getFileFields($formId);
         $allowedImageTypes = array('.jpeg', '.jpg', '.png', '.gif', '.svg');
         $allowedVideoTypes = array('.mov', '.mpeg4', '.mp4', '.avi', '.wmv', '.mpegps', '.flv', '.3gpp', '.webm');
-
         // Data to be returned
         $uploaded = array();
 
@@ -172,7 +171,7 @@ class Submission
      * @param  int    $formId
      * @return array
      */
-    public function getFileFields(int $formId) : array
+    public static function getFileFields(int $formId) : array
     {
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
@@ -194,7 +193,7 @@ class Submission
      * @param  string $path
      * @return string
      */
-    public function maybeCreateFolder(string $path) : string
+    public static function maybeCreateFolder(string $path) : string
     {
         if (file_exists($path)) {
             return $path;
@@ -221,12 +220,18 @@ class Submission
         $fields = $fields['form_fields'];
         $data = get_post_meta($submissionId, 'form-data', true);
         $formdata = array();
+        $labels = \ModularityFormBuilder\PostType::getSenderLabels();
 
         foreach ($fields as $field) {
             if ($field['acf_fc_layout'] === 'sender') {
+                // Merge default and custom labels
+                if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
+                    $labels = array_merge($labels, array_filter($field['custom_sender_labels']));
+                }
+
                 foreach ($field['fields'] as $subfield) {
-                    $label = \ModularityFormBuilder\PostType::getTranslatedSenderField($subfield);
-                    $formdata[$label] = $data[$subfield];
+                    var_dump($subfield);
+                    $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])];
                 }
             } elseif ($field['acf_fc_layout'] === 'custom_content') {
                 continue;
