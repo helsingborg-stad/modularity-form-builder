@@ -6,10 +6,10 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.getLocation = (function ($) {
 
 	var componentForm = {
-	       	street_number: 	{autofillName : 'street-address',  addressType : 'short_name'},
-	        route: 			{autofillName : 'street-address', addressType : 'short_name'},
-	        locality: 		{autofillName : 'city', 		  addressType : 'long_name'},
-	        postal_code: 	{autofillName : 'postal-code',    addressType : 'long_name'}
+	       	street_number: 	{name : 'street', 		addressType : 'short_name'},
+	        route: 			{name : 'street', 		addressType : 'short_name'},
+	        locality: 		{name : 'city', 		addressType : 'long_name'},
+	        postal_code: 	{name : 'postal-code',	addressType : 'long_name'}
     	};
 
     function getLocation() {
@@ -47,7 +47,7 @@ FormBuilder.Front.getLocation = (function ($) {
 
 							          	if (componentForm[addressType]) {
 							            	var value = results[0].address_components[i][componentForm[addressType].addressType];
-							            	$target.find('[name="address[' + componentForm[addressType].autofillName + ']"]').val(value);
+							            	$target.find('[id$="address-' + componentForm[addressType].name + '"]').val(value);
 							          	}
 
 								       	// Combine street name and street number
@@ -56,7 +56,7 @@ FormBuilder.Front.getLocation = (function ($) {
 						            	} else if(addressType == 'street_number') {
 						            		fullAddress[1] = value;
 						            	}
-						            	$target.find('[name="address[street-address]"]').val(fullAddress.join(' '));
+						            	$target.find('[id$="address-street"]').val(fullAddress.join(' '));
 					            	}
 								}
 						});
