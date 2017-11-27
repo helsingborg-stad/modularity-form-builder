@@ -53,9 +53,12 @@ class Submission
 
         $_POST = array_merge($_POST, $files);
 
+        // Get post title
+        $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
+
         // Save submission
         $submission = wp_insert_post(array(
-            'post_title' => get_the_title($_POST['modularity-form-id']),
+            'post_title' => $postTitle,
             'post_type' => $_POST['modularity-form-post-type'],
             'post_status' => 'publish'
         ));
