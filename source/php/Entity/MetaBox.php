@@ -24,8 +24,6 @@ class MetaBox
     /* Attaches meta boxes to the post type */
     public function addMetaBox()
     {
-        var_dump($this->postType);
-
         // Meta variables
         $boxId         = strtolower( str_replace( ' ', '_', $this->title ) );
         $boxTitle      = ucwords( str_replace( '_', ' ', $this->title ) );
