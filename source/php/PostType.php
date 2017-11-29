@@ -118,8 +118,11 @@ class PostType
         $uploadFolder = wp_upload_dir();
         $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
 
+        // Skip custom content field or fields that are used as post data
         foreach ($fields['form_fields'] as $field) {
-            if ($field['acf_fc_layout'] === 'custom_content') {
+            if ($field['acf_fc_layout'] === 'custom_content'
+                || !empty($field['custom_post_type_title'])
+                || !empty($field['custom_post_type_content'])) {
                 continue;
             }
 
@@ -310,7 +313,7 @@ class PostType
      */
     public function submissionPostTypes($field)
     {
-        $field['choices'][$postTypeSlug] = __('Form submissions', 'modularity-form-builder');
+        $field['choices'][$this->postTypeSlug] = __('Form submissions', 'modularity-form-builder');
 
         if (current_user_can('administrator')) {
             $postTypes = get_post_types(array('_builtin' => false, 'public' => true));
