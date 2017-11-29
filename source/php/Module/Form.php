@@ -182,7 +182,7 @@ class Form extends \Modularity\Module
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
 
         foreach ($data['form_fields'] as &$field) {
-            $field['name'] = sanitize_title($field['label']);
+            $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
 
             $field['conditional_hidden'] = '';
             if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
