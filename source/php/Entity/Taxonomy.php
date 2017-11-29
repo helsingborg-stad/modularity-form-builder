@@ -24,7 +24,7 @@ class Taxonomy
     public function registerTaxonomy() : string
     {
         $labels = array(
-            'name'              => $this->nameSingular,
+            'name'              => $this->namePlural,
             'singular_name'     => $this->nameSingular,
             'search_items'      => sprintf(__('Search %s', 'modularity-form-builder'), $this->namePlural),
             'all_items'         => sprintf(__('All %s', 'modularity-form-builder'), $this->namePlural),
