@@ -446,6 +446,33 @@
                             'return_format' => 'value',
                             'placeholder' => '',
                         ),
+                        5 => array(
+                            'key' => 'field_5a1be0449d8b8',
+                            'label' => 'Custom post type content',
+                            'name' => 'custom_post_type_content',
+                            'type' => 'true_false',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => array(
+                                0 => array(
+                                    0 => array(
+                                        'field' => 'field_5a1837b50079f',
+                                        'operator' => '==',
+                                        'value' => '1',
+                                    ),
+                                ),
+                            ),
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'message' => 'Use this field as post content. Default is empty content field.',
+                            'default_value' => 0,
+                            'ui' => 0,
+                            'ui_on_text' => '',
+                            'ui_off_text' => '',
+                        ),
                     ),
                     'min' => '',
                     'max' => '',
