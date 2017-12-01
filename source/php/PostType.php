@@ -151,13 +151,13 @@ class PostType
             $data['form_fields'][] = array_merge(
                 $field,
                 array(
-                    'name'     => sanitize_title($field['label']),
-                    'value'    => (!empty($indata[sanitize_title($field['label'])])) ? $indata[sanitize_title($field['label'])] : '',
+                    'name'  => sanitize_title($field['label']),
+                    'value' => (!empty($indata[sanitize_title($field['label'])])) ? $indata[sanitize_title($field['label'])] : '',
                 )
             );
         }
 
-        if (isset($fields['editable_front_end']) && $fields['editable_front_end'] == true) {
+        if (isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
             $template = new \Municipio\template;
             $view = \Municipio\Helper\Template::locateTemplate('form-edit.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
             $view = $template->cleanViewPath($view);
@@ -175,7 +175,6 @@ class PostType
     public function formFilter()
     {
         global $typenow;
-        global $wp_query;
 
         if ($typenow !== 'form-submissions') {
             return;
@@ -338,7 +337,7 @@ class PostType
             return;
         }
 
-        if (!wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
+        if (!isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
             return;
         }
 

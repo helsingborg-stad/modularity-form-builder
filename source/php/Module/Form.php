@@ -275,13 +275,13 @@ class Form extends \Modularity\Module
      */
     public function getSelectedField()
     {
-        $selected  = 'error';
+        $selected = 'error';
         if (!isset($_POST['moduleId']) || !isset($_POST['fieldName'])) {
             echo $selected;
             die();
         }
 
-        $moduleId =  $_POST['moduleId'];
+        $moduleId = $_POST['moduleId'];
         $fieldName = $_POST['fieldName'];
         preg_match('#\[(\d+)\]#', $fieldName, $match);
         if (!empty($match[1])) {
