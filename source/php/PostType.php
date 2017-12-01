@@ -295,12 +295,12 @@ class PostType
 
     /**
      * Display feedback ID
-     * @param  obj $post Current post object
+     * @param  object $post Current post object
      * @return void
      */
     public function displayFeedbackId($post)
     {
-        if ($post->post_type == 'form-submissions') {
+        if ($post->post_type == $this->postTypeSlug) {
             echo '<div class="inside"><span><strong>' . __('Feedback ID') . ':</strong> ' . $post->ID . '</span></div>';
         }
     }
@@ -364,7 +364,6 @@ class PostType
         }
 
         $postId     = $_POST['postId'];
-        $formId     = $_POST['formId'];
         $filePath   = $_POST['filePath'];
         $fieldName  = $_POST['fieldName'];
         $formData   = get_post_meta($postId, 'form-data', true);
@@ -403,7 +402,7 @@ class PostType
         $formData   = get_post_meta($postId, 'form-data', true);
 
         if (!empty($_FILES)) {
-            $files = \ModularityFormBuilder\Submission::uploadFiles($_FILES, $formId);
+            $files = Submission::uploadFiles($_FILES, $formId);
 
             // Return if upload failed
             if (isset($files['error'])) {
