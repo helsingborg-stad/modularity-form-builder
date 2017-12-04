@@ -341,14 +341,12 @@ class PostType
             return;
         }
 
-        if (isset($_POST) && isset($postId) && get_post_type($postId) == $this->postTypeSlug) {
+        if (isset($_POST['mod-form']) && isset($postId) && get_post_type($postId) == $this->postTypeSlug) {
             $indata = get_post_meta($postId, 'form-data', true);
+            // Merge old values with new ones
+            $data = array_merge($indata, $_POST['mod-form']);
 
-            foreach ($indata as $key => &$field) {
-                $field = (isset($_POST[$key])) ? $_POST[$key] : $field;
-            }
-
-            update_post_meta($postId, 'form-data', $indata);
+            update_post_meta($postId, 'form-data', $data);
         }
     }
 
