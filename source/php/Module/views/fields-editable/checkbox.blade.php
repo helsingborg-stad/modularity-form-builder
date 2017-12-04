@@ -5,11 +5,11 @@
     </label></b></p>
 </div>
 <ul style="list-style-type:none">
-    <input type="hidden" name="{{ $field['name'] }}[]">
+    <input type="hidden" name=mod-form[{{ $field['name'] }}][]">
     @foreach ($field['values'] as $value)
         <li>
             <label>
-                <input type="checkbox" name="{{ $field['name'] }}[]" value="{{ $value['value'] }}" {{ is_array($field['value']) && in_array($value['value'], $field['value']) ? 'checked' : '' }}> {{ $value['value'] }}
+                <input type="checkbox" name="mod-form[{{ $field['name'] }}][]" value="{{ $value['value'] }}" {{ is_array($field['value']) && in_array($value['value'], $field['value']) ? 'checked' : '' }}> {{ $value['value'] }}
             </label>
         </li>
     @endforeach

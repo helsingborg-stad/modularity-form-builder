@@ -8,7 +8,7 @@
     @foreach ($field['values'] as $value)
         <li>
             <label class="checkbox">
-                <input type="radio" name="{{ $field['name'] }}" value="{{ $value['value'] }}" {{ $field['required'] ? 'required' : '' }} {{ $field['value'] == $value['value'] ? 'checked' : '' }}> {{ $value['value'] }}
+                <input type="radio" name="mod-form[{{ $field['name'] }}]" value="{{ $value['value'] }}" {{ $field['required'] ? 'required' : '' }} {{ $field['value'] == $value['value'] ? 'checked' : '' }}> {{ $value['value'] }}
             </label>
         </li>
     @endforeach
