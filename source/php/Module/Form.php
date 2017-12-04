@@ -190,7 +190,7 @@ class Form extends \Modularity\Module
             }
 
             if ($field['acf_fc_layout'] === 'sender') {
-                $field['labels'] = \ModularityFormBuilder\PostType::getSenderLabels();
+                $field['labels'] = PostType::getSenderLabels();
 
                 // Merge default and custom labels
                 if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
