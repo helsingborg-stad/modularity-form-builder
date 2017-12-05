@@ -1600,6 +1600,110 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "5a266baf943ab": {
+                    "key": "5a266baf943ab",
+                    "name": "collapse",
+                    "label": "Collapse",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a26ac03821d9",
+                            "label": "Collapse",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Adds a collapse button that toggles all fields below. This is a layout field and will not be sent in e-mail messages.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5a266bb8943af",
+                            "label": "Button text",
+                            "name": "button_text",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5a266baf943ad",
+                            "label": "Conditional logic",
+                            "name": "conditional_logic",
+                            "type": "true_false",
+                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add conditional logic",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_5a266baf943ae",
+                            "label": "Conditonal field",
+                            "name": "conditonal_field",
+                            "type": "select",
+                            "instructions": "Display field if this value is selected.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a266baf943ad",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": [],
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5a268f41821d8": {
+                    "key": "5a268f41821d8",
+                    "name": "",
+                    "label": "",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add form field",
