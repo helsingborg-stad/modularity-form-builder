@@ -12,7 +12,6 @@ FormBuilder.Front.collapse = (function ($) {
 
     collapse.prototype.init = function() {
         $('.mod-form-collapse').each(function(index) {
-            var $target = $(this).parents('.mod-form-collapse');
             $(this).nextUntil(':not(.mod-form-field)').hide();
         });
     };
