@@ -1,0 +1,8 @@
+.mod-form-collapse {
+  margin: 10px 0; }
+  .mod-form-collapse + .grid {
+    padding: 10px 0 0 0; }
+  .mod-form-collapse__text {
+    float: left; }
+  .mod-form-collapse__icon {
+    float: right; }
