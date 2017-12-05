@@ -71,7 +71,7 @@ class Form extends \Modularity\Module
         $csvData = array();
 
         foreach ($submissions as $submission) {
-            $data = \ModularityFormBuilder\Submission::getSubmissionData($submission->ID);
+            $data = Submission::getSubmissionData($submission->ID);
             $csvData[] = $data;
         }
 
@@ -267,6 +267,15 @@ class Form extends \Modularity\Module
             'something_went_wrong' => __('Something went wrong', 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder');
+    }
+
+    /**
+     * Enqueue required styles
+     * @return void
+     */
+    public function style()
+    {
+        wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/css/modularity-form-builder.min.css');
     }
 
     /**
