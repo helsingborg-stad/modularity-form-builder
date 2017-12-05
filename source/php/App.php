@@ -22,7 +22,7 @@ class App
             }
         });
         add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
-        add_action('acf/save_post', array($this, 'updateFieldKeys'), 1);
+        add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
 
         add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
     }
@@ -33,9 +33,10 @@ class App
      * @return void
      */
     public function addHiddenFields($field) {
-        if ($field['parent'] != 'field_58eb302883a68' && $field['parent'] != 'field_5a0abd4a4342a') {
+        if (get_post_type() != $this->postType || ($field['parent'] != 'field_58eb302883a68' && $field['parent'] != 'field_5a0abd4a4342a')) {
             return;
         }
+
         $val = is_string($field['value']) ? $field['value'] : '';
         echo '<input type="hidden" name="current-' . $field['name'] . '" value="' . $val . '">';
     }
@@ -111,11 +112,11 @@ class App
 
         // Get all post IDs submitted to the form
         $query = "
-            SELECT $wpdb->posts.ID 
+            SELECT $wpdb->posts.ID
             FROM $wpdb->posts, $wpdb->postmeta
             WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
             AND $wpdb->postmeta.meta_key = 'modularity-form-id'
-            AND $wpdb->postmeta.meta_value = $moduleId 
+            AND $wpdb->postmeta.meta_value = $moduleId
         ";
         $posts = $wpdb->get_results($query, ARRAY_A);
 
