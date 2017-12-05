@@ -1,0 +1,15 @@
+.mod-form-collapse {
+    margin: 10px 0;
+
+    & + .grid {
+        padding: 10px 0 0 0;
+    }
+
+    &__text {
+        float: left;
+    }
+
+    &__icon {
+        float: right;
+    }
+}
