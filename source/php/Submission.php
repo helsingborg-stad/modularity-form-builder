@@ -226,6 +226,10 @@ class Submission
         $data = get_post_meta($submissionId, 'form-data', true);
         $formdata = array();
         $labels = \ModularityFormBuilder\PostType::getSenderLabels();
+        $excludedFields = array(
+            'custom_content',
+            'collapse'
+        );
 
         foreach ($fields as $field) {
             if ($field['acf_fc_layout'] === 'sender') {
@@ -238,7 +242,7 @@ class Submission
                     var_dump($subfield);
                     $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])];
                 }
-            } elseif ($field['acf_fc_layout'] === 'custom_content') {
+            } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
                 $formdata[$field['label']] = isset($data[sanitize_title($field['label'])]) ? $data[sanitize_title($field['label'])] : '';

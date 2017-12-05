@@ -117,10 +117,14 @@ class PostType
         $data['module_id'] = $indata['modularity-form-id'];
         $uploadFolder = wp_upload_dir();
         $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
+        $excludedFields = array(
+            'custom_content',
+            'collapse'
+        );
 
         // Skip custom content field or fields that are used as post data
         foreach ($fields['form_fields'] as $field) {
-            if ($field['acf_fc_layout'] === 'custom_content'
+            if (in_array($field['acf_fc_layout'], $excludedFields)
                 || !empty($field['custom_post_type_title'])
                 || !empty($field['custom_post_type_content'])) {
                 continue;
