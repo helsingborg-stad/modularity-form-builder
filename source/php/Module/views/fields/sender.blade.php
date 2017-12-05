@@ -1,6 +1,6 @@
 {{-- Firstname and/or lastname --}}
 @if (in_array('firstname', $field['fields']) && in_array('lastname', $field['fields']))
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
@@ -15,7 +15,7 @@
         </div>
     </div>
 @elseif (in_array('firstname', $field['fields']) && !in_array('lastname', $field['fields']))
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
@@ -24,7 +24,7 @@
         </div>
     </div>
 @elseif (!in_array('firstname', $field['fields']) && in_array('lastname', $field['fields']))
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-lastname">{{ $field['labels']['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
@@ -36,7 +36,7 @@
 
 {{-- Email and/or phone --}}
 @if (in_array('email', $field['fields']) && in_array('phone', $field['fields']))
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
@@ -51,7 +51,7 @@
         </div>
     </div>
 @elseif (in_array('email', $field['fields']) && !in_array('phone', $field['fields']))
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
@@ -60,7 +60,7 @@
         </div>
     </div>
 @elseif (!in_array('email', $field['fields']) && in_array('phone', $field['fields']))
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-phone">{{ $field['labels']['phone'] }}{!! in_array('phone', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
@@ -72,7 +72,7 @@
 
 {{-- Address --}}
  @if (in_array('address', $field['fields']))
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-12">
             <div class="form-group">
                 <label for="{{ $module_id }}-address-street">{{ $field['labels']['street_address'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="grid">
+    <div class="grid mod-form-field">
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-address-postal-code">{{ $field['labels']['postal_code'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
