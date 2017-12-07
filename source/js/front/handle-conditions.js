@@ -3,20 +3,20 @@ FormBuilder.Front = FormBuilder.Front || {};
 
 FormBuilder.Front.handleConditions = (function ($) {
 
-    function handleConditions() {
+    function HandleConditions() {
         $(function() {
             this.handleRequired();
             this.handleEvents();
         }.bind(this));
     }
 
-    handleConditions.prototype.handleRequired = function () {
+    HandleConditions.prototype.handleRequired = function () {
         $target = $('[class*="mod-form"]');
         $('[conditional-target]:hidden', $target).find('[required]').prop('required', false).attr('hidden-required', true);
         $('[conditional-target]:visible', $target).find('[hidden-required]').prop('required', true);
     };
 
-    handleConditions.prototype.handleEvents = function () {
+    HandleConditions.prototype.handleEvents = function () {
         $('input[conditional]').change(function(e) {
             $target = $(e.target).parents('[class*="mod-form"]');
             var conditional = $(e.target).attr('conditional');
@@ -30,6 +30,6 @@ FormBuilder.Front.handleConditions = (function ($) {
         }.bind(this));
     };
 
-	return new handleConditions();
+	return new HandleConditions();
 
 })(jQuery);

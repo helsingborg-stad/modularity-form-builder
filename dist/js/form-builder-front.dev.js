@@ -3,20 +3,20 @@ FormBuilder.Front = FormBuilder.Front || {};
 
 FormBuilder.Front.collapse = (function ($) {
 
-    function collapse() {
+    function Collapse() {
         $(function() {
             this.init();
             this.handleEvents();
         }.bind(this));
     }
 
-    collapse.prototype.init = function() {
+    Collapse.prototype.init = function() {
         $('.mod-form-collapse').each(function(index) {
             $(this).nextUntil(':not(.mod-form-field)').hide();
         });
     };
 
-    collapse.prototype.handleEvents = function () {
+    Collapse.prototype.handleEvents = function () {
         $('button', '.mod-form-collapse').click(function(e) {
             e.preventDefault();
 
@@ -31,7 +31,7 @@ FormBuilder.Front.collapse = (function ($) {
         }.bind(this));
     };
 
-    return new collapse();
+    return new Collapse();
 })(jQuery);
 
 var FormBuilder = FormBuilder || {};
@@ -48,7 +48,7 @@ FormBuilder.Front.getLocation = (function ($) {
 	        postal_code: 	{name : 'postal-code',	addressType : 'long_name'}
     	};
 
-    function getLocation() {
+    function GetLocation() {
         $(function() {
         	var locationButton = document.getElementById('form-get-location');
         	if (!navigator.geolocation || locationButton === null) {
@@ -59,7 +59,7 @@ FormBuilder.Front.getLocation = (function ($) {
         }.bind(this));
     }
 
-    getLocation.prototype.handleEvents = function() {
+    GetLocation.prototype.handleEvents = function() {
         $('#form-get-location').click(function(e) {
         	e.preventDefault();
             $target = $(e.target).parents('[class*="mod-form"]');
@@ -107,7 +107,7 @@ FormBuilder.Front.getLocation = (function ($) {
         }.bind(this));
     };
 
-	return new getLocation();
+	return new GetLocation();
 
 })(jQuery);
 
@@ -116,20 +116,20 @@ FormBuilder.Front = FormBuilder.Front || {};
 
 FormBuilder.Front.handleConditions = (function ($) {
 
-    function handleConditions() {
+    function HandleConditions() {
         $(function() {
             this.handleRequired();
             this.handleEvents();
         }.bind(this));
     }
 
-    handleConditions.prototype.handleRequired = function () {
+    HandleConditions.prototype.handleRequired = function () {
         $target = $('[class*="mod-form"]');
         $('[conditional-target]:hidden', $target).find('[required]').prop('required', false).attr('hidden-required', true);
         $('[conditional-target]:visible', $target).find('[hidden-required]').prop('required', true);
     };
 
-    handleConditions.prototype.handleEvents = function () {
+    HandleConditions.prototype.handleEvents = function () {
         $('input[conditional]').change(function(e) {
             $target = $(e.target).parents('[class*="mod-form"]');
             var conditional = $(e.target).attr('conditional');
@@ -143,7 +143,7 @@ FormBuilder.Front.handleConditions = (function ($) {
         }.bind(this));
     };
 
-	return new handleConditions();
+	return new HandleConditions();
 
 })(jQuery);
 
@@ -152,19 +152,19 @@ FormBuilder.Front = FormBuilder.Front || {};
 
 FormBuilder.Front.submit = (function ($) {
 
-    function submit() {
+    function Submit() {
         $(function() {
             this.handleEvents();
         }.bind(this));
     }
 
     // Show spinner icon on submit
-    submit.prototype.handleEvents = function () {
+    Submit.prototype.handleEvents = function () {
         $('[class*="mod-form"]').submit(function(e) {
             $(e.target).find('button[type="submit"]').html('<i class="spinner"></i> ' + formbuilder.sending);
         }.bind(this));
     };
 
-	return new submit();
+	return new Submit();
 
 })(jQuery);

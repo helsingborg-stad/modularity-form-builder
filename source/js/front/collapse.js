@@ -3,20 +3,20 @@ FormBuilder.Front = FormBuilder.Front || {};
 
 FormBuilder.Front.collapse = (function ($) {
 
-    function collapse() {
+    function Collapse() {
         $(function() {
             this.init();
             this.handleEvents();
         }.bind(this));
     }
 
-    collapse.prototype.init = function() {
+    Collapse.prototype.init = function() {
         $('.mod-form-collapse').each(function(index) {
             $(this).nextUntil(':not(.mod-form-field)').hide();
         });
     };
 
-    collapse.prototype.handleEvents = function () {
+    Collapse.prototype.handleEvents = function () {
         $('button', '.mod-form-collapse').click(function(e) {
             e.preventDefault();
 
@@ -31,5 +31,5 @@ FormBuilder.Front.collapse = (function ($) {
         }.bind(this));
     };
 
-    return new collapse();
+    return new Collapse();
 })(jQuery);

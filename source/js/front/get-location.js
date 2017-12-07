@@ -10,7 +10,7 @@ FormBuilder.Front.getLocation = (function ($) {
 	        postal_code: 	{name : 'postal-code',	addressType : 'long_name'}
     	};
 
-    function getLocation() {
+    function GetLocation() {
         $(function() {
         	var locationButton = document.getElementById('form-get-location');
         	if (!navigator.geolocation || locationButton === null) {
@@ -21,7 +21,7 @@ FormBuilder.Front.getLocation = (function ($) {
         }.bind(this));
     }
 
-    getLocation.prototype.handleEvents = function() {
+    GetLocation.prototype.handleEvents = function() {
         $('#form-get-location').click(function(e) {
         	e.preventDefault();
             $target = $(e.target).parents('[class*="mod-form"]');
@@ -69,6 +69,6 @@ FormBuilder.Front.getLocation = (function ($) {
         }.bind(this));
     };
 
-	return new getLocation();
+	return new GetLocation();
 
 })(jQuery);
