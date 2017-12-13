@@ -5,10 +5,8 @@ FormBuilder.Admin.Conditional = (function ($) {
 
     function Conditional() {
         $(document).ready(function () {
-        	if (pagenow == 'mod-form') {
-        		this.populateSelectFields();
-        		this.handleEvents();
-        	}
+        	this.populateSelectFields();
+        	this.handleEvents();
 
         }.bind(this));
     }
@@ -154,7 +152,7 @@ FormBuilder.Admin.EditForm = (function ($) {
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('Error: ' + textStatus);
-            },
+            }
         });
     };
 
@@ -183,23 +181,52 @@ FormBuilder.Admin.EditForm = (function ($) {
             contentType: false,
             beforeSend: function(response) {
                 $('input[type=file]', target).hide();
-                $('.upload-status', target).html('<p><div class="spinner is-active" style="float:left;"></div> ' + formbuilder.uploading + '</p>');
+                $('.upload-status', target).html('<div class="spinner spinner-dark is-active" style="float:none;"></div>');
             },
             success: function(response, textStatus, jqXHR) {
                 if (response.success) {
-                    //location.reload();
-                    $(':submit', '#publishing-action').trigger('click');
+                    $(':submit', '#publishing-action,#edit-post').trigger('click');
+                    $('.upload-status', target).html('<p>' + response.data + '</p>');
                 } else {
                     $('.upload-status', target).html('<p>' + response.data + '</p>');
                     $('input[type=file]', target).show();
                 }
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function(jqXHR, textStatus) {
                 console.log('error: ' + textStatus);
                 $('input[type=file]', target).show();
                 $('.upload-status', target).hide();
-            },
+            }
         });
+    };
+
+    EditForm.prototype.savePost = function (event) {
+        var $form = $(event.target);
+        var data = new FormData(event.target);
+            data.append('action', 'save_post');
+
+        $form.find('button[type="submit"]').append('<span class="spinner"></span>');
+
+        $.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    $form.find('button[type="submit"]').append('<i class="pricon pricon-check"></i>').find('.spinner').hide();
+                } else {
+                    $('.modal-footer', $form).html('<span class="notice warning"><i class="pricon pricon-notice-warning"></i> ' + response.data + '</span>');
+                }
+            },
+            complete: function () {
+                location.reload();
+            }
+        });
+
+        return false;
     };
 
     /**
@@ -207,6 +234,11 @@ FormBuilder.Admin.EditForm = (function ($) {
      * @return {void}
      */
     EditForm.prototype.handleEvents = function () {
+        $(document).on('submit', '#edit-post', function (e) {
+            e.preventDefault();
+            this.savePost(e);
+        }.bind(this));
+
         $(document).on('click', '.delete-form-file', function (e) {
             e.preventDefault();
             if (window.confirm(formbuilder.delete_confirm)) {
@@ -220,7 +252,7 @@ FormBuilder.Admin.EditForm = (function ($) {
         }.bind(this));
 
         $(document).on('change', 'input[type=file]', function(e) {
-            var files     = e.target.files;
+            var files     = e.target.files,
                 postId    = $(e.target).attr('postid'),
                 formId    = $(e.target).attr('formid'),
                 fieldName = $(e.target).attr('fieldname'),
@@ -228,7 +260,6 @@ FormBuilder.Admin.EditForm = (function ($) {
 
             this.uploadFile(files, postId, formId, fieldName, $target);
         }.bind(this));
-
     };
 
     return new EditForm();
