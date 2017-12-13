@@ -25,6 +25,16 @@ class App
         add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
 
         add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
+        add_action('Municipio/blog/post_info', array($this, 'addEditButton'));
+    }
+
+    public function addEditButton()
+    {
+        global $post;
+
+        if (PostType::editableFrontend($post)) {
+            echo '<li><a href="#modal-edit-post" class="btn btn-sm"><i class="pricon pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a></li>';
+        }
     }
 
     /**
