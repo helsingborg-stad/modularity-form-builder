@@ -10,7 +10,7 @@ class Submission
             if (isset($_POST['modularity-form']) && wp_verify_nonce($_POST['modularity-form'], 'submit')) {
                 $this->submit();
             }
-        });
+        }, 11);
     }
 
     /**
@@ -64,6 +64,9 @@ class Submission
             'post_type'     => $_POST['modularity-form-post-type'],
             'post_status'   => 'publish'
         ));
+
+        update_field('field_56cadc4e0480b', false, $submission);
+        update_field('field_56cadc7b0480c', false, $submission);
 
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
