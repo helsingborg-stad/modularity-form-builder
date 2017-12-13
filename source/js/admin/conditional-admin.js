@@ -5,10 +5,8 @@ FormBuilder.Admin.Conditional = (function ($) {
 
     function Conditional() {
         $(document).ready(function () {
-        	if (pagenow == 'mod-form') {
-        		this.populateSelectFields();
-        		this.handleEvents();
-        	}
+        	this.populateSelectFields();
+        	this.handleEvents();
 
         }.bind(this));
     }
