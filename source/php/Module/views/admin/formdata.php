@@ -1,4 +1,8 @@
 <?php foreach ($data['form_fields'] as $item) : ?>
+    <?php if (empty($item['value'])) {
+        continue;
+    } ?>
+
     <p data-type="<?php echo $item['acf_fc_layout']; ?>">
         <strong><?php echo $item['label']; ?></strong><br>
         <?php

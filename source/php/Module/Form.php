@@ -246,7 +246,6 @@ class Form extends \Modularity\Module
             'mod_form_authorized'   => (get_option('options_mod_form_access_token') == true) ? true : false,
             'selections_missing'    => __('Please create radio selections before adding conditional logic.', 'modularity-form-builder'),
             'delete_confirm'        => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
-            'uploading'             => __('Uploading', 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder');
     }
