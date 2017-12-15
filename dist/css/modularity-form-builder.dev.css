@@ -6,3 +6,6 @@
     float: left; }
   .mod-form-collapse__icon {
     float: right; }
+
+#edit-post .mod-form-field {
+  max-width: none; }

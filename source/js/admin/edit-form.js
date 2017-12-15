@@ -63,11 +63,10 @@ FormBuilder.Admin.EditForm = (function ($) {
             success: function(response, textStatus, jqXHR) {
                 if (response.success) {
                     $(':submit', '#publishing-action,#edit-post').trigger('click');
-                    $('.upload-status', target).html('<p>' + response.data + '</p>');
-                } else {
-                    $('.upload-status', target).html('<p>' + response.data + '</p>');
-                    $('input[type=file]', target).show();
                 }
+
+                $('.upload-status', target).html('<p>' + response.data + '</p>');
+                $('input[type=file]', target).show();
             },
             error: function(jqXHR, textStatus) {
                 console.log('error: ' + textStatus);
@@ -82,7 +81,7 @@ FormBuilder.Admin.EditForm = (function ($) {
         var data = new FormData(event.target);
             data.append('action', 'save_post');
 
-        $form.find('button[type="submit"]').append('<span class="spinner"></span>');
+        $form.find('button[type="submit"]').attr('disabled', 'true').append('<span class="spinner"></span>');
 
         $.ajax({
             url: ajaxurl,
@@ -99,6 +98,7 @@ FormBuilder.Admin.EditForm = (function ($) {
                 }
             },
             complete: function () {
+                location.hash = '';
                 location.reload();
             }
         });
@@ -123,7 +123,7 @@ FormBuilder.Admin.EditForm = (function ($) {
                     formId    = $(e.target).attr('formid'),
                     filePath  = $(e.target).attr('filepath'),
                     fieldName = $(e.target).attr('fieldname'),
-                    $target   = $(e.target).parents('li');
+                    $target   = $(e.target).parents('span');
                 this.deleteFile(postId, formId, filePath, fieldName, $target);
             }
         }.bind(this));
