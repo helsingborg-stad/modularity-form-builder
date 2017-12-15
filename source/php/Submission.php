@@ -65,9 +65,6 @@ class Submission
             'post_status'   => 'publish'
         ));
 
-        update_field('field_56cadc4e0480b', false, $submission);
-        update_field('field_56cadc7b0480c', false, $submission);
-
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', $referer);
