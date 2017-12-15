@@ -164,6 +164,7 @@ class PostType
             $view = $template->cleanViewPath($view);
             $template->render($view, $data);
         } elseif (self::editableFrontend($post)) {
+            $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $indata['modularity-form-id']);
             $data['editor_settings'] = array(
                 'wpautop' => true,
                 'media_buttons' => false,
@@ -196,11 +197,11 @@ class PostType
         $data['custom_post_type_content'] = false;
         $uploadFolder = wp_upload_dir();
         $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
-        $excludedFields = apply_filters('ModularityFormBuilder/fields/exclude', array('custom_content', 'collapse'), $post->post_type, $indata['modularity-form-id']);
+        $excludedGlobal = apply_filters('ModularityFormBuilder/excluded_fields/global', array('custom_content', 'collapse'), $post->post_type, $indata['modularity-form-id']);
 
-        // Skip custom content field or fields that are used as post data
         foreach ($fields['form_fields'] as $field) {
-            if (in_array($field['acf_fc_layout'], $excludedFields)) {
+            // Skip layout fields
+            if (in_array($field['acf_fc_layout'], $excludedGlobal)) {
                 continue;
             }
 
