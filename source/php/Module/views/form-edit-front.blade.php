@@ -1,12 +1,11 @@
-<div id="modal-edit-post" class="modal modal-backdrop-white modal-small" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="modal-edit-post" class="modal modal-backdrop-2 modal-small" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content material-shadow-lg">
         <form id="edit-post">
             <div class="modal-header">
                 <a class="btn btn-close" href="#close"></a>
                 <h2 class="modal-title"><?php _e('Edit', 'modularity-form-builder'); ?></h2>
             </div>
-            <div class="modal-body">
-                <article>
+            <div class="modal-body gutter">
                     {!! wp_nonce_field('update', 'update-modularity-form') !!}
 
                     @if ($custom_post_type_title)
@@ -23,7 +22,6 @@
                     @foreach ($form_fields as $field)
                         @include('fields-editable.' . $field['acf_fc_layout'])
                     @endforeach
-                </article>
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="post_id" value="{{ the_ID() }}">

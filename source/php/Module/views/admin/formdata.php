@@ -1,7 +1,9 @@
 <?php foreach ($data['form_fields'] as $item) : ?>
-    <?php if (empty($item['value'])) {
-        continue;
-    } ?>
+    <?php
+        if (empty($item['value'])) {
+            continue;
+        }
+    ?>
 
     <p data-type="<?php echo $item['acf_fc_layout']; ?>">
         <strong><?php echo $item['label']; ?></strong><br>
@@ -16,7 +18,11 @@
                 if ($i > 1) echo '<br>';
                 $filePath = file_exists($file) ? $uploadFolder . basename($file) : $file;
                 $fileName = file_exists($file) ? basename($file) : $file;
-                echo 'Öppna fil: <a target="_blank" href="' . $filePath . '">' . $fileName . '</a>';
+                if (is_admin()) {
+                    echo '<span class="dashicons dashicons-media-default"></span> <a target="_blank" class="link" href="' . $filePath . '">' . $fileName . '</a>';
+                } else {
+                    echo '<a href="' . $filePath . '" class="link-item link" target="_blank">' . $fileName . '</a>';
+                }
             }
         } elseif (is_array($item['value'])) {
             foreach ($item['value'] as $value) {
