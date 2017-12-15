@@ -21,20 +21,15 @@ class App
                 );
             }
         });
+
         add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
         add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
 
         add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
-        add_action('Municipio/blog/post_info', array($this, 'addEditButton'));
-    }
 
-    public function addEditButton()
-    {
-        global $post;
-
-        if (PostType::editableFrontend($post)) {
-            echo '<li><a href="#modal-edit-post" class="btn btn-sm"><i class="pricon pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a></li>';
-        }
+        add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
+        add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
+        add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
     }
 
     /**
@@ -184,5 +179,105 @@ class App
     {
         $array[] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views';
         return $array;
+    }
+
+    /**
+     * Delete a file (Ajax)
+     * @return void
+     */
+    public function deleteFile()
+    {
+        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['filePath']) ||!isset($_POST['fieldName'])) {
+            echo _e('Missing arguments', 'modularity-form-builder');
+            die();
+        }
+
+        $postId     = $_POST['postId'];
+        $filePath   = $_POST['filePath'];
+        $fieldName  = $_POST['fieldName'];
+        $formData   = get_post_meta($postId, 'form-data', true);
+
+        if (is_array($formData[$fieldName])) {
+            foreach ($formData[$fieldName] as $key => $file) {
+                if ($filePath == $file) {
+                    unset($formData[$fieldName][$key]);
+
+                    if (file_exists($filePath)) {
+                        unlink($filePath);
+                    }
+                }
+            }
+        }
+
+        update_post_meta($postId, 'form-data', $formData);
+
+        echo 'success';
+        die();
+    }
+
+    /**
+     * Upload files (Ajax)
+     * @return void
+     */
+    public function uploadFiles()
+    {
+        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['fieldName'])) {
+            wp_send_json_error(__('Missing arguments', 'modularity-form-builder'));
+        }
+
+        $postId     = (int)$_POST['postId'];
+        $formId     = (int)$_POST['formId'];
+        $fieldName  = $_POST['fieldName'];
+        $formData   = get_post_meta($postId, 'form-data', true);
+
+        if (!empty($_FILES)) {
+            $files = Submission::uploadFiles($_FILES, $formId);
+
+            // Return if upload failed
+            if (isset($files['error'])) {
+                wp_send_json_error(__('Something went wrong, please try again.', 'modularity-form-builder'));
+            }
+
+            // Save new file to array or marge with existing
+            if (is_array($formData[$fieldName]) && !empty($formData[$fieldName])) {
+                $formData[$fieldName] = array_merge($formData[$fieldName], $files[$fieldName]);
+            } else {
+                $formData[$fieldName] = $files[$fieldName];
+            }
+
+            update_post_meta($postId, 'form-data', $formData);
+
+            wp_send_json_success(__('Upload succeeded', 'modularity-form-builder'));
+        }
+
+        wp_send_json_error(__('File was missing, please try again.', 'modularity-form-builder'));
+    }
+
+    public function frontEndSavePost()
+    {
+        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
+            wp_send_json_error(__('Something went wrong', 'modularity-form-builder'));
+        }
+
+        $postId = $_POST['post_id'];
+
+        // Save form data
+        if (!empty($_POST['mod-form'])) {
+            $indata = get_post_meta($postId, 'form-data', true);
+            $data = array_merge($indata, $_POST['mod-form']);
+            update_post_meta($postId, 'form-data', $data);
+        }
+
+        // Update post title and content
+        $post = array('ID' => $postId);
+        if (!empty($_POST['mod-form']['post-title'])) {
+            $post['post_title'] = $_POST['mod-form']['post-title'];
+        }
+        if (!empty($_POST['mod-form']['post-content'])) {
+            $post['post_content'] = $_POST['mod-form']['post-content'];
+        }
+        wp_update_post($post);
+
+        wp_send_json_success(__('Saved', 'modularity-form-builder'));
     }
 }

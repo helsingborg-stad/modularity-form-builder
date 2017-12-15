@@ -13,38 +13,62 @@ class PostType
         add_action('add_meta_boxes', array($this, 'formdata'), 10, 2);
         add_action('restrict_manage_posts', array($this, 'formFilter'));
         add_action('edit_form_after_title', array($this, 'displayFeedbackId'), 10, 1);
-        add_action('wp_enqueue_scripts', array($this, 'enqueueScript'));
-
+        add_action('wp_enqueue_scripts', array($this, 'enqueue'));
+        add_action('Municipio/blog/post_info', array($this, 'addEditButton'));
+        add_filter('accessibility_items', array($this, 'accessibilityItems'), 11, 1);
         add_action('pre_get_posts', array($this, 'queryFilter'));
+        add_action('save_post_' . $this->postTypeSlug, array($this, 'updateForm'));
+        add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
 
         add_filter('the_content', array($this, 'appendFormdata'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
-        add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
-
         add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
-
-        add_action('save_post_' . $this->postTypeSlug, array($this, 'updateForm'));
-
-        add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
-        add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
-        add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
     }
 
     /**
-     * Enqueue scripts for front ui
-     * @return void
+     * Filter for adding accessibility items
+     * @param  array $items Default item array
+     * @return array        Modified item array
      */
-    public function enqueueScript()
+    public function accessibilityItems($items)
     {
         global $post;
 
-        if (is_object($post) && $post->post_type == $this->postTypeSlug && self::editableFrontend($post)) {
-            wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js', array('jQuery'), '', true);
-            wp_localize_script('form-builder', 'formbuilder', array(
-                'delete_confirm'        => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
-            ));
-            wp_enqueue_script('form-builder');
+        if (is_object($post) && self::editableFrontend($post) && !is_archive() && $post->post_type == $this->postTypeSlug) {
+            $items[] = '<a href="#modal-edit-post" class=""><i class="pricon pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a>';
+        }
+
+        return $items;
+    }
+
+    public function addEditButton()
+    {
+        global $post;
+
+        if (is_object($post) && self::editableFrontend($post) && !is_archive() && $post->post_type == $this->postTypeSlug) {
+            echo '<li><a href="#modal-edit-post" class="btn btn-sm"><i class="pricon pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a></li>';
+        }
+    }
+
+    /**
+     * Enqueue scripts and styles for front ui
+     * @return void
+     */
+    public function enqueue()
+    {
+        global $post;
+
+        if (is_object($post) && $post->post_type == $this->postTypeSlug) {
+            wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/css/modularity-form-builder.min.css');
+
+            if (self::editableFrontend($post)) {
+                wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js', array('jQuery'), '', true);
+                wp_localize_script('form-builder', 'formbuilder', array(
+                    'delete_confirm'        => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
+                ));
+                wp_enqueue_script('form-builder');
+            }
         }
     }
 
@@ -123,7 +147,7 @@ class PostType
     }
 
     /**
-     * Displays the form data
+     * Displays the form data, as static data or editable
      * @return void
      */
     public function formdataDisplay()
@@ -132,6 +156,39 @@ class PostType
 
         $indata = get_post_meta($post->ID, 'form-data', true);
         $fields = get_fields($indata['modularity-form-id']);
+        $data = $this->gatherFormData($post);
+
+        if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
+            $template = new \Municipio\template;
+            $view = \Municipio\Helper\Template::locateTemplate('form-edit.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
+            $view = $template->cleanViewPath($view);
+            $template->render($view, $data);
+        } elseif (self::editableFrontend($post)) {
+            $data['editor_settings'] = array(
+                'wpautop' => true,
+                'media_buttons' => false,
+                'textarea_name' => 'mod-form[post-content]',
+                'textarea_rows' => 15,
+                'teeny' => true,
+                'tinymce' => true,
+            );
+
+            include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
+
+            $template = new \Municipio\template;
+            $view = \Municipio\Helper\Template::locateTemplate('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
+            $view = $template->cleanViewPath($view);
+            $template->render($view, $data);
+        } else {
+            include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
+        }
+    }
+
+    public function gatherFormData($post)
+    {
+        $indata = get_post_meta($post->ID, 'form-data', true);
+        $fields = get_fields($indata['modularity-form-id']);
+
         $data['form_fields'] = array();
         $data['post_id'] = $post->ID;
         $data['module_id'] = $indata['modularity-form-id'];
@@ -139,10 +196,7 @@ class PostType
         $data['custom_post_type_content'] = false;
         $uploadFolder = wp_upload_dir();
         $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
-        $excludedFields = array(
-            'custom_content',
-            'collapse'
-        );
+        $excludedFields = apply_filters('ModularityFormBuilder/fields/exclude', array('custom_content', 'collapse'), $post->post_type, $indata['modularity-form-id']);
 
         // Skip custom content field or fields that are used as post data
         foreach ($fields['form_fields'] as $field) {
@@ -191,37 +245,14 @@ class PostType
             );
         }
 
-        if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
-            $template = new \Municipio\template;
-            $view = \Municipio\Helper\Template::locateTemplate('form-edit.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
-            $view = $template->cleanViewPath($view);
-            $template->render($view, $data);
-        } elseif (self::editableFrontend($post)) {
-            $data['editor_settings'] = array(
-                'wpautop' => true, // use wpautop?
-                'media_buttons' => false, // show insert/upload button(s)
-                'textarea_name' => 'mod-form[post-content]',
-                'textarea_rows' => 15,
-                'teeny' => true, // output the minimal editor config used in Press This
-                'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
-            );
-
-            include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
-
-            $template = new \Municipio\template;
-            $view = \Municipio\Helper\Template::locateTemplate('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
-            $view = $template->cleanViewPath($view);
-            $template->render($view, $data);
-        } else {
-            include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
-        }
+        return $data;
     }
 
     public function appendFormdata($content)
     {
         global $post;
 
-        if (is_object($post) && $post->post_type === $this->postTypeSlug && !is_admin() && is_single() && is_main_query() && in_the_loop()) {
+        if (is_object($post) && $post->post_type === $this->postTypeSlug && !is_admin() && !is_archive() && is_main_query() && in_the_loop()) {
             // Apply if content is the same as the global posts content
             $post_content = $post->post_content;
             if (strpos($post_content,  '<!--more-->') !== false) {
@@ -437,103 +468,5 @@ class PostType
 
             update_post_meta($postId, 'form-data', $data);
         }
-    }
-
-    /**
-     * Delete a file (Ajax)
-     * @return void
-     */
-    public function deleteFile()
-    {
-        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['filePath']) ||!isset($_POST['fieldName'])) {
-            echo _e('Missing arguments', 'modularity-form-builder');
-            die();
-        }
-
-        $postId     = $_POST['postId'];
-        $filePath   = $_POST['filePath'];
-        $fieldName  = $_POST['fieldName'];
-        $formData   = get_post_meta($postId, 'form-data', true);
-
-        if (is_array($formData[$fieldName])) {
-            foreach ($formData[$fieldName] as $key => $file) {
-                if ($filePath == $file) {
-                    unset($formData[$fieldName][$key]);
-
-                    if (file_exists($filePath)) {
-                        unlink($filePath);
-                    }
-                }
-            }
-        }
-
-        update_post_meta($postId, 'form-data', $formData);
-
-        echo 'success';
-        die();
-    }
-
-    /**
-     * Upload files (Ajax)
-     * @return void
-     */
-    public function uploadFiles()
-    {
-        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['fieldName'])) {
-            wp_send_json_error(__('Missing arguments', 'modularity-form-builder'));
-        }
-
-        $postId     = (int)$_POST['postId'];
-        $formId     = (int)$_POST['formId'];
-        $fieldName  = $_POST['fieldName'];
-        $formData   = get_post_meta($postId, 'form-data', true);
-
-        if (!empty($_FILES)) {
-            $files = Submission::uploadFiles($_FILES, $formId);
-
-            // Return if upload failed
-            if (isset($files['error'])) {
-                wp_send_json_error(__('Something went wrong, please try again.', 'modularity-form-builder'));
-            }
-
-            // Save new file to array or marge with existing
-            if (is_array($formData[$fieldName]) && !empty($formData[$fieldName])) {
-                $formData[$fieldName] = array_merge($formData[$fieldName], $files[$fieldName]);
-            } else {
-                $formData[$fieldName] = $files[$fieldName];
-            }
-
-            update_post_meta($postId, 'form-data', $formData);
-        }
-
-        wp_send_json_success(__('Upload succeeded', 'modularity-form-builder'));
-    }
-
-    public function frontEndSavePost()
-    {
-        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
-            wp_send_json_error(__('Something went wrong', 'modularity-form-builder'));
-        }
-
-        $postId = $_POST['post_id'];
-
-        // Save form data
-        if (!empty($_POST['mod-form'])) {
-            $indata = get_post_meta($postId, 'form-data', true);
-            $data = array_merge($indata, $_POST['mod-form']);
-            update_post_meta($postId, 'form-data', $data);
-        }
-
-        // Update post title and content
-        $post = array('ID' => $postId);
-        if (!empty($_POST['mod-form']['post-title'])) {
-            $post['post_title'] = $_POST['mod-form']['post-title'];
-        }
-        if (!empty($_POST['mod-form']['post-content'])) {
-            $post['post_content'] = $_POST['mod-form']['post-content'];
-        }
-        wp_update_post($post);
-
-        wp_send_json_success(__('Saved', 'modularity-form-builder'));
     }
 }
