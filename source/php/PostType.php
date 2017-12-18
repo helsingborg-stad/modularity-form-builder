@@ -192,6 +192,7 @@ class PostType
 
         $data['form_fields'] = array();
         $data['post_id'] = $post->ID;
+        $data['author_id'] = $post->post_author;
         $data['module_id'] = $indata['modularity-form-id'];
         $data['custom_post_type_title'] = false;
         $data['custom_post_type_content'] = false;
