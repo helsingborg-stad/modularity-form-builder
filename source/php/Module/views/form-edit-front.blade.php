@@ -16,7 +16,7 @@
                     @endif
                     @if ($custom_post_type_content)
                         <div class="mod-form-field">
-                            {{ wp_editor(get_the_content(), 'post_content', $editor_settings) }}
+                            {{ wp_editor(get_post_field('post_content', $post_id), 'post_content', $editor_settings) }}
                         </div>
                     @endif
                     @foreach ($form_fields as $field)
