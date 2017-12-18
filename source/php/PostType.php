@@ -253,7 +253,7 @@ class PostType
     {
         global $post;
 
-        if (is_object($post) && $post->post_type === $this->postTypeSlug && !is_admin() && !is_archive() && is_main_query() && in_the_loop()) {
+        if (is_object($post) && $post->post_type === $this->postTypeSlug && !is_admin() && !is_archive() && is_main_query()) {
             // Apply if content is the same as the global posts content
             $post_content = $post->post_content;
             if (strpos($post_content,  '<!--more-->') !== false) {
