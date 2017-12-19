@@ -175,11 +175,7 @@ class PostType
             );
 
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
-
-            $template = new \Municipio\template;
-            $view = \Municipio\Helper\Template::locateTemplate('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
-            $view = $template->cleanViewPath($view);
-            $template->render($view, $data);
+            $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'), $data);
         } else {
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
         }
@@ -248,6 +244,20 @@ class PostType
         }
 
         return $data;
+    }
+
+    /**
+     * Render and output blade template
+     * @param string $fileName  Filename
+     * @param array  $path      Array with file paths
+     * @param array  $data      Template data
+     */
+    public function renderBlade($fileName, $path, $data = array())
+    {
+        $template = new \Municipio\template;
+        $view = \Municipio\Helper\Template::locateTemplate($fileName, $path);
+        $view = $template->cleanViewPath($view);
+        $template->render($view, $data);
     }
 
     public function appendFormdata($content)
