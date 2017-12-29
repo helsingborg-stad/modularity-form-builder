@@ -15,11 +15,11 @@ class PostType
         add_action('edit_form_after_title', array($this, 'displayFeedbackId'), 10, 1);
         add_action('wp_enqueue_scripts', array($this, 'enqueue'));
         add_action('Municipio/blog/post_info', array($this, 'addEditButton'));
-        add_filter('accessibility_items', array($this, 'accessibilityItems'), 11, 1);
         add_action('pre_get_posts', array($this, 'queryFilter'));
         add_action('save_post_' . $this->postTypeSlug, array($this, 'updateForm'));
         add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
 
+        add_filter('accessibility_items', array($this, 'accessibilityItems'), 20, 1);
         add_filter('the_content', array($this, 'appendFormdata'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
