@@ -314,12 +314,9 @@ class Submission
         $subject = apply_filters('ModularityFormBuilder/notice/subject', $subject, $email, $formId, $submissionId, $showData, $data);
         $message = apply_filters('ModularityFormBuilder/notice/message', $message, $email, $formId, $submissionId, $showData, $data);
 
-        wp_mail(
-            $email,
-            $subject,
-            $message,
-            $headers
-        );
+        if (!wp_mail($email, $subject, $message, $headers)) {
+            error_log("Could not send notification.");
+        }
     }
 
     /**
@@ -373,12 +370,9 @@ class Submission
         $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', $subject, $email, $formId, $submissionId, $data);
         $message = apply_filters('ModularityFormBuilder/sender_copy/message', $message, $email, $formId, $submissionId, $data);
 
-        wp_mail(
-            $email,
-            $subject,
-            $message,
-            $headers
-        );
+        if (!wp_mail($email, $subject, $message, $headers)) {
+            error_log("Could not send mail copy.");
+        }
     }
 
     /**
