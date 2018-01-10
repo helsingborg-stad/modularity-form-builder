@@ -151,7 +151,7 @@ class Submission
                     // Upload video to YouTube
                     if (!empty($fields[$key]['upload_videos_external']) && in_array('.' . $fileext, $allowedVideoTypes)) {
                         $fileName = ucwords(pathinfo($files['name'][$i], PATHINFO_FILENAME));
-                        $uploadVideo = \ModularityFormBuilder\Helper\youtubeUploader::uploadVideo($targetFile, $fileName, '', '22');
+                        $uploadVideo = \ModularityFormBuilder\Helper\YoutubeUploader::uploadVideo($targetFile, $fileName, '', '22');
                         $targetFile  = ($uploadVideo) ? $uploadVideo : $targetFile;
                     }
                 } else {

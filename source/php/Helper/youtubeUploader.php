@@ -2,7 +2,7 @@
 
 namespace ModularityFormBuilder\Helper;
 
-class youtubeUploader
+class YoutubeUploader
 {
     /**
      * Upload a locally stored video to YouTube
