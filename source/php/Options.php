@@ -56,7 +56,7 @@ class Options
         }
 
         include FORM_BUILDER_MODULE_TEMPLATE_PATH . 'options.php';
-	}
+    }
 
     public function authenticateWebApp()
     {
@@ -100,7 +100,7 @@ class Options
                 } catch (\Google_Exception $e) {
                     $markup .= sprintf('<p>A client error occurred: <code>%s</code></p>', htmlspecialchars($e->getMessage()));
                 }
-            } elseif(!$client->getAccessToken() && isset($_GET['code'])) {
+            } elseif (!$client->getAccessToken() && isset($_GET['code'])) {
                 $markup = '<h3>Authorization failed</h3><p>Wrong credentials or misconfigured OAuth client. Please update the options and try again.<p>';
             } else {
                 $state = mt_rand();
@@ -116,5 +116,4 @@ class Options
 
         return $markup;
     }
-
 }
