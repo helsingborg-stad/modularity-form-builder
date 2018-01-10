@@ -395,13 +395,8 @@ class Submission
         $subject = apply_filters('ModularityFormBuilder/autoreply/subject', get_field('auto_reply_subject', $formId), $email, $submissionId);
         $message = apply_filters('ModularityFormBuilder/autoreply/message', get_field('auto_reply_content', $formId), $email, $submissionId);
 
-        wp_mail(
-            $email,
-            $subject,
-            $message,
-            $headers
-        );
+        if (!wp_mail($email, $subject, $message, $headers)) {
+            error_log("Could not send autoreply to sender.");
+        }
     }
-
-
 }
