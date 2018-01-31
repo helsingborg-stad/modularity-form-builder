@@ -10,7 +10,6 @@ FormBuilder.Admin.Notification = (function ($) {
     function Notification() {
 
         $(function(){
-
             //Init from saved data
             this.init();
 
@@ -21,8 +20,8 @@ FormBuilder.Admin.Notification = (function ($) {
             this.updateMainSelect();
             this.updateSubSelect();
 
-            //Reload datas when changin tab (posibble data update in list)
-            $('.acf-tab-button, [data-name="condition"]').on('click',function(){
+            //Reload datas where an update might have happend
+            $(document).on('click', '.post-type-mod-form input[type="checkbox"], .post-type-mod-form .acf-tab-button', function(event){
 
                 //Get some fresh data (init)
                 this.dataGathering();
@@ -32,6 +31,7 @@ FormBuilder.Admin.Notification = (function ($) {
                 this.updateSubSelect();
 
             }.bind(this));
+
 
             //Update subselect when main select is changed
             $("[data-name='form_conditional_field'] .acf-input select").change(function(event){
@@ -124,8 +124,6 @@ FormBuilder.Admin.Notification = (function ($) {
 
             //Check i valid
             if(['select', 'radio'].indexOf(currentLayout) != -1) {
-
-                console.log(currentLayout);
 
                 var isRequired      = $("[data-name='required'] .acf-input label input", layout).prop('checked'); // Check if field is required
                 var hasCondition    = $("[data-name='conditional_logic'] .acf-input label input", layout).prop('checked'); // Check is field is conditional
