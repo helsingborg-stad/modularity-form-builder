@@ -133,7 +133,11 @@ FormBuilder.Admin.Notification = (function ($) {
     function Notification() {
 
         $(function(){
-            //Get some fresh data (init)
+
+            //Init from saved data
+            this.init();
+
+            //Get some fresh data (from form)
             this.dataGathering();
 
             //Update selects
@@ -160,44 +164,55 @@ FormBuilder.Admin.Notification = (function ($) {
         }.bind(this));
     }
 
+    Notification.prototype.init = function() {
+        if(typeof notificationConditions != 'undefined' && notificationConditions !== null) {
+            notificationConditions = JSON.parse(notificationConditions);
+            ["conditional_field", "conditional_field_equals"].forEach(function(fieldType){
+                $("[data-name='notify'] .acf-row:not(.acf-clone)").each(function(row_index, row){
+                    if(notificationConditions[row_index] !== null) {
+                        var currentSelect = $("[data-name='form_" + fieldType + "'] .acf-input select", row);
+                            currentSelect.empty();
+                            currentSelect.append($("<option></option>").attr("value",notificationConditions[row_index][fieldType]).text(notificationConditions[row_index][fieldType]).attr('selected', 'selected'));
+                    }
+                });
+            });
+        }
+    };
+
     Notification.prototype.updateMainSelect = function() {
-        $("[data-name='notify'] .acf-row").each(function(row_index, row){
+        $("[data-name='notify'] .acf-row:not(.acf-clone)").each(function(row_index, row){
 
             //Get conditional field
             var conditionalField = $("[data-name='form_conditional_field'] .acf-input select", row);
-            var conditionalFieldEquals = $("[data-name='form_conditional_field_equals'] .acf-input select", row);
 
             //Get previous value
             var previousValue       = $(conditionalField).val();
-            var previousValueEquals = $(conditionalFieldEquals).val();
 
             //Empty field(s)
             $(conditionalField).empty();
-            $(conditionalFieldEquals).empty();
 
             //Add selectable values
             $.each(selectionsArrayFinal, function(value_index, value){
-
-                if(previousValue == value) {
-                    $(conditionalField).append($("<option></option>").attr("value",value_index).text(value_index)).attr('selected', 'selected');
+                if(previousValue == value_index) {
+                    $(conditionalField).append($("<option></option>").attr("value",value_index).text(value_index).attr('selected', 'selected'));
                 } else {
                     $(conditionalField).append($("<option></option>").attr("value",value_index).text(value_index));
                 }
-
             });
 
         }.bind(this));
     }
 
     Notification.prototype.updateSubSelect = function() {
-        $("[data-name='notify'] .acf-row").each(function(row_index, row){
+        $("[data-name='notify'] .acf-row:not(.acf-clone)").each(function(row_index, row){
 
             //Get conditional field
-            var conditionalField = $("[data-name='form_conditional_field'] .acf-input select", row);
             var conditionalFieldEquals = $("[data-name='form_conditional_field_equals'] .acf-input select", row);
+            var conditionalField = $("[data-name='form_conditional_field'] .acf-input select", row);
 
             //Get previous value
             var previousValueEquals = $(conditionalFieldEquals).val();
+            var previousValue       = $(conditionalField).val();
 
             //Empty field(s)
             $(conditionalFieldEquals).empty();
@@ -208,7 +223,7 @@ FormBuilder.Admin.Notification = (function ($) {
                     //Fill avabile selects
                     $.each(selectionsArrayFinal[value_index], function(i, v) {
                         if(previousValueEquals == v) {
-                            $(conditionalFieldEquals).append($("<option></option>").attr("value",v).text(v)).attr('selected', 'selected');
+                            $(conditionalFieldEquals).append($("<option></option>").attr("value",v).text(v).attr('selected', 'selected'));
                         } else {
                             $(conditionalFieldEquals).append($("<option></option>").attr("value",v).text(v));
                         }

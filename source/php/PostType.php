@@ -24,6 +24,12 @@ class PostType
         add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
         add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
+
+        /*add_filter('acf/load_value/name=form_conditional_field', array($this, 'getSelectField'), 10, 3);
+        add_filter('acf/load_value/name=form_conditional_field_value', array($this, 'getSelectFieldValue'), 10, 3);*/
+
+
+        add_action('admin_head', array($this, 'jsonSelectedValues'));
     }
 
     /**
@@ -213,7 +219,6 @@ class PostType
             }
 
             if ($field['acf_fc_layout'] === 'sender') {
-
                 $field['labels'] = self::getSenderLabels();
                 // Merge default and custom labels
                 if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
@@ -271,7 +276,7 @@ class PostType
                 $content_parts = explode('<!--more-->', $post_content);
                 $post_content  = $content_parts[1];
             }
-            $post_content 	   = preg_replace('/[^a-z]/i', '', sanitize_text_field($post_content));
+            $post_content       = preg_replace('/[^a-z]/i', '', sanitize_text_field($post_content));
             $sanitized_content = preg_replace('/[^a-z]/i', '', sanitize_text_field($content));
 
             if ($post_content == $sanitized_content) {
@@ -479,6 +484,31 @@ class PostType
             $data = array_merge($indata, $_POST['mod-form']);
 
             update_post_meta($postId, 'form-data', $data);
+        }
+    }
+
+    public function jsonSelectedValues()
+    {
+
+        //Get saved data
+        $fieldData = get_field('notify');
+
+        //Declare result
+        $result = array();
+
+        //Fill result array
+        if (isset($fieldData) && is_array($fieldData) && !empty($fieldData)) {
+            foreach ($fieldData as $field) {
+                $result[] = array(
+                    'conditional_field' => $field['form_conditional_field'],
+                    'conditional_field_equals' => $field['form_conditional_field_equals']
+                );
+            }
+        }
+
+        //Print json array
+        if (is_array($result) && !empty($result)) {
+            echo "<script> var notificationConditions = '". json_encode($result)."'; </script>";
         }
     }
 }
