@@ -25,10 +25,6 @@ class PostType
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
         add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
 
-        /*add_filter('acf/load_value/name=form_conditional_field', array($this, 'getSelectField'), 10, 3);
-        add_filter('acf/load_value/name=form_conditional_field_value', array($this, 'getSelectFieldValue'), 10, 3);*/
-
-
         add_action('admin_head', array($this, 'jsonSelectedValues'));
     }
 

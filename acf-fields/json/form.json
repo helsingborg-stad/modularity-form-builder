@@ -1893,7 +1893,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n    background: #f1f1f157;\r\n    border-left: 4px solid #b2b500;\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n    padding: 10px;;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. <\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n    background: #f1f1f157;\r\n    border-left: 4px solid #b2b500;\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n    padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
@@ -1948,9 +1948,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "": "Please resave form to make a selection"
-                    },
+                    "choices": [],
                     "default_value": [],
                     "allow_null": 0,
                     "multiple": 0,

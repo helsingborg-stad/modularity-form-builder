@@ -145,7 +145,7 @@ FormBuilder.Admin.Notification = (function ($) {
             this.updateSubSelect();
 
             //Reload datas when changin tab (posibble data update in list)
-            $('.acf-tab-button').click(function(){
+            $('.acf-tab-button, [data-name="condition"]').on('click',function(){
 
                 //Get some fresh data (init)
                 this.dataGathering();

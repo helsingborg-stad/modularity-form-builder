@@ -81,7 +81,19 @@ class Submission
         // Send notifications
         if ($notify) {
             foreach ($notify as $email) {
-                $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
+                $sendMail = true;
+                if ($email['condition']) {
+                    $sendMail = false;
+                    if (array_key_exists($email['form_conditional_field'], $_POST)) {
+                        if (sanitize_title($email['form_conditional_field_equals']) == sanitize_title($_POST[$email['form_conditional_field']])) {
+                            $sendMail = true;
+                        }
+                    }
+                }
+
+                if ($sendMail) {
+                    $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
+                }
             }
         }
 
