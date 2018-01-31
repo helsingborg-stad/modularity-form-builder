@@ -20,7 +20,7 @@
                         </div>
                     @endif
                     @foreach ($form_fields as $field)
-                        @include('fields-editable.' . $field['acf_fc_layout'])
+                        @includeIf('fields-editable.' . $field['acf_fc_layout'])
                     @endforeach
             </div>
             <div class="modal-footer">

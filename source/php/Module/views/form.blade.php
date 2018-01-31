@@ -25,7 +25,7 @@
         @endif
 
         @foreach ($form_fields as $field)
-            @include('fields.' . $field['acf_fc_layout'])
+            @includeIf('fields.' . $field['acf_fc_layout'])
         @endforeach
 
         @if ($allow_sender_copy)
