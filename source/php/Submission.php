@@ -78,20 +78,27 @@ class Submission
             $from = (!empty($_POST['firstname']) && !empty($_POST['lastname'])) ? $_POST['firstname'] . ' ' . $_POST['lastname'] . ' <' . $_POST['email'] . '>' : $_POST['email'];
         }
 
+        $sentto = array();
+
         // Send notifications
         if ($notify) {
             foreach ($notify as $email) {
                 $sendMail = true;
+
                 if ($email['condition']) {
+
+                    $conditionalFieldKey = sanitize_title($email['form_conditional_field']);
+
                     $sendMail = false;
-                    if (array_key_exists($email['form_conditional_field'], $_POST)) {
-                        if (sanitize_title($email['form_conditional_field_equals']) == sanitize_title($_POST[$email['form_conditional_field']])) {
+                    if (array_key_exists($conditionalFieldKey, $_POST)) {
+                        if ($_POST[$conditionalFieldKey] == $email['form_conditional_field_equals']) {
                             $sendMail = true;
                         }
                     }
                 }
 
                 if ($sendMail) {
+                    $sentto[] = $email['email'];
                     $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
                 }
             }
@@ -251,7 +258,6 @@ class Submission
                 }
 
                 foreach ($field['fields'] as $subfield) {
-                    var_dump($subfield);
                     $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])];
                 }
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
