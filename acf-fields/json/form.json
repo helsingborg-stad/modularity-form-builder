@@ -1766,7 +1766,7 @@
         },
         {
             "key": "field_58eb7b11cc4f5",
-            "label": "Subimission notice",
+            "label": "Submission notice",
             "name": "subimission_notice",
             "type": "wysiwyg",
             "instructions": "Text to display when form is submitted.",
@@ -1777,10 +1777,10 @@
                 "class": "",
                 "id": ""
             },
+            "default_value": "",
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
-            "default_value": "",
             "delay": 0
         },
         {
@@ -1832,7 +1832,7 @@
             "collapsed": "",
             "min": 0,
             "max": 0,
-            "layout": "table",
+            "layout": "block",
             "button_label": "Add email",
             "sub_fields": [
                 {
@@ -1844,7 +1844,7 @@
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "70",
                         "class": "",
                         "id": ""
                     },
@@ -1852,6 +1852,112 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "key": "field_5a55d5e27740d",
+                    "label": "Condition",
+                    "name": "condition",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_5a55de5ebfa4d",
+                    "label": "Requirements",
+                    "name": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5a55d5e27740d",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n    background: #f1f1f157;\r\n    border-left: 4px solid #b2b500;\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n    padding: 10px;;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. <\/div>",
+                    "new_lines": "",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_5a55d69512773",
+                    "label": "Only send when",
+                    "name": "form_conditional_field",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5a55d5e27740d",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": [],
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5a55db0812774",
+                    "label": "Equals to",
+                    "name": "form_conditional_field_equals",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5a55d5e27740d",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "": "Please resave form to make a selection"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
                 }
             ]
         },
@@ -2211,7 +2317,8 @@
                 "event": "Evenemang",
                 "idea": "Idea",
                 "ticket": "Ticket",
-                "listing": "Listing"
+                "listing": "Listing",
+                "area": "Area"
             },
             "default_value": [
                 "form-submissions"

@@ -1788,7 +1788,7 @@
         ),
         5 => array(
             'key' => 'field_58eb7b11cc4f5',
-            'label' => __('Subimission notice', 'modularity-form-builder'),
+            'label' => __('Submission notice', 'modularity-form-builder'),
             'name' => 'subimission_notice',
             'type' => 'wysiwyg',
             'instructions' => __('Text to display when form is submitted.', 'modularity-form-builder'),
@@ -1799,10 +1799,10 @@
                 'class' => '',
                 'id' => '',
             ),
+            'default_value' => '',
             'tabs' => 'all',
             'toolbar' => 'full',
             'media_upload' => 1,
-            'default_value' => '',
             'delay' => 0,
         ),
         6 => array(
@@ -1854,7 +1854,7 @@
             'collapsed' => '',
             'min' => 0,
             'max' => 0,
-            'layout' => 'table',
+            'layout' => 'block',
             'button_label' => __('Add email', 'modularity-form-builder'),
             'sub_fields' => array(
                 0 => array(
@@ -1866,7 +1866,7 @@
                     'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
-                        'width' => '',
+                        'width' => '70',
                         'class' => '',
                         'id' => '',
                     ),
@@ -1874,6 +1874,119 @@
                     'placeholder' => '',
                     'prepend' => '',
                     'append' => '',
+                ),
+                1 => array(
+                    'key' => 'field_5a55d5e27740d',
+                    'label' => __('Condition', 'modularity-form-builder'),
+                    'name' => 'condition',
+                    'type' => 'true_false',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '30',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui' => 0,
+                    'ui_on_text' => '',
+                    'ui_off_text' => '',
+                ),
+                2 => array(
+                    'key' => 'field_5a55de5ebfa4d',
+                    'label' => __('Requirements', 'modularity-form-builder'),
+                    'name' => '',
+                    'type' => 'message',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => array(
+                        0 => array(
+                            0 => array(
+                                'field' => 'field_5a55d5e27740d',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'message' => __('<div style="margin: 5px 0 15px;
+        background: #f1f1f157;
+        border-left: 4px solid #b2b500;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+        padding: 10px;;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. </div>', 'modularity-form-builder'),
+                    'new_lines' => '',
+                    'esc_html' => 0,
+                ),
+                3 => array(
+                    'key' => 'field_5a55d69512773',
+                    'label' => __('Only send when', 'modularity-form-builder'),
+                    'name' => 'form_conditional_field',
+                    'type' => 'select',
+                    'instructions' => '',
+                    'required' => 1,
+                    'conditional_logic' => array(
+                        0 => array(
+                            0 => array(
+                                'field' => 'field_5a55d5e27740d',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'choices' => array(
+                    ),
+                    'default_value' => array(
+                    ),
+                    'allow_null' => 0,
+                    'multiple' => 0,
+                    'ui' => 0,
+                    'ajax' => 0,
+                    'return_format' => 'value',
+                    'placeholder' => '',
+                ),
+                4 => array(
+                    'key' => 'field_5a55db0812774',
+                    'label' => __('Equals to', 'modularity-form-builder'),
+                    'name' => 'form_conditional_field_equals',
+                    'type' => 'select',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => array(
+                        0 => array(
+                            0 => array(
+                                'field' => 'field_5a55d5e27740d',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'choices' => array(
+                        '' => __('Please resave form to make a selection', 'modularity-form-builder'),
+                    ),
+                    'default_value' => array(
+                    ),
+                    'allow_null' => 0,
+                    'multiple' => 0,
+                    'ui' => 0,
+                    'ajax' => 0,
+                    'return_format' => 'value',
+                    'placeholder' => '',
                 ),
             ),
         ),
@@ -2234,6 +2347,7 @@
                 'idea' => __('Idea', 'modularity-form-builder'),
                 'ticket' => __('Ticket', 'modularity-form-builder'),
                 'listing' => __('Listing', 'modularity-form-builder'),
+                'area' => __('Area', 'modularity-form-builder'),
             ),
             'default_value' => array(
                 0 => 'form-submissions',
