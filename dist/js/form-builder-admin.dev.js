@@ -128,7 +128,7 @@ FormBuilder.Admin = FormBuilder.Admin || {};
 
 FormBuilder.Admin.Notification = (function ($) {
 
-    var selectionsArray, selectionsArrayFinal = [];
+    var selectionsArray = [];
 
     function Notification() {
 
@@ -192,7 +192,7 @@ FormBuilder.Admin.Notification = (function ($) {
             $(conditionalField).empty();
 
             //Add selectable values
-            $.each(selectionsArrayFinal, function(value_index, value){
+            $.each(selectionsArray, function(value_index, value){
                 if(previousValue == value_index) {
                     $(conditionalField).append($("<option></option>").attr("value",value_index).text(value_index).attr('selected', 'selected'));
                 } else {
@@ -218,10 +218,10 @@ FormBuilder.Admin.Notification = (function ($) {
             $(conditionalFieldEquals).empty();
 
             //Add selectable values
-            $.each(selectionsArrayFinal, function(value_index, value){
+            $.each(selectionsArray, function(value_index, value){
                 if (conditionalField.val() == value_index) {
                     //Fill avabile selects
-                    $.each(selectionsArrayFinal[value_index], function(i, v) {
+                    $.each(selectionsArray[value_index], function(i, v) {
                         if(previousValueEquals == v) {
                             $(conditionalFieldEquals).append($("<option></option>").attr("value",v).text(v).attr('selected', 'selected'));
                         } else {
@@ -246,7 +246,9 @@ FormBuilder.Admin.Notification = (function ($) {
             var currentNameKey = $(".acf-fields  [data-name='label'] .acf-input .acf-input-wrap input", layout).val();
 
             //Check i valid
-            if($.inArray(currentLayout, ['select', 'radio'])) {
+            if(['select', 'radio'].indexOf(currentLayout) != -1) {
+
+                console.log(currentLayout);
 
                 var isRequired      = $("[data-name='required'] .acf-input label input", layout).prop('checked'); // Check if field is required
                 var hasCondition    = $("[data-name='conditional_logic'] .acf-input label input", layout).prop('checked'); // Check is field is conditional
@@ -273,52 +275,7 @@ FormBuilder.Admin.Notification = (function ($) {
                 }
             }
         });
-
-        //Trigger rebuilding of lists
-        //if(this.isEqual(selectionsArray, selectionsArrayFinal)) {
-            selectionsArrayFinal = selectionsArray;
-        //}
     }
-
-    Notification.prototype.isEqual = function (value, other) {
-
-        // Get the value type
-        var type = Object.prototype.toString.call(value);
-
-        // If the two objects are not the same type, return false
-        if (type !== Object.prototype.toString.call(other)) return false;
-
-        // If items are not an object or array, return false
-        if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false;
-
-        // Compare the length of the length of the two items
-        var valueLen = type === '[object Array]' ? value.length : Object.keys(value).length;
-        var otherLen = type === '[object Array]' ? other.length : Object.keys(other).length;
-        if (valueLen !== otherLen) return false;
-
-        // Compare two items
-        var compare = function (item1, item2) {
-            // Code will go here...
-        };
-
-        // Compare properties
-        var match;
-        if (type === '[object Array]') {
-            for (var i = 0; i < valueLen; i++) {
-                compare(value[i], other[i]);
-            }
-        } else {
-            for (var key in value) {
-                if (value.hasOwnProperty(key)) {
-                    compare(value[key], other[key]);
-                }
-            }
-        }
-
-        // If nothing failed, return true
-        return true;
-
-    };
 
     return new Notification();
 
