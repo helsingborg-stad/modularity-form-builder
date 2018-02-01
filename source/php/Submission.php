@@ -78,8 +78,6 @@ class Submission
             $from = (!empty($_POST['firstname']) && !empty($_POST['lastname'])) ? $_POST['firstname'] . ' ' . $_POST['lastname'] . ' <' . $_POST['email'] . '>' : $_POST['email'];
         }
 
-        $sentto = array();
-
         // Send notifications
         if ($notify) {
             foreach ($notify as $email) {
@@ -98,7 +96,6 @@ class Submission
                 }
 
                 if ($sendMail) {
-                    $sentto[] = $email['email'];
                     $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
                 }
             }
