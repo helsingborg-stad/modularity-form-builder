@@ -445,7 +445,11 @@ class PostType
      */
     public function submissionPostTypes($field)
     {
-        $field['choices'][$this->postTypeSlug] = __('Form submissions', 'modularity-form-builder');
+        if (get_post_type() == 'acf-field-group') {
+            return $field;
+        }
+
+        $field['choices']['form-submissions'] = __('Form submissions', 'modularity-form-builder');
 
         if (current_user_can('administrator')) {
             $postTypes = get_post_types(array('_builtin' => false, 'public' => true));
