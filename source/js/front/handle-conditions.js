@@ -4,10 +4,8 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.handleConditions = (function ($) {
 
     function HandleConditions() {
-        $(function() {
-            this.handleRequired();
-            this.handleEvents();
-        }.bind(this));
+        this.handleRequired();
+        this.handleEvents();
     }
 
     HandleConditions.prototype.handleRequired = function () {

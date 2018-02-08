@@ -11,19 +11,18 @@ FormBuilder.Front.getLocation = (function ($) {
     	};
 
     function GetLocation() {
-        $(function() {
-        	var locationButton = document.getElementById('form-get-location');
-        	if (!navigator.geolocation || locationButton === null) {
-				return;
-			}
+    	var locationButton = document.getElementById('form-get-location');
+    	if (!navigator.geolocation || locationButton === null) {
+			return;
+		}
 
-            this.handleEvents();
-        }.bind(this));
+        this.handleEvents();
     }
 
     GetLocation.prototype.handleEvents = function() {
         $('#form-get-location').click(function(e) {
         	e.preventDefault();
+
             $target = $(e.target).parents('[class*="mod-form"]');
             $(e.target).find('.pricon').removeClass().addClass('spinner spinner-dark');
 

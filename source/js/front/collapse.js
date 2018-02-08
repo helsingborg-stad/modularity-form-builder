@@ -4,10 +4,8 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.collapse = (function ($) {
 
     function Collapse() {
-        $(function() {
-            this.init();
-            this.handleEvents();
-        }.bind(this));
+        this.init();
+        this.handleEvents();
     }
 
     Collapse.prototype.init = function() {

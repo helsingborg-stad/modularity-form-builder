@@ -4,9 +4,7 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.submit = (function ($) {
 
     function Submit() {
-        $(function() {
-            this.handleEvents();
-        }.bind(this));
+        this.handleEvents();
     }
 
     // Show spinner icon on submit
