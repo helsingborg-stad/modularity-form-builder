@@ -4,10 +4,8 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.collapse = (function ($) {
 
     function Collapse() {
-        $(function() {
-            this.init();
-            this.handleEvents();
-        }.bind(this));
+        this.init();
+        this.handleEvents();
     }
 
     Collapse.prototype.init = function() {
@@ -49,19 +47,18 @@ FormBuilder.Front.getLocation = (function ($) {
     	};
 
     function GetLocation() {
-        $(function() {
-        	var locationButton = document.getElementById('form-get-location');
-        	if (!navigator.geolocation || locationButton === null) {
-				return;
-			}
+    	var locationButton = document.getElementById('form-get-location');
+    	if (!navigator.geolocation || locationButton === null) {
+			return;
+		}
 
-            this.handleEvents();
-        }.bind(this));
+        this.handleEvents();
     }
 
     GetLocation.prototype.handleEvents = function() {
         $('#form-get-location').click(function(e) {
         	e.preventDefault();
+
             $target = $(e.target).parents('[class*="mod-form"]');
             $(e.target).find('.pricon').removeClass().addClass('spinner spinner-dark');
 
@@ -117,10 +114,8 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.handleConditions = (function ($) {
 
     function HandleConditions() {
-        $(function() {
-            this.handleRequired();
-            this.handleEvents();
-        }.bind(this));
+        this.handleRequired();
+        this.handleEvents();
     }
 
     HandleConditions.prototype.handleRequired = function () {
@@ -153,9 +148,7 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.submit = (function ($) {
 
     function Submit() {
-        $(function() {
-            this.handleEvents();
-        }.bind(this));
+        this.handleEvents();
     }
 
     // Show spinner icon on submit
