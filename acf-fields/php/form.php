@@ -2301,7 +2301,7 @@
         ),
         23 => array(
             'key' => 'field_5a1837b50079f',
-            'label' => __('Custom submission post type', 'modularity-form-builder'),
+            'label' => __('Save to post type', 'modularity-form-builder'),
             'name' => 'custom_submission_post_type',
             'type' => 'true_false',
             'instructions' => '',
@@ -2320,7 +2320,7 @@
         ),
         24 => array(
             'key' => 'field_5a059dcc4c2a0',
-            'label' => __('Submission post type', 'modularity-form-builder'),
+            'label' => __('Post type', 'modularity-form-builder'),
             'name' => 'submission_post_type',
             'type' => 'select',
             'instructions' => __('Select post type', 'modularity-form-builder'),
@@ -2340,13 +2340,6 @@
                 'id' => '',
             ),
             'choices' => array(
-                'form-submissions' => __('Form submissions', 'modularity-form-builder'),
-                '' => __('Form submissions', 'modularity-form-builder'),
-                'event' => __('Evenemang', 'modularity-form-builder'),
-                'idea' => __('Idea', 'modularity-form-builder'),
-                'ticket' => __('Ticket', 'modularity-form-builder'),
-                'listing' => __('Listing', 'modularity-form-builder'),
-                'area' => __('Area', 'modularity-form-builder'),
             ),
             'default_value' => array(
                 0 => 'form-submissions',

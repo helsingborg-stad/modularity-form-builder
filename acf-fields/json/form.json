@@ -2271,7 +2271,7 @@
         },
         {
             "key": "field_5a1837b50079f",
-            "label": "Custom submission post type",
+            "label": "Save to post type",
             "name": "custom_submission_post_type",
             "type": "true_false",
             "instructions": "",
@@ -2290,7 +2290,7 @@
         },
         {
             "key": "field_5a059dcc4c2a0",
-            "label": "Submission post type",
+            "label": "Post type",
             "name": "submission_post_type",
             "type": "select",
             "instructions": "Select post type",
@@ -2309,15 +2309,7 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "form-submissions": "Form submissions",
-                "": "Form submissions",
-                "event": "Evenemang",
-                "idea": "Idea",
-                "ticket": "Ticket",
-                "listing": "Listing",
-                "area": "Area"
-            },
+            "choices": [],
             "default_value": [
                 "form-submissions"
             ],
