@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2018-02-01 11:40+0100\n"
-"PO-Revision-Date: 2018-02-01 11:40+0100\n"
+"POT-Creation-Date: 2018-02-08 14:00+0100\n"
+"PO-Revision-Date: 2018-02-08 14:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: modularity-form-builder.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -35,7 +35,7 @@ msgstr "Fält"
 
 #: acf-fields/php/form.php:41
 msgid "Sender"
-msgstr "Svarskopia"
+msgstr "Avsändare"
 
 #: acf-fields/php/form.php:338
 msgid "Message"
@@ -249,52 +249,26 @@ msgid "Advanced options"
 msgstr "Avancerade inställningar"
 
 #: acf-fields/php/form.php:2304
-msgid "Custom submission post type"
-msgstr "Utskicksnotis"
+msgid "Save to post type"
+msgstr "Spara till posttyp"
 
 #: acf-fields/php/form.php:2315
 msgid "Save form submissions to a custom post type."
-msgstr "Svarskopia"
+msgstr "Spara formulärsvar till en anpassad posttyp."
 
 #: acf-fields/php/form.php:2323
-msgid "Submission post type"
-msgstr "Utskicksnotis"
+msgid "Post type"
+msgstr "Posttyp"
 
 #: acf-fields/php/form.php:2326
 msgid "Select post type"
-msgstr "Utskicksnotis"
+msgstr "Välj posttyp"
 
-#: acf-fields/php/form.php:2343 acf-fields/php/form.php:2344
-#: source/php/PostType.php:84 source/php/PostType.php:95
-#: source/php/PostType.php:448
-msgid "Form submissions"
-msgstr "Formulärsvar"
-
-#: acf-fields/php/form.php:2345
-msgid "Evenemang"
-msgstr "Evenemang"
-
-#: acf-fields/php/form.php:2346
-msgid "Idea"
-msgstr "Idé"
-
-#: acf-fields/php/form.php:2347
-msgid "Ticket"
-msgstr "Ärende"
-
-#: acf-fields/php/form.php:2348
-msgid "Listing"
-msgstr "Lista"
-
-#: acf-fields/php/form.php:2349
-msgid "Area"
-msgstr "Område"
-
-#: acf-fields/php/form.php:2363
+#: acf-fields/php/form.php:2356
 msgid "Editable on front end"
 msgstr "Redigerbar för användaren"
 
-#: acf-fields/php/form.php:2382
+#: acf-fields/php/form.php:2375
 msgid "Editable on back end"
 msgstr "Redigerbar för redaktör"
 
@@ -379,7 +353,7 @@ msgstr "Svar"
 
 #: source/php/Module/Form.php:159
 msgid "There is no submissions for this form."
-msgstr "Det finns inga svar på detta formulär"
+msgstr "Det finns inga svar på detta formulär."
 
 #: source/php/Module/Form.php:164
 #, php-format
@@ -406,7 +380,7 @@ msgstr "Är du säker på att du vill radera den här filen?"
 
 #: source/php/Module/Form.php:265
 msgid "Sending"
-msgstr "Svarskopia"
+msgstr "Skickar"
 
 #: source/php/Module/views/fields-editable/file_upload.blade.php:4
 msgid "Attached files"
@@ -466,6 +440,11 @@ msgstr ""
 #: source/php/Options.php:19 source/php/Options.php:20
 msgid "Options"
 msgstr "Inställningar"
+
+#: source/php/PostType.php:84 source/php/PostType.php:95
+#: source/php/PostType.php:452
+msgid "Form submissions"
+msgstr "Formulärsvar"
 
 #: source/php/PostType.php:85
 msgid "Form submission"
@@ -593,7 +572,7 @@ msgid ""
 msgstr ""
 "För att ladda upp videofiler till YouTube behöver du en api-nyckel. Ange en "
 "Google OAuuth 2.0 klientnyckel som har rättigheter till minst ett "
-"youtubekonto. "
+"youtubekonto."
 
 #: templates/options.php:16
 msgid ""
@@ -623,6 +602,15 @@ msgstr "Autensierad"
 msgid "Delete credentials"
 msgstr "Ta bort information"
 
+#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:362
+msgid "Export with AcfExportManager"
+msgstr "Exportera med AcfExportManager"
+
+#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:406
+#, php-format
+msgid "Exported %d fieldgroup(s)."
+msgstr "Exporterade %d fältgrupp(er)."
+
 #. Plugin Name of the plugin/theme
 msgid "Modularity Form Builder"
 msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
@@ -639,14 +627,29 @@ msgstr "Bygg formulär som kan visas i en modul"
 msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 
+#~ msgid "Custom submission post type"
+#~ msgstr "Anpassad posttyp för formulärsvar"
+
+#~ msgid "Submission post type"
+#~ msgstr "Posttyp"
+
+#~ msgid "Evenemang"
+#~ msgstr "Evenemang"
+
+#~ msgid "Idea"
+#~ msgstr "Idé"
+
+#~ msgid "Ticket"
+#~ msgstr "Ärende"
+
+#~ msgid "Listing"
+#~ msgstr "Lista"
+
+#~ msgid "Area"
+#~ msgstr "Område"
+
 #~ msgid "Subimission notice"
 #~ msgstr "Utskicksnotis"
-
-#~ msgid "Export with AcfExportManager"
-#~ msgstr "Exportera med AcfExportManager"
-
-#~ msgid "Exported %d fieldgroup(s)."
-#~ msgstr "Exporterade %d fältgrupp(er)."
 
 #~ msgid "Fields to display"
 #~ msgstr "Visa fält"
