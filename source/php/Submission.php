@@ -107,7 +107,7 @@ class Submission
         }
 
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
-            $this->autoreply($_POST['email'], $submission, $from);
+            $this->autoreply($_POST['email'], $submission, $_POST['email']);
         }
 
         // Redirect
