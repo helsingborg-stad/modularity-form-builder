@@ -107,7 +107,7 @@ class Submission
         }
 
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
-            $this->autoreply($_POST['email'], $submission);
+            $this->autoreply($_POST['email'], $submission, $from);
         }
 
         // Redirect
@@ -396,9 +396,12 @@ class Submission
      * @param  int    $submissionId
      * @return void
      */
-    public function autoreply($email, $submissionId)
+    public function autoreply($email, $submissionId, $from = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
+         if ($from) {
+            $headers[] = 'From:' . $from;
+        }
         $formId = get_post_meta($submissionId, 'modularity-form-id', true);
 
         $subject = apply_filters('ModularityFormBuilder/autoreply/subject', get_field('auto_reply_subject', $formId), $email, $submissionId);
