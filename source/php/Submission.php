@@ -72,11 +72,22 @@ class Submission
         // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
 
-        // Get from email
-        $from = null;
-        if (isset($_POST['email']) && !empty($_POST['email'])) {
-            $from = (!empty($_POST['firstname']) && !empty($_POST['lastname'])) ? $_POST['firstname'] . ' ' . $_POST['lastname'] . ' <' . $_POST['email'] . '>' : $_POST['email'];
+        // Get correct labels
+        $labels = \ModularityFormBuilder\PostType::getSenderLabels();
+        $fields = get_fields($_POST['modularity-form-id']);
+        $fields = $fields['form_fields'];
+        foreach ($fields as $key => $field) {
+            if ($field['acf_fc_layout'] == 'sender') {
+                if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
+                    $labels = array_merge($labels, array_filter($field['custom_sender_labels']));
+                }
+            }
         }
+        // Get sender data
+        $fromEmail = !empty($_POST[sanitize_title($labels['email'])]) ? $_POST[sanitize_title($labels['email'])] : null;
+        $fromFirstName = !empty($_POST[sanitize_title($labels['firstname'])]) ? $_POST[sanitize_title($labels['firstname'])] : null;
+        $fromLastName = !empty($_POST[sanitize_title($labels['lastname'])]) ? $_POST[sanitize_title($labels['lastname'])] : null;
+        $from = ($fromEmail && $fromFirstName && $fromLastName) ? $fromFirstName . ' ' . $fromLastName . ' <' . $fromEmail . '>' : $fromEmail;
 
         // Send notifications
         if ($notify) {
@@ -101,12 +112,13 @@ class Submission
         }
 
         // Send user copy
-        if ($senderCopy && isset($_POST['email'])) {
-            $this->sendCopy($_POST['email'], $_POST['modularity-form-id'], $submission, $from);
+        if ($senderCopy && $fromEmail) {
+            $this->sendCopy($fromEmail, $_POST['modularity-form-id'], $submission, $from);
         }
 
+        // Send auto reply
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
-            $this->autoreply($_POST['email'], $submission, $_POST['email']);
+            $this->autoreply($fromEmail, $submission, $fromEmail);
         }
 
         // Redirect
