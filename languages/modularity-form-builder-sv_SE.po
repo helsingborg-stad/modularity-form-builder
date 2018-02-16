@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
 "POT-Creation-Date: 2018-02-08 14:00+0100\n"
-"PO-Revision-Date: 2018-02-08 14:02+0100\n"
+"PO-Revision-Date: 2018-02-16 16:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: modularity-form-builder.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -43,7 +43,7 @@ msgstr "Meddelande"
 
 #: acf-fields/php/form.php:483
 msgid "Input"
-msgstr "Inmatning"
+msgstr ""
 
 #: acf-fields/php/form.php:822
 msgid "Radio"
@@ -55,7 +55,7 @@ msgstr "Kryssruta"
 
 #: acf-fields/php/form.php:1138
 msgid "Select"
-msgstr "Välj en fil"
+msgstr ""
 
 #: acf-fields/php/form.php:1296
 msgid "File upload"
@@ -63,7 +63,7 @@ msgstr "Filuppladdning"
 
 #: acf-fields/php/form.php:1546
 msgid "Custom content"
-msgstr "Meddelande för autosvar"
+msgstr "Eget innehåll"
 
 #: acf-fields/php/form.php:1626
 msgid "Collapse"
