@@ -277,8 +277,8 @@ class Submission
     public function notify($email, $formId, $submissionId, $from = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
-        if ($from) {
-            $headers[] = 'From:' . $from;
+        if (!is_null($from) && !empty($from)) {
+            $headers[] = 'From: ' . $from;
         }
 
         $data = self::getSubmissionData($submissionId);
@@ -344,9 +344,10 @@ class Submission
     public function sendCopy($email, $formId, $submissionId, $from = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
-        if ($from) {
-            $headers[] = 'From:' . $from;
+        if (!is_null($from) && !empty($from)) {
+            $headers[] = 'From: ' . $from;
         }
+
         $data = self::getSubmissionData($submissionId);
         $message = '';
         $subject = (get_field('copy_custom_subject', $formId) == true) ? get_field('copy_subject', $formId) : __('Form submission copy', 'modularity-form-builder');
@@ -399,9 +400,10 @@ class Submission
     public function autoreply($email, $submissionId, $from = null)
     {
         $headers = array('Content-Type: text/html; charset=UTF-8');
-         if ($from) {
-            $headers[] = 'From:' . $from;
+        if (!is_null($from) && !empty($from)) {
+            $headers[] = 'From: ' . $from;
         }
+
         $formId = get_post_meta($submissionId, 'modularity-form-id', true);
 
         $subject = apply_filters('ModularityFormBuilder/autoreply/subject', get_field('auto_reply_subject', $formId), $email, $submissionId);
