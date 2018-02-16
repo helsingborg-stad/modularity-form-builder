@@ -84,7 +84,6 @@ class Submission
                 $sendMail = true;
 
                 if ($email['condition']) {
-
                     $conditionalFieldKey = sanitize_title($email['form_conditional_field']);
 
                     $sendMail = false;
