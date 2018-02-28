@@ -167,15 +167,15 @@ class PostType
             $template->render($view, $data);
         } elseif (self::editableFrontend($post)) {
             $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $indata['modularity-form-id']);
-            $data['editor_settings'] = array(
+           $data['editor_settings'] = array(
                 'wpautop' => true,
                 'media_buttons' => false,
                 'textarea_name' => 'mod-form[post-content]',
                 'textarea_rows' => 15,
-                'teeny' => true,
-                'tinymce' => true,
-            );
-
+                    'tinymce' => array(
+                        'plugins' => 'wordpress',
+                    ),
+                );
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
             $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'), $data);
         } else {
