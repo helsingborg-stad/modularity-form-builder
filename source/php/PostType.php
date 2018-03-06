@@ -159,6 +159,7 @@ class PostType
         $indata = get_post_meta($post->ID, 'form-data', true);
         $fields = get_fields($indata['modularity-form-id']);
         $data = $this->gatherFormData($post);
+        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $indata['modularity-form-id']);
 
         if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
             $template = new \Municipio\template;
@@ -166,7 +167,6 @@ class PostType
             $view = $template->cleanViewPath($view);
             $template->render($view, $data);
         } elseif (self::editableFrontend($post)) {
-            $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $indata['modularity-form-id']);
            $data['editor_settings'] = array(
                 'wpautop' => true,
                 'media_buttons' => false,
