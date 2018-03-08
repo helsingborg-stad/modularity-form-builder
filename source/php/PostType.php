@@ -30,7 +30,7 @@ class PostType
     public function addEditButton($items, $post)
     {
         if (is_object($post) && self::editableFrontend($post) && $post->post_type == $this->postTypeSlug) {
-            $items[] = '<a href="#modal-edit-post" class="settings-item"><i class="pricon pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a>';
+            $items[] = '<a href="#modal-edit-post" class="settings-item"><i class="pricon pricon-space-right pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a>';
         }
 
         return $items;
