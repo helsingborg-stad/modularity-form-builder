@@ -2308,7 +2308,7 @@
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
-                'width' => '',
+                'width' => '50',
                 'class' => '',
                 'id' => '',
             ),
@@ -2340,6 +2340,10 @@
                 'id' => '',
             ),
             'choices' => array(
+                'form-submissions' => __('Form submissions', 'modularity-form-builder'),
+                'event' => __('Event', 'modularity-form-builder'),
+                'ticket' => __('Ticket', 'modularity-form-builder'),
+                'listing' => __('Listing', 'modularity-form-builder'),
             ),
             'default_value' => array(
                 0 => 'form-submissions',

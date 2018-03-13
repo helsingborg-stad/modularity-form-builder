@@ -9,4 +9,14 @@ Enable auto locate capability to address fields by adding Google Maps Geocoding 
 
 ```
 define('G_GEOCODE_KEY', 'YOUR_API_KEY');
+
+```
+
+#### Google reCaptcha API key
+Enable reCaptcha and reCAPTCHA and protect your form from spam and abuse.
+Get you API key at https://www.google.com/recaptcha/
+
+```
+define('G_RECAPTCHA_KEY', 'YOUR_API_KEY');
+define('G_RECAPTCHA_SECRET', 'YOUR_API_SECRET');
 ```

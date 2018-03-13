@@ -32,13 +32,22 @@
             @include('fields.sender-copy')
         @endif
 
-        <div class="grid">
-            <div class="grid-md-12">
-                @if (!empty($submission_public_act))
-                    <p class="text-sm gutter gutter-sm gutter-bottom"><?php _e('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'); ?></p>
-                @endif
-                <button type="submit" class="btn btn-primary">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
-            </div>
-        </div>
-    </form>
+        @if (!is_user_logged_in())
+                <div class="grid">
+                    <div class="grid-md-12">
+                        <div class="g-recaptcha"></div>
+                        <div class="form-notice text-danger captcha-warning text-sm" aria-live="polite"><?php _e('You must confirm your not a robot.', 'modularity-form-builder'); ?></div>
+                    </div>
+                </div>
+        @endif
+
+<div class="grid">
+   <div class="grid-md-12">
+       @if (!empty($submission_public_act))
+           <p class="text-sm gutter gutter-sm gutter-bottom"><?php _e('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'); ?></p>
+       @endif
+       <button type="submit" class="btn btn-primary">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
+   </div>
+</div>
+</form>
 </div>

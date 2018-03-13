@@ -256,16 +256,28 @@ class Form extends \Modularity\Module
      */
     public function script()
     {
+        global $post;
+
         if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
             wp_enqueue_script('google-maps-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
         }
 
         wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
         wp_localize_script('form-builder', 'formbuilder', array(
-            'sending'              => __('Sending', 'modularity-form-builder'),
-            'something_went_wrong' => __('Something went wrong', 'modularity-form-builder'),
+            'site_key'              => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
+            'sending'               => __('Sending', 'modularity-form-builder'),
+            'something_went_wrong'  => __('Something went wrong', 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder');
+
+        $handle = 'google-recaptcha';
+        $list = 'enqueued';
+        if (wp_script_is( $handle, $list )) {
+            return;
+        } else {
+            wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit', '', '1.0.0', true);
+        }
+
     }
 
     /**

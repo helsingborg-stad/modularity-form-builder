@@ -19,6 +19,20 @@ class Submission
      */
     public function submit()
     {
+        if (class_exists('\Municipio\Helper\ReCaptcha')) {
+            if (G_RECAPTCHA_KEY && G_RECAPTCHA_SECRET) {
+                if (!is_user_logged_in()) {
+                    $response = (isset($_POST['g-recaptcha-response']) && strlen($_POST['g-recaptcha-response']) > 0) ? $_POST['g-recaptcha-response'] : null;
+                    $reCaptcha = \Municipio\Helper\ReCaptcha::controlReCaptcha($response);
+
+                    if (!$reCaptcha) {
+                        echo 'false';
+                        wp_die();
+                    }
+                }
+            }
+        }
+
         unset($_POST['modularity-form']);
 
         $referer = remove_query_arg('form', $_POST['_wp_http_referer']);

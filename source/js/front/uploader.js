@@ -4,7 +4,23 @@ FormBuilder.Front = FormBuilder.Front || {};
 FormBuilder.Front.submit = (function ($) {
 
     function Submit() {
-        this.handleEvents();
+
+        $("form").submit(function(event) {
+
+            if (formbuilder.site_key) {
+                var recaptcha = $("#g-recaptcha-response").val();
+                if (recaptcha === "") {
+                    event.preventDefault();
+                    $('.captcha-warning').show();
+                }
+                else {
+                    this.handleEvents();
+                }
+            }
+            else {
+                this.handleEvents();
+            }
+        });
     }
 
     // Show spinner icon on submit
@@ -13,6 +29,7 @@ FormBuilder.Front.submit = (function ($) {
             $(e.target).find('button[type="submit"]').html('<i class="spinner"></i> ' + formbuilder.sending);
         }.bind(this));
     };
+
 
 	return new Submit();
 
