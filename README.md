@@ -14,7 +14,7 @@ define('G_GEOCODE_KEY', 'YOUR_API_KEY');
 
 #### Google reCaptcha API key
 Enable reCAPTCHA and protect your form from spam and abuse.
-Get you API key at https://www.google.com/recaptcha/
+Get your API key at https://www.google.com/recaptcha/
 
 ```
 define('G_RECAPTCHA_KEY', 'YOUR_API_KEY');
