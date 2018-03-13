@@ -14,12 +14,11 @@ class PostType
         add_action('restrict_manage_posts', array($this, 'formFilter'));
         add_action('edit_form_after_title', array($this, 'displayFeedbackId'), 10, 1);
         add_action('wp_enqueue_scripts', array($this, 'enqueue'));
-        add_action('Municipio/blog/post_info', array($this, 'addEditButton'));
         add_action('pre_get_posts', array($this, 'queryFilter'));
         add_action('save_post_' . $this->postTypeSlug, array($this, 'updateForm'));
         add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
 
-        add_filter('accessibility_items', array($this, 'accessibilityItems'), 20, 1);
+        add_filter('Municipio/blog/post_settings', array($this, 'addEditButton'), 10, 2);
         add_filter('the_content', array($this, 'appendFormdata'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
@@ -28,29 +27,13 @@ class PostType
         add_action('admin_head', array($this, 'jsonSelectedValues'));
     }
 
-    /**
-     * Filter for adding accessibility items
-     * @param  array $items Default item array
-     * @return array        Modified item array
-     */
-    public function accessibilityItems($items)
+    public function addEditButton($items, $post)
     {
-        global $post;
-
-        if (is_object($post) && self::editableFrontend($post) && !is_archive() && $post->post_type == $this->postTypeSlug) {
-            $items[] = '<a href="#modal-edit-post" class=""><i class="pricon pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a>';
+        if (is_object($post) && self::editableFrontend($post) && $post->post_type == $this->postTypeSlug) {
+            $items[] = '<a href="#modal-edit-post" class="settings-item"><i class="pricon pricon-space-right pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a>';
         }
 
         return $items;
-    }
-
-    public function addEditButton()
-    {
-        global $post;
-
-        if (is_object($post) && self::editableFrontend($post) && !is_archive() && $post->post_type == $this->postTypeSlug) {
-            echo '<li><a href="#modal-edit-post" class="btn btn-sm"><i class="pricon pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a></li>';
-        }
     }
 
     /**
@@ -159,6 +142,7 @@ class PostType
         $indata = get_post_meta($post->ID, 'form-data', true);
         $fields = get_fields($indata['modularity-form-id']);
         $data = $this->gatherFormData($post);
+        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $indata['modularity-form-id']);
 
         if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
             $template = new \Municipio\template;
@@ -166,7 +150,6 @@ class PostType
             $view = $template->cleanViewPath($view);
             $template->render($view, $data);
         } elseif (self::editableFrontend($post)) {
-            $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $indata['modularity-form-id']);
            $data['editor_settings'] = array(
                 'wpautop' => true,
                 'media_buttons' => false,

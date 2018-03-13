@@ -4,13 +4,13 @@
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="{{ sanitize_title($field['labels']['firstname']) }}" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
+                <input type="text" name="{{ sanitize_title($field['labels']['firstname']) }}" value="{{ $user_details['firstname'] }}" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-lastname">{{ $field['labels']['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="{{ sanitize_title($field['labels']['lastname']) }}" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
+                <input type="text" name="{{ sanitize_title($field['labels']['lastname']) }}" value="{{ $user_details['lastname'] }}" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="{{ sanitize_title($field['labels']['firstname']) }}" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
+                <input type="text" name="{{ sanitize_title($field['labels']['firstname']) }}" value="{{ $user_details['firstname'] }}" id="{{ $module_id }}-firstname" {{ in_array('firstname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-lastname">{{ $field['labels']['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="text" name="{{ sanitize_title($field['labels']['lastname']) }}" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
+                <input type="text" name="{{ sanitize_title($field['labels']['lastname']) }}" value="{{ $user_details['lastname'] }}" id="{{ $module_id }}-lastname" {{ in_array('lastname', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="email" name="{{ sanitize_title($field['labels']['email']) }}" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
+                <input type="email" name="{{ sanitize_title($field['labels']['email']) }}" value="{{ $user_details['email'] }}" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
         <div class="grid-md-6">
@@ -55,7 +55,7 @@
         <div class="grid-md-6">
             <div class="form-group">
                 <label for="{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
-                <input type="email" name="{{ sanitize_title($field['labels']['email']) }}" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
+                <input type="email" name="{{ sanitize_title($field['labels']['email']) }}" value="{{ $user_details['email'] }}" id="{{ $module_id }}-email" {{ in_array('email', $field['required_fields']) ? 'required' : '' }}>
             </div>
         </div>
     </div>
