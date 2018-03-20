@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2018-03-20 10:37+0100\n"
-"PO-Revision-Date: 2018-03-20 10:37+0100\n"
+"POT-Creation-Date: 2018-03-20 16:28+0100\n"
+"PO-Revision-Date: 2018-03-20 16:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: acf-fields/php/form.php:6 source/php/Module/Form.php:29
-#: source/php/PostType.php:349
+#: source/php/PostType.php:354
 msgid "Form"
 msgstr "Formulär"
 
@@ -266,7 +266,7 @@ msgid "Select post type"
 msgstr "Välj posttyp"
 
 #: acf-fields/php/form.php:2343 source/php/PostType.php:67
-#: source/php/PostType.php:78 source/php/PostType.php:435
+#: source/php/PostType.php:78 source/php/PostType.php:440
 msgid "Form submissions"
 msgstr "Formulärsvar"
 
@@ -290,7 +290,7 @@ msgstr "Redigerbar för användaren"
 msgid "Editable on back end"
 msgstr "Redigerbar för redaktör"
 
-#: source/php/App.php:135 source/php/PostType.php:403
+#: source/php/App.php:135 source/php/PostType.php:408
 msgid "Address"
 msgstr "Adress"
 
@@ -432,7 +432,7 @@ msgid "Edit"
 msgstr "Redigera"
 
 #: source/php/Module/views/form-edit-front.blade.php:13
-#: source/php/PostType.php:347
+#: source/php/PostType.php:352
 msgid "Title"
 msgstr "Titel"
 
@@ -504,67 +504,67 @@ msgstr "Inga formulärsvar hittades i papperskorgen"
 msgid "Parent Form submission:"
 msgstr "Föräldersvar:"
 
-#: source/php/PostType.php:306
+#: source/php/PostType.php:311
 msgid "Select form…"
 msgstr "Välj formulär"
 
-#: source/php/PostType.php:348
+#: source/php/PostType.php:353
 msgid "ID"
 msgstr "Id"
 
-#: source/php/PostType.php:350
+#: source/php/PostType.php:355
 msgid "Referer"
 msgstr "Referens"
 
-#: source/php/PostType.php:351
+#: source/php/PostType.php:356
 msgid "Date"
 msgstr "Datum"
 
-#: source/php/PostType.php:399
+#: source/php/PostType.php:404
 msgid "Firstname"
 msgstr "Förnamn"
 
-#: source/php/PostType.php:400
+#: source/php/PostType.php:405
 msgid "Lastname"
 msgstr "Efternamn"
 
-#: source/php/PostType.php:401
+#: source/php/PostType.php:406
 msgid "Email"
 msgstr "E-post"
 
-#: source/php/PostType.php:402
+#: source/php/PostType.php:407
 msgid "Phone"
 msgstr "Telefonnummer"
 
-#: source/php/PostType.php:404
+#: source/php/PostType.php:409
 msgid "Street address"
 msgstr "Gatuadress"
 
-#: source/php/PostType.php:405
+#: source/php/PostType.php:410
 msgid "Postal code"
 msgstr "Postnummer"
 
-#: source/php/PostType.php:406
+#: source/php/PostType.php:411
 msgid "City"
 msgstr "Stad"
 
-#: source/php/PostType.php:420
+#: source/php/PostType.php:425
 msgid "Feedback ID"
 msgstr "Feedback Id"
 
-#: source/php/Submission.php:77
-msgid "Posted on: "
-msgstr "Postades på: "
+#: source/php/Submission.php:81 source/php/Submission.php:362
+msgid "Posted on"
+msgstr "Postades från"
 
-#: source/php/Submission.php:77
-msgid "Referrer: "
-msgstr "Hänvisningsadress: "
+#: source/php/Submission.php:82 source/php/Submission.php:359
+msgid "Referrer"
+msgstr "Hänvisare"
 
-#: source/php/Submission.php:317
+#: source/php/Submission.php:327
 msgid "New form submission"
 msgstr "Nytt formulärsvar"
 
-#: source/php/Submission.php:322
+#: source/php/Submission.php:332
 #, php-format
 msgid ""
 "This is a notification about a new form submission to the form \"%s\"."
@@ -573,7 +573,7 @@ msgstr ""
 "Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
 "notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
 
-#: source/php/Submission.php:383
+#: source/php/Submission.php:401
 msgid "Form submission copy"
 msgstr "Svarskopia"
 
@@ -642,6 +642,12 @@ msgstr "Bygg formulär som kan visas i en modul"
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
+
+#~ msgid "Posted on: "
+#~ msgstr "Postades på"
+
+#~ msgid "Referrer: "
+#~ msgstr "Hänvisningsadress"
 
 #~ msgid "Form: "
 #~ msgstr "Postat på: "
