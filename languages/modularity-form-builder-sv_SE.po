@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2018-03-20 16:28+0100\n"
-"PO-Revision-Date: 2018-03-20 16:29+0100\n"
+"POT-Creation-Date: 2018-03-20 16:43+0100\n"
+"PO-Revision-Date: 2018-03-20 16:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -357,7 +357,8 @@ msgstr "Lägg till ny %s"
 msgid "New %s Name"
 msgstr "Ny %s namn"
 
-#: source/php/Module/Form.php:30
+#: source/php/Module/Form.php:30 source/php/Submission.php:81
+#: source/php/Submission.php:362
 msgid "Forms"
 msgstr "Formulär"
 
@@ -552,11 +553,8 @@ msgstr "Stad"
 msgid "Feedback ID"
 msgstr "Feedback Id"
 
-#: source/php/Submission.php:81 source/php/Submission.php:362
-msgid "Posted on"
-msgstr "Postades från"
-
 #: source/php/Submission.php:82 source/php/Submission.php:359
+#, fuzzy
 msgid "Referrer"
 msgstr "Hänvisare"
 
@@ -642,6 +640,12 @@ msgstr "Bygg formulär som kan visas i en modul"
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
+
+#~ msgid "Posted on"
+#~ msgstr "Postades från"
+
+#~ msgid "Page"
+#~ msgstr "Formulär"
 
 #~ msgid "Posted on: "
 #~ msgstr "Postades på"
