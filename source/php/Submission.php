@@ -92,8 +92,8 @@ class Submission
 
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
-        update_post_meta($submission, 'modularity-form-uri', $postFormPage);
-        update_post_meta($submission, 'modularity-form-referer', $postReferer);
+        update_post_meta($submission, 'Page', $postFormPage);
+        update_post_meta($submission, 'Referrer', $postReferer);
 
         // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
