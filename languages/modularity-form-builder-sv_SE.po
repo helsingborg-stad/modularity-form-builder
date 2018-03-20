@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2018-03-13 14:05+0100\n"
-"PO-Revision-Date: 2018-03-13 14:06+0100\n"
+"POT-Creation-Date: 2018-03-20 10:37+0100\n"
+"PO-Revision-Date: 2018-03-20 10:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: acf-fields/php/form.php:6 source/php/Module/Form.php:29
-#: source/php/PostType.php:366
+#: source/php/PostType.php:349
 msgid "Form"
 msgstr "Formulär"
 
@@ -98,6 +98,7 @@ msgid "Add public act notice"
 msgstr "Lägg till notis om allmän handling"
 
 #: acf-fields/php/form.php:1791
+#, fuzzy
 msgid "Submission notice"
 msgstr "Meddelande vid inskickning"
 
@@ -264,8 +265,8 @@ msgstr "Posttyp"
 msgid "Select post type"
 msgstr "Välj posttyp"
 
-#: acf-fields/php/form.php:2343 source/php/PostType.php:84
-#: source/php/PostType.php:95 source/php/PostType.php:452
+#: acf-fields/php/form.php:2343 source/php/PostType.php:67
+#: source/php/PostType.php:78 source/php/PostType.php:435
 msgid "Form submissions"
 msgstr "Formulärsvar"
 
@@ -289,7 +290,7 @@ msgstr "Redigerbar för användaren"
 msgid "Editable on back end"
 msgstr "Redigerbar för redaktör"
 
-#: source/php/App.php:135 source/php/PostType.php:420
+#: source/php/App.php:135 source/php/PostType.php:403
 msgid "Address"
 msgstr "Adress"
 
@@ -297,7 +298,7 @@ msgstr "Adress"
 msgid "Missing arguments"
 msgstr "Saknade argument"
 
-#: source/php/App.php:238 source/php/Module/views/form.blade.php:22
+#: source/php/App.php:238 source/php/Module/views/form.blade.php:23
 msgid "Something went wrong, please try again."
 msgstr "Något gick fel, var god försök igen."
 
@@ -309,7 +310,7 @@ msgstr "Uppladdningen lyckades"
 msgid "File was missing, please try again."
 msgstr "Filen saknas, var god försök igen."
 
-#: source/php/App.php:259 source/php/Module/Form.php:269
+#: source/php/App.php:259 source/php/Module/Form.php:286
 msgid "Something went wrong"
 msgstr "Något gick fel"
 
@@ -385,17 +386,17 @@ msgstr "Visa svar"
 msgid "Export csv"
 msgstr "Exportera csv"
 
-#: source/php/Module/Form.php:247
+#: source/php/Module/Form.php:264
 msgid "Please create radio selections before adding conditional logic."
 msgstr ""
 "Vänligen skapa formulärfält med radioknappar innan du lägger till "
 "visningsvillkor."
 
-#: source/php/Module/Form.php:248 source/php/PostType.php:70
+#: source/php/Module/Form.php:265 source/php/PostType.php:53
 msgid "Are you sure you want to delete this file?"
 msgstr "Är du säker på att du vill radera den här filen?"
 
-#: source/php/Module/Form.php:268
+#: source/php/Module/Form.php:285
 msgid "Sending"
 msgstr "Skickar"
 
@@ -426,12 +427,12 @@ msgid "Find my location"
 msgstr "Hitta min position"
 
 #: source/php/Module/views/form-edit-front.blade.php:6
-#: source/php/PostType.php:41 source/php/PostType.php:52
+#: source/php/PostType.php:33
 msgid "Edit"
 msgstr "Redigera"
 
 #: source/php/Module/views/form-edit-front.blade.php:13
-#: source/php/PostType.php:364
+#: source/php/PostType.php:347
 msgid "Title"
 msgstr "Titel"
 
@@ -443,15 +444,15 @@ msgstr "Stäng"
 msgid "Update"
 msgstr "Uppdatera"
 
-#: source/php/Module/views/form.blade.php:14
+#: source/php/Module/views/form.blade.php:15
 msgid "The for was submitted, thank you!"
 msgstr "Tack! Formuläret har skickats iväg till mottagaren."
 
-#: source/php/Module/views/form.blade.php:39
+#: source/php/Module/views/form.blade.php:40
 msgid "You must confirm your not a robot."
 msgstr "Du måste bekräfta att du inte är en robot."
 
-#: source/php/Module/views/form.blade.php:47
+#: source/php/Module/views/form.blade.php:48
 msgid ""
 "Note that your comment will become a public act that can be read by others."
 msgstr ""
@@ -462,100 +463,108 @@ msgstr ""
 msgid "Options"
 msgstr "Inställningar"
 
-#: source/php/PostType.php:85
+#: source/php/PostType.php:68
 msgid "Form submission"
 msgstr "Formulärsvar"
 
-#: source/php/PostType.php:86
+#: source/php/PostType.php:69
 msgctxt "modularity-form-builder"
 msgid "Add New Form submission"
 msgstr "Lägg till nytt formulärsvar"
 
-#: source/php/PostType.php:87
+#: source/php/PostType.php:70
 msgid "Add New Form submission"
 msgstr "Lägg till  nytt formulärsvar"
 
-#: source/php/PostType.php:88
+#: source/php/PostType.php:71
 msgid "Edit Form submission"
 msgstr "Redigera formulärsvar"
 
-#: source/php/PostType.php:89
+#: source/php/PostType.php:72
 msgid "New Form submission"
 msgstr "Nytt formulärsvar"
 
-#: source/php/PostType.php:90
+#: source/php/PostType.php:73
 msgid "View Form submission"
 msgstr "Visa formulärsvar"
 
-#: source/php/PostType.php:91
+#: source/php/PostType.php:74
 msgid "Search Form submissions"
 msgstr "Sök formulärsvar"
 
-#: source/php/PostType.php:92
+#: source/php/PostType.php:75
 msgid "No Form submissions found"
 msgstr "Inga formulärsvar hittades"
 
-#: source/php/PostType.php:93
+#: source/php/PostType.php:76
 msgid "No Form submissions found in Trash"
 msgstr "Inga formulärsvar hittades i papperskorgen"
 
-#: source/php/PostType.php:94
+#: source/php/PostType.php:77
 msgid "Parent Form submission:"
 msgstr "Föräldersvar:"
 
-#: source/php/PostType.php:323
+#: source/php/PostType.php:306
 msgid "Select form…"
 msgstr "Välj formulär"
 
-#: source/php/PostType.php:365
+#: source/php/PostType.php:348
 msgid "ID"
 msgstr "Id"
 
-#: source/php/PostType.php:367
+#: source/php/PostType.php:350
 msgid "Referer"
 msgstr "Referens"
 
-#: source/php/PostType.php:368
+#: source/php/PostType.php:351
 msgid "Date"
 msgstr "Datum"
 
-#: source/php/PostType.php:416
+#: source/php/PostType.php:399
 msgid "Firstname"
 msgstr "Förnamn"
 
-#: source/php/PostType.php:417
+#: source/php/PostType.php:400
 msgid "Lastname"
 msgstr "Efternamn"
 
-#: source/php/PostType.php:418
+#: source/php/PostType.php:401
 msgid "Email"
 msgstr "E-post"
 
-#: source/php/PostType.php:419
+#: source/php/PostType.php:402
 msgid "Phone"
 msgstr "Telefonnummer"
 
-#: source/php/PostType.php:421
+#: source/php/PostType.php:404
 msgid "Street address"
 msgstr "Gatuadress"
 
-#: source/php/PostType.php:422
+#: source/php/PostType.php:405
 msgid "Postal code"
 msgstr "Postnummer"
 
-#: source/php/PostType.php:423
+#: source/php/PostType.php:406
 msgid "City"
 msgstr "Stad"
 
-#: source/php/PostType.php:437
+#: source/php/PostType.php:420
 msgid "Feedback ID"
 msgstr "Feedback Id"
 
-#: source/php/Submission.php:312
+#: source/php/Submission.php:77
+msgid "Posted on: "
+msgstr "Postades på: "
+
+#: source/php/Submission.php:77
+msgid "Referrer: "
+msgstr "Hänvisningsadress: "
+
+#: source/php/Submission.php:317
 msgid "New form submission"
 msgstr "Nytt formulärsvar"
 
-#: source/php/Submission.php:317
+#: source/php/Submission.php:322
 #, php-format
 msgid ""
 "This is a notification about a new form submission to the form \"%s\"."
@@ -564,7 +573,7 @@ msgstr ""
 "Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
 "notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
 
-#: source/php/Submission.php:378
+#: source/php/Submission.php:383
 msgid "Form submission copy"
 msgstr "Svarskopia"
 
@@ -633,6 +642,15 @@ msgstr "Bygg formulär som kan visas i en modul"
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
+
+#~ msgid "Form: "
+#~ msgstr "Postat på: "
+
+#~ msgid "Referer: "
+#~ msgstr "Referenssida: "
+
+#~ msgid "Submited from: "
+#~ msgstr "Postad från:"
 
 #~ msgid "Export with AcfExportManager"
 #~ msgstr "Exportera med AcfExportManager"
