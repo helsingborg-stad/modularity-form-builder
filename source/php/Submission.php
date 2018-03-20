@@ -364,8 +364,6 @@ class Submission
         if ($messagePrefix) {
             $message = $messagePrefix . '<br><br>' . $message;
         }
-        $message .= "<p>".$data['modularity-form-referer']."</p>";
-        $message .= "<p>".$data['modularity-form-url']."</p>";
 
         $subject = apply_filters('ModularityFormBuilder/notice/subject', $subject, $email, $formId, $submissionId, $showData, $data);
         $message = apply_filters('ModularityFormBuilder/notice/message', $message, $email, $formId, $submissionId, $showData, $data);
@@ -423,9 +421,6 @@ class Submission
         if ($prefix = get_field('sender_copy_message', $formId)) {
             $message = $prefix . '<br><br>' . $message;
         }
-
-        $message .= "<p>".$data['modularity-form-referer']."</p>";
-        $message .= "<p>".$data['modularity-form-url']."</p>";
 
         $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', $subject, $email, $formId, $submissionId, $data);
         $message = apply_filters('ModularityFormBuilder/sender_copy/message', $message, $email, $formId, $submissionId, $data);
