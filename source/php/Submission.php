@@ -74,15 +74,14 @@ class Submission
 
         $postReferer = $_POST['modularity-form-referer'];
         $postFormPage = $_POST['modularity-form-url'];
-
         $checkReferer = url_to_postid( $postReferer );
-        $checkFormPage = url_to_postid( $postReferer );
+        $checkFormPage = url_to_postid( $postFormPage );
 
-        if ($checkReferer && $checkFormPage ) {
+        if (!$checkReferer === 0 && !$checkFormPage === 0) {
             $postContent = $postContent . "\r\n ". __('Posted on: ', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>" .
                 "\r\n" . __('Referrer: ', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
         }
-        
+
         // Save submission
         $submission = wp_insert_post(array(
             'post_title'    => $postTitle,
