@@ -71,12 +71,18 @@ class Submission
         $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
         $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
 
-        $postReferer = !empty($_POST['modularity-form-referer']) && !empty($_POST[$_POST['modularity-form-referer']]) ? $_POST[$_POST['modularity-form-referer']] : '';
-        $postFormPage = !empty($_POST['modularity-form-url']) && !empty($_POST[$_POST['modularity-form-url']]) ? $_POST[$_POST['modularity-form-url']] : '';
 
-        $postContent = $postContent . "\r\n ". __('Posted on: ', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>" .
-                                        "\r\n" . __('Referrer: ', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
+        $postReferer = $_POST['modularity-form-referer'];
+        $postFormPage = $_POST['modularity-form-url'];
 
+        $checkReferer = url_to_postid( $postReferer );
+        $checkFormPage = url_to_postid( $postReferer );
+
+        if ($checkReferer && $checkFormPage ) {
+            $postContent = $postContent . "\r\n ". __('Posted on: ', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>" .
+                "\r\n" . __('Referrer: ', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
+        }
+        
         // Save submission
         $submission = wp_insert_post(array(
             'post_title'    => $postTitle,
