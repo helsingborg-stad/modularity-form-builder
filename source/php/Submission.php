@@ -78,7 +78,7 @@ class Submission
         $checkFormPage = url_to_postid( $postFormPage );
 
         if (empty($postReferer) || $checkReferer !== 0 && $checkFormPage !== 0) {
-            $postFormPage = "\r\n ". __('Forms', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
+            $postFormPage = "\r\n ". __('Form', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
             $postReferer = "\r\n" . __('Referrer', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
         }
 
@@ -359,7 +359,7 @@ class Submission
                         $message .= '<strong>' . __('Referrer', 'modularity-form-builder') . '</strong><br>' . $value;
                     }
                     else if ($key === 'modularity-form-uri') {
-                        $message .= '<strong>' . __('Forms', 'modularity-form-builder')  . '</strong><br>' . $value;
+                        $message .= '<strong>' . __('Form', 'modularity-form-builder')  . '</strong><br>' . $value;
                     }
                     else {
                         $message .= '<strong>' . $key . '</strong><br>' . $value;

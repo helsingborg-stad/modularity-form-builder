@@ -168,7 +168,7 @@ class PostType
         if (isset($indata['modularity-form-history']))
             echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
         if (isset($indata['modularity-form-url']))
-            echo "<p><strong>Posted on</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
+            echo "<p><strong>Form</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
     }
 
     public function gatherFormData($post)
