@@ -78,8 +78,8 @@ class Submission
         $checkFormPage = url_to_postid( $postFormPage );
 
         if (empty($postReferer) || $checkReferer !== 0 && $checkFormPage !== 0) {
-            $postUri = "\r\n ". __('Posted on: ', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>" .
-                "\r\n" . __('Referrer: ', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
+            $postFormPage = "\r\n ". __('Posted on: ', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
+            $postReferer = "\r\n" . __('Referrer: ', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
         }
 
         // Save submission
@@ -92,8 +92,8 @@ class Submission
 
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
-        update_post_meta($submission, 'modularity-form-uri', $postUri);
-        update_post_meta($submission, 'modularity-form-referer', $referer);
+        update_post_meta($submission, 'modularity-form-uri', $postFormPage);
+        update_post_meta($submission, 'modularity-form-referer', $postReferer);
 
         // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
@@ -364,8 +364,8 @@ class Submission
         if ($messagePrefix) {
             $message = $messagePrefix . '<br><br>' . $message;
         }
-        $message .= "<p><strong>Referrer</strong><br /><a href=\"".$data['modularity-form-referer']."\">".$data['modularity-form-referer']."</a><br /></p>";
-        $message .= "<p><strong>Posted on</strong><br /><a href=\"".$data['modularity-form-url']."\">".$data['modularity-form-url']."</a></p>";
+        $message .= "<p>".$data['modularity-form-referer']."</p>";
+        $message .= "<p>".$data['modularity-form-url']."</p>";
 
         $subject = apply_filters('ModularityFormBuilder/notice/subject', $subject, $email, $formId, $submissionId, $showData, $data);
         $message = apply_filters('ModularityFormBuilder/notice/message', $message, $email, $formId, $submissionId, $showData, $data);
@@ -424,8 +424,8 @@ class Submission
             $message = $prefix . '<br><br>' . $message;
         }
 
-        $message .= "<p><strong>Referrer</strong><br /><a href=\"".$data['modularity-form-referer']."\">".$data['modularity-form-referer']."</a><br /></p>";
-        $message .= "<p><strong>Posted on</strong><br /><a href=\"".$data['modularity-form-url']."\">".$data['modularity-form-url']."</a></p>";
+        $message .= "<p>".$data['modularity-form-referer']."</p>";
+        $message .= "<p>".$data['modularity-form-url']."</p>";
 
         $subject = apply_filters('ModularityFormBuilder/sender_copy/subject', $subject, $email, $formId, $submissionId, $data);
         $message = apply_filters('ModularityFormBuilder/sender_copy/message', $message, $email, $formId, $submissionId, $data);
