@@ -31,6 +31,9 @@
         } else {
             echo nl2br($item['value']);
         }
+
         ?>
+
     </p>
 <?php endforeach; ?>
+

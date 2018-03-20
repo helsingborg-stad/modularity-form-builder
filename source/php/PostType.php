@@ -160,10 +160,16 @@ class PostType
                     ),
                 );
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
+            echo $data;
             $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'), $data);
+
+            echo $data['modularity-form-url'];
         } else {
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
         }
+        echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-referer']."\">".$indata['modularity-form-referer']."</a><br /></p>";
+        echo "<p><strong>Posted on</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
+
     }
 
     public function gatherFormData($post)
