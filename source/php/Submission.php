@@ -92,8 +92,9 @@ class Submission
 
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
-        update_post_meta($submission, 'Page', $postFormPage);
-        update_post_meta($submission, 'Referrer', $postReferer);
+        update_post_meta($submission, 'modularity-form-referer', $referer);
+        update_post_meta($submission, 'modularity-form-uri', $postFormPage);
+        update_post_meta($submission, 'modularity-form-referrer', $postReferer);
 
         // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
@@ -354,7 +355,15 @@ class Submission
                         }
                     }
                 } else {
-                    $message .= '<strong>' . $key . '</strong><br>' . $value;
+                    if ($key === 'modularity-form-referrer') {
+                        $message .= '<strong>' . __('Referrer: ', 'modularity-form-builder') . '</strong><br>' . $value;
+                    }
+                    else if($key === 'modularity-form-uri') {
+                        $message .= '<strong>' . __('Posted on: ', 'modularity-form-builder')  . '</strong><br>' . $value;
+                    }
+                    else {
+                        $message .= '<strong>' . $key . '</strong><br>' . $value;
+                    }
                 }
 
                 $i++;
