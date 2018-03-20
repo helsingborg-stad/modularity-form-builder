@@ -74,7 +74,8 @@ class Submission
         $postReferer = !empty($_POST['modularity-form-referer']) && !empty($_POST[$_POST['modularity-form-referer']]) ? $_POST[$_POST['modularity-form-referer']] : '';
         $postFormPage = !empty($_POST['modularity-form-url']) && !empty($_POST[$_POST['modularity-form-url']]) ? $_POST[$_POST['modularity-form-url']] : '';
 
-        $postContent = $postContent . "\r\n ". __('Posted on: ', 'modularity-form-builder') . $postFormPage . "\r\n" . __('Referrer: ', 'modularity-form-builder')  . $postReferer;
+        $postContent = $postContent . "\r\n ". __('Posted on: ', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>" .
+                                        "\r\n" . __('Referrer: ', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
 
         // Save submission
         $submission = wp_insert_post(array(
