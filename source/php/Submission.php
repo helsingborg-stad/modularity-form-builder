@@ -67,9 +67,14 @@ class Submission
 
         $_POST = array_merge($_POST, $files);
 
-        // Set post title and content
+        // Set post title, content, form page and referer
         $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
         $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
+
+        $postReferer = !empty($_POST['modularity-form-referer']) && !empty($_POST[$_POST['modularity-form-referer']]) ? $_POST[$_POST['modularity-form-referer']] : '';
+        $postFormPage = !empty($_POST['modularity-form-url']) && !empty($_POST[$_POST['modularity-form-url']]) ? $_POST[$_POST['modularity-form-url']] : '';
+
+        $postContent = $postContent . "\r\n Submited from:". $postFormPage . "\r\n" . "Referer: " . $postReferer;
 
         // Save submission
         $submission = wp_insert_post(array(

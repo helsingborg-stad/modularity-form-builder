@@ -7,7 +7,8 @@
         <?php wp_nonce_field('submit', 'modularity-form'); ?>
         <input type="hidden" name="modularity-form-id" value="{{ $ID }}">
         <input type="hidden" name="modularity-form-post-type" value="{{ $submissionPostType }}">
-
+        <input type="hidden" id="modularity-form-referer" name="modularity-form-referer" value="">
+        <input type="hidden" id="modularity-form-url" name="modularity-form-url" value="">
         @if (isset($_GET['form']) && $_GET['form'] == 'success')
             <div class="grid">
                 <div class="grid-md-12">
