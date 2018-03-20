@@ -71,7 +71,7 @@ class Submission
         $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
         $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
 
-        $postReferer = $_POST['modularity-form-referer'];
+        $postReferer = $_POST['modularity-form-history'];
         $postFormPage = $_POST['modularity-form-url'];
 
         $checkReferer = url_to_postid( $postReferer );
