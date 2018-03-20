@@ -164,7 +164,7 @@ class PostType
         } else {
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
         }
-        echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-referrer']."\">".$indata['modularity-form-referrer']."</a><br /></p>";
+        echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
         echo "<p><strong>Posted on</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
     }
 
