@@ -35,7 +35,7 @@ class Submission
 
         unset($_POST['modularity-form']);
 
-        $referer = remove_query_arg('form', $_POST['_wp_http_referer']);
+        $referer = esc_url(remove_query_arg('form', $_POST['_wp_http_referer']));
 
         unset($_POST['_wp_http_referer']);
 
@@ -71,15 +71,15 @@ class Submission
         $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
         $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
 
-        $postReferer = $_POST['modularity-form-history'];
-        $postFormPage = $_POST['modularity-form-url'];
-
+        // Referer & page url
+        $postReferer = esc_url($_POST['modularity-form-history']);
+        $postFormPage = esc_url($_POST['modularity-form-url']);
         $checkReferer = url_to_postid( $postReferer );
         $checkFormPage = url_to_postid( $postFormPage );
 
         if (empty($postReferer) || $checkReferer !== 0 && $checkFormPage !== 0) {
-            $postFormPage = "\r\n ". __('Form', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
-            $postReferer = "\r\n" . __('Referrer', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
+            $formUrl = "\r\n ". __('Form', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
+            $refHistory = "\r\n" . __('Referrer', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
         }
 
         // Save submission
@@ -90,11 +90,14 @@ class Submission
             'post_status'   => 'publish'
         ));
 
+        // Adding meta data
         update_post_meta($submission, 'form-data', $_POST);
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
-        update_post_meta($submission, 'modularity-form-referer', $referer);
-        update_post_meta($submission, 'modularity-form-url', $postFormPage);
-        update_post_meta($submission, 'modularity-form-history', $postReferer);
+        update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
+        if (isset($formUrl))
+            update_post_meta($submission, 'modularity-form-url', $formUrl);
+        if (isset($refHistory))
+            update_post_meta($submission, 'modularity-form-history', $refHistory);
 
         // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
@@ -154,6 +157,13 @@ class Submission
         } else {
             $referer .= '?form=success';
         }
+        if (empty($postReferer) || $checkReferer !== 0) {
+            $referer .= '&modularityReferrer='.urlencode($postReferer);
+        }
+        if (empty($postFormPage) || $postFormPage !== 0) {
+            $referer .= '&modularityForm='.urlencode($postFormPage);
+        }
+
 
         wp_redirect($referer);
         exit;
@@ -356,10 +366,10 @@ class Submission
                     }
                 } else {
                     if ($key === 'modularity-form-history') {
-                        $message .= '<strong>test' . __('Referrer', 'modularity-form-builder') . '</strong><br>' . $value;
+                        $message .= '<strong>' . __('Referrer', 'modularity-form-builder') . '</strong><br>' . $value;
                     }
                     else if ($key === 'modularity-form-url') {
-                        $message .= '<strong>test' . __('Form', 'modularity-form-builder')  . '</strong><br>' . $value;
+                        $message .= '<strong>' . __('Form', 'modularity-form-builder')  . '</strong><br>' . $value;
                     }
                     else {
                         $message .= '<strong>' . $key . '</strong><br>' . $value;
