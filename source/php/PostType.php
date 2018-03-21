@@ -163,12 +163,15 @@ class PostType
             $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'), $data);
         } else {
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
+
+        }
+        if (is_admin()) {
+            if (isset($indata['modularity-form-history']))
+                echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
+            if (isset($indata['modularity-form-url']))
+                echo "<p><strong>Form</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
         }
 
-        if (isset($indata['modularity-form-history']))
-            echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
-        if (isset($indata['modularity-form-url']))
-            echo "<p><strong>Form</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
     }
 
     public function gatherFormData($post)
