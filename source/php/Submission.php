@@ -36,7 +36,6 @@ class Submission
         unset($_POST['modularity-form']);
 
         $referer = esc_url(remove_query_arg('form', $_POST['_wp_http_referer']));
-
         unset($_POST['_wp_http_referer']);
 
         $senderCopy = false;
@@ -151,20 +150,23 @@ class Submission
             $this->autoreply($fromEmail, $submission, $fromEmail);
         }
 
+        $referer = parse_url($referer, PHP_URL_PATH);
         // Redirect
+
         if (strpos($referer, '?') > -1) {
             $referer .= '&form=success';
         } else {
             $referer .= '?form=success';
         }
+
         if (empty($postReferer) || $checkReferer !== 0) {
             $referer .= '&modularityReferrer='.urlencode($postReferer);
         }
+
         if (empty($postFormPage) || $postFormPage !== 0) {
             $referer .= '&modularityForm='.urlencode($postFormPage);
         }
-
-
+        
         wp_redirect($referer);
         exit;
     }
