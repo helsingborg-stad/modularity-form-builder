@@ -159,11 +159,11 @@ class Submission
             $referer .= '?form=success';
         }
 
-        if (empty($postReferer) || $checkReferer !== 0) {
+        if (empty($postReferer) || $checkReferer !== 0 || $checkReferer !== null) {
             $referer .= '&modularityReferrer='.urlencode($postReferer);
         }
 
-        if (empty($postFormPage) || $postFormPage !== 0) {
+        if (empty($postFormPage) || $postFormPage !== 0 || $postFormPage !== null) {
             $referer .= '&modularityForm='.urlencode($postFormPage);
         }
         
