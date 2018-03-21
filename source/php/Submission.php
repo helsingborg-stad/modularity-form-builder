@@ -356,10 +356,10 @@ class Submission
                     }
                 } else {
                     if ($key === 'modularity-form-history') {
-                        $message .= '<strong>' . __('Referrer', 'modularity-form-builder') . '</strong><br>' . $value;
+                        $message .= '<strong>test' . __('Referrer', 'modularity-form-builder') . '</strong><br>' . $value;
                     }
                     else if ($key === 'modularity-form-uri') {
-                        $message .= '<strong>' . __('Form', 'modularity-form-builder')  . '</strong><br>' . $value;
+                        $message .= '<strong>test' . __('Form', 'modularity-form-builder')  . '</strong><br>' . $value;
                     }
                     else {
                         $message .= '<strong>' . $key . '</strong><br>' . $value;
