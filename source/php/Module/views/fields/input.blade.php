@@ -2,7 +2,7 @@
     <div class="grid-md-12">
         <div class="form-group">
             <label for="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
-            {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . $field['description'] . '</div>' : '' !!}
+            {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
 
             @if (in_array($field['value_type'], array('number', 'range')))
                 <input type="{{ $field['value_type'] }}" id="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}" name="{{ sanitize_title($field['label']) }}" {{  $field['required'] ? 'required' : '' }} {!! $field['min_value'] ? 'min="' . $field['min_value'] . '"' : '' !!} {!! $field['max_value'] ? 'max="' . $field['max_value'] . '"' : '' !!} {!! $field['step'] ? 'step="' . $field['step'] . '"' : '' !!}>
