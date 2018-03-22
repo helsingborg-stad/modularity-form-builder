@@ -166,7 +166,7 @@ class PostType
 
         }
         if (is_admin()) {
-            if (isset($indata['modularity-form-history']) || isset($indata['modularity-form-history']) !== null || isset($indata['modularity-form-history']) !== 'null')
+            if (isset($indata['modularity-form-history']) && isset($indata['modularity-form-history']) !== null && isset($indata['modularity-form-history']) !== 'null')
                 echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
             if (isset($indata['modularity-form-url']))
                 echo "<p><strong>Form</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
