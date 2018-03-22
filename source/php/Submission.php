@@ -368,7 +368,7 @@ class Submission
                     }
                 } else {
                     if ($key === 'modularity-form-history') {
-                            $message .= ($value !== null || $value !== 'null') ? '<strong>' . __('Referrer', 'modularity-form-builder') . '</strong><br>' . $value : __('No Referrer', 'modularity-form-builder');
+                            $message .= ($value !== null && $value !== 'null') ? '<strong>' . __('Referrer', 'modularity-form-builder') . '</strong><br>' . $value : __('No Referrer', 'modularity-form-builder');
                     }
                     else if ($key === 'modularity-form-url') {
                         $message .= '<strong>' . __('Form', 'modularity-form-builder')  . '</strong><br>' . $value;
