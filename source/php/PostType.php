@@ -139,10 +139,9 @@ class PostType
     {
         global $post;
 
-        $indata = get_post_meta($post->ID, 'form-data', true);
-        $fields = get_fields($indata['modularity-form-id']);
         $data = $this->gatherFormData($post);
-        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $indata['modularity-form-id']);
+        $fields = get_fields($data['module_id']);
+        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $data['module_id']);
 
         if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
             $template = new \Municipio\template;
@@ -166,17 +165,34 @@ class PostType
 
         }
         if (is_admin()) {
+            $indata = get_post_meta($post->ID, 'form-data', true);
             if (isset($indata['modularity-form-history']) && isset($indata['modularity-form-history']) !== null && isset($indata['modularity-form-history']) !== 'null')
                 echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
             if (isset($indata['modularity-form-url']))
                 echo "<p><strong>Form</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
         }
-
     }
 
     public function gatherFormData($post)
     {
+        $data = array();
         $indata = get_post_meta($post->ID, 'form-data', true);
+        // If form id is missing, check if the post type is connected to a form
+        if (!isset($indata['modularity-form-id'])) {
+            global $wpdb;
+            $postTypes = $wpdb->get_row(
+                "SELECT post_id
+                FROM $wpdb->postmeta
+                WHERE meta_key = 'submission_post_type'
+                    AND meta_value = '{$post->post_type}'
+                ", ARRAY_N);
+
+            if (!empty($postTypes[0])) {
+                $indata['modularity-form-id'] = $postTypes[0];
+            } else {
+                return false;
+            }
+        }
         $fields = get_fields($indata['modularity-form-id']);
 
         $data['form_fields'] = array();
