@@ -481,17 +481,24 @@ class PostType
             return;
         }
 
-        if (!isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
+        // Check nonce and if form data exist
+        if (!isset($_POST['update-modularity-form'])
+            || !wp_verify_nonce($_POST['update-modularity-form'], 'update')
+            || !isset($_POST['modularity-form-id'])
+            || !isset($_POST['mod-form'])) {
             return;
         }
 
-        if (isset($_POST['mod-form']) && isset($postId) && get_post_type($postId) == $this->postTypeSlug) {
-            $indata = get_post_meta($postId, 'form-data', true);
-            // Merge old values with new ones
-            $data = array_merge($indata, $_POST['mod-form']);
+        $updatedData = $_POST['mod-form'];
+        $currentData = get_post_meta($postId, 'form-data', true);
 
-            update_post_meta($postId, 'form-data', $data);
+        // Merge old values with new ones
+        if (is_array($currentData) && !empty($currentData)) {
+            $updatedData = array_merge($currentData, $updatedData);
         }
+
+        update_post_meta($postId, 'modularity-form-id', $_POST['modularity-form-id']);
+        update_post_meta($postId, 'form-data', $updatedData);
     }
 
     public function jsonSelectedValues()
