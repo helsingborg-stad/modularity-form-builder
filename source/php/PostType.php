@@ -149,7 +149,7 @@ class PostType
             $view = $template->cleanViewPath($view);
             $template->render($view, $data);
         } elseif (self::editableFrontend($post)) {
-           $data['editor_settings'] = array(
+            $data['editor_settings'] = array(
                 'wpautop' => true,
                 'media_buttons' => false,
                 'textarea_name' => 'mod-form[post-content]',
@@ -162,14 +162,15 @@ class PostType
             $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'), $data);
         } else {
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
-
         }
         if (is_admin()) {
             $indata = get_post_meta($post->ID, 'form-data', true);
-            if (isset($indata['modularity-form-history']) && isset($indata['modularity-form-history']) !== null && isset($indata['modularity-form-history']) !== 'null')
+            if (isset($indata['modularity-form-history']) && isset($indata['modularity-form-history']) !== null && isset($indata['modularity-form-history']) !== 'null') {
                 echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
-            if (isset($indata['modularity-form-url']))
+            }
+            if (isset($indata['modularity-form-url'])) {
                 echo "<p><strong>Form</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
+            }
         }
     }
 
