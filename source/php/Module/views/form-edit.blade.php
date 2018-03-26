@@ -3,3 +3,5 @@
 @foreach ($form_fields as $field)
     @includeIf('fields-editable.' . $field['acf_fc_layout'])
 @endforeach
+
+<input type="hidden" name="modularity-form-id" value="{{ $module_id }}">
