@@ -76,9 +76,12 @@ class Submission
         $checkReferer = url_to_postid( $postReferer );
         $checkFormPage = url_to_postid( $postFormPage );
 
+        //echo $postReferer;
+        //exit;
+
         if (empty($postReferer) || $checkReferer !== 0 && $checkFormPage !== 0) {
             $formUrl = "\r\n ". __('Form', 'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
-            $refHistory = "\r\n" . __('Referrer', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>";
+            $refHistory = ($postReferer !== null && $postReferer !== 'null') ? "\r\n" . __('Previous page', 'modularity-form-builder')  . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>" : '';
         }
 
         // Save submission
