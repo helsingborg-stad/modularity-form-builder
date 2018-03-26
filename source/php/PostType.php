@@ -165,19 +165,26 @@ class PostType
         }
         if (is_admin()) {
             $indata = get_post_meta($post->ID, 'form-data', true);
-<<<<<<< Updated upstream
-            if (isset($indata['modularity-form-history']) && isset($indata['modularity-form-history']) !== null && isset($indata['modularity-form-history']) !== 'null') {
-                echo "<p><strong>Referrer</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
+            if ( isset($indata['modularity-form-history']) ) {
+
+                echo "<p><strong>".__('Previous page', 'modularity-form-builder')."</strong><br />";
+
+                if (trim($indata['modularity-form-history']) !== 'null' && trim($indata['modularity-form-history']) !== 'http://null' && trim($indata['modularity-form-history']) !== 'https://null') {
+                    echo "<a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a>";
+                }
+                else {
+                    echo __('No Referrer', 'modularity-form-builder');
+                }
+
+                echo "<br /></p>";
             }
+
+
             if (isset($indata['modularity-form-url'])) {
-                echo "<p><strong>Form</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
-            }
-=======
-            if (isset($indata['modularity-form-history']) !== null && isset($indata['modularity-form-history']) !== 'null')
-                echo "<p><strong>".__('Previous page', 'modularity-form-builder')."</strong><br /><a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a><br /></p>";
-            if (isset($indata['modularity-form-url']))
                 echo "<p><strong>".__('Form', 'modularity-form-builder')."</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
->>>>>>> Stashed changes
+            }
+
+
         }
     }
 
