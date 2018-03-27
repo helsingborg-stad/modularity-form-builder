@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2018-03-26 10:18+0200\n"
-"PO-Revision-Date: 2018-03-26 10:26+0200\n"
+"POT-Creation-Date: 2018-03-27 16:44+0200\n"
+"PO-Revision-Date: 2018-03-27 16:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: acf-fields/php/form.php:6 source/php/Module/Form.php:29
-#: source/php/PostType.php:172 source/php/PostType.php:373
+#: source/php/PostType.php:181 source/php/PostType.php:383
 #: source/php/Submission.php:83 source/php/Submission.php:377
 msgid "Form"
 msgstr "Formulär"
@@ -267,7 +267,7 @@ msgid "Select post type"
 msgstr "Välj posttyp"
 
 #: acf-fields/php/form.php:2343 source/php/PostType.php:67
-#: source/php/PostType.php:78 source/php/PostType.php:459
+#: source/php/PostType.php:78 source/php/PostType.php:469
 msgid "Form submissions"
 msgstr "Formulärsvar"
 
@@ -291,7 +291,7 @@ msgstr "Redigerbar för användaren"
 msgid "Editable on back end"
 msgstr "Redigerbar för redaktör"
 
-#: source/php/App.php:135 source/php/PostType.php:427
+#: source/php/App.php:135 source/php/PostType.php:437
 msgid "Address"
 msgstr "Adress"
 
@@ -433,7 +433,7 @@ msgid "Edit"
 msgstr "Redigera"
 
 #: source/php/Module/views/form-edit-front.blade.php:13
-#: source/php/PostType.php:371
+#: source/php/PostType.php:381
 msgid "Title"
 msgstr "Titel"
 
@@ -457,8 +457,8 @@ msgstr "Du måste bekräfta att du inte är en robot."
 msgid ""
 "Note that your comment will become a public act that can be read by others."
 msgstr ""
-"Observera att din kommentar blir en allmän handling som kan komma att läsas "
-"av andra."
+"Observera att de uppgifter som du lämnar kan bli en allmän handling som kan "
+"komma att läsas av andra."
 
 #: source/php/Options.php:19 source/php/Options.php:20
 msgid "Options"
@@ -505,55 +505,59 @@ msgstr "Inga formulärsvar hittades i papperskorgen"
 msgid "Parent Form submission:"
 msgstr "Föräldersvar:"
 
-#: source/php/PostType.php:170 source/php/Submission.php:84
+#: source/php/PostType.php:169 source/php/Submission.php:84
 msgid "Previous page"
 msgstr "Föregående sida"
 
-#: source/php/PostType.php:330
+#: source/php/PostType.php:174 source/php/Submission.php:374
+msgid "No Referrer"
+msgstr "Besökaren kom från extern länk"
+
+#: source/php/PostType.php:340
 msgid "Select form…"
 msgstr "Välj formulär"
 
-#: source/php/PostType.php:372
+#: source/php/PostType.php:382
 msgid "ID"
 msgstr "Id"
 
-#: source/php/PostType.php:374
+#: source/php/PostType.php:384
 msgid "Referer"
 msgstr "Referens"
 
-#: source/php/PostType.php:375
+#: source/php/PostType.php:385
 msgid "Date"
 msgstr "Datum"
 
-#: source/php/PostType.php:423
+#: source/php/PostType.php:433
 msgid "Firstname"
 msgstr "Förnamn"
 
-#: source/php/PostType.php:424
+#: source/php/PostType.php:434
 msgid "Lastname"
 msgstr "Efternamn"
 
-#: source/php/PostType.php:425
+#: source/php/PostType.php:435
 msgid "Email"
 msgstr "E-post"
 
-#: source/php/PostType.php:426
+#: source/php/PostType.php:436
 msgid "Phone"
 msgstr "Telefonnummer"
 
-#: source/php/PostType.php:428
+#: source/php/PostType.php:438
 msgid "Street address"
 msgstr "Gatuadress"
 
-#: source/php/PostType.php:429
+#: source/php/PostType.php:439
 msgid "Postal code"
 msgstr "Postnummer"
 
-#: source/php/PostType.php:430
+#: source/php/PostType.php:440
 msgid "City"
 msgstr "Stad"
 
-#: source/php/PostType.php:444
+#: source/php/PostType.php:454
 msgid "Feedback ID"
 msgstr "Feedback Id"
 
@@ -573,10 +577,6 @@ msgstr ""
 #: source/php/Submission.php:374
 msgid "Referrer"
 msgstr "Förgående sida"
-
-#: source/php/Submission.php:374
-msgid "No Referrer"
-msgstr ""
 
 #: source/php/Submission.php:416
 msgid "Form submission copy"
