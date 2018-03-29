@@ -187,8 +187,12 @@ class PostType
     {
         $data = array();
         $indata = get_post_meta($post->ID, 'form-data', true);
-        // If form id is missing, check if the post type is connected to a form
-        if (!isset($indata['modularity-form-id'])) {
+
+        // Get the form id
+        if (!empty($indata['modularity-form-id'])) {
+            $formId = $indata['modularity-form-id'];
+        } else {
+            // If form id is missing, check if the post type is connected to any forms
             global $wpdb;
             $postTypes = $wpdb->get_row(
                 "SELECT post_id
@@ -198,22 +202,24 @@ class PostType
                 ", ARRAY_N);
 
             if (!empty($postTypes[0])) {
-                $indata['modularity-form-id'] = $postTypes[0];
+                $formId = $postTypes[0];
             } else {
+                // Bail if no form id can be found
                 return false;
             }
         }
-        $fields = get_fields($indata['modularity-form-id']);
+
+        $fields = get_fields($formId);
 
         $data['form_fields'] = array();
         $data['post_id'] = $post->ID;
         $data['author_id'] = $post->post_author;
-        $data['module_id'] = $indata['modularity-form-id'];
+        $data['module_id'] = $formId;
         $data['custom_post_type_title'] = false;
         $data['custom_post_type_content'] = false;
         $uploadFolder = wp_upload_dir();
         $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
-        $excludedGlobal = apply_filters('ModularityFormBuilder/excluded_fields/global', array('custom_content', 'collapse'), $post->post_type, $indata['modularity-form-id']);
+        $excludedGlobal = apply_filters('ModularityFormBuilder/excluded_fields/global', array('custom_content', 'collapse'), $post->post_type, $formId);
 
         foreach ($fields['form_fields'] as $field) {
             // Skip layout fields
