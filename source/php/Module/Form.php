@@ -73,6 +73,11 @@ class Form extends \Modularity\Module
 
         foreach ($submissions as $submission) {
             $data = Submission::getSubmissionData($submission->ID);
+            // Flaten arrays
+            $data = array_map(function($a) {
+                return is_array($a) ? implode(',', $a) : $a;
+            }, $data);
+
             $csvData[] = $data;
         }
 
