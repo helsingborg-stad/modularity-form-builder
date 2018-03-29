@@ -308,12 +308,12 @@ class Submission
                 }
 
                 foreach ($field['fields'] as $subfield) {
-                    $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])];
+                    $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])] ?? '';
                 }
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                $formdata[$field['label']] = isset($data[sanitize_title($field['label'])]) ? $data[sanitize_title($field['label'])] : '';
+                $formdata[$field['label']] = $data[sanitize_title($field['label'])] ?? '';
             }
         }
         $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
