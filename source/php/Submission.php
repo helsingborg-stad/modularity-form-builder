@@ -169,7 +169,7 @@ class Submission
         if (empty($postFormPage) || $postFormPage !== 0 || $postFormPage !== null) {
             $referer .= '&modularityForm='.urlencode($postFormPage);
         }
-        
+
         wp_redirect($referer);
         exit;
     }
@@ -316,8 +316,8 @@ class Submission
                 $formdata[$field['label']] = isset($data[sanitize_title($field['label'])]) ? $data[sanitize_title($field['label'])] : '';
             }
         }
-        $formdata['modularity-form-history'] = $data['modularity-form-history'];
-        $formdata['modularity-form-url'] = $data['modularity-form-url'];
+        $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
+        $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
 
         return $formdata;
     }
