@@ -47,15 +47,16 @@ class Form extends \Modularity\Module
 
         $screen = get_current_screen();
 
-        if ($screen->post_type !== 'mod-form' || !isset($_GET['post']) || !isset($_GET['export'])) {
+        if ($screen->post_type !== 'mod-form' || !isset($_GET['post']) || !isset($_GET['export']) || !isset($_GET['posttype'])) {
             return;
         }
 
         $formId = $_GET['post'];
+        $postType = $_GET['posttype'];
         $form = get_post($formId);
         $submissions = new \WP_Query(array(
             'posts_per_page' => -1,
-            'post_type' => 'form-submissions',
+            'post_type' => $postType,
             'post_status' => 'publish',
             'meta_query' => array(
                 'relation' => 'OR',
@@ -134,14 +135,16 @@ class Form extends \Modularity\Module
 
     /**
      * Show responses
+     * @param  WP_Post $post
      * @return void
      */
-    public function showResponses()
+    public function showResponses($post)
     {
-        global $post;
+        $data = get_fields($post->ID);
+        $postType = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
 
         $query = new \WP_Query(array(
-            'post_type' => 'form-submissions',
+            'post_type' => $postType,
             'posts_per_page' => -1,
             'meta_query' => array(
                 'relation' => 'OR',
@@ -163,8 +166,8 @@ class Form extends \Modularity\Module
         echo '<p>';
         echo sprintf(__('There is %d submissions to this form.', 'modularity-form-builder'), count($submissions));
         echo '</p><p>';
-        echo '<a href="' . admin_url('edit.php?post_type=form-submissions&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a>';
-        echo ' <a href="' . admin_url('post.php?post=' . $post->ID . '&action=edit&export=csv') . '" class="button" target="_blank">' . __('Export csv', 'modularity-form-builder') . '</a>';
+        echo '<a href="' . admin_url('edit.php?post_type=' . $postType . '&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a>';
+        echo ' <a href="' . admin_url('post.php?post=' . $post->ID . '&action=edit&export=csv&posttype=' . $postType) . '" class="button" target="_blank">' . __('Export csv', 'modularity-form-builder') . '</a>';
         echo '</p>';
     }
 
@@ -178,7 +181,7 @@ class Form extends \Modularity\Module
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
         $data['module_id'] = $this->ID;
         $data['hasFileUpload'] = false;
-        $data['submissionPostType'] = isset($data['custom_submission_post_type']) && $data['custom_submission_post_type'] == true && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
+        $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
 
         foreach ($data['form_fields'] as &$field) {
