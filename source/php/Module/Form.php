@@ -72,14 +72,8 @@ class Form extends \Modularity\Module
         $csvData = array();
 
         foreach ($submissions as $submission) {
-            $data = array();
-            // Add post title and description to form submissions with custom post types
-            if ($submission->post_type != 'form-submissions') {
-                $data[__('Title', 'modularity-form-builder')] = $submission->post_title;
-                $data[__('Description', 'modularity-form-builder')] = $submission->post_content;
-            }
+            $data = Submission::getSubmissionData($submission->ID);
 
-            $data = array_merge($data, Submission::getSubmissionData($submission->ID));
             // Flaten arrays
             $data = array_map(function($a) {
                 return is_array($a) ? implode(',', $a) : $a;
