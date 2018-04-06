@@ -197,9 +197,9 @@ class Submission
                     continue;
                 }
 
-                $targetFile = $uploadsFolder . '/' . uniqid() . '-' . basename($files['name'][$i]);
-
-                $fileext = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                $fileName = pathinfo($files['name'][$i], PATHINFO_FILENAME);
+                $fileext = strtolower(pathinfo($files['name'][$i], PATHINFO_EXTENSION));
+                $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;
 
                 if (in_array('image/*', $fields[$key]['filetypes'])) {
                     $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'], $allowedImageTypes));
@@ -219,8 +219,7 @@ class Submission
                 if (move_uploaded_file($files['tmp_name'][$i], $targetFile)) {
                     // Upload video to YouTube
                     if (!empty($fields[$key]['upload_videos_external']) && in_array('.' . $fileext, $allowedVideoTypes)) {
-                        $fileName = ucwords(pathinfo($files['name'][$i], PATHINFO_FILENAME));
-                        $uploadVideo = \ModularityFormBuilder\Helper\YoutubeUploader::uploadVideo($targetFile, $fileName, '', '22');
+                        $uploadVideo = \ModularityFormBuilder\Helper\YoutubeUploader::uploadVideo($targetFile, ucwords($fileName), '', '22');
                         $targetFile  = ($uploadVideo) ? $uploadVideo : $targetFile;
                     }
                 } else {
