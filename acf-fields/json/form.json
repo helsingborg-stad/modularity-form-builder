@@ -1765,6 +1765,25 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_5b07c6d88bbbd",
+            "label": "GDPR complience notice",
+            "name": "gdpr_complience_notice",
+            "type": "true_false",
+            "instructions": "Contains information about how personal data is handled.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Show a message (and checkbox) that is required to check to submit all forms.",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_58eb7b11cc4f5",
             "label": "Submission notice",
             "name": "subimission_notice",
