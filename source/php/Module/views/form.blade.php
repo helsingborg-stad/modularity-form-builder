@@ -44,9 +44,19 @@
 
 <div class="grid">
    <div class="grid-md-12">
-       @if (!empty($submission_public_act))
+        {{-- Will be a public act  --}}
+        @if (!empty($submission_public_act))
            <p class="text-sm gutter gutter-sm gutter-bottom"><?php _e('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'); ?></p>
-       @endif
+        @endif
+
+        {{-- GDPR notice  --}}
+        @if (is_null($gdpr_complience_notice) || !empty($gdpr_complience_notice))
+        <p class="text-sm gutter gutter-sm gutter-bottom">
+            <input type="checkbox" name="gdpr" required="required">
+            <?php _e('I agree to GDPR stuff.', 'modularity-form-builder'); ?>
+        </p>
+        @endif
+
        <button type="submit" class="btn btn-primary">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
    </div>
 </div>
