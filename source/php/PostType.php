@@ -250,7 +250,7 @@ class PostType
                         'label' => $field['labels'][$subfield],
                         'labels' => $field['labels'],
                         'name' => sanitize_title($field['labels'][$subfield]),
-                        'required' => in_array($subfield, $field['required_fields']),
+                        'required' => (is_array($field['required_fields']) && in_array($subfield, $field['required_fields'])),
                         'value' => (!empty($indata[sanitize_title($field['labels'][$subfield])])) ? $indata[sanitize_title($field['labels'][$subfield])] : '',
                     );
                 }

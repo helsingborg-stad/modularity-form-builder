@@ -6,7 +6,7 @@
                 <h2 class="modal-title"><?php _e('Edit', 'modularity-form-builder'); ?></h2>
             </div>
             <div class="modal-body gutter">
-                    {!! wp_nonce_field('update', 'update-modularity-form') !!}
+                    {!! wp_nonce_field('update', 'update-modularity-form', true, false) !!}
 
                     @if ($custom_post_type_title)
                         <div class="mod-form-field">
