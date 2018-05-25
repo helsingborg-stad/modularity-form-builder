@@ -46,7 +46,9 @@
    <div class="grid-md-12">
         {{-- Will be a public act  --}}
         @if (!empty($submission_public_act))
-           <p class="text-sm gutter gutter-sm gutter-bottom"><?php _e('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'); ?></p>
+        <p class="text-sm gutter gutter-sm gutter-bottom">
+            <?php _e('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'); ?>
+        </p>
         @endif
 
         {{-- GDPR notice  --}}
