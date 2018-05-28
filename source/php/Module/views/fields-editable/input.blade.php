@@ -1,13 +1,30 @@
-{{-- Input field --}}
 <div class="mod-form-field">
-    <p><b><label for="{{ $module_id }}-input-{{ $field['name'] }}">
-                {{ $field['label'] }}{!! $field['required'] ? '<span class="text-danger">*</span>' : '' !!}
-            </label></b></p>
-    @if (in_array($field['value_type'], array('number', 'range')))
-        <input type="{{ $field['value_type'] }}" id="{{ $module_id }}-input-{{ $field['name'] }}" class="large-text" name="mod-form[{{ $field['name'] }}]" {{  $field['required'] ? 'required' : '' }} {!! $field['min_value'] ? 'min="' . $field['min_value'] . '"' : '' !!} {!! $field['max_value'] ? 'max="' . $field['max_value'] . '"' : '' !!} {!! $field['step'] ? 'step="' . $field['step'] . '"' : '' !!} value="{{ $field['value'] }}">
-    @elseif ($field['value_type'] === 'date')
-        <input type="{{ $field['value_type'] }}" id="{{ $module_id }}-input-{{ $field['name'] }}" class="large-text" name="mod-form[{{ $field['name'] }}]" {{  $field['required'] ? 'required' : '' }} {!! $field['min_value'] ? 'min="' . $field['min_value'] . '"' : '' !!} {!! $field['max_value'] ? 'max="' . $field['max_value'] . '"' : '' !!} value="{{ $field['value'] }}">
-    @else
-        <input type="{{ $field['value_type'] }}" id="{{ $module_id }}-input-{{ $field['name'] }}" class="large-text" name="mod-form[{{ $field['name'] }}]" {{ $field['required'] ? 'required' : '' }} value="{{ $field['value'] }}">
-    @endif
+    <p>
+        <b>
+            <label for="{{ $module_id }}-input-{{ $field['name'] }}">
+                {{ $field['label'] }}
+                @if ($field['required'])
+                    <span class="text-danger">*</span>
+                @endif
+            </label>
+        </b>
+    </p>
+
+    <input
+        type="{{ $field['value_type'] }}"
+        id="{{ $module_id }}-input-{{ $field['name'] }}"
+        class="large-text"
+        name="mod-form[{{ $field['name'] }}]"
+        value="{{ $field['value'] }}"
+        @if ($field['required'])
+            required="required"
+        @endif
+        @if (in_array($field['value_type'], array('date', 'number', 'range')))
+            min="{{ trim($field['min_value']) }}"
+            max="{{ trim($field['max_value']) }}"
+        @endif
+        @if (in_array($field['value_type'], array('number', 'range')))
+            step="{{ trim($field['step']) }}"
+        @endif
+    >
 </div>

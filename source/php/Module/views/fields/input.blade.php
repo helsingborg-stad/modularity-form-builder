@@ -1,21 +1,44 @@
+<?php
+
+use ModularityFormBuilder\Helper\SanitizeData;
+
+?>
+
 <div class="grid mod-form-field" {!! $field['conditional_hidden'] !!}>
     <div class="grid-md-12">
         <div class="form-group">
-            <label for="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
-            {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
+            <label for="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}">
+                {{ $field['label'] }}
+                @if ($field['required'])
+                    <span class="text-danger">*</span>
+                @endif
+            </label>
 
-            @if (in_array($field['value_type'], array('number', 'range')))
-                <input type="{{ $field['value_type'] }}" id="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}" name="{{ sanitize_title($field['label']) }}" {{  $field['required'] ? 'required' : '' }} {!! $field['min_value'] ? 'min="' . $field['min_value'] . '"' : '' !!} {!! $field['max_value'] ? 'max="' . $field['max_value'] . '"' : '' !!} {!! $field['step'] ? 'step="' . $field['step'] . '"' : '' !!}>
-            @elseif ($field['value_type'] === 'date')
-                <input type="{{ $field['value_type'] }}" id="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}" name="{{ sanitize_title($field['label']) }}" {{  $field['required'] ? 'required' : '' }} {!! $field['min_value'] ? 'min="' . $field['min_value'] . '"' : '' !!} {!! $field['max_value'] ? 'max="' . $field['max_value'] . '"' : '' !!}>
-            @else
-                <input type="{{ $field['value_type'] }}" id="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}" name="{{ sanitize_title($field['label']) }}" {{  $field['required'] ? 'required' : '' }}>
+            @if (!empty($field['description']))
+                <div class="text-sm text-dark-gray">
+                    {!! SanitizeData::convertLinks($field['description']) !!}
+                </div>
             @endif
+
+            <input
+                type="{{ $field['value_type'] }}"
+                id="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}"
+                name="{{ sanitize_title($field['label']) }}"
+                @if ($field['required'])
+                    required="required"
+                @endif
+                @if (in_array($field['value_type'], array('date', 'number', 'range')))
+                    min="{{ trim($field['min_value']) }}"
+                    max="{{ trim($field['max_value']) }}"
+                @endif
+                @if (in_array($field['value_type'], array('number', 'range')))
+                    step="{{ trim($field['step']) }}"
+                @endif
+            >
 
             @if (isset($field['custom_post_type_title']) && $field['custom_post_type_title'] == true)
                 <input type="hidden" name="post_title" value="{{ sanitize_title($field['label']) }}">
             @endif
-
         </div>
     </div>
 </div>
