@@ -39,4 +39,6 @@ $loader->register();
 
 
 // Start application
-new ModularityFormBuilder\App();
+if (function_exists('get_field')) {
+    new ModularityFormBuilder\App();
+}
