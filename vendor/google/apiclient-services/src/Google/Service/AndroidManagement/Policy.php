@@ -34,6 +34,8 @@ class Google_Service_AndroidManagement_Policy extends Google_Collection
   public $bluetoothDisabled;
   public $cameraDisabled;
   public $cellBroadcastsConfigDisabled;
+  protected $choosePrivateKeyRulesType = 'Google_Service_AndroidManagement_ChoosePrivateKeyRule';
+  protected $choosePrivateKeyRulesDataType = 'array';
   protected $complianceRulesType = 'Google_Service_AndroidManagement_ComplianceRule';
   protected $complianceRulesDataType = 'array';
   public $createWindowsDisabled;
@@ -72,6 +74,7 @@ class Google_Service_AndroidManagement_Policy extends Google_Collection
   protected $permittedInputMethodsDataType = '';
   protected $persistentPreferredActivitiesType = 'Google_Service_AndroidManagement_PersistentPreferredActivity';
   protected $persistentPreferredActivitiesDataType = 'array';
+  public $privateKeySelectionEnabled;
   protected $recommendedGlobalProxyType = 'Google_Service_AndroidManagement_ProxyInfo';
   protected $recommendedGlobalProxyDataType = '';
   public $removeUserDisabled;
@@ -223,6 +226,20 @@ class Google_Service_AndroidManagement_Policy extends Google_Collection
   public function getCellBroadcastsConfigDisabled()
   {
     return $this->cellBroadcastsConfigDisabled;
+  }
+  /**
+   * @param Google_Service_AndroidManagement_ChoosePrivateKeyRule
+   */
+  public function setChoosePrivateKeyRules($choosePrivateKeyRules)
+  {
+    $this->choosePrivateKeyRules = $choosePrivateKeyRules;
+  }
+  /**
+   * @return Google_Service_AndroidManagement_ChoosePrivateKeyRule
+   */
+  public function getChoosePrivateKeyRules()
+  {
+    return $this->choosePrivateKeyRules;
   }
   /**
    * @param Google_Service_AndroidManagement_ComplianceRule
@@ -515,6 +532,14 @@ class Google_Service_AndroidManagement_Policy extends Google_Collection
   public function getPersistentPreferredActivities()
   {
     return $this->persistentPreferredActivities;
+  }
+  public function setPrivateKeySelectionEnabled($privateKeySelectionEnabled)
+  {
+    $this->privateKeySelectionEnabled = $privateKeySelectionEnabled;
+  }
+  public function getPrivateKeySelectionEnabled()
+  {
+    return $this->privateKeySelectionEnabled;
   }
   /**
    * @param Google_Service_AndroidManagement_ProxyInfo

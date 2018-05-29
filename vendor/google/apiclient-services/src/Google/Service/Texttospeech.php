@@ -19,11 +19,12 @@
  * Service definition for Texttospeech (v1beta1).
  *
  * <p>
- * Cloud Text-to-Speech API.</p>
+ * Synthesizes natural-sounding speech by applying powerful neural network
+ * models.</p>
  *
  * <p>
  * For more information about this service, see the API
- * <a href="http://cloud.google.com/speech/text-to-speech/" target="_blank">Documentation</a>
+ * <a href="https://cloud.google.com/text-to-speech/" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.

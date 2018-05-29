@@ -467,6 +467,10 @@ class Google_Service_Genomics extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'referenceName' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'end' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -484,10 +488,6 @@ class Google_Service_Genomics extends Google_Service
                   'type' => 'string',
                 ),
                 'targetBucketWidth' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'referenceName' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -549,14 +549,6 @@ class Google_Service_Genomics extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageSize' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
                 'start' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -564,6 +556,14 @@ class Google_Service_Genomics extends Google_Service
                 'end' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),

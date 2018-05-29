@@ -20,6 +20,8 @@ class Google_Service_CloudBuild_ArtifactObjects extends Google_Collection
   protected $collection_key = 'paths';
   public $location;
   public $paths;
+  protected $timingType = 'Google_Service_CloudBuild_TimeSpan';
+  protected $timingDataType = '';
 
   public function setLocation($location)
   {
@@ -36,5 +38,19 @@ class Google_Service_CloudBuild_ArtifactObjects extends Google_Collection
   public function getPaths()
   {
     return $this->paths;
+  }
+  /**
+   * @param Google_Service_CloudBuild_TimeSpan
+   */
+  public function setTiming(Google_Service_CloudBuild_TimeSpan $timing)
+  {
+    $this->timing = $timing;
+  }
+  /**
+   * @return Google_Service_CloudBuild_TimeSpan
+   */
+  public function getTiming()
+  {
+    return $this->timing;
   }
 }

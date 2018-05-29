@@ -253,11 +253,11 @@ class Google_Service_Proximitybeacon extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'projectId' => array(
+                'namespacedType' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'namespacedType' => array(
+                'projectId' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
