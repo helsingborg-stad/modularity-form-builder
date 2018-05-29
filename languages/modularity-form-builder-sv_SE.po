@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2018-05-25 14:59+0200\n"
-"PO-Revision-Date: 2018-05-25 15:01+0200\n"
+"POT-Creation-Date: 2018-05-29 09:53+0200\n"
+"PO-Revision-Date: 2018-05-29 09:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -44,7 +44,7 @@ msgstr "Meddelande"
 
 #: acf-fields/php/form.php:483
 msgid "Input"
-msgstr ""
+msgstr "Inmatning"
 
 #: acf-fields/php/form.php:822
 msgid "Radio"
@@ -56,7 +56,7 @@ msgstr "Kryssruta"
 
 #: acf-fields/php/form.php:1138
 msgid "Select"
-msgstr ""
+msgstr "Välj"
 
 #: acf-fields/php/form.php:1296
 msgid "File upload"
@@ -81,6 +81,10 @@ msgstr "Formulärsvar"
 #: acf-fields/php/form.php:1753
 msgid "Text on submit button"
 msgstr "Text på skicka-knapp"
+
+#: acf-fields/php/form.php:1764
+msgid "Send"
+msgstr "Skicka"
 
 #: acf-fields/php/form.php:1772
 msgid "Submission notice"
@@ -256,7 +260,7 @@ msgstr "Formulärsvar"
 
 #: acf-fields/php/form.php:2325
 msgid "Event"
-msgstr ""
+msgstr "Händelse"
 
 #: acf-fields/php/form.php:2326
 msgid "Ticket"
@@ -265,6 +269,10 @@ msgstr "Ärende"
 #: acf-fields/php/form.php:2327
 msgid "Listing"
 msgstr "Lista"
+
+#: acf-fields/php/form.php:2330
+msgid "form-submissions"
+msgstr ""
 
 #: acf-fields/php/form.php:2341
 msgid "Editable on front end"
@@ -298,6 +306,13 @@ msgstr "Lägg till notis om allmän handling"
 msgid "Public act notice content"
 msgstr "Innehåll om offentliga handlingar"
 
+#: acf-fields/php/form.php:2433
+msgid ""
+"Note that your comment will become a public act that can be read by others."
+msgstr ""
+"Observera att de uppgifter som du lämnar kan bli en allmän handling som kan "
+"komma att läsas av andra."
+
 #: acf-fields/php/form.php:2441
 msgid "GDPR complience notice"
 msgstr "GDPR meddelande"
@@ -314,6 +329,17 @@ msgstr ""
 #: acf-fields/php/form.php:2460
 msgid "GDPR complience notice content"
 msgstr "Innehåll för GDPR meddelande"
+
+#: acf-fields/php/form.php:2479
+msgid ""
+"When you submit the form, we will process your personal information to "
+"perform the task that the form concerns. The data will not be used for any "
+"other purpose."
+msgstr ""
+"När du skickar in formuläret kommer vi att hantera dina personuppgifter för "
+"att utföra den uppgift som formuläret avser. Uppgifterna kommer inte att "
+"användas i något annat syfte och kommer att raderas när ärendet är avslutat. "
+"Om ärendet kräver det kan dina uppgifter delas med en leverantör till oss. "
 
 #: acf-fields/php/form.php:2480
 msgid "Add a complience notice"
@@ -653,11 +679,11 @@ msgstr "Autensierad"
 msgid "Delete credentials"
 msgstr "Ta bort information"
 
-#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:362
+#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:363
 msgid "Export with AcfExportManager"
 msgstr "Exportera med AcfExportManager"
 
-#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:406
+#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:407
 #, php-format
 msgid "Exported %d fieldgroup(s)."
 msgstr "Exporterade %d fältgrupp(er)."
@@ -680,13 +706,6 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 
 #~ msgid "Description"
 #~ msgstr "Beskrivning"
-
-#~ msgid ""
-#~ "Note that your comment will become a public act that can be read by "
-#~ "others."
-#~ msgstr ""
-#~ "Observera att de uppgifter som du lämnar kan bli en allmän handling som "
-#~ "kan komma att läsas av andra."
 
 #~ msgid "Posted on"
 #~ msgstr "Postades från"
