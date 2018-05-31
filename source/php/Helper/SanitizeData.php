@@ -23,4 +23,22 @@ class SanitizeData
 
         return $text;
     }
+
+    /**
+     * Formats a date for an input field.
+     *
+     * @param string $text Textual representation of the date.
+     *
+     * @return string A formatted version of the date.
+     */
+    public static function formatDate($text) : string
+    {
+        $parsed = strtotime($text);
+
+        if ($parsed === false) {
+            return '';
+        }
+
+        return date('Y-m-d', $parsed);
+    }
 }
