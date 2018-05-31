@@ -27,11 +27,12 @@ use ModularityFormBuilder\Helper\SanitizeData;
                 @if ($field['required'])
                     required="required"
                 @endif
-                @if (in_array($field['value_type'], array('date', 'number', 'range')))
+                @if ($field['value_type'] == 'date')
+                    min="{{ SanitizeData::formatDate($field['min_value']) }}"
+                    max="{{ SanitizeData::formatDate($field['max_value']) }}"
+                @elseif (in_array($field['value_type'], array('number', 'range')))
                     min="{{ trim($field['min_value']) }}"
                     max="{{ trim($field['max_value']) }}"
-                @endif
-                @if (in_array($field['value_type'], array('number', 'range')))
                     step="{{ trim($field['step']) }}"
                 @endif
             >
