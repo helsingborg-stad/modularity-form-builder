@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
 "POT-Creation-Date: 2018-05-29 09:53+0200\n"
-"PO-Revision-Date: 2018-05-29 09:59+0200\n"
+"PO-Revision-Date: 2018-06-01 13:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: modularity-form-builder.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -315,7 +315,7 @@ msgstr ""
 
 #: acf-fields/php/form.php:2441
 msgid "GDPR complience notice"
-msgstr "GDPR meddelande"
+msgstr "GDPR-meddelande"
 
 #: acf-fields/php/form.php:2444
 msgid "Contains information about how personal data is handled."
@@ -325,10 +325,12 @@ msgstr "Innehåller information om hur personlig data hanteras."
 msgid ""
 "Show a message (and checkbox) that is required to check to submit all forms."
 msgstr ""
+"Lägg till notis tillsammans med en ruta som är obligatorisk att kryssa i för "
+"att skicka alla formulär."
 
 #: acf-fields/php/form.php:2460
 msgid "GDPR complience notice content"
-msgstr "Innehåll för GDPR meddelande"
+msgstr "Innehåll för GDPR-meddelande"
 
 #: acf-fields/php/form.php:2479
 msgid ""
@@ -343,7 +345,7 @@ msgstr ""
 
 #: acf-fields/php/form.php:2480
 msgid "Add a complience notice"
-msgstr "Lägg till ett GDPR meddelande"
+msgstr "Lägg till ett GDPR-meddelande"
 
 #: source/php/App.php:135 source/php/PostType.php:443
 msgid "Address"
