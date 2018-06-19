@@ -16,7 +16,8 @@ class PostType
         add_action('wp_enqueue_scripts', array($this, 'enqueue'));
         add_action('pre_get_posts', array($this, 'queryFilter'));
         add_action('save_post_' . $this->postTypeSlug, array($this, 'updateForm'));
-        add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
+        add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10,
+            2);
 
         add_filter('Municipio/blog/post_settings', array($this, 'addEditButton'), 10, 2);
         add_filter('the_content', array($this, 'appendFormdata'));
@@ -30,7 +31,8 @@ class PostType
     public function addEditButton($items, $post)
     {
         if (is_object($post) && self::editableFrontend($post) && $post->post_type == $this->postTypeSlug) {
-            $items[] = '<a href="#modal-edit-post" class="settings-item"><i class="pricon pricon-space-right pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a>';
+            $items[] = '<a href="#modal-edit-post" class="settings-item"><i class="pricon pricon-space-right pricon-pen"></i> ' . __('Edit',
+                    'modularity-form-builder') . '</a>';
         }
 
         return $items;
@@ -48,9 +50,10 @@ class PostType
             wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/css/modularity-form-builder.min.css');
 
             if (self::editableFrontend($post)) {
-                wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js', array('jQuery'), '', true);
+                wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js',
+                    array('jQuery'), '', true);
                 wp_localize_script('form-builder', 'formbuilder', array(
-                    'delete_confirm'        => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
+                    'delete_confirm' => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
                 ));
                 wp_enqueue_script('form-builder');
             }
@@ -64,43 +67,43 @@ class PostType
     public function register()
     {
         $labels = array(
-            'name'                => __('Form submissions', 'modularity-form-builder'),
-            'singular_name'       => __('Form submission', 'modularity-form-builder'),
-            'add_new'             => _x('Add New Form submission', 'modularity-form-builder', 'modularity-form-builder'),
-            'add_new_item'        => __('Add New Form submission', 'modularity-form-builder'),
-            'edit_item'           => __('Edit Form submission', 'modularity-form-builder'),
-            'new_item'            => __('New Form submission', 'modularity-form-builder'),
-            'view_item'           => __('View Form submission', 'modularity-form-builder'),
-            'search_items'        => __('Search Form submissions', 'modularity-form-builder'),
-            'not_found'           => __('No Form submissions found', 'modularity-form-builder'),
-            'not_found_in_trash'  => __('No Form submissions found in Trash', 'modularity-form-builder'),
-            'parent_item_colon'   => __('Parent Form submission:', 'modularity-form-builder'),
-            'menu_name'           => __('Form submissions', 'modularity-form-builder'),
+            'name' => __('Form submissions', 'modularity-form-builder'),
+            'singular_name' => __('Form submission', 'modularity-form-builder'),
+            'add_new' => _x('Add New Form submission', 'modularity-form-builder', 'modularity-form-builder'),
+            'add_new_item' => __('Add New Form submission', 'modularity-form-builder'),
+            'edit_item' => __('Edit Form submission', 'modularity-form-builder'),
+            'new_item' => __('New Form submission', 'modularity-form-builder'),
+            'view_item' => __('View Form submission', 'modularity-form-builder'),
+            'search_items' => __('Search Form submissions', 'modularity-form-builder'),
+            'not_found' => __('No Form submissions found', 'modularity-form-builder'),
+            'not_found_in_trash' => __('No Form submissions found in Trash', 'modularity-form-builder'),
+            'parent_item_colon' => __('Parent Form submission:', 'modularity-form-builder'),
+            'menu_name' => __('Form submissions', 'modularity-form-builder'),
         );
 
         $args = array(
-            'labels'              => $labels,
-            'hierarchical'        => false,
-            'description'         => 'Modularity Form Builder form submissions',
-            'public'              => false,
-            'show_ui'             => true,
-            'show_in_menu'        => true,
-            'show_in_admin_bar'   => false,
-            'menu_position'       => 500,
-            'menu_icon'           => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMzJweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMzIgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQzICgzODk5OSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+bm91bl81OTgzNzFfY2M8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0ibm91bl81OTgzNzFfY2MiIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0iIzAwMDAwMCI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cCI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjkuNSwyMCBMMTQsMjAgQzEzLjQ0OCwyMCAxMywxOS41NTMgMTMsMTkgQzEzLDE4LjQ0NyAxMy40NDgsMTggMTQsMTggTDI5LjUsMTggQzI5Ljc3NSwxOCAzMCwxNy43NzUgMzAsMTcuNSBMMzAsNi41IEMzMCw2LjIyNCAyOS43NzUsNiAyOS41LDYgTDE0LDYgQzEzLjQ0OCw2IDEzLDUuNTUyIDEzLDUgQzEzLDQuNDQ4IDEzLjQ0OCw0IDE0LDQgTDI5LjUsNCBDMzAuODc5LDQgMzIsNS4xMjIgMzIsNi41IEwzMiwxNy41IEMzMiwxOC44NzkgMzAuODc5LDIwIDI5LjUsMjAgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNiwyMCBMMi41LDIwIEMxLjEyMiwyMCAwLDE4Ljg3OSAwLDE3LjUgTDAsNi41IEMwLDUuMTIyIDEuMTIyLDQgMi41LDQgTDYsNCBDNi41NTIsNCA3LDQuNDQ4IDcsNSBDNyw1LjU1MiA2LjU1Miw2IDYsNiBMMi41LDYgQzIuMjI0LDYgMiw2LjIyNCAyLDYuNSBMMiwxNy41IEMyLDE3Ljc3NSAyLjIyNCwxOCAyLjUsMTggTDYsMTggQzYuNTUyLDE4IDcsMTguNDQ3IDcsMTkgQzcsMTkuNTUzIDYuNTUyLDIwIDYsMjAgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTAsMjQgQzkuNDQ4LDI0IDksMjMuNTUzIDksMjMgTDksMSBDOSwwLjQ0OCA5LjQ0OCwwIDEwLDAgQzEwLjU1MiwwIDExLDAuNDQ4IDExLDEgTDExLDIzIEMxMSwyMy41NTMgMTAuNTUyLDI0IDEwLDI0IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTEzLDIgTDcsMiBDNi40NDgsMiA2LDEuNTUyIDYsMSBDNiwwLjQ0OCA2LjQ0OCwwIDcsMCBMMTMsMCBDMTMuNTUyLDAgMTQsMC40NDggMTQsMSBDMTQsMS41NTIgMTMuNTUyLDIgMTMsMiBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMywyNCBMNywyNCBDNi40NDgsMjQgNiwyMy41NTMgNiwyMyBDNiwyMi40NDcgNi40NDgsMjIgNywyMiBMMTMsMjIgQzEzLjU1MiwyMiAxNCwyMi40NDcgMTQsMjMgQzE0LDIzLjU1MyAxMy41NTIsMjQgMTMsMjQgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==',
-            'show_in_nav_menus'   => false,
-            'publicly_queryable'  => false,
+            'labels' => $labels,
+            'hierarchical' => false,
+            'description' => 'Modularity Form Builder form submissions',
+            'public' => false,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_admin_bar' => false,
+            'menu_position' => 500,
+            'menu_icon' => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMzJweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMzIgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQzICgzODk5OSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+bm91bl81OTgzNzFfY2M8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0ibm91bl81OTgzNzFfY2MiIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0iIzAwMDAwMCI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cCI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjkuNSwyMCBMMTQsMjAgQzEzLjQ0OCwyMCAxMywxOS41NTMgMTMsMTkgQzEzLDE4LjQ0NyAxMy40NDgsMTggMTQsMTggTDI5LjUsMTggQzI5Ljc3NSwxOCAzMCwxNy43NzUgMzAsMTcuNSBMMzAsNi41IEMzMCw2LjIyNCAyOS43NzUsNiAyOS41LDYgTDE0LDYgQzEzLjQ0OCw2IDEzLDUuNTUyIDEzLDUgQzEzLDQuNDQ4IDEzLjQ0OCw0IDE0LDQgTDI5LjUsNCBDMzAuODc5LDQgMzIsNS4xMjIgMzIsNi41IEwzMiwxNy41IEMzMiwxOC44NzkgMzAuODc5LDIwIDI5LjUsMjAgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNiwyMCBMMi41LDIwIEMxLjEyMiwyMCAwLDE4Ljg3OSAwLDE3LjUgTDAsNi41IEMwLDUuMTIyIDEuMTIyLDQgMi41LDQgTDYsNCBDNi41NTIsNCA3LDQuNDQ4IDcsNSBDNyw1LjU1MiA2LjU1Miw2IDYsNiBMMi41LDYgQzIuMjI0LDYgMiw2LjIyNCAyLDYuNSBMMiwxNy41IEMyLDE3Ljc3NSAyLjIyNCwxOCAyLjUsMTggTDYsMTggQzYuNTUyLDE4IDcsMTguNDQ3IDcsMTkgQzcsMTkuNTUzIDYuNTUyLDIwIDYsMjAgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTAsMjQgQzkuNDQ4LDI0IDksMjMuNTUzIDksMjMgTDksMSBDOSwwLjQ0OCA5LjQ0OCwwIDEwLDAgQzEwLjU1MiwwIDExLDAuNDQ4IDExLDEgTDExLDIzIEMxMSwyMy41NTMgMTAuNTUyLDI0IDEwLDI0IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTEzLDIgTDcsMiBDNi40NDgsMiA2LDEuNTUyIDYsMSBDNiwwLjQ0OCA2LjQ0OCwwIDcsMCBMMTMsMCBDMTMuNTUyLDAgMTQsMC40NDggMTQsMSBDMTQsMS41NTIgMTMuNTUyLDIgMTMsMiBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMywyNCBMNywyNCBDNi40NDgsMjQgNiwyMy41NTMgNiwyMyBDNiwyMi40NDcgNi40NDgsMjIgNywyMiBMMTMsMjIgQzEzLjU1MiwyMiAxNCwyMi40NDcgMTQsMjMgQzE0LDIzLjU1MyAxMy41NTIsMjQgMTMsMjQgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==',
+            'show_in_nav_menus' => false,
+            'publicly_queryable' => false,
             'exclude_from_search' => true,
-            'has_archive'         => false,
-            'query_var'           => true,
-            'can_export'          => true,
-            'rewrite'             => false,
-            'capability_type'     => 'post',
+            'has_archive' => false,
+            'query_var' => true,
+            'can_export' => true,
+            'rewrite' => false,
+            'capability_type' => 'post',
             'capabilities' => array(
-                'create_posts'    => 'do_not_allow',
+                'create_posts' => 'do_not_allow',
             ),
-            'map_meta_cap'        => true,
-            'supports'            => array('title')
+            'map_meta_cap' => true,
+            'supports' => array('title')
         );
 
         register_post_type($this->postTypeSlug, $args);
@@ -141,11 +144,13 @@ class PostType
 
         $data = $this->gatherFormData($post);
         $fields = get_fields($data['module_id']);
-        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type, $data['module_id']);
+        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type,
+            $data['module_id']);
 
         if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
             $template = new \Municipio\template;
-            $view = \Municipio\Helper\Template::locateTemplate('form-edit.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
+            $view = \Municipio\Helper\Template::locateTemplate('form-edit.blade.php',
+                array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
             $view = $template->cleanViewPath($view);
             $template->render($view, $data);
         } elseif (self::editableFrontend($post)) {
@@ -154,22 +159,25 @@ class PostType
                 'media_buttons' => false,
                 'textarea_name' => 'mod-form[post-content]',
                 'textarea_rows' => 15,
-                    'tinymce' => array(
-                        'plugins' => 'wordpress',
-                    ),
-                );
+                'tinymce' => array(
+                    'plugins' => 'wordpress',
+                ),
+            );
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
-            $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'), $data);
+            $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'),
+                $data);
         } else {
             include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
         }
         if (is_admin()) {
+
             $indata = get_post_meta($post->ID, 'form-data', true);
+
             if (isset($indata['modularity-form-history'])) {
-                echo "<p><strong>".__('Previous page', 'modularity-form-builder')."</strong><br />";
+                echo "<p><strong>" . __('Previous page', 'modularity-form-builder') . "</strong><br />";
 
                 if (trim($indata['modularity-form-history']) !== 'null' && trim($indata['modularity-form-history']) !== 'http://null' && trim($indata['modularity-form-history']) !== 'https://null') {
-                    echo "<a href=\"".$indata['modularity-form-history']."\">".$indata['modularity-form-history']."</a>";
+                    echo "<a href=\"" . $indata['modularity-form-history'] . "\">" . $indata['modularity-form-history'] . "</a>";
                 } else {
                     echo __('No Referrer', 'modularity-form-builder');
                 }
@@ -178,15 +186,25 @@ class PostType
             }
 
             if (isset($indata['modularity-form-url'])) {
-                echo "<p><strong>".__('Form', 'modularity-form-builder')."</strong><br /><a href=\"".$indata['modularity-form-url']."\">".$indata['modularity-form-url']."</a></p>";
+                echo "<p><strong>" . __('Form',
+                        'modularity-form-builder') . "</strong><br /><a href=\"" . $indata['modularity-form-url'] . "\">" . $indata['modularity-form-url'] . "</a></p>";
             }
         }
     }
 
+
     public function gatherFormData($post)
     {
         $data = array();
-        $indata = get_post_meta($post->ID, 'form-data', true);
+        $getData = get_post_meta($post->ID, 'form-data', true);
+
+        if (!get_option('options_mod_form_crypt')) {
+            $indata = (is_array($getData)) ? $getData : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
+                $getData));
+        } else {
+            $indata = (!is_array($getData)) ? unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
+                $getData)) : $getData;
+        }
 
         // Get the form id
         if (!empty($indata['modularity-form-id'])) {
@@ -219,7 +237,8 @@ class PostType
         $data['custom_post_type_content'] = false;
         $uploadFolder = wp_upload_dir();
         $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
-        $excludedGlobal = apply_filters('ModularityFormBuilder/excluded_fields/global', array('custom_content', 'collapse'), $post->post_type, $formId);
+        $excludedGlobal = apply_filters('ModularityFormBuilder/excluded_fields/global',
+            array('custom_content', 'collapse'), $post->post_type, $formId);
 
         foreach ($fields['form_fields'] as $field) {
             // Skip layout fields
@@ -250,7 +269,8 @@ class PostType
                         'label' => $field['labels'][$subfield],
                         'labels' => $field['labels'],
                         'name' => sanitize_title($field['labels'][$subfield]),
-                        'required' => (is_array($field['required_fields']) && in_array($subfield, $field['required_fields'])),
+                        'required' => (is_array($field['required_fields']) && in_array($subfield,
+                                $field['required_fields'])),
                         'value' => (!empty($indata[sanitize_title($field['labels'][$subfield])])) ? $indata[sanitize_title($field['labels'][$subfield])] : '',
                     );
                 }
@@ -272,9 +292,9 @@ class PostType
 
     /**
      * Render and output blade template
-     * @param string $fileName  Filename
-     * @param array  $path      Array with file paths
-     * @param array  $data      Template data
+     * @param string $fileName Filename
+     * @param array $path Array with file paths
+     * @param array $data Template data
      */
     public function renderBlade($fileName, $path, $data = array())
     {
@@ -291,11 +311,11 @@ class PostType
         if (is_object($post) && $post->post_type === $this->postTypeSlug && !is_admin() && !is_archive() && is_main_query()) {
             // Apply if content is the same as the global posts content
             $post_content = $post->post_content;
-            if (strpos($post_content,  '<!--more-->') !== false) {
+            if (strpos($post_content, '<!--more-->') !== false) {
                 $content_parts = explode('<!--more-->', $post_content);
-                $post_content  = $content_parts[1];
+                $post_content = $content_parts[1];
             }
-            $post_content       = preg_replace('/[^a-z]/i', '', sanitize_text_field($post_content));
+            $post_content = preg_replace('/[^a-z]/i', '', sanitize_text_field($post_content));
             $sanitized_content = preg_replace('/[^a-z]/i', '', sanitize_text_field($content));
 
             if ($post_content == $sanitized_content) {
@@ -314,7 +334,7 @@ class PostType
     {
         global $current_user;
 
-        $formId   = get_field('modularity-form-id', $post->ID);
+        $formId = get_field('modularity-form-id', $post->ID);
         $editable = get_field('editable_front_end', $formId);
 
         if ($editable && !is_admin() && (current_user_can('administrator') || is_user_logged_in() && $current_user->ID == $post->post_author)) {
@@ -337,10 +357,10 @@ class PostType
         }
 
         $forms = get_posts(array(
-            'post_type'      => 'mod-form',
-            'post_status'    => 'publish',
+            'post_type' => 'mod-form',
+            'post_status' => 'publish',
             'posts_per_page' => -1,
-            'numberposts'    => -1
+            'numberposts' => -1
         ));
 
         echo '<select name="form"><option value="-1">' . __('Select form…', 'modularity-form-builder') . '</option>';
@@ -420,7 +440,7 @@ class PostType
 
     /**
      * Setup list table sorting
-     * @param  array $columns  Sortable columns
+     * @param  array $columns Sortable columns
      * @return array           Modified sortable columns
      */
     public function listColumnsSorting($columns)
@@ -436,14 +456,14 @@ class PostType
     public static function getSenderLabels()
     {
         $labels = array(
-            'firstname'      => __('Firstname', 'modularity-form-builder'),
-            'lastname'       => __('Lastname', 'modularity-form-builder'),
-            'email'          => __('Email', 'modularity-form-builder'),
-            'phone'          => __('Phone', 'modularity-form-builder'),
-            'address'        => __('Address', 'modularity-form-builder'),
+            'firstname' => __('Firstname', 'modularity-form-builder'),
+            'lastname' => __('Lastname', 'modularity-form-builder'),
+            'email' => __('Email', 'modularity-form-builder'),
+            'phone' => __('Phone', 'modularity-form-builder'),
+            'address' => __('Address', 'modularity-form-builder'),
             'street_address' => __('Street address', 'modularity-form-builder'),
-            'postal_code'    => __('Postal code', 'modularity-form-builder'),
-            'city'           => __('City', 'modularity-form-builder')
+            'postal_code' => __('Postal code', 'modularity-form-builder'),
+            'city' => __('City', 'modularity-form-builder')
         );
 
         return $labels;
@@ -506,7 +526,13 @@ class PostType
         }
 
         $updatedData = $_POST['mod-form'];
-        $currentData = get_post_meta($postId, 'form-data', true);
+        if (!get_option('options_mod_form_crypt')) {
+            $currentData = get_post_meta($postId, 'form-data', true);
+        } else {
+            $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
+                get_post_meta($postId, 'form-data', true)));
+        }
+
 
         // Merge old values with new ones
         if (is_array($currentData) && !empty($currentData)) {
@@ -514,7 +540,13 @@ class PostType
         }
 
         update_post_meta($postId, 'modularity-form-id', $_POST['modularity-form-id']);
-        update_post_meta($postId, 'form-data', $updatedData);
+        if (!get_option('options_mod_form_crypt')) {
+            update_post_meta($postId, 'form-data', $updatedData);
+        } else {
+            update_post_meta($postId, 'form-data',
+                \ModularityFormBuilder\App::encryptDecryptData('encrypt', serialize($updatedData)));
+        }
+
     }
 
     public function jsonSelectedValues()
@@ -538,7 +570,7 @@ class PostType
 
         //Print json array
         if (is_array($result) && !empty($result)) {
-            echo "<script> var notificationConditions = '". json_encode($result)."'; </script>";
+            echo "<script> var notificationConditions = '" . json_encode($result) . "'; </script>";
         }
     }
 }

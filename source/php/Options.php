@@ -35,11 +35,14 @@ class Options
             return;
         }
 
-        // Save oauth credentials
+        // Save oauth credentials and encryption credential
         if (isset($_POST['save-oauth-credentials']) && wp_verify_nonce($_POST['save-oauth-credentials'], 'save')) {
             update_option('options_mod_form_client_id', $_POST['client-id']);
             update_option('options_mod_form_secret', $_POST['client-secret']);
+            update_option('options_mod_form_crypt', isset($_POST['encrypt']) && $_POST['encrypt'] == true ? 1 : null);
         }
+
+
 
         // Delete oauth credentials
         if (isset($_POST['delete-oauth-credentials']) && wp_verify_nonce($_POST['delete-oauth-credentials'], 'delete')) {

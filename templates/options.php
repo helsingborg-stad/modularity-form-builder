@@ -3,7 +3,7 @@
 </div>
 
     <div class="wrap">
-        <h1><?php _e('YouTube API authentication', 'modularity-form-builder' ); ?></h1>
+        <h3><?php _e('YouTube API authentication', 'modularity-form-builder' ); ?></h3>
     </div>
 
     <div class="error notice hidden"></div>
@@ -11,7 +11,6 @@
 
     <?php if (get_option('options_mod_form_access_token') == false): ?>
         <div class="wrap oauth-request">
-        <h3><?php _e('Save credentials', 'modularity-form-builder'); ?></h3>
         <p><?php _e('To upload videos to YouTube from your forms you need to authenticate this web applicaiton. Enter your Google OAuth 2.0 client keys and submit the request.', 'modularity-form-builder' ); ?></p>
         <p><?php _e('When you are setting up your OAuth Web application set "Authorized redirect URIs" to this URL: ', 'modularity-form-builder' ); ?></p>
         <code><?php menu_page_url('mod-form-options', true); ?></code>
@@ -34,6 +33,28 @@
                             <input type="text" class="client-secret" name="client-secret" id="client-secret" value="<?php echo esc_attr(get_option('options_mod_form_secret')); ?>"/>
                         </td>
                     </tr>
+                    <tr>
+                    </table>
+
+                <h3><?php _e('Encrypt your data', 'modularity-form-builder'); ?></h3>
+                <p><?php _e('If you want to encrypt the form data before it saves to database you need to check the following checkbox ', 'modularity-form-builder' ); ?><br />
+                <?php _e('You also have to add following lines to your config file and replace ADD-YOUR-KEY-HERE-1 and ADD-YOUR-KEY-HERE-2 with your own keys, 16 character minimum.', 'modularity-form-builder' ); ?></p>
+
+                <code><?php _e('define("ENCRYPT_METHOD", "AES-256-CBC", true);', 'modularity-form-builder' ); ?><br />
+                    &nbsp;<?php _e('define("ENCRYPT_SECRET_KEY", "ADD-YOUR-KEY-HERE-1", true);', 'modularity-form-builder' ); ?><br />
+                    &nbsp;<?php _e('define("ENCRYPT_SECRET_VI", "ADD-YOUR-KEY-HERE-2", true);', 'modularity-form-builder' ); ?><br />
+
+                </code>
+                <p><?php _e('Dont forget to keep the keys in a safe place, cause you will never be able to decrypt the already encrypted data without them.', 'modularity-form-builder' ); ?><br />
+                    <table class="form-table">
+                    <tr>
+                        <th scope="row">
+                            <?php _e('Yes I want to encrypt my form data', 'modularity-form-builder'); ?>
+                        </th>
+                        <td>
+                            <input type="checkbox" name="encrypt" id="encrypt" value="1" <?php if (get_option('options_mod_form_crypt')): echo 'checked'; endif;  ?>> <? echo get_option('options_mod_form_crypt'); ?>
+                        </td>
+                    </tr>
                 </table>
                 <p class="submit">
                     <input name='submit' type='submit' class='button-primary' value='<?php _e('Save', 'modularity-form-builder') ?>' />
@@ -42,7 +63,10 @@
         </div>
 
         <div class="wrap">
-            <?php echo $oauthRespons; ?>
+            <?php   if(isset($oauthRespons)) {
+                        echo $oauthRespons;
+                    }
+            ?>
         </div>
 
     <?php else: ?>
@@ -63,6 +87,7 @@
                         </td>
                     </tr>
                 </table>
+
             <p class="submit">
                 <input name='submit' type='submit' class='button' value='<?php _e('Delete credentials', 'modularity-form-builder') ?>' />
             </p>

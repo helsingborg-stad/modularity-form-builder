@@ -20,7 +20,7 @@ class Submission
     public function submit()
     {
         if (class_exists('\Municipio\Helper\ReCaptcha')) {
-            if (G_RECAPTCHA_KEY && G_RECAPTCHA_SECRET) {
+            if (defined('G_RECAPTCHA_KEY') && defined('G_RECAPTCHA_SECRET')) {
                 if (!is_user_logged_in()) {
                     $response = (isset($_POST['g-recaptcha-response']) && strlen($_POST['g-recaptcha-response']) > 0) ? $_POST['g-recaptcha-response'] : null;
                     $reCaptcha = \Municipio\Helper\ReCaptcha::controlReCaptcha($response);
@@ -93,7 +93,12 @@ class Submission
         ));
 
         // Adding meta data
-        update_post_meta($submission, 'form-data', $_POST);
+        if (!get_option('options_mod_form_crypt')) {
+            update_post_meta($submission, 'form-data', $_POST);
+        } else {
+            update_post_meta($submission, 'form-data',
+                \ModularityFormBuilder\App::encryptDecryptData('encrypt', serialize($_POST)));
+        }
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
         if (isset($formUrl))
@@ -307,12 +312,22 @@ class Submission
                 }
 
                 foreach ($field['fields'] as $subfield) {
-                    $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])] ?? '';
+                    if (!get_option('options_mod_form_crypt')) {
+                        $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])] ?? '';
+                    } else {
+                        $formdata[$labels[$subfield]] = \ModularityFormBuilder\App::encryptDecryptData('encrypt',$data[sanitize_title($labels[$subfield])]) ?? '';
+                    }
+
                 }
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                $formdata[$field['label']] = $data[sanitize_title($field['label'])] ?? '';
+                if (!get_option('options_mod_form_crypt')) {
+                    $formdata[$field['label']] = $data[sanitize_title($field['label'])] ?? '';
+                } else {
+                    $formdata[$field['label']] = \ModularityFormBuilder\App::encryptDecryptData('encrypt',$data[sanitize_title($field['label'])]) ?? '';
+                }
+
             }
         }
         $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';

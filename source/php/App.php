@@ -30,14 +30,17 @@ class App
         add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
         add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
         add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
+
     }
+
 
     /**
      * Add hidden field markup to form input fields
      * @param array $field Field being rendered
      * @return void
      */
-    public function addHiddenFields($field) {
+    public function addHiddenFields($field)
+    {
         if (get_post_type() != $this->postType || ($field['parent'] != 'field_58eb302883a68' && $field['parent'] != 'field_5a0abd4a4342a')) {
             return;
         }
@@ -48,7 +51,7 @@ class App
 
     /**
      * When a form label is changed, we must update the keys in all form submissions.
-     * @param  int  $postId The posts ID
+     * @param  int $postId The posts ID
      * @return void
      */
     public function updateFieldKeys($postId)
@@ -59,10 +62,10 @@ class App
         }
 
         // New and old field values
-        $newValues      = $_POST['acf']['field_58eb302883a68'];
-        $oldValues      = $_POST['current-acf']['field_58eb302883a68'];
-        $defaultLabels  = PostType::getSenderLabels();
-        $updatedValues  = array();
+        $newValues = $_POST['acf']['field_58eb302883a68'];
+        $oldValues = $_POST['current-acf']['field_58eb302883a68'];
+        $defaultLabels = PostType::getSenderLabels();
+        $updatedValues = array();
 
         // Gather updated field labels (used as keys)
         foreach ($newValues as $key => $fieldGroup) {
@@ -73,7 +76,7 @@ class App
 
                     // Loop through custom sender labels
                     if ($fieldKey == 'field_5a0abd4a4342a') {
-                        foreach($field as $senderKey => $senderField) {
+                        foreach ($field as $senderKey => $senderField) {
                             // Get ACF field object
                             $senderObject = get_field_object($senderKey);
                             $defaultLabel = isset($defaultLabels[$senderObject['_name']]) ? $defaultLabels[$senderObject['_name']] : null;
@@ -107,8 +110,8 @@ class App
 
     /**
      * Gets all posts connected to the form, and replaces the form data Keys
-     * @param int   $moduleId     The forms Post ID
-     * @param array $updatedKeys  Array containing old and new key values
+     * @param int $moduleId The forms Post ID
+     * @param array $updatedKeys Array containing old and new key values
      * @return void
      */
     public function updateFormData($moduleId, $updatedKeys)
@@ -128,33 +131,41 @@ class App
         if (!empty($posts)) {
             foreach ($posts as $key => $post) {
                 // Get current form data
-                $metaVal = get_post_meta((int) $post['ID'], 'form-data', true);
+                $metaVal = get_post_meta((int)$post['ID'], 'form-data', true);
                 if (is_array($metaVal)) {
 
                     // Loop through address array
                     $addressKey = sanitize_title(__('Address', 'modularity-form-builder'));
                     if (!empty($metaVal[$addressKey])) {
-                        foreach($updatedKeys as $changedVal) {
-                            $metaVal[$addressKey] = $this->replaceKey($metaVal[$addressKey], $changedVal['old'], $changedVal['new']);
+                        foreach ($updatedKeys as $changedVal) {
+                            $metaVal[$addressKey] = $this->replaceKey($metaVal[$addressKey], $changedVal['old'],
+                                $changedVal['new']);
                         }
                     }
 
                     // Loop through updated keys and replace array with new values
-                    foreach($updatedKeys as $changedVal) {
+                    foreach ($updatedKeys as $changedVal) {
                         $metaVal = $this->replaceKey($metaVal, $changedVal['old'], $changedVal['new']);
                     }
                 }
                 // Update form field data with new keys
-                update_post_meta((int) $post['ID'], 'form-data', $metaVal);
+                if (!get_option('options_mod_form_crypt')) {
+                    update_post_meta((int)$post['ID'], 'form-data', $metaVal);
+                } else {
+                    update_post_meta((int)$post['ID'], 'form-data',
+                        self::encryptDecryptData('encrypt', serialize($metaVal)));
+
+                }
+
             }
         }
     }
 
     /**
      * Replaces keys in an arrays
-     * @param array     $array     Defualt array
-     * @param string    $oldKey    Key to replace
-     * @param string    $newKey    Replacement key
+     * @param array $array Defualt array
+     * @param string $oldKey Key to replace
+     * @param string $newKey Replacement key
      * @return array               Modified array
      */
     public function replaceKey($array, $oldKey, $newKey)
@@ -172,7 +183,7 @@ class App
 
     /**
      * Add searchable blade template paths
-     * @param array  $array Template paths
+     * @param array $array Template paths
      * @return array        Modified template paths
      */
     public function addTemplatePaths($array)
@@ -187,15 +198,15 @@ class App
      */
     public function deleteFile()
     {
-        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['filePath']) ||!isset($_POST['fieldName'])) {
+        if (!isset($_POST['postId']) || !isset($_POST['formId']) || !isset($_POST['filePath']) || !isset($_POST['fieldName'])) {
             echo _e('Missing arguments', 'modularity-form-builder');
             die();
         }
 
-        $postId     = $_POST['postId'];
-        $filePath   = $_POST['filePath'];
-        $fieldName  = $_POST['fieldName'];
-        $formData   = get_post_meta($postId, 'form-data', true);
+        $postId = $_POST['postId'];
+        $filePath = $_POST['filePath'];
+        $fieldName = $_POST['fieldName'];
+        $formData = get_post_meta($postId, 'form-data', true);
 
         if (is_array($formData[$fieldName])) {
             foreach ($formData[$fieldName] as $key => $file) {
@@ -208,8 +219,11 @@ class App
                 }
             }
         }
-
-        update_post_meta($postId, 'form-data', $formData);
+        if (!get_option('options_mod_form_crypt')) {
+            update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', serialize($formData)));
+        } else {
+            update_post_meta($postId, 'form-data', $formData);
+        }
 
         echo 'success';
         die();
@@ -221,14 +235,14 @@ class App
      */
     public function uploadFiles()
     {
-        if (!isset($_POST['postId']) ||!isset($_POST['formId']) ||!isset($_POST['fieldName'])) {
+        if (!isset($_POST['postId']) || !isset($_POST['formId']) || !isset($_POST['fieldName'])) {
             wp_send_json_error(__('Missing arguments', 'modularity-form-builder'));
         }
 
-        $postId     = (int)$_POST['postId'];
-        $formId     = (int)$_POST['formId'];
-        $fieldName  = $_POST['fieldName'];
-        $formData   = get_post_meta($postId, 'form-data', true);
+        $postId = (int)$_POST['postId'];
+        $formId = (int)$_POST['formId'];
+        $fieldName = $_POST['fieldName'];
+        $formData = get_post_meta($postId, 'form-data', true);
 
         if (!empty($_FILES)) {
             $files = Submission::uploadFiles($_FILES, $formId);
@@ -245,7 +259,12 @@ class App
                 $formData[$fieldName] = $files[$fieldName];
             }
 
-            update_post_meta($postId, 'form-data', $formData);
+            if (!get_option('options_mod_form_crypt')) {
+                update_post_meta($postId, 'form-data', $formData);
+            } else {
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt',serialize($formData)));
+            }
+
 
             wp_send_json_success(__('Upload succeeded', 'modularity-form-builder'));
         }
@@ -255,7 +274,8 @@ class App
 
     public function frontEndSavePost()
     {
-        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
+        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'],
+                'update')) {
             wp_send_json_error(__('Something went wrong', 'modularity-form-builder'));
         }
 
@@ -265,7 +285,12 @@ class App
         if (!empty($_POST['mod-form'])) {
             $indata = get_post_meta($postId, 'form-data', true);
             $data = array_merge($indata, $_POST['mod-form']);
-            update_post_meta($postId, 'form-data', $data);
+            if (!get_option('options_mod_form_crypt')) {
+                update_post_meta($postId, 'form-data', $data);
+            } else {
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt',serialize($data)));
+            }
+
         }
 
         // Update post title and content
@@ -274,10 +299,42 @@ class App
             $post['post_title'] = $_POST['mod-form']['post-title'];
         }
         if (!empty($_POST['mod-form']['post-content'])) {
-            $post['post_content'] = $_POST['mod-form']['post-content'];
+            if (!get_option('options_mod_form_crypt')) {
+                $post['post_content'] = $_POST['mod-form']['post-content'];
+            } else {
+                $post['post_content'] = self::encryptDecryptData('encrypt',$_POST['mod-form']['post-content'] );
+            }
+
         }
         wp_update_post($post);
 
         wp_send_json_success(__('Saved', 'modularity-form-builder'));
+    }
+
+    /**
+     * Encrypt & decrypt data
+     * @param $type string encrypt or decrypt
+     * @param $str string data to encrypt or decrypt
+     * @return string
+     */
+    static function encryptDecryptData($meth, $str)
+    {
+        if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
+            switch ($meth) {
+                case 'encrypt':
+                    return base64_encode(openssl_encrypt($str, ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
+                    break;
+                case 'decrypt':
+                    return openssl_decrypt(base64_decode($str), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16));
+                    break;
+                default;
+                    return $str;
+            }
+
+        } else {
+            return $str;
+        }
     }
 }
