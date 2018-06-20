@@ -1746,6 +1746,25 @@
             "append": ""
         },
         {
+            "key": "field_59df53ac189b8",
+            "label": "Public act notice",
+            "name": "submission_public_act",
+            "type": "true_false",
+            "instructions": "Adds a notice that informs the user that the submission will become a public act.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Add public act notice",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_58eb7b11cc4f5",
             "label": "Submission notice",
             "name": "subimission_notice",
@@ -1939,6 +1958,38 @@
                     "placeholder": ""
                 }
             ]
+        },
+        {
+            "key": "field_5b28fa01e5676",
+            "label": "database storage",
+            "name": "database_storage",
+            "type": "radio",
+            "instructions": "Do not store posted data in database",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59df53ac189b8",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "null:Yes": "null:Yes",
+                "true:No": "true:No"
+            },
+            "allow_null": 1,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "null",
+            "layout": "vertical",
+            "return_format": "value"
         },
         {
             "key": "field_59720c161a3a1",
@@ -2345,112 +2396,23 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_5b07fe44f2e56",
-            "label": "Policy & Law",
-            "name": "",
-            "type": "tab",
+            "key": "field_5b2a3840ff029",
+            "label": "DB storage",
+            "name": "db_storage",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_59df53ac189b8",
-            "label": "Public act notice",
-            "name": "submission_public_act",
-            "type": "true_false",
-            "instructions": "Adds a notice that informs the user that the submission will become a public act.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "Add public act notice",
-            "default_value": 1,
+            "message": "Don't store posted data in database",
+            "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
-        },
-        {
-            "key": "field_5b0801f53e90e",
-            "label": "Public act notice content",
-            "name": "submission_public_act_content",
-            "type": "textarea",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_59df53ac189b8",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Note that your comment will become a public act that can be read by others.",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
-        },
-        {
-            "key": "field_5b07c6d88bbbd",
-            "label": "GDPR complience notice",
-            "name": "gdpr_complience_notice",
-            "type": "true_false",
-            "instructions": "Contains information about how personal data is handled.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "Show a message (and checkbox) that is required to check to submit all forms.",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5b07fe8ff2e57",
-            "label": "GDPR complience notice content",
-            "name": "gdpr_complience_notice_content",
-            "type": "textarea",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5b07c6d88bbbd",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.",
-            "placeholder": "Add a complience notice",
-            "maxlength": 400,
-            "rows": 4,
-            "new_lines": ""
         }
     ],
     "location": [

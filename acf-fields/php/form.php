@@ -1761,13 +1761,32 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => __('Send', 'modularity-form-builder'),
+            'default_value' => 'Send',
             'maxlength' => '',
             'placeholder' => '',
             'prepend' => '',
             'append' => '',
         ),
         4 => array(
+            'key' => 'field_59df53ac189b8',
+            'label' => __('Public act notice', 'modularity-form-builder'),
+            'name' => 'submission_public_act',
+            'type' => 'true_false',
+            'instructions' => __('Adds a notice that informs the user that the submission will become a public act.', 'modularity-form-builder'),
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => __('Add public act notice', 'modularity-form-builder'),
+            'default_value' => 1,
+            'ui' => 0,
+            'ui_on_text' => '',
+            'ui_off_text' => '',
+        ),
+        5 => array(
             'key' => 'field_58eb7b11cc4f5',
             'label' => __('Submission notice', 'modularity-form-builder'),
             'name' => 'subimission_notice',
@@ -1786,7 +1805,7 @@
             'media_upload' => 1,
             'delay' => 0,
         ),
-        5 => array(
+        6 => array(
             'key' => 'field_58f5c029ee90a',
             'label' => __('Notifications', 'modularity-form-builder'),
             'name' => '',
@@ -1802,7 +1821,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        6 => array(
+        7 => array(
             'key' => 'field_59a4259acfea0',
             'label' => __('Notifications on form submission', 'modularity-form-builder'),
             'name' => '',
@@ -1819,7 +1838,7 @@
             'new_lines' => 'wpautop',
             'esc_html' => 0,
         ),
-        7 => array(
+        8 => array(
             'key' => 'field_58eb6ee89aa7c',
             'label' => __('Notify email addresses', 'modularity-form-builder'),
             'name' => 'notify',
@@ -1970,7 +1989,39 @@
                 ),
             ),
         ),
-        8 => array(
+        9 => array(
+            'key' => 'field_5b28fa01e5676',
+            'label' => __('database storage', 'modularity-form-builder'),
+            'name' => 'database_storage',
+            'type' => 'radio',
+            'instructions' => __('Do not store posted data in database', 'modularity-form-builder'),
+            'required' => 0,
+            'conditional_logic' => array(
+                0 => array(
+                    0 => array(
+                        'field' => 'field_59df53ac189b8',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'choices' => array(
+                'null:Yes' => __('null:Yes', 'modularity-form-builder'),
+                'true:No' => __('true:No', 'modularity-form-builder'),
+            ),
+            'allow_null' => 1,
+            'other_choice' => 0,
+            'save_other_choice' => 0,
+            'default_value' => 'null',
+            'layout' => 'vertical',
+            'return_format' => 'value',
+        ),
+        10 => array(
             'key' => 'field_59720c161a3a1',
             'label' => __('Custom email subject', 'modularity-form-builder'),
             'name' => 'notification_custom_subject',
@@ -1989,7 +2040,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        9 => array(
+        11 => array(
             'key' => 'field_5972079df9f04',
             'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'notification_subject',
@@ -2016,7 +2067,7 @@
             'append' => '',
             'maxlength' => '',
         ),
-        10 => array(
+        12 => array(
             'key' => 'field_58f5d00332436',
             'label' => __('Notification message', 'modularity-form-builder'),
             'name' => 'notification_message',
@@ -2035,7 +2086,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        11 => array(
+        13 => array(
             'key' => 'field_58f5b1a066797',
             'label' => __('Notification data', 'modularity-form-builder'),
             'name' => 'submission_notice_data',
@@ -2054,7 +2105,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        12 => array(
+        14 => array(
             'key' => 'field_58f5c0bbee90c',
             'label' => __('Sender copy', 'modularity-form-builder'),
             'name' => '',
@@ -2070,7 +2121,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        13 => array(
+        15 => array(
             'key' => 'field_58f5b1c266798',
             'label' => __('Allow sender copy', 'modularity-form-builder'),
             'name' => 'allow_sender_copy',
@@ -2089,7 +2140,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        14 => array(
+        16 => array(
             'key' => 'field_59a561ed8a256',
             'label' => __('Custom email subject for submission copy', 'modularity-form-builder'),
             'name' => 'copy_custom_subject',
@@ -2116,7 +2167,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        15 => array(
+        17 => array(
             'key' => 'field_59a562508a257',
             'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'copy_subject',
@@ -2148,7 +2199,7 @@
             'append' => '',
             'maxlength' => '',
         ),
-        16 => array(
+        18 => array(
             'key' => 'field_58f5d09142d94',
             'label' => __('Sender copy message', 'modularity-form-builder'),
             'name' => 'sender_copy_message',
@@ -2175,7 +2226,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        17 => array(
+        19 => array(
             'key' => 'field_58f5c0abee90b',
             'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => '',
@@ -2191,7 +2242,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        18 => array(
+        20 => array(
             'key' => 'field_58f5be7475dbf',
             'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => 'autoreply',
@@ -2210,7 +2261,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        19 => array(
+        21 => array(
             'key' => 'field_58f5bf7329b3f',
             'label' => __('Auto-reply subject', 'modularity-form-builder'),
             'name' => 'auto_reply_subject',
@@ -2237,7 +2288,7 @@
             'prepend' => '',
             'append' => '',
         ),
-        20 => array(
+        22 => array(
             'key' => 'field_58f5bea775dc0',
             'label' => __('Auto-reply content', 'modularity-form-builder'),
             'name' => 'auto_reply_content',
@@ -2264,7 +2315,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        21 => array(
+        23 => array(
             'key' => 'field_5a12ad75f9444',
             'label' => __('Advanced options', 'modularity-form-builder'),
             'name' => '',
@@ -2280,7 +2331,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        22 => array(
+        24 => array(
             'key' => 'field_5a1837b50079f',
             'label' => __('Save to post type', 'modularity-form-builder'),
             'name' => 'custom_submission_post_type',
@@ -2299,7 +2350,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        23 => array(
+        25 => array(
             'key' => 'field_5a059dcc4c2a0',
             'label' => __('Post type', 'modularity-form-builder'),
             'name' => 'submission_post_type',
@@ -2327,7 +2378,7 @@
                 'listing' => __('Listing', 'modularity-form-builder'),
             ),
             'default_value' => array(
-                0 => __('form-submissions', 'modularity-form-builder'),
+                0 => 'form-submissions',
             ),
             'allow_null' => 0,
             'multiple' => 0,
@@ -2336,7 +2387,7 @@
             'return_format' => 'value',
             'placeholder' => '',
         ),
-        24 => array(
+        26 => array(
             'key' => 'field_5a12ae16f9445',
             'label' => __('Editable on front end', 'modularity-form-builder'),
             'name' => 'editable_front_end',
@@ -2355,7 +2406,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        25 => array(
+        27 => array(
             'key' => 'field_5a12afecf9446',
             'label' => __('Editable on back end', 'modularity-form-builder'),
             'name' => 'editable_back_end',
@@ -2374,113 +2425,24 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        26 => array(
-            'key' => 'field_5b07fe44f2e56',
-            'label' => __('Policy & Law', 'modularity-form-builder'),
-            'name' => '',
-            'type' => 'tab',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'placement' => 'top',
-            'endpoint' => 0,
-        ),
-        27 => array(
-            'key' => 'field_59df53ac189b8',
-            'label' => __('Public act notice', 'modularity-form-builder'),
-            'name' => 'submission_public_act',
-            'type' => 'true_false',
-            'instructions' => __('Adds a notice that informs the user that the submission will become a public act.', 'modularity-form-builder'),
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'message' => __('Add public act notice', 'modularity-form-builder'),
-            'default_value' => 1,
-            'ui' => 0,
-            'ui_on_text' => '',
-            'ui_off_text' => '',
-        ),
         28 => array(
-            'key' => 'field_5b0801f53e90e',
-            'label' => __('Public act notice content', 'modularity-form-builder'),
-            'name' => 'submission_public_act_content',
-            'type' => 'textarea',
-            'instructions' => '',
-            'required' => 1,
-            'conditional_logic' => array(
-                0 => array(
-                    0 => array(
-                        'field' => 'field_59df53ac189b8',
-                        'operator' => '==',
-                        'value' => '1',
-                    ),
-                ),
-            ),
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'default_value' => __('Note that your comment will become a public act that can be read by others.', 'modularity-form-builder'),
-            'placeholder' => '',
-            'maxlength' => '',
-            'rows' => 4,
-            'new_lines' => '',
-        ),
-        29 => array(
-            'key' => 'field_5b07c6d88bbbd',
-            'label' => __('GDPR complience notice', 'modularity-form-builder'),
-            'name' => 'gdpr_complience_notice',
+            'key' => 'field_5b2a3840ff029',
+            'label' => __('DB storage', 'modularity-form-builder'),
+            'name' => 'db_storage',
             'type' => 'true_false',
-            'instructions' => __('Contains information about how personal data is handled.', 'modularity-form-builder'),
+            'instructions' => '',
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
-                'width' => '',
+                'width' => '50',
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Show a message (and checkbox) that is required to check to submit all forms.', 'modularity-form-builder'),
-            'default_value' => 1,
+            'message' => __('Don\'t store posted data in database', 'modularity-form-builder'),
+            'default_value' => 0,
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
-        ),
-        30 => array(
-            'key' => 'field_5b07fe8ff2e57',
-            'label' => __('GDPR complience notice content', 'modularity-form-builder'),
-            'name' => 'gdpr_complience_notice_content',
-            'type' => 'textarea',
-            'instructions' => '',
-            'required' => 1,
-            'conditional_logic' => array(
-                0 => array(
-                    0 => array(
-                        'field' => 'field_5b07c6d88bbbd',
-                        'operator' => '==',
-                        'value' => '1',
-                    ),
-                ),
-            ),
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'default_value' => __('When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.', 'modularity-form-builder'),
-            'placeholder' => __('Add a complience notice', 'modularity-form-builder'),
-            'maxlength' => 400,
-            'rows' => 4,
-            'new_lines' => '',
         ),
     ),
     'location' => array(

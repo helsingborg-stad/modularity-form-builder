@@ -9,6 +9,7 @@
         <input type="hidden" name="modularity-form-post-type" value="{{ $submissionPostType }}">
         <input type="hidden" id="modularity-form-history" name="modularity-form-history" value="">
         <input type="hidden" id="modularity-form-url" name="modularity-form-url" value="">
+        <input type="hidden" id="modularity-gdpr-data" name="modularity-gdpr-data" value="{{$dataStorage}}">
         @if (isset($_GET['form']) && $_GET['form'] == 'success')
             <div class="grid">
                 <div class="grid-md-12">
@@ -49,13 +50,13 @@
 
         <div class="grid">
             <div class="grid-md-12">
-                @if($submission_public_act || $gdpr_complience_notice)
+                @if(isset($submission_public_act) || isset($gdpr_complience_notice))
                     @if($submission_public_act && !empty($submission_public_act_content))
                         <p class="text-sm gutter gutter-sm gutter-bottom">
                             {{$submission_public_act_content}}
                         </p>
                     @endif
-                    @if($gdpr_complience_notice && !empty($gdpr_complience_notice_content))
+                    @if(isset($gdpr_complience_notice) && !empty($gdpr_complience_notice_content))
                         <p class="text-sm gutter gutter-sm gutter-bottom">
                             {{$gdpr_complience_notice_content}}
                         </p>
