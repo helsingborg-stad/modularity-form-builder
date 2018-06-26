@@ -1960,38 +1960,6 @@
             ]
         },
         {
-            "key": "field_5b28fa01e5676",
-            "label": "database storage",
-            "name": "database_storage",
-            "type": "radio",
-            "instructions": "Do not store posted data in database",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_59df53ac189b8",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "null:Yes": "null:Yes",
-                "true:No": "true:No"
-            },
-            "allow_null": 1,
-            "other_choice": 0,
-            "save_other_choice": 0,
-            "default_value": "null",
-            "layout": "vertical",
-            "return_format": "value"
-        },
-        {
             "key": "field_59720c161a3a1",
             "label": "Custom email subject",
             "name": "notification_custom_subject",

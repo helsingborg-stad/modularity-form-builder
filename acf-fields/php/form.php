@@ -1990,38 +1990,6 @@
             ),
         ),
         9 => array(
-            'key' => 'field_5b28fa01e5676',
-            'label' => __('database storage', 'modularity-form-builder'),
-            'name' => 'database_storage',
-            'type' => 'radio',
-            'instructions' => __('Do not store posted data in database', 'modularity-form-builder'),
-            'required' => 0,
-            'conditional_logic' => array(
-                0 => array(
-                    0 => array(
-                        'field' => 'field_59df53ac189b8',
-                        'operator' => '==',
-                        'value' => '1',
-                    ),
-                ),
-            ),
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'choices' => array(
-                'null:Yes' => __('null:Yes', 'modularity-form-builder'),
-                'true:No' => __('true:No', 'modularity-form-builder'),
-            ),
-            'allow_null' => 1,
-            'other_choice' => 0,
-            'save_other_choice' => 0,
-            'default_value' => 'null',
-            'layout' => 'vertical',
-            'return_format' => 'value',
-        ),
-        10 => array(
             'key' => 'field_59720c161a3a1',
             'label' => __('Custom email subject', 'modularity-form-builder'),
             'name' => 'notification_custom_subject',
@@ -2040,7 +2008,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        11 => array(
+        10 => array(
             'key' => 'field_5972079df9f04',
             'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'notification_subject',
@@ -2067,7 +2035,7 @@
             'append' => '',
             'maxlength' => '',
         ),
-        12 => array(
+        11 => array(
             'key' => 'field_58f5d00332436',
             'label' => __('Notification message', 'modularity-form-builder'),
             'name' => 'notification_message',
@@ -2086,7 +2054,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        13 => array(
+        12 => array(
             'key' => 'field_58f5b1a066797',
             'label' => __('Notification data', 'modularity-form-builder'),
             'name' => 'submission_notice_data',
@@ -2105,7 +2073,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        14 => array(
+        13 => array(
             'key' => 'field_58f5c0bbee90c',
             'label' => __('Sender copy', 'modularity-form-builder'),
             'name' => '',
@@ -2121,7 +2089,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        15 => array(
+        14 => array(
             'key' => 'field_58f5b1c266798',
             'label' => __('Allow sender copy', 'modularity-form-builder'),
             'name' => 'allow_sender_copy',
@@ -2140,7 +2108,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        16 => array(
+        15 => array(
             'key' => 'field_59a561ed8a256',
             'label' => __('Custom email subject for submission copy', 'modularity-form-builder'),
             'name' => 'copy_custom_subject',
@@ -2167,7 +2135,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        17 => array(
+        16 => array(
             'key' => 'field_59a562508a257',
             'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'copy_subject',
@@ -2199,7 +2167,7 @@
             'append' => '',
             'maxlength' => '',
         ),
-        18 => array(
+        17 => array(
             'key' => 'field_58f5d09142d94',
             'label' => __('Sender copy message', 'modularity-form-builder'),
             'name' => 'sender_copy_message',
@@ -2226,7 +2194,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        19 => array(
+        18 => array(
             'key' => 'field_58f5c0abee90b',
             'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => '',
@@ -2242,7 +2210,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        20 => array(
+        19 => array(
             'key' => 'field_58f5be7475dbf',
             'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => 'autoreply',
@@ -2261,7 +2229,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        21 => array(
+        20 => array(
             'key' => 'field_58f5bf7329b3f',
             'label' => __('Auto-reply subject', 'modularity-form-builder'),
             'name' => 'auto_reply_subject',
@@ -2288,7 +2256,7 @@
             'prepend' => '',
             'append' => '',
         ),
-        22 => array(
+        21 => array(
             'key' => 'field_58f5bea775dc0',
             'label' => __('Auto-reply content', 'modularity-form-builder'),
             'name' => 'auto_reply_content',
@@ -2315,7 +2283,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        23 => array(
+        22 => array(
             'key' => 'field_5a12ad75f9444',
             'label' => __('Advanced options', 'modularity-form-builder'),
             'name' => '',
@@ -2331,7 +2299,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        24 => array(
+        23 => array(
             'key' => 'field_5a1837b50079f',
             'label' => __('Save to post type', 'modularity-form-builder'),
             'name' => 'custom_submission_post_type',
@@ -2350,7 +2318,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        25 => array(
+        24 => array(
             'key' => 'field_5a059dcc4c2a0',
             'label' => __('Post type', 'modularity-form-builder'),
             'name' => 'submission_post_type',
@@ -2387,7 +2355,7 @@
             'return_format' => 'value',
             'placeholder' => '',
         ),
-        26 => array(
+        25 => array(
             'key' => 'field_5a12ae16f9445',
             'label' => __('Editable on front end', 'modularity-form-builder'),
             'name' => 'editable_front_end',
@@ -2406,7 +2374,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        27 => array(
+        26 => array(
             'key' => 'field_5a12afecf9446',
             'label' => __('Editable on back end', 'modularity-form-builder'),
             'name' => 'editable_back_end',
@@ -2425,7 +2393,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        28 => array(
+        27 => array(
             'key' => 'field_5b2a3840ff029',
             'label' => __('DB storage', 'modularity-form-builder'),
             'name' => 'db_storage',
