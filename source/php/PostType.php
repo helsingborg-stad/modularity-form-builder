@@ -171,7 +171,8 @@ class PostType
         }
         if (is_admin()) {
 
-            $indata = get_post_meta($post->ID, 'form-data', true);
+            $indata = (is_array( get_post_meta($post->ID, 'form-data', true))) ?  get_post_meta($post->ID, 'form-data', true) : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
+                get_post_meta($post->ID, 'form-data', true)));
 
             if (isset($indata['modularity-form-history'])) {
                 echo "<p><strong>" . __('Previous page', 'modularity-form-builder') . "</strong><br />";

@@ -50,7 +50,7 @@
 
         <div class="grid">
             <div class="grid-md-12">
-                @if(isset($submission_public_act) || isset($gdpr_complience_notice))
+                @if($submission_public_act || $gdpr_complience_notice)
                     @if($submission_public_act && !empty($submission_public_act_content))
                         <p class="text-sm gutter gutter-sm gutter-bottom">
                             {{$submission_public_act_content}}

@@ -322,30 +322,23 @@ class Submission
                 }
 
                 foreach ($field['fields'] as $subfield) {
-                    if (!get_option('options_mod_form_crypt')) {
-                        $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])] ?? '';
-                    } else {
-                        $formdata[$labels[$subfield]] = \ModularityFormBuilder\App::encryptDecryptData('encrypt',
-                                $data[sanitize_title($labels[$subfield])]) ?? '';
-                    }
-
+                    $formdata[$labels[$subfield]] = $data[sanitize_title($labels[$subfield])] ?? '';
                 }
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                if (!get_option('options_mod_form_crypt')) {
-                    $formdata[$field['label']] = $data[sanitize_title($field['label'])] ?? '';
-                } else {
-                    $formdata[$field['label']] = \ModularityFormBuilder\App::encryptDecryptData('encrypt',
-                            $data[sanitize_title($field['label'])]) ?? '';
-                }
-
+                $formdata[$field['label']] = $data[sanitize_title($field['label'])] ?? '';
             }
         }
+
         $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
         $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
 
-        return $formdata;
+        if (!get_option('options_mod_form_crypt')) {
+            return $formdata;
+        } else {
+            return \ModularityFormBuilder\App::encryptDecryptData('encrypt', $formdata);
+        }
     }
 
     /**
