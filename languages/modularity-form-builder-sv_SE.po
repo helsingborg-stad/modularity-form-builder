@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
 "POT-Creation-Date: 2018-06-27 13:45+0200\n"
-"PO-Revision-Date: 2018-06-27 13:55+0200\n"
+"PO-Revision-Date: 2018-06-27 14:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -640,7 +640,7 @@ msgstr "Databaslagring"
 
 #: acf-fields/php/form.php:2417
 msgid "Don't store posted data in database"
-msgstr ""
+msgstr "Lagra inte postad data i databasen."
 
 #: source/php/App.php:202 source/php/App.php:239
 msgid "Missing arguments"
