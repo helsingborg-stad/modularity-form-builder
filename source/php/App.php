@@ -29,8 +29,14 @@ class App
 
         add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
         add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
-        add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
 
+
+
+        add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
+        //add_action('save_post', array($this, 'userRestriction'), 1);
+        //add_filter('wp_insert_post_empty_content', array($this, 'userRestriction'), 999999, 2);
+        //add_filter('acf/save_post', array($this, 'userRestriction'), 999999, 2);
+        add_action('current_screen', array($this, 'restrictUserPages'));
     }
 
 
@@ -262,7 +268,7 @@ class App
             if (!get_option('options_mod_form_crypt')) {
                 update_post_meta($postId, 'form-data', $formData);
             } else {
-                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt',serialize($formData)));
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', serialize($formData)));
             }
 
 
@@ -288,7 +294,7 @@ class App
             if (!get_option('options_mod_form_crypt')) {
                 update_post_meta($postId, 'form-data', $data);
             } else {
-                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt',serialize($data)));
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', serialize($data)));
             }
 
         }
@@ -302,7 +308,7 @@ class App
             if (!get_option('options_mod_form_crypt')) {
                 $post['post_content'] = $_POST['mod-form']['post-content'];
             } else {
-                $post['post_content'] = self::encryptDecryptData('encrypt',$_POST['mod-form']['post-content'] );
+                $post['post_content'] = self::encryptDecryptData('encrypt', $_POST['mod-form']['post-content']);
             }
 
         }
@@ -337,4 +343,47 @@ class App
             return $str;
         }
     }
+
+
+    /**
+     * Check if event admin have permission to edit user
+     * @return void
+     */
+    public function restrictUserPages()
+    {
+        if (current_user_can('administrator')) {
+            return;
+        }
+
+        $screen = get_current_screen();
+        if ($screen->base == 'post' && !empty(get_current_user_id())) {
+            $this->checkPermission();
+        }
+    }
+
+    /**
+     * checkPermission - Checks if user is author of the form or admin
+     * @param $postID int
+     * @return false if the user is admin other wise show message and kills make the page disabled
+     */
+    public function checkPermission()
+    {
+        $userRestriction = get_field('user_restriction', isset($_GET['post']));
+        if ($userRestriction) {
+            if (current_user_can('administrator')) {
+                return true;
+            }
+            if (get_current_user_id() !== get_post_field('post_author', $_GET['post'])) {
+                wp_die(
+                    '<h1>' . __('Hello, you are not Superman, with full access?') . '</h1>' .
+                    '<p>' . __('Missing permissions') . '</p>',
+                    403
+                );
+            }
+        }
+    }
+
+
+
 }
+

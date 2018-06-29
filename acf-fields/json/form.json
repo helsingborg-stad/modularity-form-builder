@@ -1893,7 +1893,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n                background: #f1f1f157;\r\n                border-left: 4px solid #b2b500;\r\n                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n    background: #f1f1f157;\r\n    border-left: 4px solid #b2b500;\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n    padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
@@ -2313,15 +2313,7 @@
                 "form-submissions": "Form submissions",
                 "event": "Event",
                 "ticket": "Ticket",
-                "listing": "Listing",
-                "location": "Location",
-                "organizer": "Organizer",
-                "sponsor": "Sponsor",
-                "package": "Package",
-                "membership-card": "Membership Card",
-                "guide": "Guide",
-                "lovprogram": "Lovprogram",
-                "johan-test123": "Johan-test123"
+                "listing": "Listing"
             },
             "default_value": [
                 "form-submissions"
@@ -2389,6 +2381,64 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_5b3384dbf9cac",
+            "label": "User Restriction",
+            "name": "user_restriction",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b2a3840ff029",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b338525f9cad",
+            "label": "users",
+            "name": "users",
+            "type": "user",
+            "instructions": "Add users who have access to the form data",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b3384dbf9cac",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_5b2a3840ff029",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "role": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "array"
         }
     ],
     "location": [
