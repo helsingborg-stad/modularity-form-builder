@@ -190,7 +190,7 @@ class Form extends \Modularity\Module
         $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
 
-        $data['dataStorage'] = ($data['db_storage']) ? 1 : 0;
+        $data['dataStorage'] = (isset($data['db_storage'])) ? 1 : 0;
 
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';

@@ -363,7 +363,6 @@ class App
 
     /**
      * checkPermission - Checks if user is author of the form or admin
-     * @param $postID int
      * @return false if the user is admin other wise show message and kills make the page disabled
      */
     public function checkPermission()
