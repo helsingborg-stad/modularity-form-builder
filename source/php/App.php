@@ -344,9 +344,8 @@ class App
         }
     }
 
-
     /**
-     * Check if event admin have permission to edit user
+     * Check if user have permission to edit or view form
      * @return void
      */
     public function restrictUserPages()
@@ -363,7 +362,7 @@ class App
 
     /**
      * checkPermission - Checks if user is author of the form or admin
-     * @return false if the user is admin other wise show message and kills make the page disabled
+     * @return true if the user is admin other wise show message and kills make the page disabled
      */
     public function checkPermission()
     {
@@ -380,6 +379,7 @@ class App
                 );
             }
         }
+        return false;
     }
 
 
