@@ -340,7 +340,7 @@ class Submission
         if (!get_option('options_mod_form_crypt')) {
             return $formdata;
         } else {
-            return \ModularityFormBuilder\App::encryptDecryptData('encrypt', $formdata);
+            return (array) \ModularityFormBuilder\App::encryptDecryptData('encrypt', $formdata);
         }
     }
 
