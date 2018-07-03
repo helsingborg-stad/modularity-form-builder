@@ -134,6 +134,36 @@ class PostType
         add_meta_box('formdata', 'Submission data', array($this, 'formdataDisplay'), $postType, 'normal', 'default');
     }
 
+    public function grantedUsers($modulID)
+    {
+        if (isset($modulID) || empty($modulID)) {
+            $userRestriction = get_field('user_restriction', $modulID);
+            if ($userRestriction) {
+                if (current_user_can('administrator')) {
+                    return true;
+                }
+                if (get_current_user_id() !== get_post_field('post_author', $modulID)) {
+                    $grantedUsers = get_field('granted_users', $modulID);
+                    $granted = false;
+                    foreach($grantedUsers as $user){
+                        if($user['ID'] === get_current_user_id()) {
+                            $granted = true;
+                        }
+                    }
+                    if ($granted === false) {
+                        wp_die(
+                            '<h1>' . __('Hello, you are not Superman, with full access?') . '</h1>' .
+                            '<p>' . __('Missing permissions') . '</p>',
+                            403
+                        );
+                    }
+                }
+            }
+        }
+
+    }
+
+
     /**
      * Displays the form data, as static data or editable
      * @return void
@@ -144,6 +174,7 @@ class PostType
 
         $data = $this->gatherFormData($post);
         $fields = get_fields($data['module_id']);
+        $this->grantedUsers($data['module_id']);
         $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type,
             $data['module_id']);
 
