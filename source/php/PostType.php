@@ -134,6 +134,12 @@ class PostType
         add_meta_box('formdata', 'Submission data', array($this, 'formdataDisplay'), $postType, 'normal', 'default');
     }
 
+
+    /**
+     * Checks user access to formdata
+     * @param  int $modulID
+     * @return true if user is granted access otherwise void
+     */
     public function grantedUsers($modulID)
     {
         if (isset($modulID) || empty($modulID)) {
@@ -160,7 +166,6 @@ class PostType
                 }
             }
         }
-
     }
 
 
