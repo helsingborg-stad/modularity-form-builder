@@ -2411,8 +2411,8 @@
         },
         {
             "key": "field_5b338525f9cad",
-            "label": "users",
-            "name": "users",
+            "label": "Users",
+            "name": "granted_users",
             "type": "user",
             "instructions": "Add users who have access to the form data",
             "required": 0,

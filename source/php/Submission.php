@@ -89,8 +89,7 @@ class Submission
                     'modularity-form-builder') . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>" : '';
         }
 
-
-        if ($dbStorage == 0) {
+        if ($dbStorage != 1) {
 
             // Save submission
             $submission = wp_insert_post(array(

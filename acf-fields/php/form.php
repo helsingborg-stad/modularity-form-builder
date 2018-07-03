@@ -2441,8 +2441,8 @@
         ),
         29 => array(
             'key' => 'field_5b338525f9cad',
-            'label' => __('users', 'modularity-form-builder'),
-            'name' => 'users',
+            'label' => __('Users', 'modularity-form-builder'),
+            'name' => 'granted_users',
             'type' => 'user',
             'instructions' => __('Add users who have access to the form data', 'modularity-form-builder'),
             'required' => 0,
