@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
 "POT-Creation-Date: 2018-07-03 15:16+0200\n"
-"PO-Revision-Date: 2018-07-03 15:21+0200\n"
+"PO-Revision-Date: 2018-07-03 15:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -644,7 +644,7 @@ msgstr "Lagra inte postad data i databasen."
 
 #: acf-fields/php/form.php:2419
 msgid "User Restriction"
-msgstr "användarbegränsning"
+msgstr "Användarbegränsning"
 
 #: acf-fields/php/form.php:2446
 msgid "Users"
