@@ -151,9 +151,11 @@ class PostType
                 if (get_current_user_id() !== get_post_field('post_author', $modulID)) {
                     $grantedUsers = get_field('granted_users', $modulID);
                     $granted = false;
-                    foreach($grantedUsers as $user){
-                        if($user['ID'] === get_current_user_id()) {
-                            $granted = true;
+                    if (isset($grantedUsers) && !empty($grantedUsers)) {
+                        foreach($grantedUsers as $user){
+                            if($user['ID'] === get_current_user_id()) {
+                                $granted = true;
+                            }
                         }
                     }
                     if ($granted === false) {

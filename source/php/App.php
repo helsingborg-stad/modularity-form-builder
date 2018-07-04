@@ -363,14 +363,14 @@ class App
      */
     public function checkPermission()
     {
-        if (isset($_GET['post']) || empty($_GET['post'])) {
+        if (isset($_GET['post']) && !empty($_GET['post'])) {
             $userRestriction = get_field('user_restriction', $_GET['post']);
             if ($userRestriction) {
                 if (current_user_can('administrator')) {
                     return true;
                 }
-
-                if (get_current_user_id() !== get_post_field('post_author', $_GET['post'])) {
+     
+                if (get_current_user_id() != get_post_field('post_author', $_GET['post'])) {
                     wp_die(
                         '<h1>' . __('Hello, you are not Superman, with full access?') . '</h1>' .
                         '<p>' . __('Missing permissions') . '</p>',
