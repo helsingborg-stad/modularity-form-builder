@@ -48,22 +48,24 @@
             </div>
         @endif
 
-        <div class="grid">
-            <div class="grid-md-12">
-                @if($submission_public_act || $gdpr_complience_notice)
-                    @if($submission_public_act && !empty($submission_public_act_content))
-                        <p class="text-sm gutter gutter-sm gutter-bottom">
-                            {{$submission_public_act_content}}
-                        </p>
+            <div class="grid">
+                <div class="grid-md-12">
+                    @if($submission_public_act || $gdpr_complience_notice)
+                        @if($submission_public_act && !empty($submission_public_act_content))
+                            <p class="text-sm gutter gutter-sm gutter-bottom">
+                                {{$submission_public_act_content}}
+                            </p>
+                        @endif
+                        @if($gdpr_complience_notice && !empty($gdpr_complience_notice_content))
+                            <p class="text-sm gutter gutter-sm gutter-bottom">
+                                {{$gdpr_complience_notice_content}}
+                            </p>
+                        @endif
                     @endif
-                    @if(isset($gdpr_complience_notice) && !empty($gdpr_complience_notice_content))
-                        <p class="text-sm gutter gutter-sm gutter-bottom">
-                            {{$gdpr_complience_notice_content}}
-                        </p>
-                    @endif
-                @endif
-                <button type="submit" class="btn btn-primary">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
+                    <button type="submit"
+                            class="btn btn-primary">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
+                </div>
             </div>
-        </div>
+
     </form>
 </div>
