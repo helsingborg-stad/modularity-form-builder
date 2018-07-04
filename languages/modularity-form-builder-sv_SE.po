@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2018-07-04 09:27+0200\n"
-"PO-Revision-Date: 2018-07-04 09:28+0200\n"
+"POT-Creation-Date: 2018-07-04 11:15+0200\n"
+"PO-Revision-Date: 2018-07-04 11:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -415,7 +415,7 @@ msgstr ""
 
 #: acf-fields/php/form.php:1648
 msgid "Button text"
-msgstr ""
+msgstr "Knapp text"
 
 #: acf-fields/php/form.php:1731
 msgid "Add form field"
@@ -458,199 +458,227 @@ msgid "Text to display when form is submitted."
 msgstr "Text som visas när ett formulär skickats."
 
 #: acf-fields/php/form.php:1810
+msgid "GDPR Complience notice"
+msgstr "GDPR komplience  meddelande"
+
+#: acf-fields/php/form.php:1813
+msgid "Contains information about how personal data is handled."
+msgstr "Innehåller information om hur personlig data hanteras."
+
+#: acf-fields/php/form.php:1821
+msgid ""
+"Show a message (and checkbox) that is required to check to submit all forms."
+msgstr ""
+
+#: acf-fields/php/form.php:1829
+msgid "GDPR complience notice content"
+msgstr "Innehåll för GDPR meddelande"
+
+#: acf-fields/php/form.php:1848
+msgid ""
+"When you submit the form, we will process your personal information to "
+"perform the task that the form concerns. The data will not be used for any "
+"other purpose."
+msgstr ""
+"I det här formuläret samlar vi in personuppgifter om dig för att [det "
+"formuläret ska användas till]. Uppgifterna kommer inte att hanteras för "
+"något annat syfte, och kommer att raderas när [ärendet är avslutat]. Läs om "
+"hur Helsingborgs stad hanterar personuppgifter."
+
+#: acf-fields/php/form.php:1856
 msgid "Notifications"
 msgstr "Notiser"
 
-#: acf-fields/php/form.php:1826
+#: acf-fields/php/form.php:1872
 msgid "Notifications on form submission"
 msgstr "Notifikation när formulär skickas"
 
-#: acf-fields/php/form.php:1843
+#: acf-fields/php/form.php:1889
 msgid "Notify email addresses"
 msgstr "Notifiera e-postadresser"
 
-#: acf-fields/php/form.php:1846
+#: acf-fields/php/form.php:1892
 msgid ""
 "Notifications will be sent to below added email addresses when receiving a "
 "new form submission."
 msgstr ""
 "Ett mail skickas ut till nedanstående användare med innehållet i svaret."
 
-#: acf-fields/php/form.php:1858
+#: acf-fields/php/form.php:1904
 msgid "Add email"
 msgstr "Lägg till e-postadress"
 
-#: acf-fields/php/form.php:1862
+#: acf-fields/php/form.php:1908
 msgid "Email address"
 msgstr "E-postadress"
 
-#: acf-fields/php/form.php:1880
+#: acf-fields/php/form.php:1926
 msgid "Condition"
 msgstr "Lägg till villkor"
 
-#: acf-fields/php/form.php:1899
+#: acf-fields/php/form.php:1945
 msgid "Requirements"
 msgstr "Krav"
 
-#: acf-fields/php/form.php:1918
+#: acf-fields/php/form.php:1964
 msgid ""
 "<div style=\"margin: 5px 0 15px;\r\n"
-"                                background: #f1f1f157;\r\n"
-"                                border-left: 4px solid #b2b500;\r\n"
-"                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n"
-"                                padding: 10px;\">Conditional fields must be "
-"a multi-choise field that is required to fill in and lacks conditional "
-"arguments. Note that you may not get email notfications if the requirements "
-"aren't fulfilled.</div>"
+"                background: #f1f1f157;\r\n"
+"                border-left: 4px solid #b2b500;\r\n"
+"                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n"
+"                padding: 10px;\">Conditional fields must be a multi-choise "
+"field that is required to fill in and lacks conditional arguments. Note that "
+"you may not get email notfications if the requirements aren't fulfilled.</"
+"div>"
 msgstr ""
 
-#: acf-fields/php/form.php:1928
+#: acf-fields/php/form.php:1974
 msgid "Only send when"
 msgstr "Skicka bara när"
 
-#: acf-fields/php/form.php:1960
+#: acf-fields/php/form.php:2006
 msgid "Equals to"
 msgstr "Matchar"
 
-#: acf-fields/php/form.php:1994
+#: acf-fields/php/form.php:2040
 msgid "Custom email subject"
 msgstr "Egen ämnesrad"
 
-#: acf-fields/php/form.php:2005 acf-fields/php/form.php:2132
+#: acf-fields/php/form.php:2051 acf-fields/php/form.php:2178
 msgid "Check this box if you want to enter a custom email subject."
 msgstr "Kryssa i rutan för att ange egen ämnesrad."
 
-#: acf-fields/php/form.php:2013 acf-fields/php/form.php:2140
+#: acf-fields/php/form.php:2059 acf-fields/php/form.php:2186
 msgid "Email subject"
 msgstr "Ämnesrad"
 
-#: acf-fields/php/form.php:2016
+#: acf-fields/php/form.php:2062
 msgid "Enter custom email subject. Default is \"New form submission\"."
 msgstr "Ange egen ämnesrad. Standardvärde är “Nytt formulärsvar”."
 
-#: acf-fields/php/form.php:2040
+#: acf-fields/php/form.php:2086
 msgid "Notification message"
 msgstr "Meddelande i notis"
 
-#: acf-fields/php/form.php:2059
+#: acf-fields/php/form.php:2105
 msgid "Notification data"
 msgstr "Notisdata"
 
-#: acf-fields/php/form.php:2071
+#: acf-fields/php/form.php:2117
 msgid "Show submission data in notice content"
 msgstr "Visa svarsdata i notisens innehåll"
 
-#: acf-fields/php/form.php:2078
+#: acf-fields/php/form.php:2124
 msgid "Sender copy"
 msgstr "Svarskopia"
 
-#: acf-fields/php/form.php:2094
+#: acf-fields/php/form.php:2140
 msgid "Allow sender copy"
 msgstr "Tillåt svarskopia"
 
-#: acf-fields/php/form.php:2097
+#: acf-fields/php/form.php:2143
 msgid "Send copy of the submitted form data to the sender email."
 msgstr "Skicka en kopia av svaret till avsändarens e-postadress."
 
-#: acf-fields/php/form.php:2106
+#: acf-fields/php/form.php:2152
 msgid "Yes, allow user to get a copy of the submission"
 msgstr "Ja, tillåt användare att få en svarskopia"
 
-#: acf-fields/php/form.php:2113
+#: acf-fields/php/form.php:2159
 msgid "Custom email subject for submission copy"
 msgstr "Egen ämnesrad för svarskopia"
 
-#: acf-fields/php/form.php:2143
+#: acf-fields/php/form.php:2189
 msgid "Enter custom email subject. Default is \"Form submission copy\"."
 msgstr "Ange egen ämnesrad. Standardvärde är “Svarskopia”."
 
-#: acf-fields/php/form.php:2172
+#: acf-fields/php/form.php:2218
 msgid "Sender copy message"
 msgstr "Meddelande i svarskopia"
 
-#: acf-fields/php/form.php:2175
+#: acf-fields/php/form.php:2221
 msgid ""
 "The message that will be sent to the user together with a list of the "
 "submitted data."
 msgstr "Meddelandet kommer att skickas tillsammans med svarsdatan."
 
-#: acf-fields/php/form.php:2199 acf-fields/php/form.php:2215
+#: acf-fields/php/form.php:2245 acf-fields/php/form.php:2261
 msgid "Auto-reply"
 msgstr "Autosvar"
 
-#: acf-fields/php/form.php:2227
+#: acf-fields/php/form.php:2273
 msgid "Send auto-reply on form submission"
 msgstr "Skicka autosvar när formuläret har skickats"
 
-#: acf-fields/php/form.php:2234
+#: acf-fields/php/form.php:2280
 msgid "Auto-reply subject"
 msgstr "Ämne för autosvar"
 
-#: acf-fields/php/form.php:2261
+#: acf-fields/php/form.php:2307
 msgid "Auto-reply content"
 msgstr "Meddelande för autosvar"
 
-#: acf-fields/php/form.php:2288
+#: acf-fields/php/form.php:2334
 msgid "Advanced options"
 msgstr "Avancerade inställningar"
 
-#: acf-fields/php/form.php:2304
+#: acf-fields/php/form.php:2350
 msgid "Save to post type"
 msgstr "Spara till posttyp"
 
-#: acf-fields/php/form.php:2315
+#: acf-fields/php/form.php:2361
 msgid "Save form submissions to a custom post type."
 msgstr "Spara formulärsvar till en anpassad posttyp."
 
-#: acf-fields/php/form.php:2323
+#: acf-fields/php/form.php:2369
 msgid "Post type"
 msgstr "Posttyp"
 
-#: acf-fields/php/form.php:2326
+#: acf-fields/php/form.php:2372
 msgid "Select post type"
 msgstr "Välj posttyp"
 
-#: acf-fields/php/form.php:2344
+#: acf-fields/php/form.php:2390
 msgid "Event"
 msgstr "Händelse"
 
-#: acf-fields/php/form.php:2345
+#: acf-fields/php/form.php:2391
 msgid "Ticket"
 msgstr "Ärende"
 
-#: acf-fields/php/form.php:2346
+#: acf-fields/php/form.php:2392
 msgid "Listing"
 msgstr "Lista"
 
-#: acf-fields/php/form.php:2351
+#: acf-fields/php/form.php:2397
 msgid "form-submissions"
 msgstr ""
 
-#: acf-fields/php/form.php:2362
+#: acf-fields/php/form.php:2408
 msgid "Editable on front end"
 msgstr "Redigerbar för användaren"
 
-#: acf-fields/php/form.php:2381
+#: acf-fields/php/form.php:2427
 msgid "Editable on back end"
 msgstr "Redigerbar för redaktör"
 
-#: acf-fields/php/form.php:2400
+#: acf-fields/php/form.php:2446
 msgid "DB storage"
 msgstr "Databaslagring"
 
-#: acf-fields/php/form.php:2411
+#: acf-fields/php/form.php:2457
 msgid "Don't store posted data in database"
 msgstr "Lagra inte postad data i databasen."
 
-#: acf-fields/php/form.php:2419
+#: acf-fields/php/form.php:2465
 msgid "User Restriction"
 msgstr "Användarbegränsning"
 
-#: acf-fields/php/form.php:2446
+#: acf-fields/php/form.php:2492
 msgid "Users"
 msgstr "Betrodda användare"
 
-#: acf-fields/php/form.php:2449
+#: acf-fields/php/form.php:2495
 msgid "Add users who have access to the form data"
 msgstr ""
 "Lägg till betrodda användare som har access till det som postas från "
@@ -1074,23 +1102,6 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 
 #~ msgid "GDPR complience notice"
 #~ msgstr "GDPR meddelande"
-
-#~ msgid "Contains information about how personal data is handled."
-#~ msgstr "Innehåller information om hur personlig data hanteras."
-
-#~ msgid "GDPR complience notice content"
-#~ msgstr "Innehåll för GDPR meddelande"
-
-#~ msgid ""
-#~ "When you submit the form, we will process your personal information to "
-#~ "perform the task that the form concerns. The data will not be used for "
-#~ "any other purpose."
-#~ msgstr ""
-#~ "När du skickar in formuläret kommer vi att hantera dina personuppgifter "
-#~ "för att utföra den uppgift som formuläret avser. Uppgifterna kommer inte "
-#~ "att användas i något annat syfte och kommer att raderas när ärendet är "
-#~ "avslutat. Om ärendet kräver det kan dina uppgifter delas med en "
-#~ "leverantör till oss. "
 
 #~ msgid "Add a complience notice"
 #~ msgstr "Lägg till ett GDPR meddelande"

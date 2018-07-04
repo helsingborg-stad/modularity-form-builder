@@ -1784,6 +1784,52 @@
             "delay": 0
         },
         {
+            "key": "field_5b3c8d3f4e20a",
+            "label": "GDPR Complience notice",
+            "name": "gdpr_complience_notice",
+            "type": "true_false",
+            "instructions": "Contains information about how personal data is handled.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Show a message (and checkbox) that is required to check to submit all forms.",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b3c8e0a6e7f2",
+            "label": "GDPR complience notice content",
+            "name": "gdpr_complience_notice_content",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b3c8d3f4e20a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_58f5c029ee90a",
             "label": "Notifications",
             "name": "",
@@ -1893,7 +1939,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n                background: #f1f1f157;\r\n                border-left: 4px solid #b2b500;\r\n                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n        background: #f1f1f157;\r\n        border-left: 4px solid #b2b500;\r\n        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n        padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },

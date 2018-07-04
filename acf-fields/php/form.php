@@ -1806,6 +1806,52 @@
             'delay' => 0,
         ),
         6 => array(
+            'key' => 'field_5b3c8d3f4e20a',
+            'label' => __('GDPR Complience notice', 'modularity-form-builder'),
+            'name' => 'gdpr_complience_notice',
+            'type' => 'true_false',
+            'instructions' => __('Contains information about how personal data is handled.', 'modularity-form-builder'),
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => __('Show a message (and checkbox) that is required to check to submit all forms.', 'modularity-form-builder'),
+            'default_value' => 0,
+            'ui' => 0,
+            'ui_on_text' => '',
+            'ui_off_text' => '',
+        ),
+        7 => array(
+            'key' => 'field_5b3c8e0a6e7f2',
+            'label' => __('GDPR complience notice content', 'modularity-form-builder'),
+            'name' => 'gdpr_complience_notice_content',
+            'type' => 'textarea',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => array(
+                0 => array(
+                    0 => array(
+                        'field' => 'field_5b3c8d3f4e20a',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => __('When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.', 'modularity-form-builder'),
+            'placeholder' => '',
+            'maxlength' => '',
+            'rows' => '',
+            'new_lines' => '',
+        ),
+        8 => array(
             'key' => 'field_58f5c029ee90a',
             'label' => __('Notifications', 'modularity-form-builder'),
             'name' => '',
@@ -1821,7 +1867,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        7 => array(
+        9 => array(
             'key' => 'field_59a4259acfea0',
             'label' => __('Notifications on form submission', 'modularity-form-builder'),
             'name' => '',
@@ -1838,7 +1884,7 @@
             'new_lines' => 'wpautop',
             'esc_html' => 0,
         ),
-        8 => array(
+        10 => array(
             'key' => 'field_58eb6ee89aa7c',
             'label' => __('Notify email addresses', 'modularity-form-builder'),
             'name' => 'notify',
@@ -1916,10 +1962,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                                background: #f1f1f157;
-                                border-left: 4px solid #b2b500;
-                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+                background: #f1f1f157;
+                border-left: 4px solid #b2b500;
+                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                 ),
@@ -1989,7 +2035,7 @@
                 ),
             ),
         ),
-        9 => array(
+        11 => array(
             'key' => 'field_59720c161a3a1',
             'label' => __('Custom email subject', 'modularity-form-builder'),
             'name' => 'notification_custom_subject',
@@ -2008,7 +2054,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        10 => array(
+        12 => array(
             'key' => 'field_5972079df9f04',
             'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'notification_subject',
@@ -2035,7 +2081,7 @@
             'append' => '',
             'maxlength' => '',
         ),
-        11 => array(
+        13 => array(
             'key' => 'field_58f5d00332436',
             'label' => __('Notification message', 'modularity-form-builder'),
             'name' => 'notification_message',
@@ -2054,7 +2100,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        12 => array(
+        14 => array(
             'key' => 'field_58f5b1a066797',
             'label' => __('Notification data', 'modularity-form-builder'),
             'name' => 'submission_notice_data',
@@ -2073,7 +2119,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        13 => array(
+        15 => array(
             'key' => 'field_58f5c0bbee90c',
             'label' => __('Sender copy', 'modularity-form-builder'),
             'name' => '',
@@ -2089,7 +2135,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        14 => array(
+        16 => array(
             'key' => 'field_58f5b1c266798',
             'label' => __('Allow sender copy', 'modularity-form-builder'),
             'name' => 'allow_sender_copy',
@@ -2108,7 +2154,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        15 => array(
+        17 => array(
             'key' => 'field_59a561ed8a256',
             'label' => __('Custom email subject for submission copy', 'modularity-form-builder'),
             'name' => 'copy_custom_subject',
@@ -2135,7 +2181,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        16 => array(
+        18 => array(
             'key' => 'field_59a562508a257',
             'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'copy_subject',
@@ -2167,7 +2213,7 @@
             'append' => '',
             'maxlength' => '',
         ),
-        17 => array(
+        19 => array(
             'key' => 'field_58f5d09142d94',
             'label' => __('Sender copy message', 'modularity-form-builder'),
             'name' => 'sender_copy_message',
@@ -2194,7 +2240,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        18 => array(
+        20 => array(
             'key' => 'field_58f5c0abee90b',
             'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => '',
@@ -2210,7 +2256,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        19 => array(
+        21 => array(
             'key' => 'field_58f5be7475dbf',
             'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => 'autoreply',
@@ -2229,7 +2275,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        20 => array(
+        22 => array(
             'key' => 'field_58f5bf7329b3f',
             'label' => __('Auto-reply subject', 'modularity-form-builder'),
             'name' => 'auto_reply_subject',
@@ -2256,7 +2302,7 @@
             'prepend' => '',
             'append' => '',
         ),
-        21 => array(
+        23 => array(
             'key' => 'field_58f5bea775dc0',
             'label' => __('Auto-reply content', 'modularity-form-builder'),
             'name' => 'auto_reply_content',
@@ -2283,7 +2329,7 @@
             'default_value' => '',
             'delay' => 0,
         ),
-        22 => array(
+        24 => array(
             'key' => 'field_5a12ad75f9444',
             'label' => __('Advanced options', 'modularity-form-builder'),
             'name' => '',
@@ -2299,7 +2345,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        23 => array(
+        25 => array(
             'key' => 'field_5a1837b50079f',
             'label' => __('Save to post type', 'modularity-form-builder'),
             'name' => 'custom_submission_post_type',
@@ -2318,7 +2364,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        24 => array(
+        26 => array(
             'key' => 'field_5a059dcc4c2a0',
             'label' => __('Post type', 'modularity-form-builder'),
             'name' => 'submission_post_type',
@@ -2357,7 +2403,7 @@
             'return_format' => 'value',
             'placeholder' => '',
         ),
-        25 => array(
+        27 => array(
             'key' => 'field_5a12ae16f9445',
             'label' => __('Editable on front end', 'modularity-form-builder'),
             'name' => 'editable_front_end',
@@ -2376,7 +2422,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        26 => array(
+        28 => array(
             'key' => 'field_5a12afecf9446',
             'label' => __('Editable on back end', 'modularity-form-builder'),
             'name' => 'editable_back_end',
@@ -2395,7 +2441,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        27 => array(
+        29 => array(
             'key' => 'field_5b2a3840ff029',
             'label' => __('DB storage', 'modularity-form-builder'),
             'name' => 'db_storage',
@@ -2414,7 +2460,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        28 => array(
+        30 => array(
             'key' => 'field_5b3384dbf9cac',
             'label' => __('User Restriction', 'modularity-form-builder'),
             'name' => 'user_restriction',
@@ -2441,7 +2487,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        29 => array(
+        31 => array(
             'key' => 'field_5b338525f9cad',
             'label' => __('Users', 'modularity-form-builder'),
             'name' => 'granted_users',
