@@ -359,7 +359,7 @@ class App
 
     /**
      * checkPermission - Checks if user is author of the form or admin
-     * @return true if the user is admin other wise show message and kills make the page disabled
+     * @return true if the user is admin otherwise show message and disable page
      */
     public function checkPermission()
     {
@@ -369,7 +369,7 @@ class App
                 if (current_user_can('administrator')) {
                     return true;
                 }
-     
+
                 if (get_current_user_id() != get_post_field('post_author', $_GET['post'])) {
                     wp_die(
                         '<h1>' . __('Hello, you are not Superman, with full access?') . '</h1>' .
