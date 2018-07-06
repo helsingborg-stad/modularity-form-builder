@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_58f5c009ee909",
-            "label": "Form fields",
+            "label": "Formul\u00e4rsf\u00e4lt",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -20,7 +20,7 @@
         },
         {
             "key": "field_58eb302883a68",
-            "label": "Fields",
+            "label": "F\u00e4lt",
             "name": "form_fields",
             "type": "flexible_content",
             "instructions": "",
@@ -35,7 +35,7 @@
                 "58eb3033e588f": {
                     "key": "58eb3033e588f",
                     "name": "sender",
-                    "label": "Sender",
+                    "label": "Avs\u00e4ndare",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -332,7 +332,7 @@
                 "58eb3f2cd914a": {
                     "key": "58eb3f2cd914a",
                     "name": "message",
-                    "label": "Message",
+                    "label": "Meddelande",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -475,7 +475,7 @@
                 "58eb552a8189e": {
                     "key": "58eb552a8189e",
                     "name": "input",
-                    "label": "Input",
+                    "label": "Inmatning",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -811,7 +811,7 @@
                 "58eb670839fee": {
                     "key": "58eb670839fee",
                     "name": "radio",
-                    "label": "Radio",
+                    "label": "Radiof\u00e4lt",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -967,7 +967,7 @@
                 "58eb6b023b076": {
                     "key": "58eb6b023b076",
                     "name": "checkbox",
-                    "label": "Checkbox",
+                    "label": "Kryssruta",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1123,7 +1123,7 @@
                 "58eb6bd234c19": {
                     "key": "58eb6bd234c19",
                     "name": "select",
-                    "label": "Select",
+                    "label": "V\u00e4lj",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1279,7 +1279,7 @@
                 "58eccdd75ad90": {
                     "key": "58eccdd75ad90",
                     "name": "file_upload",
-                    "label": "File upload",
+                    "label": "Filuppladdning",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1526,7 +1526,7 @@
                 "59b13312b61ac": {
                     "key": "59b13312b61ac",
                     "name": "custom_content",
-                    "label": "Custom content",
+                    "label": "Eget inneh\u00e5ll",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1604,7 +1604,7 @@
                 "5a266baf943ab": {
                     "key": "5a266baf943ab",
                     "name": "collapse",
-                    "label": "Collapse",
+                    "label": "F\u00e4ll ihop",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1706,13 +1706,13 @@
                     "max": ""
                 }
             },
-            "button_label": "Add form field",
+            "button_label": "Formul\u00e4rsf\u00e4lt",
             "min": 1,
             "max": ""
         },
         {
             "key": "field_58f5c12da612a",
-            "label": "Submission",
+            "label": "Formul\u00e4rsvar",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -1728,10 +1728,10 @@
         },
         {
             "key": "field_5b3c8d3f4e20a",
-            "label": "GDPR Complience notice",
+            "label": "GDPR komplience  meddelande",
             "name": "gdpr_complience_notice",
             "type": "true_false",
-            "instructions": "Contains information about how personal data is handled.",
+            "instructions": "Inneh\u00e5ller information om hur personlig data hanteras.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1739,7 +1739,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Show a message (and checkbox) that is required to check to submit all forms.",
+            "message": "Visa ett meddelande (och en checkbox) som \u00e4r n\u00f6dv\u00e4ndig f\u00f6r att posta formul\u00e4ret.",
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
@@ -1747,7 +1747,7 @@
         },
         {
             "key": "field_5b3c8e0a6e7f2",
-            "label": "GDPR complience notice content",
+            "label": "Inneh\u00e5ll f\u00f6r GDPR meddelande",
             "name": "gdpr_complience_notice_content",
             "type": "textarea",
             "instructions": "",
@@ -1766,7 +1766,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.",
+            "default_value": "I det h\u00e4r formul\u00e4ret samlar vi in personuppgifter om dig f\u00f6r att [det formul\u00e4ret ska anv\u00e4ndas till]. Uppgifterna kommer inte att hanteras f\u00f6r n\u00e5got annat syfte, och kommer att raderas n\u00e4r [\u00e4rendet \u00e4r avslutat]. L\u00e4s om hur Helsingborgs stad hanterar personuppgifter.",
             "placeholder": "",
             "maxlength": "",
             "rows": "",
@@ -1774,10 +1774,10 @@
         },
         {
             "key": "field_59df53ac189b8",
-            "label": "Public act notice",
+            "label": "Notis om allm\u00e4n handling",
             "name": "submission_public_act",
             "type": "true_false",
-            "instructions": "Adds a notice that informs the user that the submission will become a public act.",
+            "instructions": "L\u00e4gger till ett meddelande som informerar anv\u00e4ndaren om att formul\u00e4rsvaret blir en allm\u00e4n handling.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1785,7 +1785,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Add public act notice",
+            "message": "L\u00e4gg till notis om allm\u00e4n handling",
             "default_value": 1,
             "ui": 0,
             "ui_on_text": "",
@@ -1793,7 +1793,7 @@
         },
         {
             "key": "field_58eb3700191e7",
-            "label": "Text on submit button",
+            "label": "Text p\u00e5 skicka-knapp",
             "name": "submit_button_text",
             "type": "text",
             "instructions": "",
@@ -1804,7 +1804,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Send",
+            "default_value": "Skicka",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -1812,10 +1812,10 @@
         },
         {
             "key": "field_58eb7b11cc4f5",
-            "label": "Submission notice",
+            "label": "Meddelande vid inskickning",
             "name": "subimission_notice",
             "type": "wysiwyg",
-            "instructions": "Text to display when form is submitted.",
+            "instructions": "Text som visas n\u00e4r ett formul\u00e4r skickats.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -1831,7 +1831,7 @@
         },
         {
             "key": "field_58f5c029ee90a",
-            "label": "Notifications",
+            "label": "Notiser",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -1847,7 +1847,7 @@
         },
         {
             "key": "field_59a4259acfea0",
-            "label": "Notifications on form submission",
+            "label": "Notifikation n\u00e4r formul\u00e4r skickas",
             "name": "",
             "type": "message",
             "instructions": "",
@@ -1864,10 +1864,10 @@
         },
         {
             "key": "field_58eb6ee89aa7c",
-            "label": "Notify email addresses",
+            "label": "Notifiera e-postadresser",
             "name": "notify",
             "type": "repeater",
-            "instructions": "Notifications will be sent to below added email addresses when receiving a new form submission.",
+            "instructions": "Ett mail skickas ut till nedanst\u00e5ende anv\u00e4ndare med inneh\u00e5llet i svaret.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1879,11 +1879,11 @@
             "min": 0,
             "max": 0,
             "layout": "block",
-            "button_label": "Add email",
+            "button_label": "L\u00e4gg till e-postadress",
             "sub_fields": [
                 {
                     "key": "field_58eb6f389aa7d",
-                    "label": "Email address",
+                    "label": "E-postadress",
                     "name": "email",
                     "type": "email",
                     "instructions": "",
@@ -1901,7 +1901,7 @@
                 },
                 {
                     "key": "field_5a55d5e27740d",
-                    "label": "Condition",
+                    "label": "L\u00e4gg till villkor",
                     "name": "condition",
                     "type": "true_false",
                     "instructions": "",
@@ -1920,7 +1920,7 @@
                 },
                 {
                     "key": "field_5a55de5ebfa4d",
-                    "label": "Requirements",
+                    "label": "Krav",
                     "name": "",
                     "type": "message",
                     "instructions": "",
@@ -1939,13 +1939,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n    background: #f1f1f157;\r\n    border-left: 4px solid #b2b500;\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n    padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n        background: #f1f1f157;\r\n        border-left: 4px solid #b2b500;\r\n        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n        padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
                 {
                     "key": "field_5a55d69512773",
-                    "label": "Only send when",
+                    "label": "Skicka bara n\u00e4r",
                     "name": "form_conditional_field",
                     "type": "select",
                     "instructions": "",
@@ -1975,7 +1975,7 @@
                 },
                 {
                     "key": "field_5a55db0812774",
-                    "label": "Equals to",
+                    "label": "Matchar",
                     "name": "form_conditional_field_equals",
                     "type": "select",
                     "instructions": "",
@@ -2007,7 +2007,7 @@
         },
         {
             "key": "field_59720c161a3a1",
-            "label": "Custom email subject",
+            "label": "Egen \u00e4mnesrad",
             "name": "notification_custom_subject",
             "type": "true_false",
             "instructions": "",
@@ -2018,7 +2018,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Check this box if you want to enter a custom email subject.",
+            "message": "Kryssa i rutan f\u00f6r att ange egen \u00e4mnesrad.",
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
@@ -2026,10 +2026,10 @@
         },
         {
             "key": "field_5972079df9f04",
-            "label": "Email subject",
+            "label": "\u00c4mnesrad",
             "name": "notification_subject",
             "type": "text",
-            "instructions": "Enter custom email subject. Default is \"New form submission\".",
+            "instructions": "Ange egen \u00e4mnesrad. Standardv\u00e4rde \u00e4r \u201cNytt formul\u00e4rsvar\u201d.",
             "required": 1,
             "conditional_logic": [
                 [
@@ -2053,7 +2053,7 @@
         },
         {
             "key": "field_58f5d00332436",
-            "label": "Notification message",
+            "label": "Meddelande i notis",
             "name": "notification_message",
             "type": "wysiwyg",
             "instructions": "",
@@ -2072,7 +2072,7 @@
         },
         {
             "key": "field_58f5b1a066797",
-            "label": "Notification data",
+            "label": "Notisdata",
             "name": "submission_notice_data",
             "type": "true_false",
             "instructions": "",
@@ -2084,14 +2084,14 @@
                 "id": ""
             },
             "default_value": 1,
-            "message": "Show submission data in notice content",
+            "message": "Visa svarsdata i notisens inneh\u00e5ll",
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
             "key": "field_58f5c0bbee90c",
-            "label": "Sender copy",
+            "label": "Svarskopia",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -2107,10 +2107,10 @@
         },
         {
             "key": "field_58f5b1c266798",
-            "label": "Allow sender copy",
+            "label": "Till\u00e5t svarskopia",
             "name": "allow_sender_copy",
             "type": "true_false",
-            "instructions": "Send copy of the submitted form data to the sender email.",
+            "instructions": "Skicka en kopia av svaret till avs\u00e4ndarens e-postadress.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -2119,14 +2119,14 @@
                 "id": ""
             },
             "default_value": 0,
-            "message": "Yes, allow user to get a copy of the submission",
+            "message": "Ja, till\u00e5t anv\u00e4ndare att f\u00e5 en svarskopia",
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
             "key": "field_59a561ed8a256",
-            "label": "Custom email subject for submission copy",
+            "label": "Egen \u00e4mnesrad f\u00f6r svarskopia",
             "name": "copy_custom_subject",
             "type": "true_false",
             "instructions": "",
@@ -2145,7 +2145,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Check this box if you want to enter a custom email subject.",
+            "message": "Kryssa i rutan f\u00f6r att ange egen \u00e4mnesrad.",
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
@@ -2153,10 +2153,10 @@
         },
         {
             "key": "field_59a562508a257",
-            "label": "Email subject",
+            "label": "\u00c4mnesrad",
             "name": "copy_subject",
             "type": "text",
-            "instructions": "Enter custom email subject. Default is \"Form submission copy\".",
+            "instructions": "Ange egen \u00e4mnesrad. Standardv\u00e4rde \u00e4r \u201cSvarskopia\u201d.",
             "required": 1,
             "conditional_logic": [
                 [
@@ -2185,10 +2185,10 @@
         },
         {
             "key": "field_58f5d09142d94",
-            "label": "Sender copy message",
+            "label": "Meddelande i svarskopia",
             "name": "sender_copy_message",
             "type": "wysiwyg",
-            "instructions": "The message that will be sent to the user together with a list of the submitted data.",
+            "instructions": "Meddelandet kommer att skickas tillsammans med svarsdatan.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -2212,7 +2212,7 @@
         },
         {
             "key": "field_58f5c0abee90b",
-            "label": "Auto-reply",
+            "label": "Autosvar",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -2228,7 +2228,7 @@
         },
         {
             "key": "field_58f5be7475dbf",
-            "label": "Auto-reply",
+            "label": "Autosvar",
             "name": "autoreply",
             "type": "true_false",
             "instructions": "",
@@ -2240,14 +2240,14 @@
                 "id": ""
             },
             "default_value": 0,
-            "message": "Send auto-reply on form submission",
+            "message": "Skicka autosvar n\u00e4r formul\u00e4ret har skickats",
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
             "key": "field_58f5bf7329b3f",
-            "label": "Auto-reply subject",
+            "label": "\u00c4mne f\u00f6r autosvar",
             "name": "auto_reply_subject",
             "type": "text",
             "instructions": "",
@@ -2274,7 +2274,7 @@
         },
         {
             "key": "field_58f5bea775dc0",
-            "label": "Auto-reply content",
+            "label": "Meddelande f\u00f6r autosvar",
             "name": "auto_reply_content",
             "type": "wysiwyg",
             "instructions": "",
@@ -2301,7 +2301,7 @@
         },
         {
             "key": "field_5a12ad75f9444",
-            "label": "Advanced options",
+            "label": "Avancerade inst\u00e4llningar",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -2317,7 +2317,7 @@
         },
         {
             "key": "field_5a1837b50079f",
-            "label": "Save to post type",
+            "label": "Spara till posttyp",
             "name": "custom_submission_post_type",
             "type": "true_false",
             "instructions": "",
@@ -2328,7 +2328,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Save form submissions to a custom post type.",
+            "message": "Spara formul\u00e4rsvar till en anpassad posttyp.",
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
@@ -2336,10 +2336,10 @@
         },
         {
             "key": "field_5a059dcc4c2a0",
-            "label": "Post type",
+            "label": "Posttyp",
             "name": "submission_post_type",
             "type": "select",
-            "instructions": "Select post type",
+            "instructions": "V\u00e4lj posttyp",
             "required": 0,
             "conditional_logic": [
                 [
@@ -2356,10 +2356,12 @@
                 "id": ""
             },
             "choices": {
-                "form-submissions": "Form submissions",
-                "event": "Event",
-                "ticket": "Ticket",
-                "listing": "Listing"
+                "form-submissions": "Formul\u00e4rsvar",
+                "event": "H\u00e4ndelse",
+                "ticket": "\u00c4rende",
+                "listing": "Lista",
+                "lovprogram": "Lovprogram",
+                "johan-test123": "Johan-test123"
             },
             "default_value": [
                 "form-submissions"
@@ -2373,7 +2375,7 @@
         },
         {
             "key": "field_5a12ae16f9445",
-            "label": "Editable on front end",
+            "label": "Redigerbar f\u00f6r anv\u00e4ndaren",
             "name": "editable_front_end",
             "type": "true_false",
             "instructions": "",
@@ -2392,7 +2394,7 @@
         },
         {
             "key": "field_5a12afecf9446",
-            "label": "Editable on back end",
+            "label": "Redigerbar f\u00f6r redakt\u00f6r",
             "name": "editable_back_end",
             "type": "true_false",
             "instructions": "",
@@ -2411,7 +2413,7 @@
         },
         {
             "key": "field_5b2a3840ff029",
-            "label": "DB storage",
+            "label": "Databaslagring",
             "name": "db_storage",
             "type": "true_false",
             "instructions": "",
@@ -2422,7 +2424,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Don't store posted data in database",
+            "message": "Lagra inte postad data i databasen.",
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
@@ -2430,7 +2432,7 @@
         },
         {
             "key": "field_5b3384dbf9cac",
-            "label": "User Restriction",
+            "label": "Anv\u00e4ndarbegr\u00e4nsning",
             "name": "user_restriction",
             "type": "true_false",
             "instructions": "",
@@ -2457,10 +2459,10 @@
         },
         {
             "key": "field_5b338525f9cad",
-            "label": "Users",
+            "label": "Betrodda anv\u00e4ndare",
             "name": "granted_users",
             "type": "user",
-            "instructions": "Add users who have access to the form data",
+            "instructions": "L\u00e4gg till betrodda anv\u00e4ndare som har access till det som postas fr\u00e5n formul\u00e4ren",
             "required": 0,
             "conditional_logic": [
                 [
