@@ -1727,63 +1727,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_58eb3700191e7",
-            "label": "Text on submit button",
-            "name": "submit_button_text",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Send",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_59df53ac189b8",
-            "label": "Public act notice",
-            "name": "submission_public_act",
-            "type": "true_false",
-            "instructions": "Adds a notice that informs the user that the submission will become a public act.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "Add public act notice",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_58eb7b11cc4f5",
-            "label": "Submission notice",
-            "name": "subimission_notice",
-            "type": "wysiwyg",
-            "instructions": "Text to display when form is submitted.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
             "key": "field_5b3c8d3f4e20a",
             "label": "GDPR Complience notice",
             "name": "gdpr_complience_notice",
@@ -1828,6 +1771,63 @@
             "maxlength": "",
             "rows": "",
             "new_lines": ""
+        },
+        {
+            "key": "field_59df53ac189b8",
+            "label": "Public act notice",
+            "name": "submission_public_act",
+            "type": "true_false",
+            "instructions": "Adds a notice that informs the user that the submission will become a public act.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Add public act notice",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_58eb3700191e7",
+            "label": "Text on submit button",
+            "name": "submit_button_text",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Send",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_58eb7b11cc4f5",
+            "label": "Submission notice",
+            "name": "subimission_notice",
+            "type": "wysiwyg",
+            "instructions": "Text to display when form is submitted.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_58f5c029ee90a",
@@ -1939,7 +1939,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n        background: #f1f1f157;\r\n        border-left: 4px solid #b2b500;\r\n        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n        padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n    background: #f1f1f157;\r\n    border-left: 4px solid #b2b500;\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n    padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
@@ -2359,9 +2359,7 @@
                 "form-submissions": "Form submissions",
                 "event": "Event",
                 "ticket": "Ticket",
-                "listing": "Listing",
-                "lovprogram": "Lovprogram",
-                "johan-test123": "Johan-test123"
+                "listing": "Listing"
             },
             "default_value": [
                 "form-submissions"
