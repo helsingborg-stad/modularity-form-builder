@@ -297,7 +297,7 @@ class Submission
     /**
      * Get data of a submission
      * @param  int $submissionId
-     * @return string
+     * @return array
      */
     public static function getSubmissionData(int $submissionId): array
     {
