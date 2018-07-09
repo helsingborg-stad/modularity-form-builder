@@ -325,12 +325,12 @@ class App
         if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
             switch ($meth) {
                 case 'encrypt':
-                    return base64_encode(openssl_encrypt($str, ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                    return base64_encode(openssl_encrypt(json_encode($str), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
                     break;
                 case 'decrypt':
-                    return openssl_decrypt(base64_decode($str), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
-                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16));
+                    return json_decode(openssl_decrypt(base64_decode($str), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
                     break;
                 default;
                     return $str;
