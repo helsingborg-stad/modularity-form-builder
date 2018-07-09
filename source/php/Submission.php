@@ -359,6 +359,11 @@ class Submission
         }
 
         $data = self::getSubmissionData($submissionId);
+
+        if (get_option('options_mod_form_crypt')) {
+            $data = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $data);
+        }
+
         $showData = get_field('submission_notice_data', $formId);
         $messagePrefix = get_field('notification_message', $formId);
         $subject = (get_field('notification_custom_subject', $formId) == true) ? get_field('notification_subject',
