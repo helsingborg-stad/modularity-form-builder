@@ -360,6 +360,7 @@ class Submission
 
         $data = self::getSubmissionData($submissionId);
 
+        // Decrypt data if encryption option is set.
         if (get_option('options_mod_form_crypt')) {
             $data = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $data);
         }
