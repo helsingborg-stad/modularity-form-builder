@@ -309,6 +309,10 @@ class Submission
 
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
+        if (get_option('options_mod_form_crypt')) {
+            $fields = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $fields);
+        }
+
         $data = get_post_meta($submissionId, 'form-data', true);
         $formdata = array();
         $labels = \ModularityFormBuilder\PostType::getSenderLabels();
@@ -359,11 +363,6 @@ class Submission
         }
 
         $data = self::getSubmissionData($submissionId);
-
-        // Decrypt data if encryption option is set.
-        if (get_option('options_mod_form_crypt')) {
-            $data = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $data);
-        }
 
         $showData = get_field('submission_notice_data', $formId);
         $messagePrefix = get_field('notification_message', $formId);
@@ -419,6 +418,11 @@ class Submission
 
         if ($messagePrefix) {
             $message = $messagePrefix . '<br><br>' . $message;
+        }
+
+        // Decrypt data if encryption option is set.
+        if (get_option('options_mod_form_crypt')) {
+            $message = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $message);
         }
 
         $subject = apply_filters('ModularityFormBuilder/notice/subject', $subject, $email, $formId, $submissionId,
