@@ -16,8 +16,6 @@ class Submission
     }
 
 
-
-
     /**
      * Handle form submission
      * @return void
@@ -309,11 +307,14 @@ class Submission
 
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
+        
         if (get_option('options_mod_form_crypt')) {
-            $fields = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $fields);
+            $data = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
+                get_post_meta($submissionId, 'form-data', true)));
+        } else {
+            $data = get_post_meta($submissionId, 'form-data', true);
         }
 
-        $data = get_post_meta($submissionId, 'form-data', true);
         $formdata = array();
         $labels = \ModularityFormBuilder\PostType::getSenderLabels();
         $excludedFields = array(
@@ -341,11 +342,7 @@ class Submission
         $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
         $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
 
-        if (!get_option('options_mod_form_crypt')) {
-            return $formdata;
-        } else {
-            return (array) \ModularityFormBuilder\App::encryptDecryptData('encrypt', $formdata);
-        }
+        return $formdata;
     }
 
     /**
@@ -418,11 +415,6 @@ class Submission
 
         if ($messagePrefix) {
             $message = $messagePrefix . '<br><br>' . $message;
-        }
-
-        // Decrypt data if encryption option is set.
-        if (get_option('options_mod_form_crypt')) {
-            $message = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $message);
         }
 
         $subject = apply_filters('ModularityFormBuilder/notice/subject', $subject, $email, $formId, $submissionId,
