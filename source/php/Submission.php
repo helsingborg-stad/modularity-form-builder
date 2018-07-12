@@ -131,7 +131,7 @@ class Submission
         $fromEmail = !empty($_POST[sanitize_title($labels['email'])]) ? $_POST[sanitize_title($labels['email'])] : null;
         $fromFirstName = !empty($_POST[sanitize_title($labels['firstname'])]) ? $_POST[sanitize_title($labels['firstname'])] : null;
         $fromLastName = !empty($_POST[sanitize_title($labels['lastname'])]) ? $_POST[sanitize_title($labels['lastname'])] : null;
-        $from = ($fromEmail && $fromFirstName && $fromLastName) ? $fromFirstName . ' ' . $fromLastName . ' <' . $fromEmail . '>' : $fromEmail;
+        $from = ($fromEmail || $fromFirstName || $fromLastName) ? $fromFirstName . ' ' . $fromLastName . ' <' . $fromEmail . '>' : $fromEmail;
 
         // Send notifications
         if ($notify) {
