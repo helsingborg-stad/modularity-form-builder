@@ -132,7 +132,11 @@ class Submission
         $fromFirstName = !empty($_POST[sanitize_title($labels['firstname'])]) ? $_POST[sanitize_title($labels['firstname'])] : null;
         $fromLastName = !empty($_POST[sanitize_title($labels['lastname'])]) ? $_POST[sanitize_title($labels['lastname'])] : null;
         $from = ($fromEmail || $fromFirstName || $fromLastName) ? $fromFirstName . ' ' . $fromLastName . ' <' . $fromEmail . '>' : $fromEmail;
-
+        if (!$fromEmail) {
+            $from = ($fromEmail || $fromFirstName || $fromLastName) ? $fromFirstName . ' ' . $fromLastName . ' <' . 'no-reply@' . preg_replace('/www\./i',
+                    '', $_SERVER['SERVER_NAME']) . '>' : 'no-reply@' . preg_replace('/www\./i', '',
+                    $_SERVER['SERVER_NAME']);
+        }
         // Send notifications
         if ($notify) {
 
