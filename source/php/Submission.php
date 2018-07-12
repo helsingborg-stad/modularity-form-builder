@@ -135,6 +135,7 @@ class Submission
 
         // Send notifications
         if ($notify) {
+
             foreach ($notify as $email) {
                 $sendMail = true;
 
@@ -307,7 +308,7 @@ class Submission
 
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
-        
+
         if (get_option('options_mod_form_crypt')) {
             $data = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
                 get_post_meta($submissionId, 'form-data', true)));
