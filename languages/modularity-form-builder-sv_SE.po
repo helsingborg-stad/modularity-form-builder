@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
 "POT-Creation-Date: 2018-07-20 11:36+0200\n"
-"PO-Revision-Date: 2018-07-20 11:48+0200\n"
+"PO-Revision-Date: 2018-07-20 11:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -638,7 +638,7 @@ msgstr ""
 
 #: acf-fields/php/form.php:2416
 msgid "GDPR komplience    meddelande"
-msgstr ""
+msgstr "GDRP meddelande"
 
 #: acf-fields/php/form.php:2419
 msgid "Innehåller information om hur personlig data hanteras."
