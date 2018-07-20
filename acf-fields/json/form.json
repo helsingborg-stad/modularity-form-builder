@@ -40,7 +40,7 @@
                     "sub_fields": [
                         {
                             "key": "field_58eb3944f7086",
-                            "label": "Fields to display",
+                            "label": "Visa f\u00e4lt",
                             "name": "fields",
                             "type": "checkbox",
                             "instructions": "",
@@ -52,11 +52,11 @@
                                 "id": ""
                             },
                             "choices": {
-                                "firstname": "Firstname",
-                                "lastname": "Lastname",
-                                "email": "Email",
-                                "phone": "Phone",
-                                "address": "Address"
+                                "firstname": "F\u00f6rnamn",
+                                "lastname": "Efternamn",
+                                "email": "E-post",
+                                "phone": "Telefonnummer",
+                                "address": "Adress"
                             },
                             "allow_custom": 0,
                             "save_custom": 0,
@@ -71,7 +71,7 @@
                         },
                         {
                             "key": "field_58eb3a9bf7087",
-                            "label": "Required fields",
+                            "label": "Obligatoriska f\u00e4lt",
                             "name": "required_fields",
                             "type": "checkbox",
                             "instructions": "",
@@ -83,11 +83,11 @@
                                 "id": ""
                             },
                             "choices": {
-                                "firstname": "Firstname",
-                                "lastname": "Lastname",
-                                "email": "Email",
-                                "phone": "Phone",
-                                "address": "Address"
+                                "firstname": "F\u00f6rnamn",
+                                "lastname": "Efternamn",
+                                "email": "E-post",
+                                "phone": "Telefonnummer",
+                                "address": "Adress"
                             },
                             "allow_custom": 0,
                             "save_custom": 0,
@@ -136,7 +136,7 @@
                                 },
                                 {
                                     "key": "field_5a0abd5f4342b",
-                                    "label": "Firstname",
+                                    "label": "F\u00f6rnamn",
                                     "name": "firstname",
                                     "type": "text",
                                     "instructions": "",
@@ -163,7 +163,7 @@
                                 },
                                 {
                                     "key": "field_5a0abd804342c",
-                                    "label": "Lastname",
+                                    "label": "Efternamn",
                                     "name": "lastname",
                                     "type": "text",
                                     "instructions": "",
@@ -190,7 +190,7 @@
                                 },
                                 {
                                     "key": "field_5a0abe977e028",
-                                    "label": "Email",
+                                    "label": "E-post",
                                     "name": "email",
                                     "type": "text",
                                     "instructions": "",
@@ -217,7 +217,7 @@
                                 },
                                 {
                                     "key": "field_5a0ac1fda1240",
-                                    "label": "Phone",
+                                    "label": "Telefonnummer",
                                     "name": "phone",
                                     "type": "text",
                                     "instructions": "",
@@ -244,7 +244,7 @@
                                 },
                                 {
                                     "key": "field_5a0ac216a1241",
-                                    "label": "Street address",
+                                    "label": "Gatuadress",
                                     "name": "street_address",
                                     "type": "text",
                                     "instructions": "",
@@ -271,7 +271,7 @@
                                 },
                                 {
                                     "key": "field_5a0ac228a1242",
-                                    "label": "Postal code",
+                                    "label": "Postnummer",
                                     "name": "postal_code",
                                     "type": "text",
                                     "instructions": "",
@@ -298,7 +298,7 @@
                                 },
                                 {
                                     "key": "field_5a0ac236a1243",
-                                    "label": "City",
+                                    "label": "Stad",
                                     "name": "city",
                                     "type": "text",
                                     "instructions": "",
@@ -337,7 +337,7 @@
                     "sub_fields": [
                         {
                             "key": "field_58eb3f37d914b",
-                            "label": "Field label",
+                            "label": "F\u00e4ltetikett",
                             "name": "label",
                             "type": "text",
                             "instructions": "",
@@ -348,7 +348,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Message",
+                            "default_value": "Meddelande",
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
@@ -375,7 +375,7 @@
                         },
                         {
                             "key": "field_58eb3f5ed914c",
-                            "label": "Required",
+                            "label": "Obligatoriskt",
                             "name": "required",
                             "type": "true_false",
                             "instructions": "",
@@ -387,17 +387,17 @@
                                 "id": ""
                             },
                             "default_value": 0,
-                            "message": "Required field",
+                            "message": "Obligatoriskt f\u00e4lt",
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
                         },
                         {
                             "key": "field_59b69b14e2abf",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -405,7 +405,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -413,10 +413,10 @@
                         },
                         {
                             "key": "field_59b69b16e2ac0",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -480,7 +480,7 @@
                     "sub_fields": [
                         {
                             "key": "field_58eb55338189f",
-                            "label": "Field label",
+                            "label": "F\u00e4ltetikett",
                             "name": "label",
                             "type": "text",
                             "instructions": "",
@@ -518,7 +518,7 @@
                         },
                         {
                             "key": "field_58eb5547818a0",
-                            "label": "Field value type",
+                            "label": "F\u00e4lttyp",
                             "name": "value_type",
                             "type": "select",
                             "instructions": "",
@@ -531,16 +531,16 @@
                             },
                             "choices": {
                                 "text": "Text",
-                                "number": "Number",
-                                "email": "Email",
-                                "tel": "Phone number",
-                                "color": "Color",
-                                "date": "Date",
-                                "month": "Month",
-                                "week": "Week",
-                                "range": "Range",
+                                "number": "Siffror",
+                                "email": "E-post",
+                                "tel": "Telefonnummer",
+                                "color": "F\u00e4rg",
+                                "date": "Datum",
+                                "month": "M\u00e5nad",
+                                "week": "Vecka",
+                                "range": "Intervall",
                                 "search": "Search",
-                                "time": "Time",
+                                "time": "Tid",
                                 "url": "Url"
                             },
                             "default_value": [],
@@ -553,7 +553,7 @@
                         },
                         {
                             "key": "field_58eb572440304",
-                            "label": "Min value",
+                            "label": "Minsta v\u00e4rde",
                             "name": "min_value",
                             "type": "number",
                             "instructions": "",
@@ -589,7 +589,7 @@
                         },
                         {
                             "key": "field_58eb574140305",
-                            "label": "Max value",
+                            "label": "Maxv\u00e4rde",
                             "name": "max_value",
                             "type": "number",
                             "instructions": "",
@@ -625,7 +625,7 @@
                         },
                         {
                             "key": "field_58eb57a645640",
-                            "label": "Step",
+                            "label": "Steg",
                             "name": "step",
                             "type": "number",
                             "instructions": "",
@@ -661,7 +661,7 @@
                         },
                         {
                             "key": "field_58eb62d1ec890",
-                            "label": "Min date",
+                            "label": "Datum fr\u00e5n",
                             "name": "min_value",
                             "type": "date_picker",
                             "instructions": "",
@@ -686,7 +686,7 @@
                         },
                         {
                             "key": "field_58eb62feec891",
-                            "label": "Max date",
+                            "label": "Datum till",
                             "name": "max_value",
                             "type": "date_picker",
                             "instructions": "",
@@ -711,7 +711,7 @@
                         },
                         {
                             "key": "field_58eb5614c5514",
-                            "label": "Required",
+                            "label": "Obligatoriskt",
                             "name": "required",
                             "type": "true_false",
                             "instructions": "",
@@ -723,17 +723,17 @@
                                 "id": ""
                             },
                             "default_value": 0,
-                            "message": "Required",
+                            "message": "Obligatoriskt",
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
                         },
                         {
                             "key": "field_59b69ae3e2abd",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -741,7 +741,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -749,10 +749,10 @@
                         },
                         {
                             "key": "field_59b69ae6e2abe",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -816,7 +816,7 @@
                     "sub_fields": [
                         {
                             "key": "field_58eb675039ff1",
-                            "label": "Field label",
+                            "label": "F\u00e4ltetikett",
                             "name": "label",
                             "type": "text",
                             "instructions": "",
@@ -854,7 +854,7 @@
                         },
                         {
                             "key": "field_58eb670d39fef",
-                            "label": "Field values",
+                            "label": "F\u00e4ltv\u00e4rden",
                             "name": "values",
                             "type": "repeater",
                             "instructions": "",
@@ -873,7 +873,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_58eb672c39ff0",
-                                    "label": "Value",
+                                    "label": "V\u00e4rde",
                                     "name": "value",
                                     "type": "text",
                                     "instructions": "",
@@ -894,7 +894,7 @@
                         },
                         {
                             "key": "field_58eb699755795",
-                            "label": "Required",
+                            "label": "Obligatoriskt",
                             "name": "required",
                             "type": "true_false",
                             "instructions": "",
@@ -906,17 +906,17 @@
                                 "id": ""
                             },
                             "default_value": 0,
-                            "message": "Required",
+                            "message": "Obligatoriskt",
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
                         },
                         {
                             "key": "field_59b69ac9e2abb",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -924,7 +924,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -932,10 +932,10 @@
                         },
                         {
                             "key": "field_59b69acbe2abc",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -972,7 +972,7 @@
                     "sub_fields": [
                         {
                             "key": "field_58eb6b023b077",
-                            "label": "Field label",
+                            "label": "F\u00e4ltetikett",
                             "name": "label",
                             "type": "text",
                             "instructions": "",
@@ -1010,7 +1010,7 @@
                         },
                         {
                             "key": "field_58eb6b023b078",
-                            "label": "Field values",
+                            "label": "F\u00e4ltv\u00e4rden",
                             "name": "values",
                             "type": "repeater",
                             "instructions": "",
@@ -1029,7 +1029,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_58eb6b023b079",
-                                    "label": "Value",
+                                    "label": "V\u00e4rde",
                                     "name": "value",
                                     "type": "text",
                                     "instructions": "",
@@ -1050,7 +1050,7 @@
                         },
                         {
                             "key": "field_58eb6b023b07a",
-                            "label": "Required",
+                            "label": "Obligatoriskt",
                             "name": "required",
                             "type": "true_false",
                             "instructions": "",
@@ -1062,17 +1062,17 @@
                                 "id": ""
                             },
                             "default_value": 0,
-                            "message": "Required",
+                            "message": "Obligatoriskt",
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
                         },
                         {
                             "key": "field_59b69ab2e2ab9",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1080,7 +1080,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -1088,10 +1088,10 @@
                         },
                         {
                             "key": "field_59b69ab5e2aba",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -1128,7 +1128,7 @@
                     "sub_fields": [
                         {
                             "key": "field_58eb6bd334c1a",
-                            "label": "Field label",
+                            "label": "F\u00e4ltetikett",
                             "name": "label",
                             "type": "text",
                             "instructions": "",
@@ -1166,7 +1166,7 @@
                         },
                         {
                             "key": "field_58eb6bd334c1b",
-                            "label": "Field values",
+                            "label": "F\u00e4ltv\u00e4rden",
                             "name": "values",
                             "type": "repeater",
                             "instructions": "",
@@ -1185,7 +1185,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_58eb6bd334c1c",
-                                    "label": "Value",
+                                    "label": "V\u00e4rde",
                                     "name": "value",
                                     "type": "text",
                                     "instructions": "",
@@ -1206,7 +1206,7 @@
                         },
                         {
                             "key": "field_58eb6bd334c1d",
-                            "label": "Required",
+                            "label": "Obligatoriskt",
                             "name": "required",
                             "type": "true_false",
                             "instructions": "",
@@ -1218,17 +1218,17 @@
                                 "id": ""
                             },
                             "default_value": 0,
-                            "message": "Required",
+                            "message": "Obligatoriskt",
                             "ui": 0,
                             "ui_on_text": "",
                             "ui_off_text": ""
                         },
                         {
                             "key": "field_59b69a93e2ab7",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1236,7 +1236,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -1244,10 +1244,10 @@
                         },
                         {
                             "key": "field_59b69a96e2ab8",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -1284,7 +1284,7 @@
                     "sub_fields": [
                         {
                             "key": "field_58ecce8a5ad93",
-                            "label": "Field label",
+                            "label": "F\u00e4ltetikett",
                             "name": "label",
                             "type": "text",
                             "instructions": "",
@@ -1322,7 +1322,7 @@
                         },
                         {
                             "key": "field_58eccde65ad91",
-                            "label": "Type",
+                            "label": "Typ",
                             "name": "type",
                             "type": "radio",
                             "instructions": "",
@@ -1334,8 +1334,8 @@
                                 "id": ""
                             },
                             "choices": {
-                                "single": "Single",
-                                "multiple": "Multiple"
+                                "single": "Enskilt",
+                                "multiple": "Flera"
                             },
                             "allow_null": 0,
                             "other_choice": 0,
@@ -1346,10 +1346,10 @@
                         },
                         {
                             "key": "field_58ece6685df9c",
-                            "label": "Max number of files",
+                            "label": "Max antal filer",
                             "name": "files_max",
                             "type": "number",
-                            "instructions": "-1 for no limit",
+                            "instructions": "-1 \u00e4r lika med ingen gr\u00e4ns",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1367,7 +1367,7 @@
                         },
                         {
                             "key": "field_58ecce105ad92",
-                            "label": "Allowed filetypes",
+                            "label": "Till\u00e5tna filtyper",
                             "name": "filetypes",
                             "type": "checkbox",
                             "instructions": "",
@@ -1379,8 +1379,8 @@
                                 "id": ""
                             },
                             "choices": {
-                                "video\/*": "All video types",
-                                "image\/*": "All image types",
+                                "video\/*": "Alla videoformat",
+                                "image\/*": "Alla bildformat",
                                 ".jpg": "jpg",
                                 ".png": "png",
                                 ".gif": "gif",
@@ -1453,7 +1453,7 @@
                         },
                         {
                             "key": "field_58ecd86751bf6",
-                            "label": "Required",
+                            "label": "Obligatoriskt",
                             "name": "required",
                             "type": "true_false",
                             "instructions": "",
@@ -1464,7 +1464,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Required",
+                            "message": "Obligatoriskt",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -1472,10 +1472,10 @@
                         },
                         {
                             "key": "field_59b69a7ae2ab5",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1483,7 +1483,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -1491,10 +1491,10 @@
                         },
                         {
                             "key": "field_59b69a7de2ab6",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -1531,10 +1531,10 @@
                     "sub_fields": [
                         {
                             "key": "field_59b13312b61ad",
-                            "label": "Content",
+                            "label": "Inneh\u00e5ll",
                             "name": "content",
                             "type": "wysiwyg",
-                            "instructions": "Add custom content to the form. This will not be sent in e-mail messages.",
+                            "instructions": "L\u00e4gg till eget inneh\u00e5ll till formul\u00e4ret. Detta kommer inte skickas med i e-postmeddelanden.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1550,10 +1550,10 @@
                         },
                         {
                             "key": "field_59b134beb61b0",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1561,7 +1561,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -1569,10 +1569,10 @@
                         },
                         {
                             "key": "field_59b635765e86b",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -1609,7 +1609,7 @@
                     "sub_fields": [
                         {
                             "key": "field_5a26ac03821d9",
-                            "label": "Collapse",
+                            "label": "F\u00e4ll ihop",
                             "name": "",
                             "type": "message",
                             "instructions": "",
@@ -1626,7 +1626,7 @@
                         },
                         {
                             "key": "field_5a266bb8943af",
-                            "label": "Button text",
+                            "label": "Knapp text",
                             "name": "button_text",
                             "type": "text",
                             "instructions": "",
@@ -1645,10 +1645,10 @@
                         },
                         {
                             "key": "field_5a266baf943ad",
-                            "label": "Conditional logic",
+                            "label": "Visningsvillkor",
                             "name": "conditional_logic",
                             "type": "true_false",
-                            "instructions": "Use conditional logic statement to display the field depending on other choices in the form. Works only with \"Radio\" form field type.",
+                            "instructions": "Anv\u00e4nd visningsvillkor f\u00f6r att visa f\u00e4ltet beroende p\u00e5 andra val i formul\u00e4ret. Fungerar endast med f\u00e4lttyp \"Radio\".",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1656,7 +1656,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Add conditional logic",
+                            "message": "L\u00e4gg till visningsvillkor",
                             "default_value": 0,
                             "ui": 0,
                             "ui_on_text": "",
@@ -1664,10 +1664,10 @@
                         },
                         {
                             "key": "field_5a266baf943ae",
-                            "label": "Conditonal field",
+                            "label": "Villkorsf\u00e4lt",
                             "name": "conditonal_field",
                             "type": "select",
-                            "instructions": "Display field if this value is selected.",
+                            "instructions": "Visa f\u00e4ltet om detta v\u00e4rde \u00e4r valt.",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -1725,71 +1725,6 @@
             },
             "placement": "top",
             "endpoint": 0
-        },
-        {
-            "key": "field_5b3c8d3f4e20a",
-            "label": "GDPR komplience  meddelande",
-            "name": "gdpr_complience_notice",
-            "type": "true_false",
-            "instructions": "Inneh\u00e5ller information om hur personlig data hanteras.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "Visa ett meddelande (och en checkbox) som \u00e4r n\u00f6dv\u00e4ndig f\u00f6r att posta formul\u00e4ret.",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5b3c8e0a6e7f2",
-            "label": "Inneh\u00e5ll f\u00f6r GDPR meddelande",
-            "name": "gdpr_complience_notice_content",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5b3c8d3f4e20a",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "I det h\u00e4r formul\u00e4ret samlar vi in personuppgifter om dig f\u00f6r att [det formul\u00e4ret ska anv\u00e4ndas till]. Uppgifterna kommer inte att hanteras f\u00f6r n\u00e5got annat syfte, och kommer att raderas n\u00e4r [\u00e4rendet \u00e4r avslutat]. L\u00e4s om hur Helsingborgs stad hanterar personuppgifter.",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_59df53ac189b8",
-            "label": "Notis om allm\u00e4n handling",
-            "name": "submission_public_act",
-            "type": "true_false",
-            "instructions": "L\u00e4gger till ett meddelande som informerar anv\u00e4ndaren om att formul\u00e4rsvaret blir en allm\u00e4n handling.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "L\u00e4gg till notis om allm\u00e4n handling",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
         },
         {
             "key": "field_58eb3700191e7",
@@ -1939,7 +1874,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n        background: #f1f1f157;\r\n        border-left: 4px solid #b2b500;\r\n        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n        padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n                background: #f1f1f157;\r\n                border-left: 4px solid #b2b500;\r\n                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
@@ -2410,6 +2345,87 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_5b51a469880c0",
+            "label": "GDPR & Sekretess",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59df53ac189b8",
+            "label": "Notis om allm\u00e4n handling",
+            "name": "submission_public_act",
+            "type": "true_false",
+            "instructions": "L\u00e4gger till ett meddelande som informerar anv\u00e4ndaren om att formul\u00e4rsvaret blir en allm\u00e4n handling.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "L\u00e4gg till notis om allm\u00e4n handling",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b3c8d3f4e20a",
+            "label": "GDPR komplience    meddelande",
+            "name": "gdpr_complience_notice",
+            "type": "true_false",
+            "instructions": "Inneh\u00e5ller information om hur personlig data hanteras.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Visa ett meddelande (och en checkbox) som \u00e4r n\u00f6dv\u00e4ndig f\u00f6r att posta formul\u00e4ret.",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b3c8e0a6e7f2",
+            "label": "Inneh\u00e5ll f\u00f6r GDPR meddelande",
+            "name": "gdpr_complience_notice_content",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b3c8d3f4e20a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "I det h\u00e4r formul\u00e4ret samlar vi in personuppgifter om dig f\u00f6r att [det formul\u00e4ret ska anv\u00e4ndas till]. Uppgifterna kommer inte att hanteras f\u00f6r n\u00e5got annat syfte, och kommer att raderas n\u00e4r [\u00e4rendet \u00e4r avslutat]. L\u00e4s om hur Helsingborgs stad hanterar personuppgifter.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
         },
         {
             "key": "field_5b2a3840ff029",
