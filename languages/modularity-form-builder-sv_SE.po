@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
 "POT-Creation-Date: 2018-07-20 11:36+0200\n"
-"PO-Revision-Date: 2018-07-20 11:36+0200\n"
+"PO-Revision-Date: 2018-07-20 11:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -648,7 +648,7 @@ msgstr ""
 msgid ""
 "Visa ett meddelande (och en checkbox) som är nödvändig för att posta "
 "formuläret."
-msgstr ""
+msgstr "Visa meddelande som beskriver hur vi hanterar användaruppgifter."
 
 #: acf-fields/php/form.php:2435
 msgid "Innehåll för GDPR meddelande"
@@ -710,11 +710,11 @@ msgstr "Sparad"
 
 #: source/php/App.php:375 source/php/PostType.php:163
 msgid "Hello, you are not Superman, with full access?"
-msgstr ""
+msgstr "Hallååå!  Du är ingen Superhjälte med full access"
 
 #: source/php/App.php:376 source/php/PostType.php:164
 msgid "Missing permissions"
-msgstr ""
+msgstr "Du saknar rättigheter för att se den här sidan"
 
 #: source/php/Entity/Filter.php:26
 msgid "Show All"
