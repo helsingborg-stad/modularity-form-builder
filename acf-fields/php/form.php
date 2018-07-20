@@ -7,7 +7,7 @@
     'fields' => array(
         0 => array(
             'key' => 'field_58f5c009ee909',
-            'label' => __('Formulärsfält', 'modularity-form-builder'),
+            'label' => __('Form fields', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -23,7 +23,7 @@
         ),
         1 => array(
             'key' => 'field_58eb302883a68',
-            'label' => __('Fält', 'modularity-form-builder'),
+            'label' => __('Fields', 'modularity-form-builder'),
             'name' => 'form_fields',
             'type' => 'flexible_content',
             'instructions' => '',
@@ -38,7 +38,7 @@
                 '58eb3033e588f' => array(
                     'key' => '58eb3033e588f',
                     'name' => 'sender',
-                    'label' => __('Avsändare', 'modularity-form-builder'),
+                    'label' => __('Sender', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -480,7 +480,7 @@
                 '58eb552a8189e' => array(
                     'key' => '58eb552a8189e',
                     'name' => 'input',
-                    'label' => __('Inmatning', 'modularity-form-builder'),
+                    'label' => __('Input', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -819,7 +819,7 @@
                 '58eb670839fee' => array(
                     'key' => '58eb670839fee',
                     'name' => 'radio',
-                    'label' => __('Radiofält', 'modularity-form-builder'),
+                    'label' => __('Radio', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -977,7 +977,7 @@
                 '58eb6b023b076' => array(
                     'key' => '58eb6b023b076',
                     'name' => 'checkbox',
-                    'label' => __('Kryssruta', 'modularity-form-builder'),
+                    'label' => __('Checkbox', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -1135,7 +1135,7 @@
                 '58eb6bd234c19' => array(
                     'key' => '58eb6bd234c19',
                     'name' => 'select',
-                    'label' => __('Välj', 'modularity-form-builder'),
+                    'label' => __('Select', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -1293,7 +1293,7 @@
                 '58eccdd75ad90' => array(
                     'key' => '58eccdd75ad90',
                     'name' => 'file_upload',
-                    'label' => __('Filuppladdning', 'modularity-form-builder'),
+                    'label' => __('File upload', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -1543,7 +1543,7 @@
                 '59b13312b61ac' => array(
                     'key' => '59b13312b61ac',
                     'name' => 'custom_content',
-                    'label' => __('Eget innehåll', 'modularity-form-builder'),
+                    'label' => __('Custom content', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -1728,13 +1728,13 @@
                     'max' => '',
                 ),
             ),
-            'button_label' => __('Formulärsfält', 'modularity-form-builder'),
+            'button_label' => __('Add form field', 'modularity-form-builder'),
             'min' => 1,
             'max' => '',
         ),
         2 => array(
             'key' => 'field_58f5c12da612a',
-            'label' => __('Formulärsvar', 'modularity-form-builder'),
+            'label' => __('Submission', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -1750,7 +1750,7 @@
         ),
         3 => array(
             'key' => 'field_58eb3700191e7',
-            'label' => __('Text på skicka-knapp', 'modularity-form-builder'),
+            'label' => __('Text on submit button', 'modularity-form-builder'),
             'name' => 'submit_button_text',
             'type' => 'text',
             'instructions' => '',
@@ -1761,7 +1761,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => __('Skicka', 'modularity-form-builder'),
+            'default_value' => __('Send', 'modularity-form-builder'),
             'maxlength' => '',
             'placeholder' => '',
             'prepend' => '',
@@ -1769,10 +1769,10 @@
         ),
         4 => array(
             'key' => 'field_58eb7b11cc4f5',
-            'label' => __('Meddelande vid inskickning', 'modularity-form-builder'),
+            'label' => __('Submission notice', 'modularity-form-builder'),
             'name' => 'subimission_notice',
             'type' => 'wysiwyg',
-            'instructions' => __('Text som visas när ett formulär skickats.', 'modularity-form-builder'),
+            'instructions' => __('Text to display when form is submitted.', 'modularity-form-builder'),
             'required' => 1,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -1788,7 +1788,7 @@
         ),
         5 => array(
             'key' => 'field_58f5c029ee90a',
-            'label' => __('Notiser', 'modularity-form-builder'),
+            'label' => __('Notifications', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -1804,7 +1804,7 @@
         ),
         6 => array(
             'key' => 'field_59a4259acfea0',
-            'label' => __('Notifikation när formulär skickas', 'modularity-form-builder'),
+            'label' => __('Notifications on form submission', 'modularity-form-builder'),
             'name' => '',
             'type' => 'message',
             'instructions' => '',
@@ -1821,10 +1821,10 @@
         ),
         7 => array(
             'key' => 'field_58eb6ee89aa7c',
-            'label' => __('Notifiera e-postadresser', 'modularity-form-builder'),
+            'label' => __('Notify email addresses', 'modularity-form-builder'),
             'name' => 'notify',
             'type' => 'repeater',
-            'instructions' => __('Ett mail skickas ut till nedanstående användare med innehållet i svaret.', 'modularity-form-builder'),
+            'instructions' => __('Notifications will be sent to below added email addresses when receiving a new form submission.', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -1836,11 +1836,11 @@
             'min' => 0,
             'max' => 0,
             'layout' => 'block',
-            'button_label' => __('Lägg till e-postadress', 'modularity-form-builder'),
+            'button_label' => __('Add email', 'modularity-form-builder'),
             'sub_fields' => array(
                 0 => array(
                     'key' => 'field_58eb6f389aa7d',
-                    'label' => __('E-postadress', 'modularity-form-builder'),
+                    'label' => __('Email address', 'modularity-form-builder'),
                     'name' => 'email',
                     'type' => 'email',
                     'instructions' => '',
@@ -1858,7 +1858,7 @@
                 ),
                 1 => array(
                     'key' => 'field_5a55d5e27740d',
-                    'label' => __('Lägg till villkor', 'modularity-form-builder'),
+                    'label' => __('Condition', 'modularity-form-builder'),
                     'name' => 'condition',
                     'type' => 'true_false',
                     'instructions' => '',
@@ -1877,7 +1877,7 @@
                 ),
                 2 => array(
                     'key' => 'field_5a55de5ebfa4d',
-                    'label' => __('Krav', 'modularity-form-builder'),
+                    'label' => __('Requirements', 'modularity-form-builder'),
                     'name' => '',
                     'type' => 'message',
                     'instructions' => '',
@@ -1906,7 +1906,7 @@
                 ),
                 3 => array(
                     'key' => 'field_5a55d69512773',
-                    'label' => __('Skicka bara när', 'modularity-form-builder'),
+                    'label' => __('Only send when', 'modularity-form-builder'),
                     'name' => 'form_conditional_field',
                     'type' => 'select',
                     'instructions' => '',
@@ -1938,7 +1938,7 @@
                 ),
                 4 => array(
                     'key' => 'field_5a55db0812774',
-                    'label' => __('Matchar', 'modularity-form-builder'),
+                    'label' => __('Equals to', 'modularity-form-builder'),
                     'name' => 'form_conditional_field_equals',
                     'type' => 'select',
                     'instructions' => '',
@@ -1972,7 +1972,7 @@
         ),
         8 => array(
             'key' => 'field_59720c161a3a1',
-            'label' => __('Egen ämnesrad', 'modularity-form-builder'),
+            'label' => __('Custom email subject', 'modularity-form-builder'),
             'name' => 'notification_custom_subject',
             'type' => 'true_false',
             'instructions' => '',
@@ -1983,7 +1983,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Kryssa i rutan för att ange egen ämnesrad.', 'modularity-form-builder'),
+            'message' => __('Check this box if you want to enter a custom email subject.', 'modularity-form-builder'),
             'default_value' => 0,
             'ui' => 0,
             'ui_on_text' => '',
@@ -1991,10 +1991,10 @@
         ),
         9 => array(
             'key' => 'field_5972079df9f04',
-            'label' => __('Ämnesrad', 'modularity-form-builder'),
+            'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'notification_subject',
             'type' => 'text',
-            'instructions' => __('Ange egen ämnesrad. Standardvärde är “Nytt formulärsvar”.', 'modularity-form-builder'),
+            'instructions' => __('Enter custom email subject. Default is "New form submission".', 'modularity-form-builder'),
             'required' => 1,
             'conditional_logic' => array(
                 0 => array(
@@ -2018,7 +2018,7 @@
         ),
         10 => array(
             'key' => 'field_58f5d00332436',
-            'label' => __('Meddelande i notis', 'modularity-form-builder'),
+            'label' => __('Notification message', 'modularity-form-builder'),
             'name' => 'notification_message',
             'type' => 'wysiwyg',
             'instructions' => '',
@@ -2037,7 +2037,7 @@
         ),
         11 => array(
             'key' => 'field_58f5b1a066797',
-            'label' => __('Notisdata', 'modularity-form-builder'),
+            'label' => __('Notification data', 'modularity-form-builder'),
             'name' => 'submission_notice_data',
             'type' => 'true_false',
             'instructions' => '',
@@ -2049,14 +2049,14 @@
                 'id' => '',
             ),
             'default_value' => 1,
-            'message' => __('Visa svarsdata i notisens innehåll', 'modularity-form-builder'),
+            'message' => __('Show submission data in notice content', 'modularity-form-builder'),
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
         12 => array(
             'key' => 'field_58f5c0bbee90c',
-            'label' => __('Svarskopia', 'modularity-form-builder'),
+            'label' => __('Sender copy', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -2072,10 +2072,10 @@
         ),
         13 => array(
             'key' => 'field_58f5b1c266798',
-            'label' => __('Tillåt svarskopia', 'modularity-form-builder'),
+            'label' => __('Allow sender copy', 'modularity-form-builder'),
             'name' => 'allow_sender_copy',
             'type' => 'true_false',
-            'instructions' => __('Skicka en kopia av svaret till avsändarens e-postadress.', 'modularity-form-builder'),
+            'instructions' => __('Send copy of the submitted form data to the sender email.', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -2084,14 +2084,14 @@
                 'id' => '',
             ),
             'default_value' => 0,
-            'message' => __('Ja, tillåt användare att få en svarskopia', 'modularity-form-builder'),
+            'message' => __('Yes, allow user to get a copy of the submission', 'modularity-form-builder'),
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
         14 => array(
             'key' => 'field_59a561ed8a256',
-            'label' => __('Egen ämnesrad för svarskopia', 'modularity-form-builder'),
+            'label' => __('Custom email subject for submission copy', 'modularity-form-builder'),
             'name' => 'copy_custom_subject',
             'type' => 'true_false',
             'instructions' => '',
@@ -2110,7 +2110,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Kryssa i rutan för att ange egen ämnesrad.', 'modularity-form-builder'),
+            'message' => __('Check this box if you want to enter a custom email subject.', 'modularity-form-builder'),
             'default_value' => 0,
             'ui' => 0,
             'ui_on_text' => '',
@@ -2118,10 +2118,10 @@
         ),
         15 => array(
             'key' => 'field_59a562508a257',
-            'label' => __('Ämnesrad', 'modularity-form-builder'),
+            'label' => __('Email subject', 'modularity-form-builder'),
             'name' => 'copy_subject',
             'type' => 'text',
-            'instructions' => __('Ange egen ämnesrad. Standardvärde är “Svarskopia”.', 'modularity-form-builder'),
+            'instructions' => __('Enter custom email subject. Default is "Form submission copy".', 'modularity-form-builder'),
             'required' => 1,
             'conditional_logic' => array(
                 0 => array(
@@ -2150,10 +2150,10 @@
         ),
         16 => array(
             'key' => 'field_58f5d09142d94',
-            'label' => __('Meddelande i svarskopia', 'modularity-form-builder'),
+            'label' => __('Sender copy message', 'modularity-form-builder'),
             'name' => 'sender_copy_message',
             'type' => 'wysiwyg',
-            'instructions' => __('Meddelandet kommer att skickas tillsammans med svarsdatan.', 'modularity-form-builder'),
+            'instructions' => __('The message that will be sent to the user together with a list of the submitted data.', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => array(
                 0 => array(
@@ -2177,7 +2177,7 @@
         ),
         17 => array(
             'key' => 'field_58f5c0abee90b',
-            'label' => __('Autosvar', 'modularity-form-builder'),
+            'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -2193,7 +2193,7 @@
         ),
         18 => array(
             'key' => 'field_58f5be7475dbf',
-            'label' => __('Autosvar', 'modularity-form-builder'),
+            'label' => __('Auto-reply', 'modularity-form-builder'),
             'name' => 'autoreply',
             'type' => 'true_false',
             'instructions' => '',
@@ -2205,14 +2205,14 @@
                 'id' => '',
             ),
             'default_value' => 0,
-            'message' => __('Skicka autosvar när formuläret har skickats', 'modularity-form-builder'),
+            'message' => __('Send auto-reply on form submission', 'modularity-form-builder'),
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
         19 => array(
             'key' => 'field_58f5bf7329b3f',
-            'label' => __('Ämne för autosvar', 'modularity-form-builder'),
+            'label' => __('Auto-reply subject', 'modularity-form-builder'),
             'name' => 'auto_reply_subject',
             'type' => 'text',
             'instructions' => '',
@@ -2239,7 +2239,7 @@
         ),
         20 => array(
             'key' => 'field_58f5bea775dc0',
-            'label' => __('Meddelande för autosvar', 'modularity-form-builder'),
+            'label' => __('Auto-reply content', 'modularity-form-builder'),
             'name' => 'auto_reply_content',
             'type' => 'wysiwyg',
             'instructions' => '',
@@ -2266,7 +2266,7 @@
         ),
         21 => array(
             'key' => 'field_5a12ad75f9444',
-            'label' => __('Avancerade inställningar', 'modularity-form-builder'),
+            'label' => __('Advanced options', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -2282,7 +2282,7 @@
         ),
         22 => array(
             'key' => 'field_5a1837b50079f',
-            'label' => __('Spara till posttyp', 'modularity-form-builder'),
+            'label' => __('Save to post type', 'modularity-form-builder'),
             'name' => 'custom_submission_post_type',
             'type' => 'true_false',
             'instructions' => '',
@@ -2293,7 +2293,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Spara formulärsvar till en anpassad posttyp.', 'modularity-form-builder'),
+            'message' => __('Save form submissions to a custom post type.', 'modularity-form-builder'),
             'default_value' => 0,
             'ui' => 0,
             'ui_on_text' => '',
@@ -2301,10 +2301,10 @@
         ),
         23 => array(
             'key' => 'field_5a059dcc4c2a0',
-            'label' => __('Posttyp', 'modularity-form-builder'),
+            'label' => __('Post type', 'modularity-form-builder'),
             'name' => 'submission_post_type',
             'type' => 'select',
-            'instructions' => __('Välj posttyp', 'modularity-form-builder'),
+            'instructions' => __('Select post type', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => array(
                 0 => array(
@@ -2322,9 +2322,9 @@
             ),
             'choices' => array(
                 'form-submissions' => 'Formulärsvar',
-                'event' => __('Händelse', 'modularity-form-builder'),
-                'ticket' => __('Ärende', 'modularity-form-builder'),
-                'listing' => __('Lista', 'modularity-form-builder'),
+                'event' => __('Event', 'modularity-form-builder'),
+                'ticket' => __('Ticket', 'modularity-form-builder'),
+                'listing' => __('Listing', 'modularity-form-builder'),
                 'lovprogram' => 'Lovprogram',
                 'johan-test123' => 'Johan-test123',
             ),
@@ -2340,7 +2340,7 @@
         ),
         24 => array(
             'key' => 'field_5a12ae16f9445',
-            'label' => __('Redigerbar för användaren', 'modularity-form-builder'),
+            'label' => __('Editable on front end', 'modularity-form-builder'),
             'name' => 'editable_front_end',
             'type' => 'true_false',
             'instructions' => '',
@@ -2359,7 +2359,7 @@
         ),
         25 => array(
             'key' => 'field_5a12afecf9446',
-            'label' => __('Redigerbar för redaktör', 'modularity-form-builder'),
+            'label' => __('Editable on back end', 'modularity-form-builder'),
             'name' => 'editable_back_end',
             'type' => 'true_false',
             'instructions' => '',
@@ -2378,7 +2378,7 @@
         ),
         26 => array(
             'key' => 'field_5b51a469880c0',
-            'label' => __('GDPR & Confidentiality', 'modularity-form-builder'),
+            'label' => __('GDPR & Sekretess', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -2394,10 +2394,10 @@
         ),
         27 => array(
             'key' => 'field_59df53ac189b8',
-            'label' => __('Notis om allmän handling', 'modularity-form-builder'),
+            'label' => __('Public act notice', 'modularity-form-builder'),
             'name' => 'submission_public_act',
             'type' => 'true_false',
-            'instructions' => __('Lägger till ett meddelande som informerar användaren om att formulärsvaret blir en allmän handling.', 'modularity-form-builder'),
+            'instructions' => __('Adds a notice that informs the user that the submission will become a public act.', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -2405,18 +2405,45 @@
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Lägg till notis om allmän handling', 'modularity-form-builder'),
+            'message' => __('Add public act notice', 'modularity-form-builder'),
             'default_value' => 1,
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
         28 => array(
+            'key' => 'field_5b51c75ca46d1',
+            'label' => __('Public act content', 'modularity-form-builder'),
+            'name' => 'submission_public_act_content',
+            'type' => 'textarea',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => array(
+                0 => array(
+                    0 => array(
+                        'field' => 'field_59df53ac189b8',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+            'maxlength' => '',
+            'rows' => '',
+            'new_lines' => '',
+        ),
+        29 => array(
             'key' => 'field_5b3c8d3f4e20a',
-            'label' => __('GDPR komplience    meddelande', 'modularity-form-builder'),
+            'label' => __('GDPR Complience notice', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice',
             'type' => 'true_false',
-            'instructions' => __('Innehåller information om hur personlig data hanteras.', 'modularity-form-builder'),
+            'instructions' => __('Contains information about how personal data is handled.', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -2424,15 +2451,15 @@
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Visa ett meddelande (och en checkbox) som är nödvändig för att posta formuläret.', 'modularity-form-builder'),
+            'message' => __('Show a message (and checkbox) that is required to check to submit all forms.', 'modularity-form-builder'),
             'default_value' => 0,
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        29 => array(
+        30 => array(
             'key' => 'field_5b3c8e0a6e7f2',
-            'label' => __('Innehåll för GDPR meddelande', 'modularity-form-builder'),
+            'label' => __('GDPR complience notice content', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice_content',
             'type' => 'textarea',
             'instructions' => '',
@@ -2451,15 +2478,15 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => __('I det här formuläret samlar vi in personuppgifter om dig för att [det formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något annat syfte, och kommer att raderas när [ärendet är avslutat]. Läs om hur Helsingborgs stad hanterar personuppgifter.', 'modularity-form-builder'),
+            'default_value' => __('When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.', 'modularity-form-builder'),
             'placeholder' => '',
             'maxlength' => '',
             'rows' => '',
             'new_lines' => '',
         ),
-        30 => array(
+        31 => array(
             'key' => 'field_5b2a3840ff029',
-            'label' => __('Databaslagring', 'modularity-form-builder'),
+            'label' => __('DB storage', 'modularity-form-builder'),
             'name' => 'db_storage',
             'type' => 'true_false',
             'instructions' => '',
@@ -2470,15 +2497,15 @@
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Lagra inte postad data i databasen.', 'modularity-form-builder'),
+            'message' => __('Don\'t store posted data in database', 'modularity-form-builder'),
             'default_value' => 0,
             'ui' => 0,
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        31 => array(
+        32 => array(
             'key' => 'field_5b3384dbf9cac',
-            'label' => __('Användarbegränsning', 'modularity-form-builder'),
+            'label' => __('User Restriction', 'modularity-form-builder'),
             'name' => 'user_restriction',
             'type' => 'true_false',
             'instructions' => '',
@@ -2503,12 +2530,12 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        32 => array(
+        33 => array(
             'key' => 'field_5b338525f9cad',
-            'label' => __('Betrodda användare', 'modularity-form-builder'),
+            'label' => __('Users', 'modularity-form-builder'),
             'name' => 'granted_users',
             'type' => 'user',
-            'instructions' => __('Lägg till betrodda användare som har access till det som postas från formulären', 'modularity-form-builder'),
+            'instructions' => __('Add users who have access to the form data', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => array(
                 0 => array(
