@@ -43,7 +43,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb3944f7086',
-                            'label' => __('Visa fält', 'modularity-form-builder'),
+                            'label' => __('Fields to display', 'modularity-form-builder'),
                             'name' => 'fields',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -55,11 +55,11 @@
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'firstname' => __('Förnamn', 'modularity-form-builder'),
-                                'lastname' => __('Efternamn', 'modularity-form-builder'),
-                                'email' => __('E-post', 'modularity-form-builder'),
-                                'phone' => __('Telefonnummer', 'modularity-form-builder'),
-                                'address' => __('Adress', 'modularity-form-builder'),
+                                'firstname' => __('Firstname', 'modularity-form-builder'),
+                                'lastname' => __('Lastname', 'modularity-form-builder'),
+                                'email' => __('Email', 'modularity-form-builder'),
+                                'phone' => __('Phone', 'modularity-form-builder'),
+                                'address' => __('Address', 'modularity-form-builder'),
                             ),
                             'allow_custom' => 0,
                             'save_custom' => 0,
@@ -74,7 +74,7 @@
                         ),
                         1 => array(
                             'key' => 'field_58eb3a9bf7087',
-                            'label' => __('Obligatoriska fält', 'modularity-form-builder'),
+                            'label' => __('Required fields', 'modularity-form-builder'),
                             'name' => 'required_fields',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -86,11 +86,11 @@
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'firstname' => __('Förnamn', 'modularity-form-builder'),
-                                'lastname' => __('Efternamn', 'modularity-form-builder'),
-                                'email' => __('E-post', 'modularity-form-builder'),
-                                'phone' => __('Telefonnummer', 'modularity-form-builder'),
-                                'address' => __('Adress', 'modularity-form-builder'),
+                                'firstname' => __('Firstname', 'modularity-form-builder'),
+                                'lastname' => __('Lastname', 'modularity-form-builder'),
+                                'email' => __('Email', 'modularity-form-builder'),
+                                'phone' => __('Phone', 'modularity-form-builder'),
+                                'address' => __('Address', 'modularity-form-builder'),
                             ),
                             'allow_custom' => 0,
                             'save_custom' => 0,
@@ -139,7 +139,7 @@
                                 ),
                                 1 => array(
                                     'key' => 'field_5a0abd5f4342b',
-                                    'label' => __('Förnamn', 'modularity-form-builder'),
+                                    'label' => __('Firstname', 'modularity-form-builder'),
                                     'name' => 'firstname',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -166,7 +166,7 @@
                                 ),
                                 2 => array(
                                     'key' => 'field_5a0abd804342c',
-                                    'label' => __('Efternamn', 'modularity-form-builder'),
+                                    'label' => __('Lastname', 'modularity-form-builder'),
                                     'name' => 'lastname',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -193,7 +193,7 @@
                                 ),
                                 3 => array(
                                     'key' => 'field_5a0abe977e028',
-                                    'label' => __('E-post', 'modularity-form-builder'),
+                                    'label' => __('Email', 'modularity-form-builder'),
                                     'name' => 'email',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -220,7 +220,7 @@
                                 ),
                                 4 => array(
                                     'key' => 'field_5a0ac1fda1240',
-                                    'label' => __('Telefonnummer', 'modularity-form-builder'),
+                                    'label' => __('Phone', 'modularity-form-builder'),
                                     'name' => 'phone',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -247,7 +247,7 @@
                                 ),
                                 5 => array(
                                     'key' => 'field_5a0ac216a1241',
-                                    'label' => __('Gatuadress', 'modularity-form-builder'),
+                                    'label' => __('Street address', 'modularity-form-builder'),
                                     'name' => 'street_address',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -274,7 +274,7 @@
                                 ),
                                 6 => array(
                                     'key' => 'field_5a0ac228a1242',
-                                    'label' => __('Postnummer', 'modularity-form-builder'),
+                                    'label' => __('Postal code', 'modularity-form-builder'),
                                     'name' => 'postal_code',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -301,7 +301,7 @@
                                 ),
                                 7 => array(
                                     'key' => 'field_5a0ac236a1243',
-                                    'label' => __('Stad', 'modularity-form-builder'),
+                                    'label' => __('City', 'modularity-form-builder'),
                                     'name' => 'city',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -340,7 +340,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb3f37d914b',
-                            'label' => __('Fältetikett', 'modularity-form-builder'),
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -351,7 +351,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'default_value' => __('Meddelande', 'modularity-form-builder'),
+                            'default_value' => __('Message', 'modularity-form-builder'),
                             'placeholder' => '',
                             'prepend' => '',
                             'append' => '',
@@ -378,7 +378,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb3f5ed914c',
-                            'label' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -390,17 +390,17 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Obligatoriskt fält', 'modularity-form-builder'),
+                            'message' => __('Required field', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         3 => array(
                             'key' => 'field_59b69b14e2abf',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -408,7 +408,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -416,10 +416,10 @@
                         ),
                         4 => array(
                             'key' => 'field_59b69b16e2ac0',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -485,7 +485,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb55338189f',
-                            'label' => __('Fältetikett', 'modularity-form-builder'),
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -523,7 +523,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb5547818a0',
-                            'label' => __('Fälttyp', 'modularity-form-builder'),
+                            'label' => __('Field value type', 'modularity-form-builder'),
                             'name' => 'value_type',
                             'type' => 'select',
                             'instructions' => '',
@@ -536,16 +536,16 @@
                             ),
                             'choices' => array(
                                 'text' => __('Text', 'modularity-form-builder'),
-                                'number' => __('Siffror', 'modularity-form-builder'),
-                                'email' => __('E-post', 'modularity-form-builder'),
-                                'tel' => __('Telefonnummer', 'modularity-form-builder'),
-                                'color' => __('Färg', 'modularity-form-builder'),
-                                'date' => __('Datum', 'modularity-form-builder'),
-                                'month' => __('Månad', 'modularity-form-builder'),
-                                'week' => __('Vecka', 'modularity-form-builder'),
-                                'range' => __('Intervall', 'modularity-form-builder'),
+                                'number' => __('Number', 'modularity-form-builder'),
+                                'email' => __('Email', 'modularity-form-builder'),
+                                'tel' => __('Phone number', 'modularity-form-builder'),
+                                'color' => __('Color', 'modularity-form-builder'),
+                                'date' => __('Date', 'modularity-form-builder'),
+                                'month' => __('Month', 'modularity-form-builder'),
+                                'week' => __('Week', 'modularity-form-builder'),
+                                'range' => __('Range', 'modularity-form-builder'),
                                 'search' => __('Search', 'modularity-form-builder'),
-                                'time' => __('Tid', 'modularity-form-builder'),
+                                'time' => __('Time', 'modularity-form-builder'),
                                 'url' => __('Url', 'modularity-form-builder'),
                             ),
                             'default_value' => array(
@@ -559,7 +559,7 @@
                         ),
                         3 => array(
                             'key' => 'field_58eb572440304',
-                            'label' => __('Minsta värde', 'modularity-form-builder'),
+                            'label' => __('Min value', 'modularity-form-builder'),
                             'name' => 'min_value',
                             'type' => 'number',
                             'instructions' => '',
@@ -595,7 +595,7 @@
                         ),
                         4 => array(
                             'key' => 'field_58eb574140305',
-                            'label' => __('Maxvärde', 'modularity-form-builder'),
+                            'label' => __('Max value', 'modularity-form-builder'),
                             'name' => 'max_value',
                             'type' => 'number',
                             'instructions' => '',
@@ -631,7 +631,7 @@
                         ),
                         5 => array(
                             'key' => 'field_58eb57a645640',
-                            'label' => __('Steg', 'modularity-form-builder'),
+                            'label' => __('Step', 'modularity-form-builder'),
                             'name' => 'step',
                             'type' => 'number',
                             'instructions' => '',
@@ -667,7 +667,7 @@
                         ),
                         6 => array(
                             'key' => 'field_58eb62d1ec890',
-                            'label' => __('Datum från', 'modularity-form-builder'),
+                            'label' => __('Min date', 'modularity-form-builder'),
                             'name' => 'min_value',
                             'type' => 'date_picker',
                             'instructions' => '',
@@ -692,7 +692,7 @@
                         ),
                         7 => array(
                             'key' => 'field_58eb62feec891',
-                            'label' => __('Datum till', 'modularity-form-builder'),
+                            'label' => __('Max date', 'modularity-form-builder'),
                             'name' => 'max_value',
                             'type' => 'date_picker',
                             'instructions' => '',
@@ -717,7 +717,7 @@
                         ),
                         8 => array(
                             'key' => 'field_58eb5614c5514',
-                            'label' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -729,17 +729,17 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         9 => array(
                             'key' => 'field_59b69ae3e2abd',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -747,7 +747,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -755,10 +755,10 @@
                         ),
                         10 => array(
                             'key' => 'field_59b69ae6e2abe',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -824,7 +824,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb675039ff1',
-                            'label' => __('Fältetikett', 'modularity-form-builder'),
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -862,7 +862,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb670d39fef',
-                            'label' => __('Fältvärden', 'modularity-form-builder'),
+                            'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -881,7 +881,7 @@
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb672c39ff0',
-                                    'label' => __('Värde', 'modularity-form-builder'),
+                                    'label' => __('Value', 'modularity-form-builder'),
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -902,7 +902,7 @@
                         ),
                         3 => array(
                             'key' => 'field_58eb699755795',
-                            'label' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -914,17 +914,17 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         4 => array(
                             'key' => 'field_59b69ac9e2abb',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -932,7 +932,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -940,10 +940,10 @@
                         ),
                         5 => array(
                             'key' => 'field_59b69acbe2abc',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -982,7 +982,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb6b023b077',
-                            'label' => __('Fältetikett', 'modularity-form-builder'),
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -1020,7 +1020,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb6b023b078',
-                            'label' => __('Fältvärden', 'modularity-form-builder'),
+                            'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -1039,7 +1039,7 @@
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb6b023b079',
-                                    'label' => __('Värde', 'modularity-form-builder'),
+                                    'label' => __('Value', 'modularity-form-builder'),
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -1060,7 +1060,7 @@
                         ),
                         3 => array(
                             'key' => 'field_58eb6b023b07a',
-                            'label' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -1072,17 +1072,17 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         4 => array(
                             'key' => 'field_59b69ab2e2ab9',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1090,7 +1090,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1098,10 +1098,10 @@
                         ),
                         5 => array(
                             'key' => 'field_59b69ab5e2aba',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1140,7 +1140,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb6bd334c1a',
-                            'label' => __('Fältetikett', 'modularity-form-builder'),
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -1178,7 +1178,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eb6bd334c1b',
-                            'label' => __('Fältvärden', 'modularity-form-builder'),
+                            'label' => __('Field values', 'modularity-form-builder'),
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -1197,7 +1197,7 @@
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb6bd334c1c',
-                                    'label' => __('Värde', 'modularity-form-builder'),
+                                    'label' => __('Value', 'modularity-form-builder'),
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -1218,7 +1218,7 @@
                         ),
                         3 => array(
                             'key' => 'field_58eb6bd334c1d',
-                            'label' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -1230,17 +1230,17 @@
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'message' => __('Required', 'modularity-form-builder'),
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         4 => array(
                             'key' => 'field_59b69a93e2ab7',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1248,7 +1248,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1256,10 +1256,10 @@
                         ),
                         5 => array(
                             'key' => 'field_59b69a96e2ab8',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1298,7 +1298,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58ecce8a5ad93',
-                            'label' => __('Fältetikett', 'modularity-form-builder'),
+                            'label' => __('Field label', 'modularity-form-builder'),
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -1336,7 +1336,7 @@
                         ),
                         2 => array(
                             'key' => 'field_58eccde65ad91',
-                            'label' => __('Typ', 'modularity-form-builder'),
+                            'label' => __('Type', 'modularity-form-builder'),
                             'name' => 'type',
                             'type' => 'radio',
                             'instructions' => '',
@@ -1348,8 +1348,8 @@
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'single' => __('Enskilt', 'modularity-form-builder'),
-                                'multiple' => __('Flera', 'modularity-form-builder'),
+                                'single' => __('Single', 'modularity-form-builder'),
+                                'multiple' => __('Multiple', 'modularity-form-builder'),
                             ),
                             'allow_null' => 0,
                             'other_choice' => 0,
@@ -1360,10 +1360,10 @@
                         ),
                         3 => array(
                             'key' => 'field_58ece6685df9c',
-                            'label' => __('Max antal filer', 'modularity-form-builder'),
+                            'label' => __('Max number of files', 'modularity-form-builder'),
                             'name' => 'files_max',
                             'type' => 'number',
-                            'instructions' => __('-1 är lika med ingen gräns', 'modularity-form-builder'),
+                            'instructions' => __('-1 for no limit', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1381,7 +1381,7 @@
                         ),
                         4 => array(
                             'key' => 'field_58ecce105ad92',
-                            'label' => __('Tillåtna filtyper', 'modularity-form-builder'),
+                            'label' => __('Allowed filetypes', 'modularity-form-builder'),
                             'name' => 'filetypes',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -1393,8 +1393,8 @@
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'video/*' => __('Alla videoformat', 'modularity-form-builder'),
-                                'image/*' => __('Alla bildformat', 'modularity-form-builder'),
+                                'video/*' => __('All video types', 'modularity-form-builder'),
+                                'image/*' => __('All image types', 'modularity-form-builder'),
                                 '.jpg' => __('jpg', 'modularity-form-builder'),
                                 '.png' => __('png', 'modularity-form-builder'),
                                 '.gif' => __('gif', 'modularity-form-builder'),
@@ -1468,7 +1468,7 @@
                         ),
                         6 => array(
                             'key' => 'field_58ecd86751bf6',
-                            'label' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -1479,7 +1479,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Obligatoriskt', 'modularity-form-builder'),
+                            'message' => __('Required', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1487,10 +1487,10 @@
                         ),
                         7 => array(
                             'key' => 'field_59b69a7ae2ab5',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1498,7 +1498,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1506,10 +1506,10 @@
                         ),
                         8 => array(
                             'key' => 'field_59b69a7de2ab6',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1548,10 +1548,10 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_59b13312b61ad',
-                            'label' => __('Innehåll', 'modularity-form-builder'),
+                            'label' => __('Content', 'modularity-form-builder'),
                             'name' => 'content',
                             'type' => 'wysiwyg',
-                            'instructions' => __('Lägg till eget innehåll till formuläret. Detta kommer inte skickas med i e-postmeddelanden.', 'modularity-form-builder'),
+                            'instructions' => __('Add custom content to the form. This will not be sent in e-mail messages.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1567,10 +1567,10 @@
                         ),
                         1 => array(
                             'key' => 'field_59b134beb61b0',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1578,7 +1578,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1586,10 +1586,10 @@
                         ),
                         2 => array(
                             'key' => 'field_59b635765e86b',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1628,7 +1628,7 @@
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_5a26ac03821d9',
-                            'label' => __('Fäll ihop', 'modularity-form-builder'),
+                            'label' => __('Collapse', 'modularity-form-builder'),
                             'name' => '',
                             'type' => 'message',
                             'instructions' => '',
@@ -1645,7 +1645,7 @@
                         ),
                         1 => array(
                             'key' => 'field_5a266bb8943af',
-                            'label' => __('Knapp text', 'modularity-form-builder'),
+                            'label' => __('Button text', 'modularity-form-builder'),
                             'name' => 'button_text',
                             'type' => 'text',
                             'instructions' => '',
@@ -1664,10 +1664,10 @@
                         ),
                         2 => array(
                             'key' => 'field_5a266baf943ad',
-                            'label' => __('Visningsvillkor', 'modularity-form-builder'),
+                            'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Använd visningsvillkor för att visa fältet beroende på andra val i formuläret. Fungerar endast med fälttyp "Radio".', 'modularity-form-builder'),
+                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1675,7 +1675,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Lägg till visningsvillkor', 'modularity-form-builder'),
+                            'message' => __('Add conditional logic', 'modularity-form-builder'),
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1683,10 +1683,10 @@
                         ),
                         3 => array(
                             'key' => 'field_5a266baf943ae',
-                            'label' => __('Villkorsfält', 'modularity-form-builder'),
+                            'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Visa fältet om detta värde är valt.', 'modularity-form-builder'),
+                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1897,10 +1897,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                                background: #f1f1f157;
-                                border-left: 4px solid #b2b500;
-                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+                background: #f1f1f157;
+                border-left: 4px solid #b2b500;
+                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                 ),
@@ -2378,7 +2378,7 @@
         ),
         26 => array(
             'key' => 'field_5b51a469880c0',
-            'label' => __('GDPR & Sekretess', 'modularity-form-builder'),
+            'label' => __('GDPR & Confidentiality', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -2413,7 +2413,7 @@
         ),
         28 => array(
             'key' => 'field_5b3c8d3f4e20a',
-            'label' => __('GDPR komplience        meddelande', 'modularity-form-builder'),
+            'label' => __('GDPR komplience    meddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice',
             'type' => 'true_false',
             'instructions' => __('Innehåller information om hur personlig data hanteras.', 'modularity-form-builder'),
