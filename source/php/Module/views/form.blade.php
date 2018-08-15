@@ -13,8 +13,7 @@
         @if (isset($_GET['form']) && $_GET['form'] == 'success')
             <div class="grid">
                 <div class="grid-md-12">
-                    <div class="notice success"><i
-                                class="pricon pricon-check pull-left"></i> <?php echo get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'); ?>
+                    <div class="notice success u-mb-2"><i class="pricon pricon-check pull-left"></i> <?php echo get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'); ?>
                     </div>
                 </div>
             </div>
@@ -41,9 +40,9 @@
         @if (!is_user_logged_in())
             <div class="grid">
                 <div class="grid-md-12">
-                    <div class="g-recaptcha"></div>
+                    <div class="g-recaptcha u-mt-2"></div>
                     <div class="form-notice text-danger captcha-warning text-sm"
-                         aria-live="polite"><?php _e('You must confirm your not a robot.', 'modularity-form-builder'); ?></div>
+                         aria-live="polite"><?php _e('You must confirm you\'re not a robot.', 'modularity-form-builder'); ?></div>
                 </div>
             </div>
         @endif
@@ -62,8 +61,7 @@
                             </p>
                         @endif
                     @endif
-                    <button type="submit"
-                            class="btn btn-primary">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
+                    <button type="submit" class="btn btn-primary u-mt-2">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
                 </div>
             </div>
 
