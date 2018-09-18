@@ -26,7 +26,8 @@ add_action('plugins_loaded', function () {
     $acfExportManager->setTextdomain('modularity-form-builder');
     $acfExportManager->setExportFolder(FORM_BUILDER_MODULE_PATH . 'acf-fields/');
     $acfExportManager->autoExport(array(
-        'form' => 'group_58eb301ecb36a'
+        'form' => 'group_58eb301ecb36a',
+        'form-options' => 'group_5ba0e79210f4e'
     ));
     $acfExportManager->import();
 });
