@@ -471,7 +471,7 @@ class PostType
     public function displayFeedbackId($post)
     {
         if ($post->post_type == $this->postTypeSlug) {
-            echo '<div class="inside"><span><strong>' . __('Feedback ID') . ':</strong> ' . $post->ID . '</span></div>';
+            echo '<div class="inside"><span><strong>' . __('ID') . ':</strong> ' . $post->ID . '</span></div>';
         }
     }
 
