@@ -182,7 +182,7 @@ class PostType
     {
         global $post;
 
-        $data = $this->gatherFormData($post);
+        $data = self::gatherFormData($post);
         $fields = get_fields($data['module_id']);
         $this->grantedUsers($data['module_id']);
         $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type,
@@ -235,7 +235,7 @@ class PostType
     }
 
 
-    public function gatherFormData($post)
+    public static function gatherFormData($post)
     {
         $data = array();
         $getData = get_post_meta($post->ID, 'form-data', true);
