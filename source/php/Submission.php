@@ -117,7 +117,7 @@ class Submission
         $notify = get_field('notify', $_POST['modularity-form-id']);
 
         // Get correct labels
-        $labels = \ModularityFormBuilder\PostType::getSenderLabels();
+        $labels = Helper\SenderLabels::getLabels();
         $fields = get_fields($_POST['modularity-form-id']);
         $fields = $fields['form_fields'];
         foreach ($fields as $key => $field) {
@@ -321,7 +321,7 @@ class Submission
         }
 
         $formdata = array();
-        $labels = \ModularityFormBuilder\PostType::getSenderLabels();
+        $labels = Helper\SenderLabels::getLabels();
         $excludedFields = array(
             'custom_content',
             'collapse'

@@ -8,7 +8,6 @@ class App
 
     public function __construct()
     {
-        new PostType();
         new Submission();
         new Options();
 
@@ -21,21 +20,31 @@ class App
                 );
             }
         });
-
+        add_action('init', array($this, 'registerPostTypes'), 9);
         add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
         add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
-
-        add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
-
         add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
         add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
-
-
-
         add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
         add_action('current_screen', array($this, 'restrictUserPages'));
+        add_action('restrict_manage_posts', array($this, 'formFilter'));
+        add_action('admin_head', array($this, 'jsonSelectedValues'));
+
+        add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
     }
 
+    /**
+     * Register post types
+     */
+    public function registerPostTypes()
+    {
+        // Default form submission post type
+        new Entity\PostType(
+            'form-submissions',
+            __('Form submission', 'modularity-form-builder'),
+            __('Form submissions', 'modularity-form-builder')
+        );
+    }
 
     /**
      * Add hidden field markup to form input fields
@@ -67,7 +76,7 @@ class App
         // New and old field values
         $newValues = $_POST['acf']['field_58eb302883a68'];
         $oldValues = $_POST['current-acf']['field_58eb302883a68'];
-        $defaultLabels = PostType::getSenderLabels();
+        $defaultLabels = Helper\SenderLabels::getLabels();
         $updatedValues = array();
 
         // Gather updated field labels (used as keys)
@@ -113,7 +122,7 @@ class App
 
     /**
      * Gets all posts connected to the form, and replaces the form data Keys
-     * @param int $moduleId The forms Post ID
+     * @param int   $moduleId    The forms Post ID
      * @param array $updatedKeys Array containing old and new key values
      * @return void
      */
@@ -166,7 +175,7 @@ class App
 
     /**
      * Replaces keys in an arrays
-     * @param array $array Defualt array
+     * @param array  $array  Defualt array
      * @param string $oldKey Key to replace
      * @param string $newKey Replacement key
      * @return array               Modified array
@@ -317,7 +326,7 @@ class App
     /**
      * Encrypt & decrypt data
      * @param $type string encrypt or decrypt
-     * @param $str string data to encrypt or decrypt
+     * @param $str  string data to encrypt or decrypt
      * @return string
      */
     static function encryptDecryptData($meth, $str)
@@ -381,6 +390,58 @@ class App
         }
 
         return false;
+    }
+
+    /**
+     * Filters admin list table
+     * @return void
+     */
+    public function formFilter()
+    {
+        global $typenow;
+
+        if ($typenow !== 'form-submissions') {
+            return;
+        }
+
+        $forms = get_posts(array(
+            'post_type' => 'mod-form',
+            'post_status' => 'publish',
+            'posts_per_page' => -1,
+            'numberposts' => -1
+        ));
+
+        echo '<select name="form"><option value="-1">' . __('Select form…', 'modularity-form-builder') . '</option>';
+
+        foreach ($forms as $form) {
+            $selected = isset($_GET['form']) && $_GET['form'] == $form->ID ? 'selected' : '';
+            echo '<option value="' . $form->ID . '" ' . $selected . '>' . $form->post_title . '</option>';
+        }
+        echo '</select>';
+    }
+
+    public function jsonSelectedValues()
+    {
+        //Get saved data
+        $fieldData = get_field('notify');
+
+        //Declare result
+        $result = array();
+
+        //Fill result array
+        if (isset($fieldData) && is_array($fieldData) && !empty($fieldData)) {
+            foreach ($fieldData as $field) {
+                $result[] = array(
+                    'conditional_field' => $field['form_conditional_field'],
+                    'conditional_field_equals' => $field['form_conditional_field_equals']
+                );
+            }
+        }
+
+        //Print json array
+        if (is_array($result) && !empty($result)) {
+            echo "<script> var notificationConditions = '" . json_encode($result) . "'; </script>";
+        }
     }
 }
 

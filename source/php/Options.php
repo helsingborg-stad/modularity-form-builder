@@ -7,6 +7,7 @@ class Options
     public function __construct()
     {
         add_action('admin_menu', array($this, 'addOptionsFields'));
+        add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
     }
 
     /**
@@ -118,5 +119,29 @@ class Options
         }
 
         return $markup;
+    }
+
+    /**
+     * Add custom post types to post type list
+     * @param  array $field Field data
+     * @return array        Modified field data
+     */
+    public function submissionPostTypes($field)
+    {
+        if (get_post_type() == 'acf-field-group') {
+            return $field;
+        }
+
+        $field['choices']['form-submissions'] = __('Form submissions', 'modularity-form-builder');
+
+        if (current_user_can('administrator')) {
+            $postTypes = get_post_types(array('_builtin' => false));
+            foreach ($postTypes as $postType) {
+                $postTypeObj = get_post_type_object($postType);
+                $field['choices'][$postTypeObj->name] = $postTypeObj->labels->singular_name;
+            }
+        }
+
+        return $field;
     }
 }
