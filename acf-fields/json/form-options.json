@@ -1,13 +1,13 @@
 [{
     "key": "group_5ba0e79210f4e",
-    "title": "Form options",
+    "title": "Options",
     "fields": [
         {
             "key": "field_5ba0ee9dab196",
-            "label": "Custom post types",
+            "label": "Post types",
             "name": "form_custom_post_types",
             "type": "repeater",
-            "instructions": "",
+            "instructions": "Create post types that can be integrated with forms.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

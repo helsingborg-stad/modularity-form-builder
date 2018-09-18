@@ -3,14 +3,14 @@
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_5ba0e79210f4e',
-    'title' => __('Form options', 'modularity-form-builder'),
+    'title' => __('Options', 'modularity-form-builder'),
     'fields' => array(
         0 => array(
             'key' => 'field_5ba0ee9dab196',
-            'label' => __('Custom post types', 'modularity-form-builder'),
+            'label' => __('Post types', 'modularity-form-builder'),
             'name' => 'form_custom_post_types',
             'type' => 'repeater',
-            'instructions' => '',
+            'instructions' => __('Create post types that can be integrated with forms.', 'modularity-form-builder'),
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
