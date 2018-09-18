@@ -6,6 +6,8 @@ class Options
 {
     public function __construct()
     {
+        add_action('admin_menu', array($this, 'addOptionsFields'), 9);
+        add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
         if (function_exists('acf_add_options_sub_page')) {
             acf_add_options_sub_page(array(
                 'page_title'    => __('Options', 'modularity-form-builder'),
@@ -15,8 +17,6 @@ class Options
                 'capability'    => 'manage_options'
             ));
         }
-        add_action('admin_menu', array($this, 'addOptionsFields'), 9);
-        add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
     }
 
     /**
@@ -32,6 +32,8 @@ class Options
             'mod-form-options',
             array($this, 'optionsPage')
         );
+        // Hide duplicate option page
+        remove_submenu_page('edit.php?post_type=form-submissions','mod-form-options');
     }
 
     /**
