@@ -44,6 +44,22 @@ class App
             __('Form submission', 'modularity-form-builder'),
             __('Form submissions', 'modularity-form-builder')
         );
+
+        // Register custom post types
+        $customPostTypes = get_field('form_custom_post_types', 'option');
+        if (!empty($customPostTypes)) {
+            $args = array(
+                'menu_position' => 50,
+            );
+            foreach($customPostTypes as $customPostType) {
+                new Entity\PostType(
+                    sanitize_title(substr($customPostType['singular_name'], 0, 19)),
+                    $customPostType['singular_name'],
+                    $customPostType['plural_name'],
+                    $args
+                );
+            }
+        }
     }
 
     /**
