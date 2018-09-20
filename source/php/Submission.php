@@ -302,8 +302,9 @@ class Submission
      * @param  int $submissionId
      * @return array
      */
-    public static function getSubmissionData(int $submissionId): array
+    public static function getSubmissionData($submissionId): array
     {
+        $submissionId = (int)$submissionId;
         $formId = get_post_meta($submissionId, 'modularity-form-id', true);
 
         if (!$formId) {
