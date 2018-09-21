@@ -16,7 +16,7 @@ class PostType
         $this->namePlural = $namePlural;
         $this->args = $args;
 
-        add_action('init', array($this, 'register'));
+        add_action('init', array($this, 'register'), 12);
         add_action('admin_menu', array($this, 'removePublishBox'));
         add_action('add_meta_boxes', array($this, 'formdata'), 10, 2);
         add_action('edit_form_after_title', array($this, 'displayFeedbackId'), 10, 1);
@@ -105,7 +105,8 @@ class PostType
                 'create_posts' => 'do_not_allow',
             ),
             'map_meta_cap' => true,
-            'supports' => array('title')
+            'supports' => array('title'),
+            'show_in_rest' => false
         );
         $args = array_merge($args, $this->args);
 

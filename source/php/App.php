@@ -20,7 +20,7 @@ class App
                 );
             }
         });
-        add_action('init', array($this, 'registerPostTypes'), 9);
+        add_action('init', array($this, 'registerPostTypes'), 11);
         add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
         add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
         add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
@@ -45,18 +45,38 @@ class App
             __('Form submissions', 'modularity-form-builder')
         );
 
-        // Register custom post types
-        $customPostTypes = get_field('form_custom_post_types', 'option');
-        if (!empty($customPostTypes)) {
-            $args = array(
-                'menu_position' => 50,
-            );
-            foreach($customPostTypes as $customPostType) {
+        global $wpdb;
+        $postTypes = $wpdb->get_col(
+            "
+            SELECT pm.meta_value FROM $wpdb->posts as p
+            LEFT JOIN $wpdb->postmeta pm ON p.ID = pm.post_id
+            WHERE p.post_status = 'publish'
+            AND pm.meta_key = 'submission_post_type'
+            GROUP BY pm.meta_value
+            "
+        );
+
+        // Re-register custom form post types
+        if (!empty($postTypes)) {
+            foreach($postTypes as $postType) {
+                if (!$postTypeObj = get_post_type_object($postType)) {
+                    continue;
+                }
+                unregister_post_type($postType);
+
+                $json = json_encode($postTypeObj);
+                $postTypeArr = json_decode($json, true);
+
+                unset($postTypeArr['show_in_rest']);
+                unset($postTypeArr['capabilities']);
+                unset($postTypeArr['capability_type']);
+                unset($postTypeArr['cap']);
+
                 new Entity\PostType(
-                    sanitize_title(substr($customPostType['singular_name'], 0, 19)),
-                    $customPostType['singular_name'],
-                    $customPostType['plural_name'],
-                    $args
+                    $postTypeArr['name'],
+                    $postTypeArr['labels']['singular_name'] ?? $postTypeArr['label'],
+                    $postTypeArr['label'],
+                    $postTypeArr
                 );
             }
         }
