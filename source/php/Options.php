@@ -8,6 +8,7 @@ class Options
     {
         add_action('admin_menu', array($this, 'addOptionsFields'), 9);
         add_filter('acf/load_field/name=submission_post_type', array($this, 'submissionPostTypes'));
+        add_filter('acf/load_field/name=form_builder_is_admin', array($this, 'isAdmin'), 10, 3);
     }
 
     /**
@@ -140,6 +141,20 @@ class Options
                 $postTypeObj = get_post_type_object($postType);
                 $field['choices'][$postTypeObj->name] = $postTypeObj->labels->singular_name;
             }
+        }
+
+        return $field;
+    }
+
+    /**
+     * Check if current user is admin
+     * @param  array $field Field data
+     * @return array        Modified field data
+     */
+    public function isAdmin($field)
+    {
+        if (current_user_can('administrator') && get_post_type() != 'acf-field-group') {
+            $field['choices']['is_admin'] = 'true';
         }
 
         return $field;
