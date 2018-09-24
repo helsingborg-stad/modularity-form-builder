@@ -45,7 +45,6 @@ class Options
         }
 
 
-
         // Delete oauth credentials
         if (isset($_POST['delete-oauth-credentials']) && wp_verify_nonce($_POST['delete-oauth-credentials'], 'delete')) {
             delete_option('options_mod_form_client_id');
@@ -132,14 +131,24 @@ class Options
         if (get_post_type() == 'acf-field-group') {
             return $field;
         }
-
+        // Default post type
         $field['choices']['form-submissions'] = __('Form submissions', 'modularity-form-builder');
 
-        if (current_user_can('administrator')) {
-            $postTypes = get_post_types(array('_builtin' => false));
-            foreach ($postTypes as $postType) {
-                $postTypeObj = get_post_type_object($postType);
-                $field['choices'][$postTypeObj->name] = $postTypeObj->labels->singular_name;
+        // Get custom post types
+        $customPostTypes = apply_filters('ModularityFormBuilder/options/post_types', get_field('avabile_dynamic_post_types', 'option'));
+        if (!is_array($customPostTypes) || empty($customPostTypes)) {
+            return $field;
+        }
+        $customPostTypes = array_column($customPostTypes, 'post_type_name');
+        // Get all post types objects
+        $postTypes = get_post_types(array('_builtin' => false));
+        $postTypes = array_map(function ($postType) {
+            $postTypeObj = get_post_type_object($postType);
+            return $postTypeObj;
+        }, $postTypes);
+        foreach ($postTypes as $postType) {
+            if (in_array($postType->label, $customPostTypes)) {
+                $field['choices'][$postType->name] = $postType->label;
             }
         }
 
