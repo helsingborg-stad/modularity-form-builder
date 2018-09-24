@@ -2245,7 +2245,8 @@
                 [
                     {
                         "field": "field_5ba88d9fa73ef",
-                        "operator": "!=empty"
+                        "operator": "!=",
+                        "value": "false"
                     }
                 ]
             ],
@@ -2544,10 +2545,12 @@
                 "class": "hidden",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "false": "false"
+            },
             "allow_null": 0,
             "other_choice": 0,
-            "default_value": "",
+            "default_value": "false",
             "layout": "vertical",
             "return_format": "value",
             "save_other_choice": 0

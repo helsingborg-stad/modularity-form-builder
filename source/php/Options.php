@@ -163,7 +163,7 @@ class Options
     public function isAdmin($field)
     {
         if (current_user_can('administrator') && get_post_type() != 'acf-field-group') {
-            $field['choices']['is_admin'] = 'true';
+            $field['choices'] = array('true' => 'true');
         }
 
         return $field;

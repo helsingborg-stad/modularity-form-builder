@@ -2275,7 +2275,8 @@
                 0 => array(
                     0 => array(
                         'field' => 'field_5ba88d9fa73ef',
-                        'operator' => '!=empty',
+                        'operator' => '!=',
+                        'value' => 'false',
                     ),
                 ),
             ),
@@ -2576,10 +2577,11 @@
                 'id' => '',
             ),
             'choices' => array(
+                'false' => __('false', 'modularity-form-builder'),
             ),
             'allow_null' => 0,
             'other_choice' => 0,
-            'default_value' => '',
+            'default_value' => 'false',
             'layout' => 'vertical',
             'return_format' => 'value',
             'save_other_choice' => 0,
