@@ -48,11 +48,12 @@ class App
         global $wpdb;
         $postTypes = $wpdb->get_col(
             "
-            SELECT pm.meta_value FROM $wpdb->posts as p
-            LEFT JOIN $wpdb->postmeta pm ON p.ID = pm.post_id
+            SELECT pm1.meta_value FROM $wpdb->posts as p
+            LEFT JOIN $wpdb->postmeta pm1 ON p.ID = pm1.post_id
+            LEFT JOIN $wpdb->postmeta pm2 ON p.ID = pm2.post_id
             WHERE p.post_status = 'publish'
-            AND pm.meta_key = 'submission_post_type'
-            GROUP BY pm.meta_value
+            AND pm1.meta_key = 'submission_post_type'
+            AND pm2.meta_key = 'custom_submission_post_type' && pm2.meta_value = 1
             "
         );
 
