@@ -135,7 +135,7 @@ class Options
         $field['choices']['form-submissions'] = __('Form submissions', 'modularity-form-builder');
 
         // Get custom post types
-        $customPostTypes = apply_filters('ModularityFormBuilder/options/post_types', get_field('avabile_dynamic_post_types', 'option'));
+        $customPostTypes = get_field('avabile_dynamic_post_types', 'option');
         if (!is_array($customPostTypes) || empty($customPostTypes)) {
             return $field;
         }
@@ -152,6 +152,7 @@ class Options
             }
         }
 
+        $field['choices'] = apply_filters('ModularityFormBuilder/options/post_types', $field['choices']);
         return $field;
     }
 
