@@ -7,12 +7,11 @@ class Submission
 
     public function __construct()
     {
-
         add_action('init', function () {
             if (isset($_POST['modularity-form']) && wp_verify_nonce($_POST['modularity-form'], 'submit')) {
                 $this->submit();
             }
-        }, 11);
+        }, 13);
     }
 
 
