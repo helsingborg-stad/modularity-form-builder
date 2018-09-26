@@ -99,8 +99,7 @@ class Submission
             if (!get_option('options_mod_form_crypt')) {
                 update_post_meta($submission, 'form-data', $_POST);
             } else {
-                update_post_meta($submission, 'form-data',
-                    \ModularityFormBuilder\App::encryptDecryptData('encrypt', serialize($_POST)));
+                update_post_meta($submission, 'form-data', \ModularityFormBuilder\App::encryptDecryptData('encrypt', $_POST));
             }
             update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
             update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
@@ -314,8 +313,7 @@ class Submission
         $fields = $fields['form_fields'];
 
         if (get_option('options_mod_form_crypt')) {
-            $data = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
-                get_post_meta($submissionId, 'form-data', true)));
+            $data = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta($submissionId, 'form-data', true)));
         } else {
             $data = get_post_meta($submissionId, 'form-data', true);
         }

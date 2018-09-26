@@ -201,11 +201,8 @@ class App
                 if (!get_option('options_mod_form_crypt')) {
                     update_post_meta((int)$post['ID'], 'form-data', $metaVal);
                 } else {
-                    update_post_meta((int)$post['ID'], 'form-data',
-                        self::encryptDecryptData('encrypt', serialize($metaVal)));
-
+                    update_post_meta((int)$post['ID'], 'form-data', self::encryptDecryptData('encrypt', $metaVal));
                 }
-
             }
         }
     }
@@ -269,9 +266,9 @@ class App
             }
         }
         if (!get_option('options_mod_form_crypt')) {
-            update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', serialize($formData)));
-        } else {
             update_post_meta($postId, 'form-data', $formData);
+        } else {
+            update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $formData));
         }
 
         echo 'success';
@@ -311,7 +308,7 @@ class App
             if (!get_option('options_mod_form_crypt')) {
                 update_post_meta($postId, 'form-data', $formData);
             } else {
-                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', serialize($formData)));
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $formData));
             }
 
 
@@ -337,9 +334,8 @@ class App
             if (!get_option('options_mod_form_crypt')) {
                 update_post_meta($postId, 'form-data', $data);
             } else {
-                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', serialize($data)));
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $data));
             }
-
         }
 
         // Update post title and content
@@ -362,28 +358,28 @@ class App
 
     /**
      * Encrypt & decrypt data
-     * @param $type string encrypt or decrypt
-     * @param $str  string data to encrypt or decrypt
+     * @param $meth string encrypt or decrypt
+     * @param $data  mixed data to encrypt or decrypt
      * @return string
      */
-    static function encryptDecryptData($meth, $str)
+    static function encryptDecryptData($meth, $data)
     {
         if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
             switch ($meth) {
                 case 'encrypt':
-                    return base64_encode(openssl_encrypt(json_encode($str), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                    $data = is_array($data) ? serialize($data) : $data;
+                    return base64_encode(openssl_encrypt(json_encode($data), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
                     break;
                 case 'decrypt':
-                    return json_decode(openssl_decrypt(base64_decode($str), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                    return json_decode(openssl_decrypt(base64_decode($data), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
                     break;
                 default;
-                    return $str;
+                    return $data;
             }
-
         } else {
-            return $str;
+            return $data;
         }
     }
 

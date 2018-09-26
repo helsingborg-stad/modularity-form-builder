@@ -240,14 +240,7 @@ class PostType
     {
         $data = array();
         $getData = get_post_meta($post->ID, 'form-data', true);
-
-        if (!get_option('options_mod_form_crypt')) {
-            $indata = (is_array($getData)) ? $getData : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
-                $getData));
-        } else {
-            $indata = (!is_array($getData)) ? unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
-                $getData)) : $getData;
-        }
+        $indata = (is_array($getData)) ? $getData : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', $getData));
 
         // Get the form id
         if (!empty($indata['modularity-form-id'])) {
@@ -500,10 +493,8 @@ class PostType
         if (!get_option('options_mod_form_crypt')) {
             $currentData = get_post_meta($postId, 'form-data', true);
         } else {
-            $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
-                get_post_meta($postId, 'form-data', true)));
+            $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta($postId, 'form-data', true)));
         }
-
 
         // Merge old values with new ones
         if (is_array($currentData) && !empty($currentData)) {
@@ -514,7 +505,7 @@ class PostType
         if (!get_option('options_mod_form_crypt')) {
             update_post_meta($postId, 'form-data', $updatedData);
         } else {
-            update_post_meta($postId, 'form-data', \ModularityFormBuilder\App::encryptDecryptData('encrypt', serialize($updatedData)));
+            update_post_meta($postId, 'form-data', \ModularityFormBuilder\App::encryptDecryptData('encrypt', $updatedData));
         }
     }
 }
