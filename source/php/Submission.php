@@ -425,6 +425,9 @@ class Submission
         $message = apply_filters('ModularityFormBuilder/notice/message', $message, $email, $formId, $submissionId,
             $showData, $data);
 
+        if(!$message) {
+            $message = $_POST['meddelande'];
+        }
         if (!wp_mail($email, $subject, $message, $headers)) {
             error_log("Could not send notification.");
         }
