@@ -86,7 +86,7 @@ class Submission
                     'modularity-form-builder') . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>" : '';
         }
 
-        if ($dbStorage != 1) {
+
 
             // Save submission
             $submission = wp_insert_post(array(
@@ -156,7 +156,7 @@ class Submission
                     $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
                 }
             }
-        }
+  
 
         // Send user copy
         if ($senderCopy && $fromEmail) {
@@ -183,6 +183,11 @@ class Submission
 
         if (empty($postFormPage) || $postFormPage !== 0 || $postFormPage !== null) {
             $referer .= '&modularityForm=' . urlencode($postFormPage);
+        }
+        
+        $dbStorage = sanitize_title($_POST['modularity-gdpr-data']);
+        if ($dbStorage === 1) {
+            wp_delete_post($submission, true);
         }
 
         wp_redirect($referer);
