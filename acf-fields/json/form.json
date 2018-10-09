@@ -332,7 +332,7 @@
                 "58eb3f2cd914a": {
                     "key": "58eb3f2cd914a",
                     "name": "message",
-                    "label": "Meddelande",
+                    "label": "Message",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1604,7 +1604,7 @@
                 "5a266baf943ab": {
                     "key": "5a266baf943ab",
                     "name": "collapse",
-                    "label": "F\u00e4ll ihop",
+                    "label": "Collapse",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1874,7 +1874,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n        background: #f1f1f157;\r\n        border-left: 4px solid #b2b500;\r\n        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n        padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n    background: #f1f1f157;\r\n    border-left: 4px solid #b2b500;\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n    padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
@@ -2241,15 +2241,7 @@
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5ba88d9fa73ef",
-                        "operator": "!=",
-                        "value": "false"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -2298,15 +2290,20 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "form-submissions": "Form submissions",
+                "event": "Event",
+                "ticket": "Ticket",
+                "listing": "Listing"
+            },
             "default_value": [
                 "form-submissions"
             ],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
-            "return_format": "value",
             "ajax": 0,
+            "return_format": "value",
             "placeholder": ""
         },
         {
@@ -2349,7 +2346,7 @@
         },
         {
             "key": "field_5b51a469880c0",
-            "label": "GDPR & Sekretess",
+            "label": "GDPR & Confidentiality",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -2507,7 +2504,7 @@
             "name": "granted_users",
             "type": "user",
             "instructions": "Add users who have access to the form data",
-            "required": 0,
+            "required": 1,
             "conditional_logic": [
                 [
                     {
@@ -2531,29 +2528,6 @@
             "allow_null": 0,
             "multiple": 1,
             "return_format": "array"
-        },
-        {
-            "key": "field_5ba88d9fa73ef",
-            "label": "Is admin",
-            "name": "form_builder_is_admin",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "hidden",
-                "id": ""
-            },
-            "choices": {
-                "false": "false"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "false",
-            "layout": "vertical",
-            "return_format": "value",
-            "save_other_choice": 0
         }
     ],
     "location": [

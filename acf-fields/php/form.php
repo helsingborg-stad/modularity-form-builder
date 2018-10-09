@@ -335,7 +335,7 @@
                 '58eb3f2cd914a' => array(
                     'key' => '58eb3f2cd914a',
                     'name' => 'message',
-                    'label' => __('Meddelande', 'modularity-form-builder'),
+                    'label' => __('Message', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -1623,7 +1623,7 @@
                 '5a266baf943ab' => array(
                     'key' => '5a266baf943ab',
                     'name' => 'collapse',
-                    'label' => __('Fäll ihop', 'modularity-form-builder'),
+                    'label' => __('Collapse', 'modularity-form-builder'),
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
@@ -1761,7 +1761,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => 'Send',
+            'default_value' => __('Send', 'modularity-form-builder'),
             'maxlength' => '',
             'placeholder' => '',
             'prepend' => '',
@@ -1897,10 +1897,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                background: #f1f1f157;
-                border-left: 4px solid #b2b500;
-                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+        background: #f1f1f157;
+        border-left: 4px solid #b2b500;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+        padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                 ),
@@ -2271,15 +2271,7 @@
             'type' => 'tab',
             'instructions' => '',
             'required' => 0,
-            'conditional_logic' => array(
-                0 => array(
-                    0 => array(
-                        'field' => 'field_5ba88d9fa73ef',
-                        'operator' => '!=',
-                        'value' => 'false',
-                    ),
-                ),
-            ),
+            'conditional_logic' => 0,
             'wrapper' => array(
                 'width' => '',
                 'class' => '',
@@ -2329,15 +2321,19 @@
                 'id' => '',
             ),
             'choices' => array(
+                'form-submissions' => __('Form submissions', 'modularity-form-builder'),
+                'event' => __('Event', 'modularity-form-builder'),
+                'ticket' => __('Ticket', 'modularity-form-builder'),
+                'listing' => __('Listing', 'modularity-form-builder'),
             ),
             'default_value' => array(
-                0 => 'form-submissions',
+                0 => __('form-submissions', 'modularity-form-builder'),
             ),
             'allow_null' => 0,
             'multiple' => 0,
             'ui' => 0,
-            'return_format' => 'value',
             'ajax' => 0,
+            'return_format' => 'value',
             'placeholder' => '',
         ),
         24 => array(
@@ -2380,7 +2376,7 @@
         ),
         26 => array(
             'key' => 'field_5b51a469880c0',
-            'label' => __('GDPR & Sekretess', 'modularity-form-builder'),
+            'label' => __('GDPR & Confidentiality', 'modularity-form-builder'),
             'name' => '',
             'type' => 'tab',
             'instructions' => '',
@@ -2480,7 +2476,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => 'When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.',
+            'default_value' => __('When you submit the form, we will process your personal information to perform the task that the form concerns. The data will not be used for any other purpose.', 'modularity-form-builder'),
             'placeholder' => '',
             'maxlength' => '',
             'rows' => '',
@@ -2538,7 +2534,7 @@
             'name' => 'granted_users',
             'type' => 'user',
             'instructions' => __('Add users who have access to the form data', 'modularity-form-builder'),
-            'required' => 0,
+            'required' => 1,
             'conditional_logic' => array(
                 0 => array(
                     0 => array(
@@ -2562,29 +2558,6 @@
             'allow_null' => 0,
             'multiple' => 1,
             'return_format' => 'array',
-        ),
-        34 => array(
-            'key' => 'field_5ba88d9fa73ef',
-            'label' => __('Is admin', 'modularity-form-builder'),
-            'name' => 'form_builder_is_admin',
-            'type' => 'radio',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => 'hidden',
-                'id' => '',
-            ),
-            'choices' => array(
-                'false' => __('false', 'modularity-form-builder'),
-            ),
-            'allow_null' => 0,
-            'other_choice' => 0,
-            'default_value' => 'false',
-            'layout' => 'vertical',
-            'return_format' => 'value',
-            'save_other_choice' => 0,
         ),
     ),
     'location' => array(

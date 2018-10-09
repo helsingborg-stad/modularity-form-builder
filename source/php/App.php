@@ -23,6 +23,7 @@ class App
         add_action('init', array($this, 'registerPostTypes'), 11);
         add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
         add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
+        add_action('acf/update_value/name=granted_users', array($this, 'updateGrantedUser'), 10, 3);
         add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
         add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
         add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
@@ -59,7 +60,7 @@ class App
 
         // Re-register custom form post types
         if (!empty($postTypes)) {
-            foreach($postTypes as $postType) {
+            foreach ($postTypes as $postType) {
                 if (!$postTypeObj = get_post_type_object($postType)) {
                     continue;
                 }
@@ -159,7 +160,7 @@ class App
 
     /**
      * Gets all posts connected to the form, and replaces the form data Keys
-     * @param int   $moduleId    The forms Post ID
+     * @param int $moduleId The forms Post ID
      * @param array $updatedKeys Array containing old and new key values
      * @return void
      */
@@ -209,7 +210,7 @@ class App
 
     /**
      * Replaces keys in an arrays
-     * @param array  $array  Defualt array
+     * @param array $array Defualt array
      * @param string $oldKey Key to replace
      * @param string $newKey Replacement key
      * @return array               Modified array
@@ -368,11 +369,13 @@ class App
             switch ($meth) {
                 case 'encrypt':
                     $data = is_array($data) ? serialize($data) : $data;
-                    return base64_encode(openssl_encrypt(json_encode($data), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                    return base64_encode(openssl_encrypt(json_encode($data), ENCRYPT_METHOD,
+                        hash('sha256', ENCRYPT_SECRET_KEY), 0,
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
                     break;
                 case 'decrypt':
-                    return json_decode(openssl_decrypt(base64_decode($data), ENCRYPT_METHOD, hash('sha256', ENCRYPT_SECRET_KEY), 0,
+                    return json_decode(openssl_decrypt(base64_decode($data), ENCRYPT_METHOD,
+                        hash('sha256', ENCRYPT_SECRET_KEY), 0,
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
                     break;
                 default;
@@ -382,6 +385,18 @@ class App
             return $data;
         }
     }
+
+    /**
+     * Update granted user field with author id if author forget to add him/her self as granted user
+     */
+    public function updateGrantedUser($value, $post_id, $field)
+    {
+        if (is_array($value) && !in_array(get_current_user_id(), $value)) {
+            $value[] = get_current_user_id();
+        }
+        return $value;
+    }
+
 
     /**
      * Check if user have permission to edit or view form
@@ -405,23 +420,34 @@ class App
      */
     public function checkPermission()
     {
-        if (isset($_GET['post']) && !empty($_GET['post'])) {
+
+        if (isset($_GET['post'])) {
             $userRestriction = get_field('user_restriction', $_GET['post']);
+
             if ($userRestriction) {
                 if (current_user_can('administrator')) {
                     return true;
                 }
-
-                if (get_current_user_id() != get_post_field('post_author', $_GET['post'])) {
-                    wp_die(
-                        '<h1>' . __('Hello, you are not Superman, with full access?') . '</h1>' .
-                        '<p>' . __('Missing permissions') . '</p>',
-                        403
-                    );
+                if (get_current_user_id() !== get_post_field('post_author', $_GET['post'])) {
+                    $grantedUsers = get_field('granted_users', $_GET['post']);
+                    $granted = false;
+                    if (isset($grantedUsers) && !empty($grantedUsers)) {
+                        foreach ($grantedUsers as $user) {
+                            if ($user['ID'] === get_current_user_id()) {
+                                $granted = true;
+                            }
+                        }
+                    }
+                    if ($granted === false) {
+                        wp_die(
+                            '<h1>' . __('Hello, you do not have permission to edit this form') . '</h1>' .
+                            '<p>' . __('Please ask the creator/author of the form to grant you access.') . '</p>',
+                            403
+                        );
+                    }
                 }
             }
         }
-
         return false;
     }
 
