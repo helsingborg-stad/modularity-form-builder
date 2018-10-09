@@ -158,7 +158,7 @@ class Submission
             $referer .= '&modularityForm=' . urlencode($postFormPage);
         }
 
-        if ($dbStorage === 1) {
+        if ($dbStorage === "1") {
             wp_delete_post($submission, true);
         }
 
