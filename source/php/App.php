@@ -160,7 +160,7 @@ class App
 
     /**
      * Gets all posts connected to the form, and replaces the form data Keys
-     * @param int $moduleId The forms Post ID
+     * @param int   $moduleId    The forms Post ID
      * @param array $updatedKeys Array containing old and new key values
      * @return void
      */
@@ -182,6 +182,8 @@ class App
             foreach ($posts as $key => $post) {
                 // Get current form data
                 $metaVal = get_post_meta((int)$post['ID'], 'form-data', true);
+                $metaVal = $this->getDataAsArray($metaVal);
+
                 if (is_array($metaVal)) {
 
                     // Loop through address array
@@ -209,8 +211,27 @@ class App
     }
 
     /**
+     * Decrypt recursively until data is an array or limit is reached
+     * @param array|string $data  Data to be returned as array
+     * @param int          $limit Limits the recursion
+     * @return mixed
+     */
+    public function getDataAsArray($data, $limit = 0)
+    {
+        if (is_array($data) || $limit >= 10) {
+            return $data;
+        } else {
+            $data = maybe_unserialize(self::encryptDecryptData('decrypt', $data));
+            $limit++;
+            $data = $this->getDataAsArray($data, $limit);
+
+            return $data;
+        }
+    }
+
+    /**
      * Replaces keys in an arrays
-     * @param array $array Defualt array
+     * @param array  $array  Defualt array
      * @param string $oldKey Key to replace
      * @param string $newKey Replacement key
      * @return array               Modified array
@@ -359,7 +380,7 @@ class App
 
     /**
      * Encrypt & decrypt data
-     * @param $meth string encrypt or decrypt
+     * @param $meth  string encrypt or decrypt
      * @param $data  mixed data to encrypt or decrypt
      * @return string
      */
