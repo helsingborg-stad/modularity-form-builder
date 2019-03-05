@@ -174,12 +174,19 @@ class Submission
      */
     public static function uploadFiles($fileslist, $formId)
     {
+
+        //Create & get uploads folder 
         $uploadsFolder = wp_upload_dir();
         $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder';
         self::maybeCreateFolder($uploadsFolder);
+
+        //Get fields for file
         $fields = self::getFileFields($formId);
+
+        //Declation of allowed filetypes. 
         $allowedImageTypes = array('.jpeg', '.jpg', '.png', '.gif', '.svg');
         $allowedVideoTypes = array('.mov', '.mpeg4', '.mp4', '.avi', '.wmv', '.mpegps', '.flv', '.3gpp', '.webm');
+        
         // Data to be returned
         $uploaded = array();
         foreach ($fileslist as $key => $files) {
@@ -187,36 +194,44 @@ class Submission
                 if (empty($files['name'][$i])) {
                     continue;
                 }
+
+                //Get file details 
                 $fileName = pathinfo($files['name'][$i], PATHINFO_FILENAME);
                 $fileext = strtolower(pathinfo($files['name'][$i], PATHINFO_EXTENSION));
                 $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;
+                
+                //Validate that image is in correct format
                 if (in_array('image/*', $fields[$key]['filetypes'])) {
-                    $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'],
-                        $allowedImageTypes));
+                    $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'], $allowedImageTypes));
                 }
+
+                //Validate that video is in correct format 
                 if (in_array('video/*', $fields[$key]['filetypes'])) {
-                    $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'],
-                        $allowedVideoTypes));
+                    $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'], $allowedVideoTypes));
                 }
+
+                //Not a valid filetype at all
                 if (!in_array('.' . $fileext, $fields[$key]['filetypes'])) {
                     error_log('Filetype not allowed');
                     $uploaded['error'] = true;
                     continue;
                 }
+
                 // Upload the file to server
                 if (move_uploaded_file($files['tmp_name'][$i], $targetFile)) {
+                    
                     // Upload video to YouTube
-                    if (!empty($fields[$key]['upload_videos_external']) && in_array('.' . $fileext,
-                            $allowedVideoTypes)) {
-                        $uploadVideo = \ModularityFormBuilder\Helper\YoutubeUploader::uploadVideo($targetFile,
-                            ucwords($fileName), '', '22');
-                        $targetFile = ($uploadVideo) ? $uploadVideo : $targetFile;
+                    if (!empty($fields[$key]['upload_videos_external']) && in_array('.' . $fileext, $allowedVideoTypes)) {
+                        $uploadVideo = \ModularityFormBuilder\Helper\YoutubeUploader::uploadVideo($targetFile, ucwords($fileName), '', '22');
+                        $targetFile  = ($uploadVideo) ? $uploadVideo : $targetFile;
                     }
+
                 } else {
                     error_log('File not uploaded');
                     $uploaded['error'] = true;
                     continue;
                 }
+                
                 if (!isset($uploaded[$key])) {
                     $uploaded[$key] = array();
                 }
