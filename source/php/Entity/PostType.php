@@ -197,6 +197,22 @@ class PostType
     public function forceEcryptedFileDownload() {
         if(isset($_GET['modFormDownloadEncFile'])) {
 
+            //Verify that there is a module id included
+            if(!isset($_GET['modFormModuleId']) || (isset($_GET['modFormModuleId']) && !is_numeric($_GET['modFormModuleId']))) {
+                wp_die(
+                    __("No reference to a module where defined.", 'modularity-form-builder'),
+                    __("Module reference missing", 'modularity-form-builder')
+                );
+            }
+
+            //Check if granted user
+            if(!$this->isGrantedUser($_GET['modFormModuleId'])) {
+                wp_die(
+                    __("You are not authorized to download this file.", 'modularity-form-builder'),
+                    __("Unauthorized request", 'modularity-form-builder')
+                );
+            }
+
             //Get uploads folder
             $uploadsFolder = wp_upload_dir();
             $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder/';
@@ -258,7 +274,7 @@ class PostType
                 $sep = "?";
             }
 
-            return "//" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $sep . 'modFormDownloadEncFile=' . urlencode(basename($filePath));
+            return "//" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $sep . 'modFormDownloadEncFile=' . urlencode(basename($filePath)) . "&modFormModuleId=" . $moduleId ;
         }
 
         return $filePath; 
