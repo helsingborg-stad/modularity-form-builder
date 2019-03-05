@@ -198,7 +198,6 @@ class Submission
                 //Get file details 
                 $fileName = pathinfo($files['name'][$i], PATHINFO_FILENAME);
                 $fileext = strtolower(pathinfo($files['name'][$i], PATHINFO_EXTENSION));
-                $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;
                 
                 //Validate that image is in correct format
                 if (in_array('image/*', $fields[$key]['filetypes'])) {
@@ -215,6 +214,29 @@ class Submission
                     error_log('Filetype not allowed');
                     $uploaded['error'] = true;
                     continue;
+                }
+
+                //Encrypt file if encryption is enabled
+                if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external'])) {
+
+                    if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
+
+                        $encrypted = file_put_contents(
+                            $files['tmp_name'][$i],
+                            \ModularityFormBuilder\App::encryptDecryptData(
+                                'encrypt', 
+                                file_get_contents($files['tmp_name'][$i])
+                            )
+                        ); 
+
+                        if ($encrypted !== false) {
+                            $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
+                        }
+
+                    }
+
+                } else {
+                    $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;
                 }
 
                 // Upload the file to server
@@ -236,8 +258,11 @@ class Submission
                     $uploaded[$key] = array();
                 }
                 $uploaded[$key][] = $targetFile;
+
+                error_log($targetFile); 
             }
         }
+
         return $uploaded;
     }
 
