@@ -1,6 +1,6 @@
 <?php
 
-    foreach ($data['form_fields'] as $item) : ?>
+    foreach ($form_fields as $item) : ?>
         <?php
         if (empty($item['value']) || (isset($data['excludedFront']) && in_array($item['acf_fc_layout'],
                     $data['excludedFront']))) {
@@ -21,12 +21,21 @@
                     if ($i > 1) {
                         echo '<br>';
                     }
+
+                    //Get path of file
                     $filePath = file_exists($file) ? $uploadFolder . basename($file) : $file;
+                    $filePath = $parentClass->getDownloadLink($filePath, $module_id); 
+
+                    //Get filename
                     $fileName = file_exists($file) ? basename($file) : $file;
-                    if (is_admin()) {
-                        echo '<span class="dashicons dashicons-media-default"></span> <a target="_blank" class="link" href="' . $filePath . '">' . $fileName . '</a>';
-                    } else {
+
+                    //Print link
+                    if($filePath) {
                         echo '<a href="' . $filePath . '" class="link-item link" target="_blank">' . $fileName . '</a>';
+                    } elseif($fileName) {
+                        echo '<span class="link-item link">' . $fileName . ' ('. $translation['removed_file'].')</span>';
+                    } else {
+                        echo '<span class="link-item link">'. $translation['unknown_file'].'</span>';
                     }
                 }
             } elseif (is_array($item['value'])) {

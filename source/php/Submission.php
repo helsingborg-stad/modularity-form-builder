@@ -31,9 +31,12 @@ class Submission
                 }
             }
         }
+
         unset($_POST['modularity-form']);
         $referer = esc_url(remove_query_arg('form', $_POST['_wp_http_referer']));
         unset($_POST['_wp_http_referer']);
+
+        //Check if should create a sender copy
         $senderCopy = false;
         if (isset($_POST['sender-copy'])) {
             if ($_POST['sender-copy'] === 'on') {
@@ -41,10 +44,12 @@ class Submission
             }
             unset($_POST['sender-copy']);
         }
+
         // Upload files
         $files = array();
         if (!empty($_FILES)) {
             $files = self::uploadFiles($_FILES, $_POST['modularity-form-id']);
+            
             // Return to form if upload failed
             if (isset($files['error'])) {
                 if (strpos($referer, '?') > -1) {
@@ -57,15 +62,18 @@ class Submission
             }
         }
         $_POST = array_merge($_POST, $files);
+        
         // Set post title, content, form page and referer
-        $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
-        $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
+        $postTitle      = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
+        $postContent    = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
+        
         // Referer & page url
         $postReferer = esc_url($_POST['modularity-form-history']);
         $postFormPage = esc_url($_POST['modularity-form-url']);
         $checkReferer = url_to_postid($postReferer);
         $checkFormPage = url_to_postid($postFormPage);
         $dbStorage = sanitize_title($_POST['modularity-gdpr-data']);
+
         if (empty($postReferer) || $checkReferer !== 0 && $checkFormPage !== 0) {
             $formUrl = "\r\n " . __('Form',
                     'modularity-form-builder') . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
@@ -80,17 +88,23 @@ class Submission
             'post_type' => $_POST['modularity-form-post-type'],
             'post_status' => 'publish'
         ));
+
+        //Encrypt form meta
         if (!get_option('options_mod_form_crypt')) {
             update_post_meta($submission, 'form-data', $_POST);
         } else {
-            update_post_meta($submission, 'form-data',
-                \ModularityFormBuilder\App::encryptDecryptData('encrypt', $_POST));
+            update_post_meta($submission, 'form-data', \ModularityFormBuilder\App::encryptDecryptData('encrypt', $_POST));
         }
+
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
+
+        //The form url
         if (isset($formUrl)) {
             update_post_meta($submission, 'modularity-form-url', $formUrl);
         }
+
+        //Reference url
         if (isset($refHistory)) {
             update_post_meta($submission, 'modularity-form-history', $refHistory);
         }
@@ -223,7 +237,7 @@ class Submission
 
                         $encrypted = file_put_contents(
                             $files['tmp_name'][$i],
-                            \ModularityFormBuilder\App::encryptDecryptData(
+                            \ModularityFormBuilder\App::encryptDecryptFile(
                                 'encrypt', 
                                 file_get_contents($files['tmp_name'][$i])
                             )

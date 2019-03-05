@@ -380,14 +380,14 @@ class App
 
     /**
      * Encrypt & decrypt data
-     * @param $meth  string encrypt or decrypt
-     * @param $data  mixed data to encrypt or decrypt
+     * @param $method  string encrypt or decrypt
+     * @param $data    mixed data to encrypt or decrypt
      * @return string
      */
-    static function encryptDecryptData($meth, $data)
+    static function encryptDecryptData($method, $data)
     {
         if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
-            switch ($meth) {
+            switch ($method) {
                 case 'encrypt':
                     $data = is_array($data) ? serialize($data) : $data;
                     return base64_encode(openssl_encrypt(json_encode($data), ENCRYPT_METHOD,
@@ -398,6 +398,42 @@ class App
                     return json_decode(openssl_decrypt(base64_decode($data), ENCRYPT_METHOD,
                         hash('sha256', ENCRYPT_SECRET_KEY), 0,
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
+                    break;
+                default;
+                    return $data;
+            }
+        } else {
+            return $data;
+        }
+    }
+
+    /**
+     * Encrypt & decrypt data
+     * @param $method  string encrypt or decrypt
+     * @param $data    mixed data to encrypt or decrypt
+     * @return string
+     */
+    static function encryptDecryptFile($method, $data)
+    {
+        if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
+            switch ($method) {
+                case 'encrypt':
+                    return openssl_encrypt(
+                        $data,
+                        ENCRYPT_METHOD,
+                        hash('sha256', ENCRYPT_SECRET_KEY),
+                        0,
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                    );
+                    break;
+                case 'decrypt':
+                    return openssl_decrypt(
+                        $data,
+                        ENCRYPT_METHOD,
+                        hash('sha256', ENCRYPT_SECRET_KEY),
+                        0,
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                    );
                     break;
                 default;
                     return $data;

@@ -29,6 +29,10 @@ class PostType
         add_filter('the_content', array($this, 'appendFormdata'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
+
+        //Force download of encrypted files
+        add_action('admin_init', array($this, 'forceEcryptedFileDownload')); 
+    
     }
 
     public function addEditButton($items, $post)
@@ -108,6 +112,8 @@ class PostType
             'supports' => array('title'),
             'show_in_rest' => false
         );
+
+        //Append default configuration
         $args = array_merge($args, $this->args);
 
         register_post_type($this->postTypeSlug, $args);
@@ -135,45 +141,128 @@ class PostType
             return;
         }
 
-        add_meta_box('formdata', 'Submission data', array($this, 'formdataDisplay'), $postType, 'normal', 'default');
+        add_meta_box(
+            'formdata', 
+            __('Submission data', 'modularity-form-builder'), 
+            array($this, 'formdataDisplay'), 
+            $postType, 
+            'normal', 
+            'default'
+        );
     }
 
 
     /**
      * Checks user access to formdata
-     * @param  int $modulID
+     * @param  int $moduleId
      * @return true if user is granted access otherwise void
      */
-    public function grantedUsers($modulID)
+    public function isGrantedUser($moduleId)
     {
-        if (isset($modulID) || empty($modulID)) {
-            $userRestriction = get_field('user_restriction', $modulID);
+        if (isset($moduleId) || empty($moduleId)) {
+
+            $userRestriction = get_field('user_restriction', $moduleId);
+
             if ($userRestriction) {
+                
+                //Always allow administrators
                 if (current_user_can('administrator')) {
                     return true;
                 }
-                if (get_current_user_id() !== get_post_field('post_author', $modulID)) {
-                    $grantedUsers = get_field('granted_users', $modulID);
-                    $granted = false;
-                    if (isset($grantedUsers) && !empty($grantedUsers)) {
-                        foreach ($grantedUsers as $user) {
-                            if ($user['ID'] === get_current_user_id()) {
-                                $granted = true;
-                            }
+
+                //Always allow author of the post 
+                if (get_current_user_id() == get_post_field('post_author', $moduleId)) {
+                    return true; 
+                }
+                    
+                //Check if granted user
+                $grantedUsers = get_field('granted_users', $moduleId);
+
+                if (!empty($grantedUsers) && is_array($grantedUsers)) {
+                    foreach ($grantedUsers as $user) {
+                        if ($user['ID'] === get_current_user_id()) {
+                            return true; // Access granted
                         }
                     }
-                    if ($granted === false) {
-                        wp_die(
-                            '<h1>' . __('Hello, you are not Superman, with full access?') . '</h1>' .
-                            '<p>' . __('Missing permissions') . '</p>',
-                            403
-                        );
-                    }
+                }
+
+                return false;
+            }
+
+        }
+
+        return true; // No user restriction 
+    }
+
+    public function forceEcryptedFileDownload() {
+        if(isset($_GET['modFormDownloadEncFile'])) {
+
+            //Get uploads folder
+            $uploadsFolder = wp_upload_dir();
+            $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder/';
+
+            //Get local path to file 
+            $filePath = $uploadsFolder . urldecode($_GET['modFormDownloadEncFile']); 
+
+            //Decrypt and return
+            if(file_exists($filePath)) {
+                if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
+                    $fileContents = \ModularityFormBuilder\App::encryptDecryptFile(
+                        'decrypt', 
+                        file_get_contents($filePath)
+                    );
                 }
             }
+
+            //Return file force download
+            if(isset($fileContents) && !empty($fileContents)) {
+                header("Pragma: public");
+                header("Expires: 0");
+                header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+                header("Cache-Control: private", false);
+                header("Content-Type: application/octet-stream");
+                header("Content-Disposition: attachment; filename=\"" . $_GET['modFormDownloadEncFile'] . "\";" );
+                header("Content-Transfer-Encoding: binary");
+
+                echo $fileContents;
+
+                exit;
+            }
+
+            //No file found
+            wp_die(
+                __("The file you requested could not be found. The file might have been deleted or corrupted.", 'modularity-form-builder'),
+                __("File not found", 'modularity-form-builder')
+            );
+            
         }
     }
 
+    /**
+     * Get the download link to the file
+     * @return string
+     */
+    public function getDownloadLink($filePath, $moduleId = null) {
+
+        //Encrypted file requires granted users 
+        if(is_null($moduleId) || !$this->isGrantedUser($moduleId)) {
+            return false;
+        }
+        
+        //Check if encrypted
+        if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
+
+            if(strpos($_SERVER['REQUEST_URI'], "?") !== false) {
+                $sep = "&"; 
+            } else {
+                $sep = "?";
+            }
+
+            return "//" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $sep . 'modFormDownloadEncFile=' . urlencode(basename($filePath));
+        }
+
+        return $filePath; 
+    }
 
     /**
      * Displays the form data, as static data or editable
@@ -183,19 +272,58 @@ class PostType
     {
         global $post;
 
+        //Get form configuration
         $data = self::gatherFormData($post);
+        $data['parentClass'] = $this;
+        
+        //Check if user is granted to view this data
+        if(!$this->isGrantedUser($data['module_id'])) {
+
+            //Error message
+            $this->renderBlade(
+                'unauthorized.blade.php', 
+                array(
+                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
+                ), 
+                array(
+                    'title' => __("Access denied", 'modularity-form-builder'),
+                    'message' => __("You don't have the sufficient permissions to view this post.", 'modularity-form-builder'),
+                )
+            );
+            
+            return;
+        }
+
+        //Translations 
+        $data['translation'] = array(
+            'removed_file' => __("File removed", 'modularity-form-builder'),
+            'unknown_file' => __("Unknown file", 'modularity-form-builder'),
+        ); 
+        
+        //Get form submission data 
         $fields = get_fields($data['module_id']);
-        $this->grantedUsers($data['module_id']);
-        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front', array(), $post->post_type,
-            $data['module_id']);
+
+        //Check if this should be exluded from frontend
+        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front',
+            array(), 
+            $post->post_type,
+            $data['module_id']
+        );
 
         if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
-            $template = new \Municipio\template;
-            $view = \Municipio\Helper\Template::locateTemplate('form-edit.blade.php',
-                array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'));
-            $view = $template->cleanViewPath($view);
-            $template->render($view, $data);
+
+            //Editable
+            $this->renderBlade(
+                'form-edit.blade.php', 
+                array(
+                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'
+                ), 
+                $data
+            );
+
         } elseif (self::editableFrontend($post)) {
+
+            //Editor settings 
             $data['editor_settings'] = array(
                 'wpautop' => true,
                 'media_buttons' => false,
@@ -205,12 +333,38 @@ class PostType
                     'plugins' => 'wordpress',
                 ),
             );
-            include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
-            $this->renderBlade('form-edit-front.blade.php', array(FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'),
-                $data);
+
+            //Static
+            $this->renderBlade(
+                'form-data.blade.php', 
+                array(
+                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
+                ), 
+                $data
+            );
+
+            //Editable
+            $this->renderBlade(
+                'form-edit-front.blade.php', 
+                array(
+                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'
+                ),
+                $data
+            );
+
         } else {
-            include FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin/formdata.php';
+
+            //Static
+            $this->renderBlade(
+                'form-data.blade.php', 
+                array(
+                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
+                ), 
+                $data
+            );
+
         }
+
         if (is_admin()) {
 
             $indata = (is_array(get_post_meta($post->ID, 'form-data', true))) ? get_post_meta($post->ID, 'form-data', true) : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
