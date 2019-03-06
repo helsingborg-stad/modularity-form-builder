@@ -31,7 +31,7 @@ class PostType
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
 
         //Force download of encrypted files
-        add_action('admin_init', array($this, 'forceEcryptedFileDownload')); 
+        add_action('init', array($this, 'forceEcryptedFileDownload')); 
     
     }
 
