@@ -11,6 +11,9 @@ class Submission
                 $this->submit();
             }
         }, 13);
+
+        //Force download of encrypted files
+        add_action('init', array($this, 'forceEcryptedPublicFileDownload')); 
     }
 
     /**
@@ -314,6 +317,73 @@ class Submission
     }
 
     /**
+     * Get the download link to the file
+     * @return string
+     */
+    public function getMailDownloadLink($filePath) {
+        
+        //Check if encrypted
+        if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
+            return home_url("/") . '?modFormDownloadEncFilePublic=' . urlencode(basename($filePath)) . '&token=' . md5(urlencode(basename($filePath)) . NONCE_KEY);
+        }
+
+        return $filePath; 
+    }
+
+    public function forceEcryptedPublicFileDownload() {
+
+        if(isset($_GET['modFormDownloadEncFilePublic']) && isset($_GET['token'])) {
+
+            //Check if hash is correct
+            if($_GET['token'] !== md5($_GET['modFormDownloadEncFilePublic'] . NONCE_KEY)) {
+                wp_die(
+                    __("The download token provided was not correct.", 'modularity-form-builder'),
+                    __("Unauthorized request", 'modularity-form-builder')
+                );
+            }
+
+            //Get uploads folder
+            $uploadsFolder = wp_upload_dir();
+            $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder/';
+
+            //Get local path to file 
+            $filePath = $uploadsFolder . urldecode($_GET['modFormDownloadEncFilePublic']); 
+
+            //Decrypt and return
+            if(file_exists($filePath)) {
+                if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
+                    $fileContents = \ModularityFormBuilder\App::encryptDecryptFile(
+                        'decrypt', 
+                        file_get_contents($filePath)
+                    );
+                }
+            }
+
+            //Return file force download
+            if(isset($fileContents) && !empty($fileContents)) {
+                header("Pragma: public");
+                header("Expires: 0");
+                header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+                header("Cache-Control: private", false);
+                header("Content-Type: application/octet-stream");
+                header("Content-Disposition: attachment; filename=\"" . $_GET['modFormDownloadEncFilePublic'] . "\";" );
+                header("Content-Transfer-Encoding: binary");
+
+                echo $fileContents;
+
+                exit;
+            }
+
+            //No file found
+            wp_die(
+                __("The file you requested could not be found. The file might have been deleted or corrupted.", 'modularity-form-builder'),
+                __("File not found", 'modularity-form-builder')
+            );
+            
+        }
+    }
+
+    /**
      * Get data of a submission
      * @param  int $submissionId
      * @return array
@@ -398,7 +468,7 @@ class Submission
                     foreach ($value as $subvalue) {
                         $lineBreak = ($subvalue == $last) ? '' : '<br>';
                         if (strpos($subvalue, '/modularity-form-builder/') !== false) {
-                            $message .= 'Öppna fil: <a target="_blank" href="' . $uploadFolder . basename($subvalue) . '">' . basename($subvalue) . '</a>' . $lineBreak;
+                            $message .= __('Open file', 'modularity-form-builder') . ': <a target="_blank" href="' . $this->getMailDownloadLink($uploadFolder . basename($subvalue)) . '">' . basename($subvalue) . '</a>' . $lineBreak;
                         } else {
                             $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
                         }
@@ -464,7 +534,7 @@ class Submission
                 foreach ($value as $subvalue) {
                     $lineBreak = ($subvalue == $last) ? '' : '<br>';
                     if (strpos($subvalue, '/modularity-form-builder/') !== false) {
-                        $message .= 'Öppna fil: <a target="_blank" href="' . $uploadFolder . basename($subvalue) . '">' . basename($subvalue) . '</a>' . $lineBreak;
+                        $message .= __('Open file', 'modularity-form-builder') . ': <a target="_blank" href="' . $this->getMailDownloadLink($uploadFolder . basename($subvalue)) . '">' . basename($subvalue) . '</a>' . $lineBreak;
                     } else {
                         $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
                     }
