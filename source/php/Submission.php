@@ -99,20 +99,30 @@ class Submission
             update_post_meta($submission, 'form-data', \ModularityFormBuilder\App::encryptDecryptData('encrypt', $_POST));
         }
 
-        $targetGroup = get_user_meta(get_current_user_id())['target_group'][0];
-        $term = term_exists($targetGroup, 'protocol_target_groups');
+        $userMeta = get_user_meta(get_current_user_id());
+        $targetGroup = $userMeta['target_group'][0];
 
-        if ($term !== 0 && $term !== null) {
-            wp_set_object_terms($submission, (int)$term['term_id'], 'protocol_target_groups');
-        } else {
-            $newTerm = wp_insert_term($targetGroup, 'protocol_target_groups');
-            if (!is_wp_error($newTerm)) {
-                wp_set_object_terms($submission, (int)$newTerm['term_id'], 'protocol_target_groups');
+        if ($targetGroup) {
+            $term = term_exists($targetGroup, 'protocol_target_groups');
+            if ($term !== 0 && $term !== null) {
+                wp_set_object_terms($submission, (int)$term['term_id'], 'protocol_target_groups');
+            } else {
+                $newTerm = wp_insert_term($targetGroup, 'protocol_target_groups');
+                if (!is_wp_error($newTerm)) {
+                    wp_set_object_terms($submission, (int)$newTerm['term_id'], 'protocol_target_groups');
+                }
             }
         }
 
+        $name = $userMeta['name_of_council_or_politician'][0];
+        $subjects = get_post_meta($submission, 'form-data')[0]['valj-amnen-kategorier'];
+
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
+        if (!empty($name) || count($subjects) > 0) {
+            update_post_meta($submission, 'name_of_council_or_politician', $name);
+            update_post_meta($submission, 'subjects', $subjects);
+        }
 
         //The form url
         if (isset($formUrl)) {
