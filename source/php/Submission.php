@@ -99,6 +99,18 @@ class Submission
             update_post_meta($submission, 'form-data', \ModularityFormBuilder\App::encryptDecryptData('encrypt', $_POST));
         }
 
+        $targetGroup = get_user_meta(get_current_user_id())['target_group'][0];
+        $term = term_exists($targetGroup, 'protocol_target_groups');
+
+        if ($term !== 0 && $term !== null) {
+            wp_set_object_terms($submission, (int)$term['term_id'], 'protocol_target_groups');
+        } else {
+            $newTerm = wp_insert_term($targetGroup, 'protocol_target_groups');
+            if (!is_wp_error($newTerm)) {
+                wp_set_object_terms($submission, (int)$newTerm['term_id'], 'protocol_target_groups');
+            }
+        }
+
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
 
