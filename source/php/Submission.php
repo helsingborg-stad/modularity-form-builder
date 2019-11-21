@@ -115,7 +115,7 @@ class Submission
         }
 
         $name = $userMeta['name_of_council_or_politician'][0];
-        $subjects = get_post_meta($submission, 'form-data')[0]['valj-amnen-kategorier'];
+        $subjects = $_POST['valj-amnen-kategorier'];
 
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
@@ -259,14 +259,13 @@ class Submission
                 if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external'])) {
 
                     if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
-
                         $encrypted = file_put_contents(
                             $files['tmp_name'][$i],
                             \ModularityFormBuilder\App::encryptDecryptFile(
                                 'encrypt', 
                                 file_get_contents($files['tmp_name'][$i])
                             )
-                        ); 
+                        );
 
                         if ($encrypted !== false) {
                             $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
