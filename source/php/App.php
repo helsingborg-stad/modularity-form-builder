@@ -64,10 +64,12 @@ class App
                 if (!$postTypeObj = get_post_type_object($postType)) {
                     continue;
                 }
+                $supports = $this->getPostTypeSupports($postType);
                 unregister_post_type($postType);
 
                 $json = json_encode($postTypeObj);
                 $postTypeArr = json_decode($json, true);
+                $postTypeArr['supports'] = is_array($supports) && !empty($supports) ? $supports : [];
 
                 unset($postTypeArr['show_in_rest']);
                 unset($postTypeArr['capabilities']);
@@ -82,6 +84,25 @@ class App
                 );
             }
         }
+    }
+
+    /**
+     * Get list of a post types support features
+     * @param string $postType
+     * @return array
+     */
+    public function getPostTypeSupports($postType)
+    {
+        global $_wp_post_type_features;
+
+        if (isset($_wp_post_type_features[$postType])) {
+            $features = $_wp_post_type_features[$postType];
+            $features = array_keys($features);
+
+            return $features;
+        }
+
+        return array();
     }
 
     /**
