@@ -372,12 +372,23 @@ class App
 
         // Save form data
         if (!empty($_POST['mod-form'])) {
-            $indata = get_post_meta($postId, 'form-data', true);
-            $data = array_merge($indata, $_POST['mod-form']);
+
+            $updatedData = $_POST['mod-form'];
             if (!get_option('options_mod_form_crypt')) {
-                update_post_meta($postId, 'form-data', $data);
+                $currentData = get_post_meta($postId, 'form-data', true);
             } else {
-                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $data));
+                $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta($postId, 'form-data', true)));
+            }
+
+            // Merge old values with new ones
+            if (is_array($currentData) && !empty($currentData)) {
+                $updatedData = array_merge($currentData, $updatedData);
+            }
+
+            if (!get_option('options_mod_form_crypt')) {
+                update_post_meta($postId, 'form-data', $updatedData);
+            } else {
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $updatedData));
             }
         }
 
