@@ -115,11 +115,16 @@ class Submission
         }
 
         $name = $userMeta['name_of_council_or_politician'][0];
+        $targetGroup = $userMeta['target_group'][0];
+        $postFormData = get_post_meta($submission, 'form-data')[0];
+        $subjects = $postFormData['valj-amnen-kategorier'];
 
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
-        if (!empty($name)) {
+        if (!empty($name) && !empty($targetGroup)) {
+            update_post_meta($submission, 'subjects', $subjects);
             update_post_meta($submission, 'name_of_council_or_politician', $name);
+            update_post_meta($submission, 'target_group', $targetGroup);
         }
 
         //The form url
