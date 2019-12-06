@@ -398,12 +398,7 @@ class App
             $post['post_title'] = $_POST['mod-form']['post-title'];
         }
         if (!empty($_POST['mod-form']['post-content'])) {
-            if (!get_option('options_mod_form_crypt')) {
-                $post['post_content'] = $_POST['mod-form']['post-content'];
-            } else {
-                $post['post_content'] = self::encryptDecryptData('encrypt', $_POST['mod-form']['post-content']);
-            }
-
+            $post['post_content'] = $_POST['mod-form']['post-content'];
         }
         wp_update_post($post);
 
