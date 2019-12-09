@@ -100,9 +100,14 @@ class Submission
         }
 
         $userMeta = get_user_meta(get_current_user_id());
-        $targetGroup = $userMeta['target_group'][0];
+        
+        if (!empty($userMeta['name_of_council_or_politician'][0]) && !empty($userMeta['target_group'][0]) && isset(get_post_meta($submission, 'form-data')[0]['valj-amnen-kategorier'])) {
+            
+            $name = $userMeta['name_of_council_or_politician'][0];
+            $targetGroup = $userMeta['target_group'][0];
+            $postFormData = get_post_meta($submission, 'form-data')[0];
+            $subjects = $postFormData['valj-amnen-kategorier'];
 
-        if ($targetGroup) {
             $term = term_exists($targetGroup, 'protocol_target_groups');
             if ($term !== 0 && $term !== null) {
                 wp_set_object_terms($submission, (int)$term['term_id'], 'protocol_target_groups');
@@ -112,20 +117,14 @@ class Submission
                     wp_set_object_terms($submission, (int)$newTerm['term_id'], 'protocol_target_groups');
                 }
             }
-        }
 
-        $name = $userMeta['name_of_council_or_politician'][0];
-        $targetGroup = $userMeta['target_group'][0];
-        $postFormData = get_post_meta($submission, 'form-data')[0];
-        $subjects = $postFormData['valj-amnen-kategorier'];
-
-        update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
-        update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
-        if (!empty($name) && !empty($targetGroup)) {
             update_post_meta($submission, 'subjects', $subjects);
             update_post_meta($submission, 'name_of_council_or_politician', $name);
             update_post_meta($submission, 'target_group', $targetGroup);
         }
+
+        update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
+        update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
 
         //The form url
         if (isset($formUrl)) {
