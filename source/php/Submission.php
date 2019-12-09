@@ -100,9 +100,10 @@ class Submission
         }
 
         $userMeta = get_user_meta(get_current_user_id());
-        
-        if (!empty($userMeta['name_of_council_or_politician'][0]) && !empty($userMeta['target_group'][0]) && isset(get_post_meta($submission, 'form-data')[0]['valj-amnen-kategorier'])) {
-            
+        $postFormData = get_post_meta($submission, 'form-data');
+
+        if (!empty($userMeta['name_of_council_or_politician']) && !empty($userMeta['target_group']) && !empty($postFormData) && !empty($postFormData[0]['valj-amnen-kategorier'])) {
+
             $name = $userMeta['name_of_council_or_politician'][0];
             $targetGroup = $userMeta['target_group'][0];
             $postFormData = get_post_meta($submission, 'form-data')[0];
