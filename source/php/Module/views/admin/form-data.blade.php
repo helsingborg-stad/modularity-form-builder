@@ -2,8 +2,7 @@
 
     foreach ($form_fields as $item) : ?>
         <?php
-        if (empty($item['value']) || (isset($data['excludedFront']) && in_array($item['acf_fc_layout'],
-                    $data['excludedFront']))) {
+        if (empty($item['value']) || (isset($excludedFront) && in_array($item['acf_fc_layout'], $excludedFront))) {
             continue;
         }
         ?>

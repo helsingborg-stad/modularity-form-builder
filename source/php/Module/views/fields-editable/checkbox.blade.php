@@ -5,7 +5,7 @@
     </label></b></p>
 </div>
 <ul style="list-style-type:none">
-    <input type="hidden" name=mod-form[{{ $field['name'] }}][]">
+    <input type="hidden" name="mod-form[{{ $field['name'] }}][]">
     @foreach ($field['values'] as $value)
         <li>
             <label>
