@@ -1,7 +1,4 @@
-FormBuilder = FormBuilder || {};
-FormBuilder.Admin = FormBuilder.Admin || {};
-
-FormBuilder.Admin.EditForm = (function ($) {
+export default (function ($) {
 
     function EditForm() {
         $(function(){

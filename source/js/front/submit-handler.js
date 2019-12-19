@@ -1,8 +1,4 @@
-FormBuilder = FormBuilder || {};
-FormBuilder.Front = FormBuilder.Front || {};
-
-FormBuilder.Front.submit = (function ($) {
-
+export default (function ($) {
     function Submit() {
         $('form').submit(function (event) {
             if (formbuilder.site_key) {
