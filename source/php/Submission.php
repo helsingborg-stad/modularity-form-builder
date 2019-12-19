@@ -99,31 +99,6 @@ class Submission
             update_post_meta($submission, 'form-data', \ModularityFormBuilder\App::encryptDecryptData('encrypt', $_POST));
         }
 
-        $userMeta = get_user_meta(get_current_user_id());
-        $postFormData = get_post_meta($submission, 'form-data');
-
-        if (!empty($userMeta['name_of_council_or_politician']) && !empty($userMeta['target_group']) && !empty($postFormData) && !empty($postFormData[0]['valj-amnen-kategorier'])) {
-
-            $name = $userMeta['name_of_council_or_politician'][0];
-            $targetGroup = $userMeta['target_group'][0];
-            $postFormData = get_post_meta($submission, 'form-data')[0];
-            $subjects = $postFormData['valj-amnen-kategorier'];
-
-            $term = term_exists($targetGroup, 'protocol_target_groups');
-            if ($term !== 0 && $term !== null) {
-                wp_set_object_terms($submission, (int)$term['term_id'], 'protocol_target_groups');
-            } else {
-                $newTerm = wp_insert_term($targetGroup, 'protocol_target_groups');
-                if (!is_wp_error($newTerm)) {
-                    wp_set_object_terms($submission, (int)$newTerm['term_id'], 'protocol_target_groups');
-                }
-            }
-
-            update_post_meta($submission, 'subjects', $subjects);
-            update_post_meta($submission, 'name_of_council_or_politician', $name);
-            update_post_meta($submission, 'target_group', $targetGroup);
-        }
-
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
 
