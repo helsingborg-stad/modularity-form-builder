@@ -53,15 +53,16 @@ class PostType
         global $post;
 
         if (is_object($post) && $post->post_type == $this->postTypeSlug) {
-            wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/css/modularity-form-builder.min.css');
+            wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('css/modularity-form-builder.css'));
 
             if (self::editableFrontend($post)) {
-                wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js',
-                    array('jQuery'), '', true);
-                wp_localize_script('form-builder', 'formbuilder', array(
+                wp_register_script('form-builder-js-admin', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-admin.js'));
+
+                wp_localize_script('form-builder-js-admin', 'formbuilder', array(
                     'delete_confirm' => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
                 ));
-                wp_enqueue_script('form-builder');
+
+                wp_enqueue_script('form-builder-js-admin');
             }
         }
     }

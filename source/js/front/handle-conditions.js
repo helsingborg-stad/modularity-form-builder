@@ -1,15 +1,11 @@
-FormBuilder = FormBuilder || {};
-FormBuilder.Front = FormBuilder.Front || {};
-
-FormBuilder.Front.handleConditions = (function ($) {
-
+export default (function ($) {
     function HandleConditions() {
         this.handleRequired();
         this.handleEvents();
     }
 
     HandleConditions.prototype.handleRequired = function () {
-        $target = $('[class*="mod-form"]');
+        const $target = $('[class*="mod-form"]');
         $('[conditional-target]:hidden', $target).find('[required]').prop('required', false).attr('hidden-required', true);
         $('[conditional-target]:visible', $target).find('[hidden-required]').prop('required', true);
     };

@@ -1,13 +1,9 @@
-FormBuilder = FormBuilder || {};
-FormBuilder.Admin = FormBuilder.Admin || {};
-
-FormBuilder.Admin.Conditional = (function ($) {
+export default (function ($) {
 
     function Conditional() {
         $(document).ready(function () {
         	this.populateSelectFields();
         	this.handleEvents();
-
         }.bind(this));
     }
 

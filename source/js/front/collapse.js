@@ -1,8 +1,4 @@
-FormBuilder = FormBuilder || {};
-FormBuilder.Front = FormBuilder.Front || {};
-
-FormBuilder.Front.collapse = (function ($) {
-
+export default (function ($) {
     function Collapse() {
         this.init();
         this.handleEvents();
