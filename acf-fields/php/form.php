@@ -64,9 +64,9 @@
                             'allow_custom' => 0,
                             'save_custom' => 0,
                             'default_value' => array(
-                                0 => __('firstname', 'modularity-form-builder'),
-                                1 => __('lastname', 'modularity-form-builder'),
-                                2 => __('email', 'modularity-form-builder'),
+                                0 => 'firstname',
+                                1 => 'lastname',
+                                2 => 'email',
                             ),
                             'layout' => 'vertical',
                             'toggle' => 0,
@@ -95,9 +95,9 @@
                             'allow_custom' => 0,
                             'save_custom' => 0,
                             'default_value' => array(
-                                0 => __('firstname', 'modularity-form-builder'),
-                                1 => __('lastname', 'modularity-form-builder'),
-                                2 => __('email', 'modularity-form-builder'),
+                                0 => 'firstname',
+                                1 => 'lastname',
+                                2 => 'email',
                             ),
                             'layout' => 'vertical',
                             'toggle' => 0,
@@ -351,7 +351,7 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'default_value' => __('Message', 'modularity-form-builder'),
+                            'default_value' => 'Message',
                             'placeholder' => '',
                             'prepend' => '',
                             'append' => '',
@@ -716,6 +716,54 @@
                             'first_day' => 1,
                         ),
                         8 => array(
+                            'key' => 'field_5dfb9b0074cfc',
+                            'label' => __('Min time', 'modularity-form-builder'),
+                            'name' => 'min_time_value',
+                            'type' => 'time_picker',
+                            'instructions' => __('Select minimum time frame', 'modularity-form-builder'),
+                            'required' => 0,
+                            'conditional_logic' => array(
+                                0 => array(
+                                    0 => array(
+                                        'field' => 'field_58eb5547818a0',
+                                        'operator' => '==',
+                                        'value' => 'time',
+                                    ),
+                                ),
+                            ),
+                            'wrapper' => array(
+                                'width' => '50',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'display_format' => 'H:i:s',
+                            'return_format' => 'H:i:s',
+                        ),
+                        9 => array(
+                            'key' => 'field_5dfbf8a374cfe',
+                            'label' => __('Max time', 'modularity-form-builder'),
+                            'name' => 'max_time_value',
+                            'type' => 'time_picker',
+                            'instructions' => __('Select maximum time frame', 'modularity-form-builder'),
+                            'required' => 0,
+                            'conditional_logic' => array(
+                                0 => array(
+                                    0 => array(
+                                        'field' => 'field_58eb5547818a0',
+                                        'operator' => '==',
+                                        'value' => 'time',
+                                    ),
+                                ),
+                            ),
+                            'wrapper' => array(
+                                'width' => '50',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'display_format' => 'H:i:s',
+                            'return_format' => 'H:i:s',
+                        ),
+                        10 => array(
                             'key' => 'field_58eb5614c5514',
                             'label' => __('Required', 'modularity-form-builder'),
                             'name' => 'required',
@@ -734,7 +782,7 @@
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
-                        9 => array(
+                        11 => array(
                             'key' => 'field_59b69ae3e2abd',
                             'label' => __('Conditional logic', 'modularity-form-builder'),
                             'name' => 'conditional_logic',
@@ -753,7 +801,7 @@
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
-                        10 => array(
+                        12 => array(
                             'key' => 'field_59b69ae6e2abe',
                             'label' => __('Conditonal field', 'modularity-form-builder'),
                             'name' => 'conditonal_field',
@@ -785,7 +833,7 @@
                             'return_format' => 'value',
                             'placeholder' => '',
                         ),
-                        11 => array(
+                        13 => array(
                             'key' => 'field_5a18388b007a2',
                             'label' => __('Custom post type title', 'modularity-form-builder'),
                             'name' => 'custom_post_type_title',
@@ -1761,7 +1809,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => __('Skicka', 'modularity-form-builder'),
+            'default_value' => 'Skicka',
             'maxlength' => '',
             'placeholder' => '',
             'prepend' => '',
@@ -1897,10 +1945,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                background: #f1f1f157;
-                border-left: 4px solid #b2b500;
-                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+                                background: #f1f1f157;
+                                border-left: 4px solid #b2b500;
+                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                 ),
@@ -2321,15 +2369,17 @@
                 'id' => '',
             ),
             'choices' => array(
-                'form-submissions' => 'Formulärsvar',
+                'form-submissions' => 'Form submissions',
                 'event' => __('Händelse', 'modularity-form-builder'),
                 'ticket' => __('Ärende', 'modularity-form-builder'),
                 'listing' => __('Lista', 'modularity-form-builder'),
-                'lovprogram' => 'Lovprogram',
-                'johan-test123' => 'Johan-test123',
+                'lovprogram' => __('Lovprogram', 'modularity-form-builder'),
+                'johan-test123' => __('Johan-test123', 'modularity-form-builder'),
+                'projekt' => 'Projekt',
+                'idea' => 'Ideas',
             ),
             'default_value' => array(
-                0 => __('form-submissions', 'modularity-form-builder'),
+                0 => 'form-submissions',
             ),
             'allow_null' => 0,
             'multiple' => 0,
@@ -2440,7 +2490,7 @@
         ),
         29 => array(
             'key' => 'field_5b3c8d3f4e20a',
-            'label' => __('GDPR komplience    meddelande', 'modularity-form-builder'),
+            'label' => __('GDPR komplience        meddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice',
             'type' => 'true_false',
             'instructions' => __('Innehåller information om hur personlig data hanteras.', 'modularity-form-builder'),
@@ -2478,7 +2528,7 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => __('I det här formuläret samlar vi in personuppgifter om dig för att [det formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något annat syfte, och kommer att raderas när [ärendet är avslutat]. Läs om hur Helsingborgs stad hanterar personuppgifter.', 'modularity-form-builder'),
+            'default_value' => 'I det här formuläret samlar vi in personuppgifter om dig för att [det formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något annat syfte, och kommer att raderas när [ärendet är avslutat]. Läs om hur Helsingborgs stad hanterar personuppgifter.',
             'placeholder' => '',
             'maxlength' => '',
             'rows' => '',
@@ -2577,7 +2627,7 @@
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => 1,
+    'active' => true,
     'description' => '',
 ));
 }

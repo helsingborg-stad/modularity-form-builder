@@ -28,6 +28,9 @@ use ModularityFormBuilder\Helper\SanitizeData;
         @if ($field['value_type'] == 'date')
             min="{{ SanitizeData::formatDate($field['min_value']) }}"
             max="{{ SanitizeData::formatDate($field['max_value']) }}"
+        @elseif (($field['value_type'] == 'time'))
+            @if (!empty($field['min_time_value'])) min="{{ trim($field['min_time_value']) }}" @endif
+            @if (!empty($field['max_time_value'])) max="{{ trim($field['max_time_value']) }}" @endif
         @elseif (in_array($field['value_type'], array('number', 'range')))
             min="{{ trim($field['min_value']) }}"
             max="{{ trim($field['max_value']) }}"

@@ -710,6 +710,54 @@
                             "first_day": 1
                         },
                         {
+                            "key": "field_5dfb9b0074cfc",
+                            "label": "Min time",
+                            "name": "min_time_value",
+                            "type": "time_picker",
+                            "instructions": "Select minimum time frame",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_58eb5547818a0",
+                                        "operator": "==",
+                                        "value": "time"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "H:i:s",
+                            "return_format": "H:i:s"
+                        },
+                        {
+                            "key": "field_5dfbf8a374cfe",
+                            "label": "Max time",
+                            "name": "max_time_value",
+                            "type": "time_picker",
+                            "instructions": "Select maximum time frame",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_58eb5547818a0",
+                                        "operator": "==",
+                                        "value": "time"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "H:i:s",
+                            "return_format": "H:i:s"
+                        },
+                        {
                             "key": "field_58eb5614c5514",
                             "label": "Required",
                             "name": "required",
@@ -1874,7 +1922,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n        background: #f1f1f157;\r\n        border-left: 4px solid #b2b500;\r\n        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n        padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n                background: #f1f1f157;\r\n                border-left: 4px solid #b2b500;\r\n                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
@@ -2291,12 +2339,14 @@
                 "id": ""
             },
             "choices": {
-                "form-submissions": "Formul\u00e4rsvar",
+                "form-submissions": "Form submissions",
                 "event": "H\u00e4ndelse",
                 "ticket": "\u00c4rende",
                 "listing": "Lista",
                 "lovprogram": "Lovprogram",
-                "johan-test123": "Johan-test123"
+                "johan-test123": "Johan-test123",
+                "projekt": "Projekt",
+                "idea": "Ideas"
             },
             "default_value": [
                 "form-submissions"
@@ -2410,7 +2460,7 @@
         },
         {
             "key": "field_5b3c8d3f4e20a",
-            "label": "GDPR komplience  meddelande",
+            "label": "GDPR komplience    meddelande",
             "name": "gdpr_complience_notice",
             "type": "true_false",
             "instructions": "Inneh\u00e5ller information om hur personlig data hanteras.",
@@ -2547,7 +2597,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": ""
 }]
 
