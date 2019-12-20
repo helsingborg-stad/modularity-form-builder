@@ -35,9 +35,9 @@ use ModularityFormBuilder\Helper\SanitizeData;
                     @if (!empty($field['min_time_value'])) min="{{ trim($field['min_time_value']) }}" @endif
                     @if (!empty($field['max_time_value'])) max="{{ trim($field['max_time_value']) }}" @endif
                 @elseif (in_array($field['value_type'], array('number', 'range')))
-                    @if (!empty(trim($field['min_value']))) min="{{ trim($field['min_value']) }}" @endif
-                    @if (!empty(trim($field['max_value']))) max="{{ trim($field['max_value']) }}" @endif
-                    @if (!empty(trim($field['step']))) step="{{ trim($field['step']) }}" @endif
+                    @if (!empty($field['min_value'])) min="{{ trim($field['min_value']) }}" @endif
+                    @if (!empty($field['max_value'])) max="{{ trim($field['max_value']) }}" @endif
+                    @if (!empty($field['step'])) step="{{ trim($field['step']) }}" @endif
                 @endif
             >
 
