@@ -296,6 +296,7 @@ class Form extends \Modularity\Module
         wp_localize_script('form-builder-js-front', 'formbuilder', array(
             'site_key'              => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
             'sending'               => __('Sending', 'modularity-form-builder'),
+            'checkbox_required'     => __('You must check at least one option', 'modularity-form-builder'),
             'something_went_wrong'  => __('Something went wrong', 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder-js-front');
