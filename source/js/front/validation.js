@@ -2,6 +2,19 @@ export default (() => {
   const getValidity = (element, scope) => {
     const checkedCheckboxes = scope.querySelectorAll('.required[type="checkbox"]:checked');
     const valid = checkedCheckboxes.length > 0;
+    const errorsEl = scope.getElementsByClassName('errors')[0];
+
+    hyperform.setRenderer('attachWarning', (warning, element) => {
+      if (errorsEl.children.length <= 0) {
+        errorsEl.appendChild(warning);
+      }
+    });
+    
+    hyperform(window, {
+      classes: {
+        warning: 'text-danger',
+      }
+    });
 
     element.setCustomValidity(valid ? '' : formbuilder.checkbox_required);
 
