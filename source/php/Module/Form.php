@@ -33,6 +33,7 @@ class Form extends \Modularity\Module
         add_action('add_meta_boxes', array($this, 'metaBoxResponses'), 10, 2);
         add_action('current_screen', array($this, 'export'));
         add_action('wp_ajax_get_selected_field', array($this, 'getSelectedField'));
+        add_action('wp_enqueue_scripts', array($this, 'script'), 10);
     }
 
     /**
