@@ -8,8 +8,6 @@
     <ul style="list-style-type:none">
         <input type="hidden" name="mod-form[{{ $field['name'] }}][]">
 
-        <div class="errors"></div>
-
         @foreach ($field['values'] as $value)
             <li>
                 <label class="checkbox">
