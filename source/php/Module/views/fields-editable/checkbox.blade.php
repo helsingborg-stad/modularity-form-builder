@@ -13,7 +13,7 @@
         @foreach ($field['values'] as $value)
             <li>
                 <label class="checkbox">
-                    <input type="checkbox" class="{{ $field['required'] ? 'required' : '' }}" name="mod-form[{{ $field['name'] }}][]" value="{{ $value['value'] }}"> {{ $value['value'] }}
+                    <input type="checkbox" class="{{ $field['required'] ? 'required' : '' }}" name="mod-form[{{ $field['name'] }}][]" value="{{ $value['value'] }}" {{ is_array($field['value']) && in_array($value['value'], $field['value']) ? 'checked' : '' }}> {{ $value['value'] }}
                 </label>
             </li>
         @endforeach
