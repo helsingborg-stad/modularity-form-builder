@@ -75,7 +75,7 @@ class Form extends \Modularity\Module
             $data = Submission::getSubmissionData($submission->ID);
 
             // Flaten arrays
-            $data = array_map(function($a) {
+            $data = array_map(function ($a) {
                 return is_array($a) ? implode(',', $a) : $a;
             }, $data);
 
@@ -303,12 +303,11 @@ class Form extends \Modularity\Module
 
         $handle = 'google-recaptcha';
         $list = 'enqueued';
-        if (wp_script_is( $handle, $list )) {
+        if (wp_script_is($handle, $list)) {
             return;
         } else {
             wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit', '', '1.0.0', true);
         }
-
     }
 
     /**

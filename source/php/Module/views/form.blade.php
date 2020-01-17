@@ -3,7 +3,7 @@
         <h4 class="box-title">{!! apply_filters('the_title', $post_title) !!}</h4>
     @endif
 
-    <form class="box-content" method="post" action="" {!! $hasFileUpload ? 'enctype="multipart/form-data"' : '' !!}>
+    <form class="box-content modularity-validation" method="post" action="" {!! $hasFileUpload ? 'enctype="multipart/form-data"' : '' !!}>
         <?php wp_nonce_field('submit', 'modularity-form'); ?>
         <input type="hidden" name="modularity-form-id" value="{{ $ID }}">
         <input type="hidden" name="modularity-form-post-type" value="{{ $submissionPostType }}">

@@ -45,12 +45,11 @@ export default (() => {
    * Loop through forms and set custom validation rules to required checkboxes
    */
   const init = () => {
-    const forms = document.getElementsByClassName('modularity-mod-form');
+    const forms = document.getElementsByClassName('modularity-validation');
 
     for (let i = 0; i < forms.length; i++) {
       const form = forms.item(i);
       setCheckboxValidationRules(form);
-
       /* Whenever a checkbox is clicked, revalidate all other checkboxes */
       let inputElements = form.getElementsByTagName('input');
       inputElements = Array.from(inputElements);
