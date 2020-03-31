@@ -1945,10 +1945,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                                background: #f1f1f157;
-                                border-left: 4px solid #b2b500;
-                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+                                                                background: #f1f1f157;
+                                                                border-left: 4px solid #b2b500;
+                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                                                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                 ),
@@ -2490,7 +2490,7 @@
         ),
         29 => array(
             'key' => 'field_5b3c8d3f4e20a',
-            'label' => __('GDPR komplience        meddelande', 'modularity-form-builder'),
+            'label' => __('GDPR överensstämmelsemeddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice',
             'type' => 'true_false',
             'instructions' => __('Innehåller information om hur personlig data hanteras.', 'modularity-form-builder'),
@@ -2511,7 +2511,7 @@
             'key' => 'field_5b3c8e0a6e7f2',
             'label' => __('Innehåll för GDPR meddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice_content',
-            'type' => 'textarea',
+            'type' => 'wysiwyg',
             'instructions' => '',
             'required' => 0,
             'conditional_logic' => array(
@@ -2528,11 +2528,11 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => 'I det här formuläret samlar vi in personuppgifter om dig för att [det formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något annat syfte, och kommer att raderas när [ärendet är avslutat]. Läs om hur Helsingborgs stad hanterar personuppgifter.',
-            'placeholder' => '',
-            'maxlength' => '',
-            'rows' => '',
-            'new_lines' => '',
+            'default_value' => 'I det här formuläret samlar vi in personuppgifter om dig för att [det formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något annat syfte, och kommer att raderas när [ärendet är avslutat]. <a href="https://helsingborg.se/toppmeny/om-webbplatsen/sa-har-behandlar-vi-dina-personuppgifter/">Läs om hur Helsingborgs stad hanterar personuppgifter</a>.',
+            'tabs' => 'all',
+            'toolbar' => 'full',
+            'media_upload' => 0,
+            'delay' => 0,
         ),
         31 => array(
             'key' => 'field_5b2a3840ff029',
@@ -2627,7 +2627,7 @@
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => true,
+    'active' => 1,
     'description' => '',
 ));
 }
