@@ -56,9 +56,9 @@
                             </p>
                         @endif
                         @if($gdpr_complience_notice && !empty($gdpr_complience_notice_content))
-                            <p class="text-sm gutter gutter-sm gutter-bottom">
-                                {{$gdpr_complience_notice_content}}
-                            </p>
+                            <div class="text-sm gutter gutter-sm gutter-bottom">
+                                {!! $gdpr_complience_notice_content !!}
+                            </div>
                         @endif
                     @endif
                     <button type="submit" class="btn btn-primary u-mt-2">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>

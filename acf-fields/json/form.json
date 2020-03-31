@@ -1922,7 +1922,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n                background: #f1f1f157;\r\n                border-left: 4px solid #b2b500;\r\n                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n                                background: #f1f1f157;\r\n                                border-left: 4px solid #b2b500;\r\n                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0
                 },
@@ -2460,7 +2460,7 @@
         },
         {
             "key": "field_5b3c8d3f4e20a",
-            "label": "GDPR komplience    meddelande",
+            "label": "GDPR \u00f6verensst\u00e4mmelsemeddelande",
             "name": "gdpr_complience_notice",
             "type": "true_false",
             "instructions": "Inneh\u00e5ller information om hur personlig data hanteras.",
@@ -2481,7 +2481,7 @@
             "key": "field_5b3c8e0a6e7f2",
             "label": "Inneh\u00e5ll f\u00f6r GDPR meddelande",
             "name": "gdpr_complience_notice_content",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
@@ -2498,11 +2498,11 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "I det h\u00e4r formul\u00e4ret samlar vi in personuppgifter om dig f\u00f6r att [det formul\u00e4ret ska anv\u00e4ndas till]. Uppgifterna kommer inte att hanteras f\u00f6r n\u00e5got annat syfte, och kommer att raderas n\u00e4r [\u00e4rendet \u00e4r avslutat]. L\u00e4s om hur Helsingborgs stad hanterar personuppgifter.",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "default_value": "I det h\u00e4r formul\u00e4ret samlar vi in personuppgifter om dig f\u00f6r att [det formul\u00e4ret ska anv\u00e4ndas till]. Uppgifterna kommer inte att hanteras f\u00f6r n\u00e5got annat syfte, och kommer att raderas n\u00e4r [\u00e4rendet \u00e4r avslutat]. <a href=\"https:\/\/helsingborg.se\/toppmeny\/om-webbplatsen\/sa-har-behandlar-vi-dina-personuppgifter\/\">L\u00e4s om hur Helsingborgs stad hanterar personuppgifter<\/a>.",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5b2a3840ff029",
@@ -2597,7 +2597,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": 1,
     "description": ""
 }]
 
