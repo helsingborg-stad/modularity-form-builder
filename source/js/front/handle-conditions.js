@@ -12,7 +12,7 @@ export default (function ($) {
 
     HandleConditions.prototype.handleEvents = function () {
         $('input[conditional]').change(function(e) {
-            $target = $(e.target).parents('[class*="mod-form"]');
+            const $target = $(e.target).parents('[class*="mod-form"]');
             var conditional = $(e.target).attr('conditional');
             if (typeof conditional !== 'undefined' && conditional.length > 0) {
                 var conditionObj = JSON.parse(conditional);
