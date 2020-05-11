@@ -1,7 +1,9 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group(array(
     'key' => 'group_58eb301ecb36a',
     'title' => 'Form',
     'fields' => array(
@@ -2630,4 +2632,5 @@
     'active' => 1,
     'description' => '',
 ));
-}
+
+}
