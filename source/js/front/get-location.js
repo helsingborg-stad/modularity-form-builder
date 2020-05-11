@@ -1,7 +1,4 @@
-FormBuilder = FormBuilder || {};
-FormBuilder.Front = FormBuilder.Front || {};
-
-FormBuilder.Front.getLocation = (function ($) {
+export default (function ($) {
 
 	var componentForm = {
 	       	street_number: 	{name : 'street', 		addressType : 'short_name'},
@@ -16,7 +13,7 @@ FormBuilder.Front.getLocation = (function ($) {
 			return;
 		}
 
-        this.handleEvents();
+      this.handleEvents();
     }
 
     GetLocation.prototype.handleEvents = function() {

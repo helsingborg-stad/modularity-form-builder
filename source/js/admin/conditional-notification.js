@@ -1,9 +1,5 @@
-var FormBuilder = FormBuilder || {};
 
-FormBuilder = FormBuilder || {};
-FormBuilder.Admin = FormBuilder.Admin || {};
-
-FormBuilder.Admin.Notification = (function ($) {
+ (function ($) {
 
     var selectionsArray = [];
 

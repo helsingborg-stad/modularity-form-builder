@@ -237,14 +237,13 @@ class Submission
                 if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external'])) {
 
                     if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
-
                         $encrypted = file_put_contents(
                             $files['tmp_name'][$i],
                             \ModularityFormBuilder\App::encryptDecryptFile(
                                 'encrypt', 
                                 file_get_contents($files['tmp_name'][$i])
                             )
-                        ); 
+                        );
 
                         if ($encrypted !== false) {
                             $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;

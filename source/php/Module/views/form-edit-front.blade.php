@@ -1,6 +1,6 @@
 <div id="modal-edit-post" class="modal modal-backdrop-2 modal-small" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content material-shadow-lg">
-        <form id="edit-post">
+        <form id="edit-post" class="modularity-validation">
             <div class="modal-header">
                 <a class="btn btn-close" href="#close"></a>
                 <h2 class="modal-title"><?php _e('Edit', 'modularity-form-builder'); ?></h2>

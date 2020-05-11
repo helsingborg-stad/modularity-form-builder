@@ -75,7 +75,7 @@ class Form extends \Modularity\Module
             $data = Submission::getSubmissionData($submission->ID);
 
             // Flaten arrays
-            $data = array_map(function($a) {
+            $data = array_map(function ($a) {
                 return is_array($a) ? implode(',', $a) : $a;
             }, $data);
 
@@ -269,13 +269,14 @@ class Form extends \Modularity\Module
      */
     public function adminEnqueue()
     {
-        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js', true);
-        wp_localize_script('form-builder', 'formbuilder', array(
+        wp_register_script('form-builder-js-admin', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-admin.js'));
+
+        wp_localize_script('form-builder-js-admin', 'formbuilder', array(
             'mod_form_authorized'   => (get_option('options_mod_form_access_token') == true) ? true : false,
             'selections_missing'    => __('Please create radio selections before adding conditional logic.', 'modularity-form-builder'),
             'delete_confirm'        => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
         ));
-        wp_enqueue_script('form-builder');
+        wp_enqueue_script('form-builder-js-admin');
     }
 
     /**
@@ -290,22 +291,23 @@ class Form extends \Modularity\Module
             wp_enqueue_script('google-maps-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
         }
 
-        wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-front.min.js', array('jquery'), false, true);
-        wp_localize_script('form-builder', 'formbuilder', array(
+        wp_register_script('form-builder-js-front', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'), false, true);
+
+        wp_localize_script('form-builder-js-front', 'formbuilder', array(
             'site_key'              => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
             'sending'               => __('Sending', 'modularity-form-builder'),
+            'checkbox_required'     => __('You must check at least one option', 'modularity-form-builder'),
             'something_went_wrong'  => __('Something went wrong', 'modularity-form-builder'),
         ));
-        wp_enqueue_script('form-builder');
+        wp_enqueue_script('form-builder-js-front');
 
         $handle = 'google-recaptcha';
         $list = 'enqueued';
-        if (wp_script_is( $handle, $list )) {
+        if (wp_script_is($handle, $list)) {
             return;
         } else {
             wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit', '', '1.0.0', true);
         }
-
     }
 
     /**
@@ -314,7 +316,7 @@ class Form extends \Modularity\Module
      */
     public function style()
     {
-        wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/css/modularity-form-builder.min.css');
+        wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/' . Helper\CacheBust::name('css/modularity-form-builder.css'));
     }
 
     /**

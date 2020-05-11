@@ -1,7 +1,4 @@
-var FormBuilder = FormBuilder || {};
-
-(function($) {
-
+export default (function($) {
     $(document).ready(function() {
         function removeReCaptchaWarning() {
             if ($('#g-recaptcha-response').val()) {

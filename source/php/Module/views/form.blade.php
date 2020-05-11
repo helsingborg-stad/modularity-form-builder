@@ -3,7 +3,7 @@
         <h4 class="box-title">{!! apply_filters('the_title', $post_title) !!}</h4>
     @endif
 
-    <form class="box-content" method="post" action="" {!! $hasFileUpload ? 'enctype="multipart/form-data"' : '' !!}>
+    <form class="box-content modularity-validation" method="post" action="" {!! $hasFileUpload ? 'enctype="multipart/form-data"' : '' !!}>
         <?php wp_nonce_field('submit', 'modularity-form'); ?>
         <input type="hidden" name="modularity-form-id" value="{{ $ID }}">
         <input type="hidden" name="modularity-form-post-type" value="{{ $submissionPostType }}">
@@ -56,9 +56,9 @@
                             </p>
                         @endif
                         @if($gdpr_complience_notice && !empty($gdpr_complience_notice_content))
-                            <p class="text-sm gutter gutter-sm gutter-bottom">
-                                {{$gdpr_complience_notice_content}}
-                            </p>
+                            <div class="text-sm gutter gutter-sm gutter-bottom">
+                                {!! $gdpr_complience_notice_content !!}
+                            </div>
                         @endif
                     @endif
                     <button type="submit" class="btn btn-primary u-mt-2">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>

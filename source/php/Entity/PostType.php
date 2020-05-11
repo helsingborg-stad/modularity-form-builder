@@ -31,8 +31,7 @@ class PostType
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
 
         //Force download of encrypted files
-        add_action('init', array($this, 'forceEcryptedFileDownload')); 
-    
+        add_action('init', array($this, 'forceEcryptedFileDownload'));
     }
 
     public function addEditButton($items, $post)
@@ -53,15 +52,17 @@ class PostType
         global $post;
 
         if (is_object($post) && $post->post_type == $this->postTypeSlug) {
-            wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/css/modularity-form-builder.min.css');
+            wp_enqueue_style('form-builder', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('css/modularity-form-builder.css'));
 
             if (self::editableFrontend($post)) {
-                wp_register_script('form-builder', FORM_BUILDER_MODULE_URL . '/dist/js/form-builder-admin.min.js',
-                    array('jQuery'), '', true);
-                wp_localize_script('form-builder', 'formbuilder', array(
+                wp_register_script('form-builder-js-admin', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-admin.js'));
+
+                wp_localize_script('form-builder-js-admin', 'formbuilder', array(
                     'delete_confirm' => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
+                    'checkbox_required' => __('You must check at least one option', 'modularity-form-builder'),
                 ));
-                wp_enqueue_script('form-builder');
+
+                wp_enqueue_script('form-builder-js-admin');
             }
         }
     }
@@ -142,11 +143,11 @@ class PostType
         }
 
         add_meta_box(
-            'formdata', 
-            __('Submission data', 'modularity-form-builder'), 
-            array($this, 'formdataDisplay'), 
-            $postType, 
-            'normal', 
+            'formdata',
+            __('Submission data', 'modularity-form-builder'),
+            array($this, 'formdataDisplay'),
+            $postType,
+            'normal',
             'default'
         );
     }
@@ -160,21 +161,20 @@ class PostType
     public function isGrantedUser($moduleId)
     {
         if (isset($moduleId) || empty($moduleId)) {
-
             $userRestriction = get_field('user_restriction', $moduleId);
 
             if ($userRestriction) {
-                
+
                 //Always allow administrators
                 if (current_user_can('administrator')) {
                     return true;
                 }
 
-                //Always allow author of the post 
+                //Always allow author of the post
                 if (get_current_user_id() == get_post_field('post_author', $moduleId)) {
-                    return true; 
+                    return true;
                 }
-                    
+
                 //Check if granted user
                 $grantedUsers = get_field('granted_users', $moduleId);
 
@@ -188,17 +188,17 @@ class PostType
 
                 return false;
             }
-
         }
 
-        return true; // No user restriction 
+        return true; // No user restriction
     }
 
-    public function forceEcryptedFileDownload() {
-        if(isset($_GET['modFormDownloadEncFile'])) {
+    public function forceEcryptedFileDownload()
+    {
+        if (isset($_GET['modFormDownloadEncFile'])) {
 
             //Verify that there is a module id included
-            if(!isset($_GET['modFormModuleId']) || (isset($_GET['modFormModuleId']) && !is_numeric($_GET['modFormModuleId']))) {
+            if (!isset($_GET['modFormModuleId']) || (isset($_GET['modFormModuleId']) && !is_numeric($_GET['modFormModuleId']))) {
                 wp_die(
                     __("No reference to a module where defined.", 'modularity-form-builder'),
                     __("Module reference missing", 'modularity-form-builder')
@@ -206,7 +206,7 @@ class PostType
             }
 
             //Check if granted user
-            if(!$this->isGrantedUser($_GET['modFormModuleId'])) {
+            if (!$this->isGrantedUser($_GET['modFormModuleId'])) {
                 wp_die(
                     __("You are not authorized to download this file.", 'modularity-form-builder'),
                     __("Unauthorized request", 'modularity-form-builder')
@@ -217,27 +217,27 @@ class PostType
             $uploadsFolder = wp_upload_dir();
             $uploadsFolder = $uploadsFolder['basedir'] . '/modularity-form-builder/';
 
-            //Get local path to file 
-            $filePath = $uploadsFolder . urldecode($_GET['modFormDownloadEncFile']); 
+            //Get local path to file
+            $filePath = $uploadsFolder . urldecode($_GET['modFormDownloadEncFile']);
 
             //Decrypt and return
-            if(file_exists($filePath)) {
+            if (file_exists($filePath)) {
                 if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
                     $fileContents = \ModularityFormBuilder\App::encryptDecryptFile(
-                        'decrypt', 
+                        'decrypt',
                         file_get_contents($filePath)
                     );
                 }
             }
 
             //Return file force download
-            if(isset($fileContents) && !empty($fileContents)) {
+            if (isset($fileContents) && !empty($fileContents)) {
                 header("Pragma: public");
                 header("Expires: 0");
                 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
                 header("Cache-Control: private", false);
                 header("Content-Type: application/octet-stream");
-                header("Content-Disposition: attachment; filename=\"" . $_GET['modFormDownloadEncFile'] . "\";" );
+                header("Content-Disposition: attachment; filename=\"" . $_GET['modFormDownloadEncFile'] . "\";");
                 header("Content-Transfer-Encoding: binary");
 
                 echo $fileContents;
@@ -250,7 +250,6 @@ class PostType
                 __("The file you requested could not be found. The file might have been deleted or corrupted.", 'modularity-form-builder'),
                 __("File not found", 'modularity-form-builder')
             );
-            
         }
     }
 
@@ -258,18 +257,18 @@ class PostType
      * Get the download link to the file
      * @return string
      */
-    public function getDownloadLink($filePath, $moduleId = null) {
+    public function getDownloadLink($filePath, $moduleId = null)
+    {
 
-        //Encrypted file requires granted users 
-        if(is_null($moduleId) || !$this->isGrantedUser($moduleId)) {
+        //Encrypted file requires granted users
+        if (is_null($moduleId) || !$this->isGrantedUser($moduleId)) {
             return false;
         }
-        
+
         //Check if encrypted
         if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
-
-            if(strpos($_SERVER['REQUEST_URI'], "?") !== false) {
-                $sep = "&"; 
+            if (strpos($_SERVER['REQUEST_URI'], "?") !== false) {
+                $sep = "&";
             } else {
                 $sep = "?";
             }
@@ -277,7 +276,7 @@ class PostType
             return "//" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $sep . 'modFormDownloadEncFile=' . urlencode(basename($filePath)) . "&modFormModuleId=" . $moduleId ;
         }
 
-        return $filePath; 
+        return $filePath;
     }
 
     /**
@@ -291,37 +290,38 @@ class PostType
         //Get form configuration
         $data = self::gatherFormData($post);
         $data['parentClass'] = $this;
-        
+
         //Check if user is granted to view this data
-        if(!$this->isGrantedUser($data['module_id'])) {
+        if (!$this->isGrantedUser($data['module_id'])) {
 
             //Error message
             $this->renderBlade(
-                'unauthorized.blade.php', 
+                'unauthorized.blade.php',
                 array(
                     FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
-                ), 
+                ),
                 array(
                     'title' => __("Access denied", 'modularity-form-builder'),
                     'message' => __("You don't have the sufficient permissions to view this post.", 'modularity-form-builder'),
                 )
             );
-            
+
             return;
         }
 
-        //Translations 
+        //Translations
         $data['translation'] = array(
             'removed_file' => __("File removed", 'modularity-form-builder'),
             'unknown_file' => __("Unknown file", 'modularity-form-builder'),
-        ); 
-        
-        //Get form submission data 
+        );
+
+        //Get form submission data
         $fields = get_fields($data['module_id']);
 
         //Check if this should be exluded from frontend
-        $data['excludedFront'] = apply_filters('ModularityFormBuilder/excluded_fields/front',
-            array(), 
+        $data['excludedFront'] = apply_filters(
+            'ModularityFormBuilder/excluded_fields/front',
+            array(),
             $post->post_type,
             $data['module_id']
         );
@@ -330,16 +330,15 @@ class PostType
 
             //Editable
             $this->renderBlade(
-                'form-edit.blade.php', 
+                'form-edit.blade.php',
                 array(
                     FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'
-                ), 
+                ),
                 $data
             );
-
         } elseif (self::editableFrontend($post)) {
 
-            //Editor settings 
+            //Editor settings
             $data['editor_settings'] = array(
                 'wpautop' => true,
                 'media_buttons' => false,
@@ -352,39 +351,38 @@ class PostType
 
             //Static
             $this->renderBlade(
-                'form-data.blade.php', 
+                'form-data.blade.php',
                 array(
                     FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
-                ), 
+                ),
                 $data
             );
 
             //Editable
             $this->renderBlade(
-                'form-edit-front.blade.php', 
+                'form-edit-front.blade.php',
                 array(
                     FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'
                 ),
                 $data
             );
-
         } else {
 
             //Static
             $this->renderBlade(
-                'form-data.blade.php', 
+                'form-data.blade.php',
                 array(
                     FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
-                ), 
+                ),
                 $data
             );
-
         }
 
         if (is_admin()) {
-
-            $indata = (is_array(get_post_meta($post->ID, 'form-data', true))) ? get_post_meta($post->ID, 'form-data', true) : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt',
-                get_post_meta($post->ID, 'form-data', true)));
+            $indata = (is_array(get_post_meta($post->ID, 'form-data', true))) ? get_post_meta($post->ID, 'form-data', true) : unserialize(\ModularityFormBuilder\App::encryptDecryptData(
+                'decrypt',
+                get_post_meta($post->ID, 'form-data', true)
+            ));
 
             if (isset($indata['modularity-form-history'])) {
                 echo "<p><strong>" . __('Previous page', 'modularity-form-builder') . "</strong><br />";
@@ -399,8 +397,10 @@ class PostType
             }
 
             if (isset($indata['modularity-form-url'])) {
-                echo "<p><strong>" . __('Form',
-                        'modularity-form-builder') . "</strong><br /><a href=\"" . $indata['modularity-form-url'] . "\">" . $indata['modularity-form-url'] . "</a></p>";
+                echo "<p><strong>" . __(
+                    'Form',
+                    'modularity-form-builder'
+                ) . "</strong><br /><a href=\"" . $indata['modularity-form-url'] . "\">" . $indata['modularity-form-url'] . "</a></p>";
             }
         }
     }
@@ -423,7 +423,9 @@ class PostType
                 FROM $wpdb->postmeta
                 WHERE meta_key = 'submission_post_type'
                     AND meta_value = '{$post->post_type}'
-                ", ARRAY_N);
+                ",
+                ARRAY_N
+            );
 
             if (!empty($postTypes[0])) {
                 $formId = $postTypes[0];
@@ -443,8 +445,12 @@ class PostType
         $data['custom_post_type_content'] = false;
         $uploadFolder = wp_upload_dir();
         $data['uploadFolder'] = $uploadFolder['baseurl'] . '/modularity-form-builder/';
-        $excludedGlobal = apply_filters('ModularityFormBuilder/excluded_fields/global',
-            array('custom_content', 'collapse'), $post->post_type, $formId);
+        $excludedGlobal = apply_filters(
+            'ModularityFormBuilder/excluded_fields/global',
+            array('custom_content', 'collapse'),
+            $post->post_type,
+            $formId
+        );
 
         foreach ($fields['form_fields'] as $field) {
             // Skip layout fields
@@ -475,8 +481,10 @@ class PostType
                         'label' => $field['labels'][$subfield],
                         'labels' => $field['labels'],
                         'name' => sanitize_title($field['labels'][$subfield]),
-                        'required' => (is_array($field['required_fields']) && in_array($subfield,
-                                $field['required_fields'])),
+                        'required' => (is_array($field['required_fields']) && in_array(
+                            $subfield,
+                            $field['required_fields']
+                        )),
                         'value' => (!empty($indata[sanitize_title($field['labels'][$subfield])])) ? $indata[sanitize_title($field['labels'][$subfield])] : '',
                     );
                 }

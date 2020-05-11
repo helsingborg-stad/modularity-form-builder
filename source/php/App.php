@@ -64,10 +64,12 @@ class App
                 if (!$postTypeObj = get_post_type_object($postType)) {
                     continue;
                 }
+                $supports = $this->getPostTypeSupports($postType);
                 unregister_post_type($postType);
 
                 $json = json_encode($postTypeObj);
                 $postTypeArr = json_decode($json, true);
+                $postTypeArr['supports'] = is_array($supports) && !empty($supports) ? $supports : [];
 
                 unset($postTypeArr['show_in_rest']);
                 unset($postTypeArr['capabilities']);
@@ -82,6 +84,25 @@ class App
                 );
             }
         }
+    }
+
+    /**
+     * Get list of a post types support features
+     * @param string $postType
+     * @return array
+     */
+    public function getPostTypeSupports($postType)
+    {
+        global $_wp_post_type_features;
+
+        if (isset($_wp_post_type_features[$postType])) {
+            $features = $_wp_post_type_features[$postType];
+            $features = array_keys($features);
+
+            return $features;
+        }
+
+        return array();
     }
 
     /**
@@ -351,12 +372,23 @@ class App
 
         // Save form data
         if (!empty($_POST['mod-form'])) {
-            $indata = get_post_meta($postId, 'form-data', true);
-            $data = array_merge($indata, $_POST['mod-form']);
+
+            $updatedData = $_POST['mod-form'];
             if (!get_option('options_mod_form_crypt')) {
-                update_post_meta($postId, 'form-data', $data);
+                $currentData = get_post_meta($postId, 'form-data', true);
             } else {
-                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $data));
+                $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta($postId, 'form-data', true)));
+            }
+
+            // Merge old values with new ones
+            if (is_array($currentData) && !empty($currentData)) {
+                $updatedData = array_merge($currentData, $updatedData);
+            }
+
+            if (!get_option('options_mod_form_crypt')) {
+                update_post_meta($postId, 'form-data', $updatedData);
+            } else {
+                update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $updatedData));
             }
         }
 
@@ -366,12 +398,7 @@ class App
             $post['post_title'] = $_POST['mod-form']['post-title'];
         }
         if (!empty($_POST['mod-form']['post-content'])) {
-            if (!get_option('options_mod_form_crypt')) {
-                $post['post_content'] = $_POST['mod-form']['post-content'];
-            } else {
-                $post['post_content'] = self::encryptDecryptData('encrypt', $_POST['mod-form']['post-content']);
-            }
-
+            $post['post_content'] = $_POST['mod-form']['post-content'];
         }
         wp_update_post($post);
 
