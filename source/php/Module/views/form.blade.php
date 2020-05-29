@@ -40,7 +40,7 @@
             @include('fields.sender-copy')
         @endif
 
-        @if (!is_user_logged_in())
+        @if (!is_user_logged_in() && !isset($_GET['form']) || $_GET['form'] != 'success' )
             <div class="grid">
                 <div class="grid-md-12">
                     <div class="g-recaptcha u-mt-2"></div>
