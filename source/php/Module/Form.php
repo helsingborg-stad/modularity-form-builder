@@ -189,11 +189,12 @@ class Form extends \Modularity\Module
         $data['hasFileUpload'] = false;
         $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
-
+        
         $data['dataStorage'] = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
-
+        
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
+            $field = $this->setAttributeList($field);
 
             $field['conditional_hidden'] = '';
             if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
@@ -248,6 +249,36 @@ class Form extends \Modularity\Module
         }
 
         return $data;
+    }
+
+    private function setAttributeList($field) {
+        $field['attributeList'] = [];
+            
+        $field['attributeList']['type'] = $field['value_type'];
+        $field['attributeList']['name'] = sanitize_title($field['label']);
+        
+        if($field['required']) {
+            $field['attributeList']['required'] = 'required';
+        }
+
+        if($field['value_type' === 'date']) {
+            $field['attributeList']['min'] = SanitizeData::formatDate($field['min_value']);
+            $field['attributeList']['max'] = SanitizeData::formatDate($field['max_value']);
+        }
+        elseif ($field['value_type'] === 'time') {
+            $field['attributeList']['min'] = trim($field['min_time_value']);
+            $field['attributeList']['max'] = trim($field['max_time_value']);
+        } elseif(in_array($field['value_type'], array('number', 'range'))) {
+            $field['attributeList']['min'] = trim($field['min_value']);
+            $field['attributeList']['max'] = trim($field['max_value']);
+            $field['attributeLIst']['step'] = trim($field['step']);
+        }
+
+        if($field['filetypes'] && is_array($field['filetypes'])) {
+            $field['attributeList']['accept'] = implode(',', $field['filetypes']);
+        }
+
+        return $field;
     }
 
     /**
