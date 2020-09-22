@@ -8,7 +8,17 @@
 
             @foreach ($field['values'] as $value)
                 <label class="checkbox">
-                    <input type="checkbox" class="{{ $field['required'] ? 'required' : '' }}" name="{{ sanitize_title($field['label']) }}[]" value="{{ $value['value'] }}"> {{ $value['value'] }}
+                    {{-- <input type="checkbox" class="{{ $field['required'] ? 'required' : '' }}" name="{{ sanitize_title($field['label']) }}[]" value="{{ $value['value'] }}"> {{ $value['value'] }} --}}
+                    @option([
+                        'type' => 'checkbox',
+                        'attributeList' => [
+                            'name' => sanitize_title($field['label']),
+                            'value' => $value['value'],
+                            $field['required'] ? 'required' : '' => ''
+                        ],
+                        'label' => $value['value']
+                    ])
+                    @endoption
                 </label>
             @endforeach
         </div>
