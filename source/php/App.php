@@ -31,7 +31,8 @@ class App
         add_action('restrict_manage_posts', array($this, 'formFilter'));
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
-        add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
+        add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
+        
     }
 
     /**
@@ -277,7 +278,7 @@ class App
      */
     public function addTemplatePaths($array)
     {
-        $array[] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views';
+        $array['mod-form'] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views';
         return $array;
     }
 
