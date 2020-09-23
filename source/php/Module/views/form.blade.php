@@ -65,7 +65,9 @@
                             </div>
                         @endif
                     @endif
-                    <button type="submit" class="btn btn-primary u-mt-2">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
+                   
+                    <button type="submit" class="c-button c-button__filled c-button__filled--default c-button--md">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
+                    
                 </div>
             </div>
         @endif
@@ -85,7 +87,14 @@
                             </div>
                         @endif
                     @endif
-                    <button type="button" class="btn btn-primary u-mt-2 js-return_to_form" onClick="window.location = window.location.pathname"><?php _e( 'Show form', 'modularity-form-builder' ); ?></button>
+                    @button([
+                        'text' => translate( 'Show form', 'modularity-form-builder' ),
+                        'classList' => ['js-return_to_form'],
+                        'attributeList' => [
+                            'onClick' => 'window.location = window.location.pathname'
+                        ]
+                    ])
+                    @endbutton
                 </div>
             </div>
         @endif
