@@ -25,7 +25,7 @@ class PostType
         add_action('save_post_' . $this->postTypeSlug, array($this, 'updateForm'));
         add_action('manage_' . $this->postTypeSlug . '_posts_custom_column', array($this, 'tableColumnsContent'), 10, 2);
 
-        add_filter('Municipio/blog/post_settings', array($this, 'addEditButton'), 10, 2);
+        /* add_filter('Municipio/blog/post_settings', array($this, 'addEditButton'), 10, 2); */
         add_filter('the_content', array($this, 'appendFormdata'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_columns', array($this, 'tableColumns'));
         add_filter('manage_edit-' . $this->postTypeSlug . '_sortable_columns', array($this, 'listColumnsSorting'));
@@ -266,7 +266,7 @@ class PostType
         }
 
         //Check if encrypted
-        if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
+        if (defined('ENCRYPT_METHOD') && strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
             if (strpos($_SERVER['REQUEST_URI'], "?") !== false) {
                 $sep = "&";
             } else {
@@ -512,11 +512,26 @@ class PostType
      */
     public function renderBlade($fileName, $path, $data = array())
     {
+        add_filter('Municipio/blade/view_paths', array($this, 'addViewPaths'), 2, 1);
         $template = new \Municipio\template;
         $view = \Municipio\Helper\Template::locateTemplate($fileName, $path);
-        $view = $template->cleanViewPath($view);
-        $template->render($view, $data);
+        $view = $template->cleanViewPath($fileName);
+        $template->renderView($view, $data);
     }
+
+    /**
+     * Add searchable blade template paths
+     * @param array  $array Template paths
+     * @return array        Modified template paths
+     */
+    public function addViewPaths($array)
+    {
+        $array[] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin';
+
+        return $array;
+    }
+
+    
 
     public function appendFormdata($content)
     {
