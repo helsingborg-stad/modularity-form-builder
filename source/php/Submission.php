@@ -233,10 +233,10 @@ class Submission
                     continue;
                 }
 
+                $encryptionConfigDefined = defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD');
+                
                 //Encrypt file if encryption is enabled
-                if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external'])) {
-
-                    if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
+                if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external']) && $encryptionConfigDefined) {
                         $encrypted = file_put_contents(
                             $files['tmp_name'][$i],
                             \ModularityFormBuilder\App::encryptDecryptFile(
@@ -245,11 +245,10 @@ class Submission
                             )
                         );
 
+
                         if ($encrypted !== false) {
                             $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
-                        }
-
-                    }
+                        }            
 
                 } else {
                     $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;

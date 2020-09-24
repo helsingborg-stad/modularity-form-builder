@@ -266,7 +266,7 @@ class PostType
         }
 
         //Check if encrypted
-        if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
+        if (defined('ENCRYPT_METHOD') && strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
             if (strpos($_SERVER['REQUEST_URI'], "?") !== false) {
                 $sep = "&";
             } else {
@@ -527,7 +527,6 @@ class PostType
     public function addViewPaths($array)
     {
         $array[] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin';
-
 
         return $array;
     }
