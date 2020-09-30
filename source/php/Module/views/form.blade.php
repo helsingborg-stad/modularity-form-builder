@@ -66,7 +66,7 @@
                         @endif
                     @endif
                    
-                    <button type="submit" class="c-button c-button__filled c-button__filled--default c-button--md">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
+                    <button type="submit" class="c-button c-button__filled c-button__filled--primary c-button--md">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
                     
                 </div>
             </div>
