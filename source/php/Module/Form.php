@@ -184,7 +184,7 @@ class Form extends \Modularity\Module
     public function data() : array
     {
         $data = get_fields($this->ID);
-        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
+        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
         $data['module_id'] = $this->ID;
         $data['hasFileUpload'] = false;
         $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
