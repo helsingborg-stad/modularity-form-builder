@@ -25,8 +25,8 @@
                     @button([
                         'text' => translate('Select file', 'modularity-form-builder'),
                         'color' => 'primary',
-                        
                     ])
+                    @endbutton
                     <span class="input-file-selected"><?php _e('No file selected', 'modularity-form-builder'); ?></span>
                 </label>
             @endif
