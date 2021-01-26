@@ -3,7 +3,7 @@
         <div class="form-group">
             <label for="{{ $module_id }}-message">{{ $field['label'] ? $field['label'] : 'Message' }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
             {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
-
+            <!-- Message -->
             @textarea([
                 'type' => 'text',
                 'attributeList' => [
@@ -11,7 +11,7 @@
                     'name' => sanitize_title($field['label']),
                     'rows' => "10",
                     $field['required'] ? 'required' : '' => '',
-                    'id' => "{{ $module_id }}-message"
+                    'id' => $module_id . "-message"
                 ],
                 'label' => "Normal text field"
             ])
