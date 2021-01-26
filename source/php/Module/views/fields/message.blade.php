@@ -7,13 +7,13 @@
             @textarea([
                 'type' => 'text',
                 'attributeList' => [
-                    'name' => sanitize_title($field['label']),
+                    'name' => $field['attributeList']['name'],
                     'type' => 'textarea',
                     'rows' => "10",
-                    ($field['required']) ? 'required'  : '',
                     'id' => $module_id . "-message"
                 ],
-                'label' => ''
+                'label' => '',
+                'required' => $field['required']
             ])
             @endtextarea
             @if (isset($field['custom_post_type_content']) && $field['custom_post_type_content'] == true)
