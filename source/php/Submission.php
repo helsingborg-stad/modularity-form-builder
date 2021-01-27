@@ -207,14 +207,12 @@ class Submission
         // Data to be returned
         $uploaded = array();
         foreach ($fileslist as $key => $files) {
-            for ($i = 0; $i < count($files['name']); $i++) {
-                if (empty($files['name'][$i])) {
-                    continue;
-                }
 
-                //Get file details
-                $fileName = pathinfo($files['name'][$i], PATHINFO_FILENAME);
-                $fileext = strtolower(pathinfo($files['name'][$i], PATHINFO_EXTENSION));
+            for ($i = 0, $iMax = count( $files['name']); $i < $iMax; $i++) {
+
+                $fileName = pathinfo((string)$files['name'][$i], PATHINFO_FILENAME);
+                $fileext = strtolower(pathinfo((string)$files['name'][$i], PATHINFO_EXTENSION));
+
 
                 //Validate that image is in correct format
                 if (in_array('image/*', $fields[$key]['filetypes'])) {
@@ -226,15 +224,18 @@ class Submission
                     $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'], $allowedVideoTypes));
                 }
 
+
                 //Not a valid filetype at all
                 if (!in_array('.' . $fileext, $fields[$key]['filetypes'])) {
+
                     error_log('Filetype not allowed');
                     $uploaded['error'] = true;
                     continue;
                 }
 
+
                 $encryptionConfigDefined = defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD');
-                
+
                 //Encrypt file if encryption is enabled
                 if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external']) && $encryptionConfigDefined) {
                         $encrypted = file_put_contents(
@@ -247,11 +248,11 @@ class Submission
 
 
                         if ($encrypted !== false) {
-                            $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
+                            $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
                         }            
 
                 } else {
-                    $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;
+                    $targetFile = $uploadsFolder . '/' . uniqid('', true)  . '-' . sanitize_file_name($fileName) . '.' . $fileext;
                 }
 
                 // Upload the file to server
