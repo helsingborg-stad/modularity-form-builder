@@ -18,7 +18,6 @@ $removables = [
     'build.php',
     'composer.json',
     'composer.lock',
-    'gulpfile.js',
     'node_modules',
     'package.json'
 ];
