@@ -3,7 +3,7 @@
         <div class="form-group">
             <label for="{{ $module_id }}-message">{{ $field['label'] ? $field['label'] : 'Message' }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
             {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
-            <!-- Message -->
+            <!-- Textarea component from Component Library  -->
             @textarea([
                 'type' => 'text',
                 'attributeList' => [
