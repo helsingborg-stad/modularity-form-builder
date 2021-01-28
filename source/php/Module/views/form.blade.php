@@ -46,7 +46,7 @@
             @endif
 
             @if (!is_user_logged_in() && !isset($_GET['form']) || $_GET['form'] != 'success' )
-                <div class="ogrid">
+                <div class="o-grid">
                     <div class="o-grid-12@md">
                         <div class="g-recaptcha u-mt-2"></div>
                         <div class="form-notice text-danger captcha-warning text-sm"
