@@ -19,8 +19,21 @@
             @if (isset($_GET['form']) && $_GET['form'] == 'success')
                 <div class="o-grid">
                     <div class="o-grid-12@md">
-                        <div class="notice success u-mb-2"><i class="pricon pricon-check pull-left"></i> <?php echo get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'); ?>
-                        </div>
+    
+                        @notice([
+                            'type' => 'success',
+                            'message' => [
+                                'text' =>  get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'),
+                                'size' => 'sm'
+                            ],
+                            'icon' => [
+                                'name' => 'report',
+                                'size' => 'md',
+                                'color' => 'white'
+                            ]
+                        ])
+                        @endnotice
+
                     </div>
                 </div>
             @endif
@@ -28,9 +41,21 @@
             @if (isset($_GET['form']) && $_GET['form'] == 'failed')
                 <div class="o-grid">
                     <div class="o-grid-12@md">
-                        <div class="notice warning"><i
-                                    class="pricon pricon-notice-warning pull-left"></i> <?php _e('Something went wrong, please try again.', 'modularity-form-builder'); ?>
-                        </div>
+                        
+                        @notice([
+                            'type' => 'warning',
+                            'message' => [
+                                'text' =>  __('Something went wrong, please try again.', 'modularity-form-builder'),
+                                'size' => 'sm'
+                            ],
+                            'icon' => [
+                                'name' => 'report',
+                                'size' => 'md',
+                                'color' => 'white'
+                            ]
+                        ])
+                        @endnotice
+  
                     </div>
                 </div>
             @endif
@@ -51,7 +76,7 @@
                         <div class="g-recaptcha u-mt-2"></div>
                         
                         @notice([
-                                'type' => 'warning',
+                                'type' => 'info',
                                 'message' => [
                                     'text' => __('You must confirm you\'re not a robot.', 'modularity-form-builder'),
                                     'size' => 'sm'
