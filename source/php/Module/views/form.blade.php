@@ -49,6 +49,7 @@
                 <div class="o-grid">
                     <div class="o-grid-12@md">
                         <div class="g-recaptcha u-mt-2"></div>
+                        
                         @notice([
                                 'type' => 'warning',
                                 'message' => [
@@ -63,7 +64,6 @@
                         ])
                         @endnotice
                         
-        
                     </div>
                 </div>
             @endif
@@ -111,6 +111,7 @@
                                 </div>
                             @endif
                         @endif
+                        
                         @button([
                             'text' => translate( 'Show form', 'modularity-form-builder' ),
                             'classList' => ['js-return_to_form'],
@@ -119,6 +120,7 @@
                             ]
                         ])
                         @endbutton
+                        
                     </div>
                 </div>
             @endif
