@@ -49,8 +49,21 @@
                 <div class="o-grid">
                     <div class="o-grid-12@md">
                         <div class="g-recaptcha u-mt-2"></div>
-                        <div class="form-notice text-danger captcha-warning text-sm"
-                            aria-live="polite"><?php _e('You must confirm you\'re not a robot.', 'modularity-form-builder'); ?></div>
+                        @notice([
+                                'type' => 'warning',
+                                'message' => [
+                                    'text' => __('You must confirm you\'re not a robot.', 'modularity-form-builder'),
+                                    'size' => 'sm'
+                            ],
+                            'icon' => [
+                                'name' => 'report',
+                                'size' => 'md',
+                                'color' => 'white'
+                            ]
+                        ])
+                        @endnotice
+                        
+        
                     </div>
                 </div>
             @endif
