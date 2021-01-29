@@ -32,7 +32,7 @@ class App
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
         add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
-        
+
     }
 
     /**
@@ -123,7 +123,7 @@ class App
 
     /**
      * When a form label is changed, we must update the keys in all form submissions.
-     * @param  int $postId The posts ID
+     * @param int $postId The posts ID
      * @return void
      */
     public function updateFieldKeys($postId)
@@ -564,6 +564,7 @@ class App
         echo '</select>';
     }
 
+
     public function jsonSelectedValues()
     {
         //Get saved data
@@ -601,10 +602,10 @@ class App
         wp_register_script('form-builder-js-front', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'), false, true);
 
         wp_localize_script('form-builder-js-front', 'formbuilder', array(
-            'site_key'              => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
-            'sending'               => __('Sending', 'modularity-form-builder'),
-            'checkbox_required'     => __('You must check at least one option', 'modularity-form-builder'),
-            'something_went_wrong'  => __('Something went wrong', 'modularity-form-builder'),
+            'site_key' => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
+            'sending' => __('Sending', 'modularity-form-builder'),
+            'checkbox_required' => __('You must check at least one option', 'modularity-form-builder'),
+            'something_went_wrong' => __('Something went wrong', 'modularity-form-builder'),
         ));
 
         wp_enqueue_script('form-builder-js-front');
