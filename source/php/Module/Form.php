@@ -325,7 +325,6 @@ class Form extends \Modularity\Module
         \ModularityFormBuilder\App::enqueueFormBuilderScripts();
     }
 
-
     /**
      * Enqueue required styles
      * @return void
