@@ -1,3 +1,7 @@
+/**
+ * Get Url referrer save to storage then set fields in form.
+ */
+
 let refUrlStorageHistory = null;
 let refUrlStorage = null;
 
@@ -96,3 +100,5 @@ export default class LocalStorageReferer {
     };
 
 }
+
+new LocalStorageReferer();

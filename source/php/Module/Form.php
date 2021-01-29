@@ -323,6 +323,9 @@ class Form extends \Modularity\Module
         }
 
         \ModularityFormBuilder\App::enqueueFormBuilderScripts();
+
+        wp_register_script('form-builder-js-referer', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-referer.js'), false, true);
+        wp_enqueue_script('form-builder-js-referer');
     }
 
     /**
