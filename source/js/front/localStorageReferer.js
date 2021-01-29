@@ -50,17 +50,30 @@ export default class LocalStorageReferer {
 
             if (this.getUrlParameter('modularityForm')) {
 
-                refUrlStorageHistory = localStorage.setItem('refUrlStorageHistory',
-                    decodeURIComponent(this.getUrlParameter('modularityForm')));
+                refUrlStorageHistory = localStorage.setItem(
+                    'refUrlStorageHistory',
+                    decodeURIComponent(
+                        this.getUrlParameter('modularityForm')
+                    )
+                );
 
-                refUrlStorage = localStorage.setItem('refUrlStorageHistory',
-                    decodeURIComponent(this.getUrlParameter('modularityReferrer')));
+                refUrlStorage = localStorage.setItem(
+                    'refUrlStorageHistory',
+                    decodeURIComponent(
+                        this.getUrlParameter('modularityReferrer'))
+                );
 
             } else {
 
-                refUrlStorageHistory = localStorage.setItem('refUrlStorageHistory',
-                    this.checkStorage('refUrlStorage'));
-                refUrlStorage = localStorage.setItem('refUrlStorage', window.location.href);
+                refUrlStorageHistory = localStorage.setItem(
+                    'refUrlStorageHistory',
+                    this.checkStorage('refUrlStorage')
+                );
+
+                refUrlStorage = localStorage.setItem(
+                    'refUrlStorage',
+                    window.location.href
+                );
             }
         }
 
@@ -72,14 +85,14 @@ export default class LocalStorageReferer {
      */
     addStorageRefererToDoom() {
         if (document.getElementById('modularity-form-history').length !== 0) {
-            document.getElementById('modularity-form-history').val(this.checkStorage(
+            document.getElementById('modularity-form-history').value = this.checkStorage(
                 'refUrlStorageHistory'
-            ));
+            );
 
-            document.getElementById('modularity-form-url').val(this.checkStorage(
+            document.getElementById('modularity-form-url').value = this.checkStorage(
                 'refUrlStorage'
-            ));
+            );
         }
     };
-    
+
 }
