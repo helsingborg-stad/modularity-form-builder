@@ -587,5 +587,37 @@ class App
             echo "<script> var notificationConditions = '" . json_encode($result) . "'; </script>";
         }
     }
+
+    /**
+     * Enqueues widget/module assets Scripts
+     * @return void
+     */
+    public static function enqueueFormBuilderScripts()
+    {
+        if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
+            wp_enqueue_script('google-maps-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
+        }
+
+        wp_register_script('form-builder-js-front', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'), false, true);
+
+        wp_localize_script('form-builder-js-front', 'formbuilder', array(
+            'site_key'              => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
+            'sending'               => __('Sending', 'modularity-form-builder'),
+            'checkbox_required'     => __('You must check at least one option', 'modularity-form-builder'),
+            'something_went_wrong'  => __('Something went wrong', 'modularity-form-builder'),
+        ));
+
+        wp_enqueue_script('form-builder-js-front');
+
+        $handle = 'google-recaptcha';
+        $list = 'enqueued';
+
+        if (wp_script_is($handle, $list)) {
+            return;
+        }
+
+        wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit', '', '1.0.0', true);
+    }
+
 }
 
