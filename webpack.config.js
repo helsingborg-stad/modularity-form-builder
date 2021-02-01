@@ -20,7 +20,7 @@ module.exports = {
   entry: {
     'js/modularity-form-builder-admin': './source/js/modularity-form-builder-admin.js',
     'js/modularity-form-builder-front': './source/js/modularity-form-builder-front.js',
-    'js/modularity-form-builder-referer': './source/js/front/LocalStorageReferer.js',
+    'js/modularity-form-builder-referer': './source/js/modularity-form-builder-referer.js',
     'css/modularity-form-builder': './source/sass/modularity-form-builder.scss',
   },
 

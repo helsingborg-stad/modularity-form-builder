@@ -5,7 +5,12 @@
 let refUrlStorageHistory = null;
 let refUrlStorage = null;
 
-export default class LocalStorageReferer {
+/**
+ * Modularity form builder referer
+ * Adds referer address and page address to hidden field in form.
+ * (Register the page previously visit and the form page)
+ */
+export default class ModularityFormBuilderReferer {
 
     /**
      * Create Local Storage.
@@ -101,4 +106,4 @@ export default class LocalStorageReferer {
 
 }
 
-new LocalStorageReferer();
+new ModularityFormBuilderReferer();
