@@ -4,8 +4,8 @@ use ModularityFormBuilder\Helper\SanitizeData;
 
 ?>
 
-<div class="grid mod-form-field" {!! $field['conditional_hidden'] !!}>
-    <div class="grid-md-12">
+<div class="o-grid mod-form-field" {!! $field['conditional_hidden'] !!}>
+    <div class="o-grid-12@md">
         <div class="form-group">
 
             <label for="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}">

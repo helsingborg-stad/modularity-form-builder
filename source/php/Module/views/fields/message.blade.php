@@ -2,8 +2,8 @@
     <div class="o-grid-12@md">
         <div class="form-group">
             <label for="{{ $module_id }}-message">{{ $field['label'] ? $field['label'] : 'Message' }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
-            {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
-            <!-- Textarea component from Component Library  -->
+        {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
+        <!-- Textarea component from Component Library  -->
             @textarea([
                 'type' => 'text',
                 'attributeList' => [
