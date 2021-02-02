@@ -3,15 +3,20 @@ export default (function addFile() {
     
     
     forms.forEach((form) => {
+
         const visibileInput = form.querySelector('.c-fileinput__input');
 
-        visibileInput.addEventListener('change', (event) => {
+        if (visibileInput !== null) {
+            visibileInput.addEventListener('change', (event) => {
 
-            const hiddenInput = visibileInput.cloneNode(true);
-            hiddenInput.setAttribute('style', 'display:none');
-            visibileInput.parentNode.insertBefore(hiddenInput, visibileInput.nextSibling);
-            visibileInput.value = '';
-        });
+                const hiddenInput = visibileInput.cloneNode(true);
+                hiddenInput.setAttribute('style', 'display:none');
+                visibileInput.parentNode.insertBefore(hiddenInput, visibileInput.nextSibling);
+                visibileInput.value = '';
+
+            });
+        }
+
     });
     
 })();

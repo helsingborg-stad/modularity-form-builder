@@ -12,7 +12,7 @@ class Form extends \Modularity\Module
     public $supports = array();
     public $plugin = array();
     public $cacheTtl = 3600 * 24 * 7; // Defaults to 7 days
-    public $hideTitle  = false;
+    public $hideTitle = false;
     public $isDeprecated = false;
 
     /**
@@ -126,8 +126,8 @@ class Form extends \Modularity\Module
 
     /**
      * Add responses metabox
-     * @param  string $postType
-     * @param  WP_Post $post
+     * @param string  $postType
+     * @param WP_Post $post
      * @return void
      */
     public function metaBoxResponses($postType, $post)
@@ -141,7 +141,7 @@ class Form extends \Modularity\Module
 
     /**
      * Show responses
-     * @param  WP_Post $post
+     * @param WP_Post $post
      * @return void
      */
     public function showResponses($post)
@@ -181,7 +181,7 @@ class Form extends \Modularity\Module
      * View data
      * @return array
      */
-    public function data() : array
+    public function data(): array
     {
         $data = get_fields($this->ID);
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
@@ -189,9 +189,9 @@ class Form extends \Modularity\Module
         $data['hasFileUpload'] = false;
         $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
-        
+
         $data['dataStorage'] = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
-        
+
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
             $field = $this->setAttributeList($field);
@@ -215,9 +215,9 @@ class Form extends \Modularity\Module
                     $label = $this->conditionalString($field['label']);
                     $option_value = $this->conditionalString($value['value']);
                     $conditional_value = array(
-                                        'label' => $label,
-                                        'value' => $option_value
-                                    );
+                        'label' => $label,
+                        'value' => $option_value
+                    );
                     $value['conditional_value'] = json_encode($conditional_value);
                 }
             }
@@ -251,30 +251,30 @@ class Form extends \Modularity\Module
         return $data;
     }
 
-    private function setAttributeList($field) {
+    private function setAttributeList($field)
+    {
         $field['attributeList'] = [];
-            
+
         $field['attributeList']['type'] = $field['value_type'];
         $field['attributeList']['name'] = sanitize_title($field['label']);
-        
-        if($field['required']) {
+
+        if ($field['required']) {
             $field['attributeList']['required'] = 'required';
         }
 
-        if($field['value_type' === 'date']) {
+        if ($field['value_type' === 'date']) {
             $field['attributeList']['min'] = SanitizeData::formatDate($field['min_value']);
             $field['attributeList']['max'] = SanitizeData::formatDate($field['max_value']);
-        }
-        elseif ($field['value_type'] === 'time') {
+        } elseif ($field['value_type'] === 'time') {
             $field['attributeList']['min'] = trim($field['min_time_value']);
             $field['attributeList']['max'] = trim($field['max_time_value']);
-        } elseif(in_array($field['value_type'], array('number', 'range'))) {
+        } elseif (in_array($field['value_type'], array('number', 'range'))) {
             $field['attributeList']['min'] = trim($field['min_value']);
             $field['attributeList']['max'] = trim($field['max_value']);
             $field['attributeLIst']['step'] = trim($field['step']);
         }
 
-        if($field['filetypes'] && is_array($field['filetypes'])) {
+        if ($field['filetypes'] && is_array($field['filetypes'])) {
             $field['attributeList']['accept'] = implode(',', $field['filetypes']);
         }
 
@@ -283,7 +283,7 @@ class Form extends \Modularity\Module
 
     /**
      * Replace spaces and specials chars from string
-     * @param  string $string String to be replaced
+     * @param string $string String to be replaced
      * @return string         Modified string
      */
     public function conditionalString($string)
@@ -303,9 +303,9 @@ class Form extends \Modularity\Module
         wp_register_script('form-builder-js-admin', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-admin.js'));
 
         wp_localize_script('form-builder-js-admin', 'formbuilder', array(
-            'mod_form_authorized'   => (get_option('options_mod_form_access_token') == true) ? true : false,
-            'selections_missing'    => __('Please create radio selections before adding conditional logic.', 'modularity-form-builder'),
-            'delete_confirm'        => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
+            'mod_form_authorized' => (get_option('options_mod_form_access_token') == true) ? true : false,
+            'selections_missing' => __('Please create radio selections before adding conditional logic.', 'modularity-form-builder'),
+            'delete_confirm' => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
         ));
         wp_enqueue_script('form-builder-js-admin');
     }
@@ -316,29 +316,19 @@ class Form extends \Modularity\Module
      */
     public function script()
     {
+
+        wp_register_script('form-builder-js-referer', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-referer.js'), false, true);
+        wp_enqueue_script('form-builder-js-referer');
+
         global $post;
 
-        if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
-            wp_enqueue_script('google-maps-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
-        }
-
-        wp_register_script('form-builder-js-front', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'), false, true);
-
-        wp_localize_script('form-builder-js-front', 'formbuilder', array(
-            'site_key'              => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
-            'sending'               => __('Sending', 'modularity-form-builder'),
-            'checkbox_required'     => __('You must check at least one option', 'modularity-form-builder'),
-            'something_went_wrong'  => __('Something went wrong', 'modularity-form-builder'),
-        ));
-        wp_enqueue_script('form-builder-js-front');
-
-        $handle = 'google-recaptcha';
-        $list = 'enqueued';
-        if (wp_script_is($handle, $list)) {
+        if (!$this->hasModule()) {
             return;
-        } else {
-            wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit', '', '1.0.0', true);
         }
+
+        \ModularityFormBuilder\App::enqueueFormBuilderScripts();
+
+
     }
 
     /**
@@ -352,6 +342,7 @@ class Form extends \Modularity\Module
 
     /**
      * Get conditional select field from database
+     *
      * @return string
      */
     public function getSelectedField()
