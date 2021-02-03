@@ -50,7 +50,7 @@ class Submission
 
         // Upload files
         $files = array();
-        if (!empty($_FILES)) {
+        if ($_FILES['size'] > 0) {
             $files = self::uploadFiles($_FILES, $_POST['modularity-form-id']);
 
             // Return to form if upload failed
@@ -64,6 +64,7 @@ class Submission
                 exit;
             }
         }
+
         $_POST = array_merge($_POST, $files);
 
         // Set post title, content, form page and referer
@@ -249,7 +250,7 @@ class Submission
 
                         if ($encrypted !== false) {
                             $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
-                        }            
+                        }
 
                 } else {
                     $targetFile = $uploadsFolder . '/' . uniqid('', true)  . '-' . sanitize_file_name($fileName) . '.' . $fileext;

@@ -2,7 +2,11 @@
 .DS_Store
 node_modules
 .npmrc
-assets/dist/*
+
+dist
+dist/
+dist/*
+
 vendor/
 .php_cs.cache
 .env
