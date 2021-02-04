@@ -90,7 +90,8 @@ export default class ModularityFormBuilderReferer {
      *  Adding referer URL to doom
      */
     addStorageRefererToDoom() {
-        if (document.getElementById('modularity-form-history').length !== 0) {
+        if (document.getElementById('modularity-form-history') &&
+            document.getElementById('modularity-form-history').length !== 0) {
             document.getElementById('modularity-form-history').value = this.checkStorage(
                 'refUrlStorageHistory'
             );
