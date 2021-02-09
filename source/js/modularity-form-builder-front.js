@@ -5,6 +5,7 @@ import RecaptchaWarning from './front/recaptcha-warning';
 import SubmitHandler from './front/submit-handler';
 import Validation from './front/validation';
 import Files from './front/files';
+import CheckboxRequired from './front/checkbox-required';
 
 const FormBuilderFront = {
   Collapse,
@@ -13,8 +14,6 @@ const FormBuilderFront = {
   RecaptchaWarning,
   SubmitHandler,
   Validation,
-  Files
+  Files,
+  CheckboxRequired
 };
-
-
-
