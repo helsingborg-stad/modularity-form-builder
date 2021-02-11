@@ -50,7 +50,8 @@ class Submission
 
         // Upload files
         $files = array();
-        if ($_FILES['size'] > 0) {
+
+        if (!empty($_FILES)) {
             $files = self::uploadFiles($_FILES, $_POST['modularity-form-id']);
 
             // Return to form if upload failed
