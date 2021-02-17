@@ -274,6 +274,7 @@ class Form extends \Modularity\Module
             $field['attributeLIst']['step'] = trim($field['step']);
         }
 
+        /* if($field['filetypes']) */
         if($field['filetypes'] && is_array($field['filetypes'])) {
             $field['attributeList']['accept'] = implode(',', $field['filetypes']);
         }
@@ -329,7 +330,9 @@ class Form extends \Modularity\Module
             'sending'               => __('Sending', 'modularity-form-builder'),
             'checkbox_required'     => __('You must check at least one option', 'modularity-form-builder'),
             'something_went_wrong'  => __('Something went wrong', 'modularity-form-builder'),
+            'files_max_exceeded'    => __('Max number of files exceeded', 'modularity-form-builder')
         ));
+
         wp_enqueue_script('form-builder-js-front');
 
         $handle = 'google-recaptcha';
