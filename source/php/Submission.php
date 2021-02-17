@@ -50,7 +50,8 @@ class Submission
 
         // Upload files
         $files = array();
-
+        var_dump($_FILES);
+        /* die; */
         if (!empty($_FILES)) {
             $files = self::uploadFiles($_FILES, $_POST['modularity-form-id']);
 
@@ -185,6 +186,14 @@ class Submission
         exit;
     }
 
+    private static function convertItemToArray($items) {
+        foreach($items as $key => $item) {
+            $items[$key] = array($item);
+        }
+
+        return $items;
+    }
+
     /**
      * Upload files
      * @param  array $fileslist
@@ -208,8 +217,18 @@ class Submission
 
         // Data to be returned
         $uploaded = array();
+        /* var_dump($fileslist);
+        die; */
         foreach ($fileslist as $key => $files) {
+            
+            /* if(count($files['name']) > $fields['files_max'] ) {
+                $uploaded['error'] = true;
+            } */
 
+            if(!is_array($files['name'])) {
+                $files = self::convertItemToArray($files);
+            }
+            
             for ($i = 0, $iMax = count( $files['name']); $i < $iMax; $i++) {
 
                 $fileName = pathinfo((string)$files['name'][$i], PATHINFO_FILENAME);
@@ -324,9 +343,9 @@ class Submission
     public function getMailDownloadLink($filePath) {
 
         //Check if encrypted
-        if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
+        /* if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
             return home_url("/") . '?modFormDownloadEncFilePublic=' . urlencode(basename($filePath)) . '&token=' . $this->createToken($filePath);
-        }
+        } */
 
         return $filePath;
     }
