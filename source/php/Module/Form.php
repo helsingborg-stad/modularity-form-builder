@@ -325,10 +325,16 @@ class Form extends \Modularity\Module
         if (!$this->hasModule()) {
             return;
         }
+        
+        add_action('wp_enqueue_scripts', array($this, 'initScriptsQue'), 20);
 
+    }
+
+    /**
+     * Fix for queuing up scripts the correct way
+     */
+    public function initScriptsQue(){
         \ModularityFormBuilder\App::enqueueFormBuilderScripts();
-
-
     }
 
     /**

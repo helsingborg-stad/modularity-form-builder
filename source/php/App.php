@@ -1,6 +1,7 @@
 <?php
 
 namespace ModularityFormBuilder;
+use \HelsingborgStad\RecaptchaIntegration as Captcha;
 
 class App
 {
@@ -590,7 +591,7 @@ class App
     }
 
     /**
-     * Enqueues widget/module assets Scripts
+     * Enqueues widget/module assets Scripts and External Scripts
      * @return void
      */
     public static function enqueueFormBuilderScripts()
@@ -602,13 +603,18 @@ class App
         wp_register_script('form-builder-js-front', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'), false, true);
 
         wp_localize_script('form-builder-js-front', 'formbuilder', array(
-            'site_key' => (defined('G_RECAPTCHA_KEY')) ? G_RECAPTCHA_KEY : '',
             'sending' => __('Sending', 'modularity-form-builder'),
             'checkbox_required' => __('You must check at least one option', 'modularity-form-builder'),
             'something_went_wrong' => __('Something went wrong', 'modularity-form-builder'),
         ));
 
         wp_enqueue_script('form-builder-js-front');
+
+        // If Captcha Script is not Enqueued
+        if( !wp_script_is( 'municipio-google-recaptcha' ) ) {
+            Captcha::initScripts();
+        }
+
     }
 
 }
