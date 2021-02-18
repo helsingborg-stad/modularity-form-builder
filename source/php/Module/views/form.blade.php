@@ -69,30 +69,7 @@
             @if ($allow_sender_copy)
                 @include('fields.sender-copy')
             @endif
-
-            @if (!is_user_logged_in() && !isset($_GET['form']) || $_GET['form'] != 'success' )
-                <div class="o-grid">
-                    <div class="o-grid-12@md">
-                        <div class="g-recaptcha u-mt-2"></div>
-                        
-                        @notice([
-                                'type' => 'info',
-                                'message' => [
-                                    'text' => __('You must confirm you\'re not a robot.', 'modularity-form-builder'),
-                                    'size' => 'sm'
-                            ],
-                            'icon' => [
-                                'name' => 'report',
-                                'size' => 'md',
-                                'color' => 'white'
-                            ]
-                        ])
-                        @endnotice
-                        
-                    </div>
-                </div>
-            @endif
-
+            
             @if (!isset($_GET['form']) || $_GET['form'] != 'success')
                 <div class="o-grid">
                     <div class="o-grid-12@md">
@@ -149,7 +126,9 @@
                     </div>
                 </div>
             @endif
-
+            @if (!is_user_logged_in())
+                    <input type="hidden" class="g-recaptcha-response" name="g-recaptcha-response" value="" />
+            @endif
         </form>
     </div>
 @endcard

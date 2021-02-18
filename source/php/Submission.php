@@ -1,9 +1,17 @@
 <?php
 
 namespace ModularityFormBuilder;
+use \HelsingborgStad\RecaptchaIntegration as Captcha;
 
+/**
+ * Class Submission
+ * @package ModularityFormBuilder
+ */
 class Submission
 {
+    /**
+     * Submission constructor.
+     */
     public function __construct()
     {
         add_action('init', function () {
@@ -22,17 +30,9 @@ class Submission
      */
     public function submit()
     {
-        if (class_exists('\Municipio\Helper\ReCaptcha')) {
-            if (defined('G_RECAPTCHA_KEY') && defined('G_RECAPTCHA_SECRET')) {
-                if (!is_user_logged_in()) {
-                    $response = (isset($_POST['g-recaptcha-response']) && strlen($_POST['g-recaptcha-response']) > 0) ? $_POST['g-recaptcha-response'] : null;
-                    $reCaptcha = \Municipio\Helper\ReCaptcha::controlReCaptcha($response);
-                    if (!$reCaptcha) {
-                        echo 'false';
-                        wp_die();
-                    }
-                }
-            }
+        # Google ReCaptcha v3.
+        if (!is_user_logged_in()) {
+            Captcha::initCaptcha();
         }
 
         unset($_POST['modularity-form']);
@@ -234,21 +234,21 @@ class Submission
                 }
 
                 $encryptionConfigDefined = defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD');
-                
+
                 //Encrypt file if encryption is enabled
                 if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external']) && $encryptionConfigDefined) {
-                        $encrypted = file_put_contents(
-                            $files['tmp_name'][$i],
-                            \ModularityFormBuilder\App::encryptDecryptFile(
-                                'encrypt',
-                                file_get_contents($files['tmp_name'][$i])
-                            )
-                        );
+                    $encrypted = file_put_contents(
+                        $files['tmp_name'][$i],
+                        \ModularityFormBuilder\App::encryptDecryptFile(
+                            'encrypt',
+                            file_get_contents($files['tmp_name'][$i])
+                        )
+                    );
 
 
-                        if ($encrypted !== false) {
-                            $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
-                        }            
+                    if ($encrypted !== false) {
+                        $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
+                    }
 
                 } else {
                     $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;

@@ -609,15 +609,6 @@ class App
         ));
 
         wp_enqueue_script('form-builder-js-front');
-
-        $handle = 'google-recaptcha';
-        $list = 'enqueued';
-
-        if (wp_script_is($handle, $list)) {
-            return;
-        }
-
-        wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit', '', '1.0.0', true);
     }
 
 }
