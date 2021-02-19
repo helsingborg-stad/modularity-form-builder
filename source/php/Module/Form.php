@@ -274,7 +274,6 @@ class Form extends \Modularity\Module
             $field['attributeLIst']['step'] = trim($field['step']);
         }
 
-        /* if($field['filetypes']) */
         if($field['filetypes'] && is_array($field['filetypes'])) {
             $field['attributeList']['accept'] = implode(',', $field['filetypes']);
         }
