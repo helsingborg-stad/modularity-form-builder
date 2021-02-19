@@ -326,7 +326,7 @@ class Form extends \Modularity\Module
             return;
         }
 
-        add_action('wp_enqueue_scripts', array($this, 'initScriptsQue'), 20);
+        add_action('wp_enqueue_scripts', array($this, 'initScriptsQue'), 30);
 
     }
 
