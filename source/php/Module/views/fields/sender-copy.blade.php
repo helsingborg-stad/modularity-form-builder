@@ -1,5 +1,5 @@
-<div class="grid" {!! $field['conditional_hidden'] !!}>
-    <div class="grid-md-12">
+<div class="o-grid" {!! $field['conditional_hidden'] !!}>
+    <div class="o-grid-12@md">
         <div class="form-group">
             <label class="checkbox">
                 <input type="checkbox" name="sender-copy" value="on"> 

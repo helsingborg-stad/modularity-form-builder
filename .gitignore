@@ -2,11 +2,9 @@
 .DS_Store
 node_modules
 .npmrc
-
-dist
-dist/
 dist/*
-
+dist/js/*
+dist/css/*
 vendor/
 .php_cs.cache
 .env
@@ -43,6 +41,7 @@ Thumbs.db
 *.tar
 *.zip
 
+
 # -------------------------
 # BEGIN Whitelisted Files
 # -------------------------
@@ -50,3 +49,4 @@ Thumbs.db
 # track these files, if they exist
 !.gitignore
 !.editorconfig
+
