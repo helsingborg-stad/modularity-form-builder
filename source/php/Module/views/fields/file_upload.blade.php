@@ -4,32 +4,26 @@
             <label for="{{ $module_id }}-{{ sanitize_title($field['label']) }}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
             {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
 
-            @if ($field['type'] === 'multiple')
-            
-                <label class="input-file">
+
                     @fileinput([
-                        'classList' => ['unlist'],
                         'name' => sanitize_title($field['label']),
                         'display' => 'area',
-                        'multiple' => true,
-                        'label' => translate('Select file', 'modularity-form-builder')
+                        'multiple' => ($field['type'] === 'multiple') ? true : false,
+                        'label' => translate('Select file', 'modularity-form-builder'),
+                        'accept' => $field['filetypes'] && is_array($field['filetypes']) ? $field['attributeList']['accept'] : '',
+                        'filesMax' => ($field['type'] === 'multiple') ? $field['files_max'] : 1
                     ])
                     @endfileinput
-                </label>
 
-            @else
-                <label class="input-file">
+                    @if(isset($field['files_max']))
+                        @typography(['element' => 'p', 'variant' => 'meta'])
+                            {{__('Max number of files', 'modularity-form-builder')}}: 
+                            {{($field['type'] === 'multiple' ? $field['files_max'] : '1')}}
+                        @endtypography        
+                    @endif
 
-                    {{-- <input type="file" name="{{ sanitize_title($field['label']) }}[]" {!! $field['filetypes'] && is_array($field['filetypes']) ? 'accept="' . implode(',', $field['filetypes']) . '"' : '' !!} {{ $field['required'] ? 'required' : '' }}> --}}
-                    <span class="btn"><?php _e('Select file', 'modularity-form-builder'); ?></span>
-                    @button([
-                        'text' => translate('Select file', 'modularity-form-builder'),
-                        'color' => 'primary',
-                    ])
-                    @endbutton
-                    <span class="input-file-selected"><?php _e('No file selected', 'modularity-form-builder'); ?></span>
-                </label>
-            @endif
+                    <!-- <span class="input-file-selected"><?php _e('No file selected', 'modularity-form-builder'); ?></span> -->
+
         </div>
     </div>
 </div>

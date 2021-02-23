@@ -1399,19 +1399,27 @@
                             "type": "number",
                             "instructions": "-1 for no limit",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_58eccde65ad91",
+                                        "operator": "==",
+                                        "value": "multiple"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
                             "default_value": -1,
-                            "min": "",
-                            "max": "",
-                            "step": "",
                             "placeholder": "",
                             "prepend": "",
-                            "append": ""
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
                         },
                         {
                             "key": "field_58ecce105ad92",

@@ -51,6 +51,7 @@ class Submission
 
         // Upload files
         $files = array();
+        
         if (!empty($_FILES)) {
             $files = self::uploadFiles($_FILES, $_POST['modularity-form-id']);
 
@@ -65,6 +66,7 @@ class Submission
                 exit;
             }
         }
+
         $_POST = array_merge($_POST, $files);
 
         // Set post title, content, form page and referer
@@ -184,6 +186,14 @@ class Submission
         exit;
     }
 
+    private static function convertItemToArray($items) {
+        foreach($items as $key => $item) {
+            $items[$key] = array($item);
+        }
+
+        return $items;
+    }
+
     /**
      * Upload files
      * @param array $fileslist
@@ -207,15 +217,18 @@ class Submission
 
         // Data to be returned
         $uploaded = array();
-        foreach ($fileslist as $key => $files) {
-            for ($i = 0; $i < count($files['name']); $i++) {
-                if (empty($files['name'][$i])) {
-                    continue;
-                }
 
-                //Get file details
-                $fileName = pathinfo($files['name'][$i], PATHINFO_FILENAME);
-                $fileext = strtolower(pathinfo($files['name'][$i], PATHINFO_EXTENSION));
+        foreach ($fileslist as $key => $files) {
+
+            if(!is_array($files['name'])) {
+                $files = self::convertItemToArray($files);
+            }
+            
+            for ($i = 0, $iMax = count( $files['name']); $i < $iMax; $i++) {
+
+                $fileName = pathinfo((string)$files['name'][$i], PATHINFO_FILENAME);
+                $fileext = strtolower(pathinfo((string)$files['name'][$i], PATHINFO_EXTENSION));
+
 
                 //Validate that image is in correct format
                 if (in_array('image/*', $fields[$key]['filetypes'])) {
@@ -227,17 +240,21 @@ class Submission
                     $fields[$key]['filetypes'] = array_unique(array_merge($fields[$key]['filetypes'], $allowedVideoTypes));
                 }
 
+
                 //Not a valid filetype at all
                 if (!in_array('.' . $fileext, $fields[$key]['filetypes'])) {
+
                     error_log('Filetype not allowed');
                     $uploaded['error'] = true;
                     continue;
                 }
 
+
                 $encryptionConfigDefined = defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD');
 
                 //Encrypt file if encryption is enabled
                 if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external']) && $encryptionConfigDefined) {
+
                     $encrypted = file_put_contents(
                         $files['tmp_name'][$i],
                         \ModularityFormBuilder\App::encryptDecryptFile(
@@ -250,8 +267,9 @@ class Submission
                         $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
                     }
 
+
                 } else {
-                    $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName) . '.' . $fileext;
+                    $targetFile = $uploadsFolder . '/' . uniqid('', true)  . '-' . sanitize_file_name($fileName) . '.' . $fileext;
                 }
 
                 // Upload the file to server

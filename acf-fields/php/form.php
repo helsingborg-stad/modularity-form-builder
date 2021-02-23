@@ -1,11 +1,9 @@
 <?php 
 
-
-if (function_exists('acf_add_local_field_group')) {
-
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_58eb301ecb36a',
-    'title' => 'Form',
+    'title' => __('Form', 'modularity-form-builder'),
     'fields' => array(
         0 => array(
             'key' => 'field_58f5c009ee909',
@@ -45,7 +43,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb3944f7086',
-                            'label' => __('Fields to display', 'modularity-form-builder'),
+                            'label' => 'Fields to display',
                             'name' => 'fields',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -57,11 +55,11 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'firstname' => __('Firstname', 'modularity-form-builder'),
-                                'lastname' => __('Lastname', 'modularity-form-builder'),
-                                'email' => __('Email', 'modularity-form-builder'),
-                                'phone' => __('Phone', 'modularity-form-builder'),
-                                'address' => __('Address', 'modularity-form-builder'),
+                                'firstname' => 'Firstname',
+                                'lastname' => 'Lastname',
+                                'email' => 'Email',
+                                'phone' => 'Phone',
+                                'address' => 'Address',
                             ),
                             'allow_custom' => 0,
                             'save_custom' => 0,
@@ -76,7 +74,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_58eb3a9bf7087',
-                            'label' => __('Required fields', 'modularity-form-builder'),
+                            'label' => 'Required fields',
                             'name' => 'required_fields',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -88,11 +86,11 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'firstname' => __('Firstname', 'modularity-form-builder'),
-                                'lastname' => __('Lastname', 'modularity-form-builder'),
-                                'email' => __('Email', 'modularity-form-builder'),
-                                'phone' => __('Phone', 'modularity-form-builder'),
-                                'address' => __('Address', 'modularity-form-builder'),
+                                'firstname' => 'Firstname',
+                                'lastname' => 'Lastname',
+                                'email' => 'Email',
+                                'phone' => 'Phone',
+                                'address' => 'Address',
                             ),
                             'allow_custom' => 0,
                             'save_custom' => 0,
@@ -107,10 +105,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_5a0abd4a4342a',
-                            'label' => __('Custom labels', 'modularity-form-builder'),
+                            'label' => 'Custom labels',
                             'name' => 'custom_sender_labels',
                             'type' => 'group',
-                            'instructions' => __('Check this box to add custom labels for sender input fields. Leave empty to use default labels', 'modularity-form-builder'),
+                            'instructions' => 'Check this box to add custom labels for sender input fields. Leave empty to use default labels',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -122,7 +120,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_5a0ac34055126',
-                                    'label' => __('Add labels', 'modularity-form-builder'),
+                                    'label' => 'Add labels',
                                     'name' => 'add_sender_labels',
                                     'type' => 'true_false',
                                     'instructions' => '',
@@ -141,7 +139,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 ),
                                 1 => array(
                                     'key' => 'field_5a0abd5f4342b',
-                                    'label' => __('Firstname', 'modularity-form-builder'),
+                                    'label' => 'Firstname',
                                     'name' => 'firstname',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -168,7 +166,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 ),
                                 2 => array(
                                     'key' => 'field_5a0abd804342c',
-                                    'label' => __('Lastname', 'modularity-form-builder'),
+                                    'label' => 'Lastname',
                                     'name' => 'lastname',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -195,7 +193,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 ),
                                 3 => array(
                                     'key' => 'field_5a0abe977e028',
-                                    'label' => __('Email', 'modularity-form-builder'),
+                                    'label' => 'Email',
                                     'name' => 'email',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -222,7 +220,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 ),
                                 4 => array(
                                     'key' => 'field_5a0ac1fda1240',
-                                    'label' => __('Phone', 'modularity-form-builder'),
+                                    'label' => 'Phone',
                                     'name' => 'phone',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -249,7 +247,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 ),
                                 5 => array(
                                     'key' => 'field_5a0ac216a1241',
-                                    'label' => __('Street address', 'modularity-form-builder'),
+                                    'label' => 'Street address',
                                     'name' => 'street_address',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -276,7 +274,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 ),
                                 6 => array(
                                     'key' => 'field_5a0ac228a1242',
-                                    'label' => __('Postal code', 'modularity-form-builder'),
+                                    'label' => 'Postal code',
                                     'name' => 'postal_code',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -303,7 +301,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 ),
                                 7 => array(
                                     'key' => 'field_5a0ac236a1243',
-                                    'label' => __('City', 'modularity-form-builder'),
+                                    'label' => 'City',
                                     'name' => 'city',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -342,7 +340,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb3f37d914b',
-                            'label' => __('Field label', 'modularity-form-builder'),
+                            'label' => 'Field label',
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -361,7 +359,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_597b20d5392bc',
-                            'label' => __('Field description', 'modularity-form-builder'),
+                            'label' => 'Field description',
                             'name' => 'description',
                             'type' => 'text',
                             'instructions' => '',
@@ -380,7 +378,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_58eb3f5ed914c',
-                            'label' => __('Required', 'modularity-form-builder'),
+                            'label' => 'Required',
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -392,17 +390,17 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Required field', 'modularity-form-builder'),
+                            'message' => 'Required field',
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         3 => array(
                             'key' => 'field_59b69b14e2abf',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -410,7 +408,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -418,10 +416,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         4 => array(
                             'key' => 'field_59b69b16e2ac0',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -450,7 +448,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         5 => array(
                             'key' => 'field_5a1be0449d8b8',
-                            'label' => __('Custom post type content', 'modularity-form-builder'),
+                            'label' => 'Custom post type content',
                             'name' => 'custom_post_type_content',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -469,7 +467,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Use this field as post content. Default is empty content field.', 'modularity-form-builder'),
+                            'message' => 'Use this field as post content. Default is empty content field.',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -487,7 +485,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb55338189f',
-                            'label' => __('Field label', 'modularity-form-builder'),
+                            'label' => 'Field label',
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -506,7 +504,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_597b2100392bd',
-                            'label' => __('Field description', 'modularity-form-builder'),
+                            'label' => 'Field description',
                             'name' => 'description',
                             'type' => 'text',
                             'instructions' => '',
@@ -525,7 +523,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_58eb5547818a0',
-                            'label' => __('Field value type', 'modularity-form-builder'),
+                            'label' => 'Field value type',
                             'name' => 'value_type',
                             'type' => 'select',
                             'instructions' => '',
@@ -537,18 +535,18 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'text' => __('Text', 'modularity-form-builder'),
-                                'number' => __('Number', 'modularity-form-builder'),
-                                'email' => __('Email', 'modularity-form-builder'),
-                                'tel' => __('Phone number', 'modularity-form-builder'),
-                                'color' => __('Color', 'modularity-form-builder'),
-                                'date' => __('Date', 'modularity-form-builder'),
-                                'month' => __('Month', 'modularity-form-builder'),
-                                'week' => __('Week', 'modularity-form-builder'),
-                                'range' => __('Range', 'modularity-form-builder'),
-                                'search' => __('Search', 'modularity-form-builder'),
-                                'time' => __('Time', 'modularity-form-builder'),
-                                'url' => __('Url', 'modularity-form-builder'),
+                                'text' => 'Text',
+                                'number' => 'Number',
+                                'email' => 'Email',
+                                'tel' => 'Phone number',
+                                'color' => 'Color',
+                                'date' => 'Date',
+                                'month' => 'Month',
+                                'week' => 'Week',
+                                'range' => 'Range',
+                                'search' => 'Search',
+                                'time' => 'Time',
+                                'url' => 'Url',
                             ),
                             'default_value' => array(
                             ),
@@ -561,7 +559,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         3 => array(
                             'key' => 'field_58eb572440304',
-                            'label' => __('Min value', 'modularity-form-builder'),
+                            'label' => 'Min value',
                             'name' => 'min_value',
                             'type' => 'number',
                             'instructions' => '',
@@ -597,7 +595,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         4 => array(
                             'key' => 'field_58eb574140305',
-                            'label' => __('Max value', 'modularity-form-builder'),
+                            'label' => 'Max value',
                             'name' => 'max_value',
                             'type' => 'number',
                             'instructions' => '',
@@ -633,7 +631,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         5 => array(
                             'key' => 'field_58eb57a645640',
-                            'label' => __('Step', 'modularity-form-builder'),
+                            'label' => 'Step',
                             'name' => 'step',
                             'type' => 'number',
                             'instructions' => '',
@@ -669,7 +667,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         6 => array(
                             'key' => 'field_58eb62d1ec890',
-                            'label' => __('Min date', 'modularity-form-builder'),
+                            'label' => 'Min date',
                             'name' => 'min_value',
                             'type' => 'date_picker',
                             'instructions' => '',
@@ -694,7 +692,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         7 => array(
                             'key' => 'field_58eb62feec891',
-                            'label' => __('Max date', 'modularity-form-builder'),
+                            'label' => 'Max date',
                             'name' => 'max_value',
                             'type' => 'date_picker',
                             'instructions' => '',
@@ -719,10 +717,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         8 => array(
                             'key' => 'field_5dfb9b0074cfc',
-                            'label' => __('Min time', 'modularity-form-builder'),
+                            'label' => 'Min time',
                             'name' => 'min_time_value',
                             'type' => 'time_picker',
-                            'instructions' => __('Select minimum time frame', 'modularity-form-builder'),
+                            'instructions' => 'Select minimum time frame',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -743,10 +741,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         9 => array(
                             'key' => 'field_5dfbf8a374cfe',
-                            'label' => __('Max time', 'modularity-form-builder'),
+                            'label' => 'Max time',
                             'name' => 'max_time_value',
                             'type' => 'time_picker',
-                            'instructions' => __('Select maximum time frame', 'modularity-form-builder'),
+                            'instructions' => 'Select maximum time frame',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -767,7 +765,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         10 => array(
                             'key' => 'field_58eb5614c5514',
-                            'label' => __('Required', 'modularity-form-builder'),
+                            'label' => 'Required',
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -779,17 +777,17 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Required', 'modularity-form-builder'),
+                            'message' => 'Required',
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         11 => array(
                             'key' => 'field_59b69ae3e2abd',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -797,7 +795,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -805,10 +803,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         12 => array(
                             'key' => 'field_59b69ae6e2abe',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -837,7 +835,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         13 => array(
                             'key' => 'field_5a18388b007a2',
-                            'label' => __('Custom post type title', 'modularity-form-builder'),
+                            'label' => 'Custom post type title',
                             'name' => 'custom_post_type_title',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -856,7 +854,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Use this field as post title. Default title is the forms name.', 'modularity-form-builder'),
+                            'message' => 'Use this field as post title. Default title is the forms name.',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -874,7 +872,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb675039ff1',
-                            'label' => __('Field label', 'modularity-form-builder'),
+                            'label' => 'Field label',
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -893,7 +891,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_597b2112392be',
-                            'label' => __('Field description', 'modularity-form-builder'),
+                            'label' => 'Field description',
                             'name' => 'description',
                             'type' => 'text',
                             'instructions' => '',
@@ -912,7 +910,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_58eb670d39fef',
-                            'label' => __('Field values', 'modularity-form-builder'),
+                            'label' => 'Field values',
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -931,7 +929,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb672c39ff0',
-                                    'label' => __('Value', 'modularity-form-builder'),
+                                    'label' => 'Value',
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -952,7 +950,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         3 => array(
                             'key' => 'field_58eb699755795',
-                            'label' => __('Required', 'modularity-form-builder'),
+                            'label' => 'Required',
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -964,17 +962,17 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Required', 'modularity-form-builder'),
+                            'message' => 'Required',
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         4 => array(
                             'key' => 'field_59b69ac9e2abb',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -982,7 +980,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -990,10 +988,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         5 => array(
                             'key' => 'field_59b69acbe2abc',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1032,7 +1030,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb6b023b077',
-                            'label' => __('Field label', 'modularity-form-builder'),
+                            'label' => 'Field label',
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -1051,7 +1049,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_597b211f392bf',
-                            'label' => __('Field description', 'modularity-form-builder'),
+                            'label' => 'Field description',
                             'name' => 'description',
                             'type' => 'text',
                             'instructions' => '',
@@ -1070,7 +1068,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_58eb6b023b078',
-                            'label' => __('Field values', 'modularity-form-builder'),
+                            'label' => 'Field values',
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -1089,7 +1087,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb6b023b079',
-                                    'label' => __('Value', 'modularity-form-builder'),
+                                    'label' => 'Value',
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -1110,7 +1108,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         3 => array(
                             'key' => 'field_58eb6b023b07a',
-                            'label' => __('Required', 'modularity-form-builder'),
+                            'label' => 'Required',
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -1122,17 +1120,17 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Required', 'modularity-form-builder'),
+                            'message' => 'Required',
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         4 => array(
                             'key' => 'field_59b69ab2e2ab9',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1140,7 +1138,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1148,10 +1146,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         5 => array(
                             'key' => 'field_59b69ab5e2aba',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1190,7 +1188,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58eb6bd334c1a',
-                            'label' => __('Field label', 'modularity-form-builder'),
+                            'label' => 'Field label',
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -1209,7 +1207,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_597b2132392c0',
-                            'label' => __('Field description', 'modularity-form-builder'),
+                            'label' => 'Field description',
                             'name' => 'description',
                             'type' => 'text',
                             'instructions' => '',
@@ -1228,7 +1226,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_58eb6bd334c1b',
-                            'label' => __('Field values', 'modularity-form-builder'),
+                            'label' => 'Field values',
                             'name' => 'values',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -1247,7 +1245,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_58eb6bd334c1c',
-                                    'label' => __('Value', 'modularity-form-builder'),
+                                    'label' => 'Value',
                                     'name' => 'value',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -1268,7 +1266,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         3 => array(
                             'key' => 'field_58eb6bd334c1d',
-                            'label' => __('Required', 'modularity-form-builder'),
+                            'label' => 'Required',
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -1280,17 +1278,17 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'default_value' => 0,
-                            'message' => __('Required', 'modularity-form-builder'),
+                            'message' => 'Required',
                             'ui' => 0,
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
                         4 => array(
                             'key' => 'field_59b69a93e2ab7',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1298,7 +1296,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1306,10 +1304,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         5 => array(
                             'key' => 'field_59b69a96e2ab8',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1348,7 +1346,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_58ecce8a5ad93',
-                            'label' => __('Field label', 'modularity-form-builder'),
+                            'label' => 'Field label',
                             'name' => 'label',
                             'type' => 'text',
                             'instructions' => '',
@@ -1367,7 +1365,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_597b213f392c1',
-                            'label' => __('Field description', 'modularity-form-builder'),
+                            'label' => 'Field description',
                             'name' => 'description',
                             'type' => 'text',
                             'instructions' => '',
@@ -1386,7 +1384,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_58eccde65ad91',
-                            'label' => __('Type', 'modularity-form-builder'),
+                            'label' => 'Type',
                             'name' => 'type',
                             'type' => 'radio',
                             'instructions' => '',
@@ -1398,8 +1396,8 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'single' => __('Single', 'modularity-form-builder'),
-                                'multiple' => __('Multiple', 'modularity-form-builder'),
+                                'single' => 'Single',
+                                'multiple' => 'Multiple',
                             ),
                             'allow_null' => 0,
                             'other_choice' => 0,
@@ -1410,28 +1408,36 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         3 => array(
                             'key' => 'field_58ece6685df9c',
-                            'label' => __('Max number of files', 'modularity-form-builder'),
+                            'label' => 'Max number of files',
                             'name' => 'files_max',
                             'type' => 'number',
-                            'instructions' => __('-1 for no limit', 'modularity-form-builder'),
+                            'instructions' => '-1 for no limit',
                             'required' => 0,
-                            'conditional_logic' => 0,
+                            'conditional_logic' => array(
+                                0 => array(
+                                    0 => array(
+                                        'field' => 'field_58eccde65ad91',
+                                        'operator' => '==',
+                                        'value' => 'multiple',
+                                    ),
+                                ),
+                            ),
                             'wrapper' => array(
                                 'width' => '',
                                 'class' => '',
                                 'id' => '',
                             ),
                             'default_value' => -1,
-                            'min' => '',
-                            'max' => '',
-                            'step' => '',
                             'placeholder' => '',
                             'prepend' => '',
                             'append' => '',
+                            'min' => '',
+                            'max' => '',
+                            'step' => '',
                         ),
                         4 => array(
                             'key' => 'field_58ecce105ad92',
-                            'label' => __('Allowed filetypes', 'modularity-form-builder'),
+                            'label' => 'Allowed filetypes',
                             'name' => 'filetypes',
                             'type' => 'checkbox',
                             'instructions' => '',
@@ -1443,22 +1449,22 @@ if (function_exists('acf_add_local_field_group')) {
                                 'id' => '',
                             ),
                             'choices' => array(
-                                'video/*' => __('All video types', 'modularity-form-builder'),
-                                'image/*' => __('All image types', 'modularity-form-builder'),
-                                '.jpg' => __('jpg', 'modularity-form-builder'),
-                                '.png' => __('png', 'modularity-form-builder'),
-                                '.gif' => __('gif', 'modularity-form-builder'),
-                                '.mov' => __('mov', 'modularity-form-builder'),
-                                '.webm' => __('webm', 'modularity-form-builder'),
-                                '.mp4' => __('mp4', 'modularity-form-builder'),
-                                '.mp3' => __('mp3', 'modularity-form-builder'),
-                                '.ogg' => __('ogg', 'modularity-form-builder'),
-                                '.aac' => __('aac', 'modularity-form-builder'),
-                                '.doc' => __('doc', 'modularity-form-builder'),
-                                '.docx' => __('docx', 'modularity-form-builder'),
-                                '.xls' => __('xls', 'modularity-form-builder'),
-                                '.xlsx' => __('xlsx', 'modularity-form-builder'),
-                                '.pdf' => __('pdf', 'modularity-form-builder'),
+                                'video/*' => 'All video types',
+                                'image/*' => 'All image types',
+                                '.jpg' => 'jpg',
+                                '.png' => 'png',
+                                '.gif' => 'gif',
+                                '.mov' => 'mov',
+                                '.webm' => 'webm',
+                                '.mp4' => 'mp4',
+                                '.mp3' => 'mp3',
+                                '.ogg' => 'ogg',
+                                '.aac' => 'aac',
+                                '.doc' => 'doc',
+                                '.docx' => 'docx',
+                                '.xls' => 'xls',
+                                '.xlsx' => 'xlsx',
+                                '.pdf' => 'pdf',
                             ),
                             'allow_custom' => 0,
                             'save_custom' => 0,
@@ -1470,10 +1476,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         5 => array(
                             'key' => 'field_5a0c48839fa5d',
-                            'label' => __('Upload videos to external service', 'modularity-form-builder'),
+                            'label' => 'Upload videos to external service',
                             'name' => 'upload_videos_external',
                             'type' => 'true_false',
-                            'instructions' => __('Check this box to upload upload videos to an external service instead of locally.', 'modularity-form-builder'),
+                            'instructions' => 'Check this box to upload upload videos to an external service instead of locally.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1510,7 +1516,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Upload external', 'modularity-form-builder'),
+                            'message' => 'Upload external',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1518,7 +1524,7 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         6 => array(
                             'key' => 'field_58ecd86751bf6',
-                            'label' => __('Required', 'modularity-form-builder'),
+                            'label' => 'Required',
                             'name' => 'required',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -1529,7 +1535,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Required', 'modularity-form-builder'),
+                            'message' => 'Required',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1537,10 +1543,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         7 => array(
                             'key' => 'field_59b69a7ae2ab5',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1548,7 +1554,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1556,10 +1562,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         8 => array(
                             'key' => 'field_59b69a7de2ab6',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1598,10 +1604,10 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_59b13312b61ad',
-                            'label' => __('Content', 'modularity-form-builder'),
+                            'label' => 'Content',
                             'name' => 'content',
                             'type' => 'wysiwyg',
-                            'instructions' => __('Add custom content to the form. This will not be sent in e-mail messages.', 'modularity-form-builder'),
+                            'instructions' => 'Add custom content to the form. This will not be sent in e-mail messages.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1617,10 +1623,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         1 => array(
                             'key' => 'field_59b134beb61b0',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1628,7 +1634,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1636,10 +1642,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_59b635765e86b',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1678,7 +1684,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'sub_fields' => array(
                         0 => array(
                             'key' => 'field_5a26ac03821d9',
-                            'label' => __('Collapse', 'modularity-form-builder'),
+                            'label' => 'Collapse',
                             'name' => '',
                             'type' => 'message',
                             'instructions' => '',
@@ -1689,13 +1695,13 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Adds a collapse button that toggles all fields below. This is a layout field and will not be sent in e-mail messages.', 'modularity-form-builder'),
+                            'message' => 'Adds a collapse button that toggles all fields below. This is a layout field and will not be sent in e-mail messages.',
                             'new_lines' => 'wpautop',
                             'esc_html' => 0,
                         ),
                         1 => array(
                             'key' => 'field_5a266bb8943af',
-                            'label' => __('Button text', 'modularity-form-builder'),
+                            'label' => 'Button text',
                             'name' => 'button_text',
                             'type' => 'text',
                             'instructions' => '',
@@ -1714,10 +1720,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         2 => array(
                             'key' => 'field_5a266baf943ad',
-                            'label' => __('Conditional logic', 'modularity-form-builder'),
+                            'label' => 'Conditional logic',
                             'name' => 'conditional_logic',
                             'type' => 'true_false',
-                            'instructions' => __('Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.', 'modularity-form-builder'),
+                            'instructions' => 'Use conditional logic statement to display the field depending on other choices in the form. Works only with "Radio" form field type.',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -1725,7 +1731,7 @@ if (function_exists('acf_add_local_field_group')) {
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => __('Add conditional logic', 'modularity-form-builder'),
+                            'message' => 'Add conditional logic',
                             'default_value' => 0,
                             'ui' => 0,
                             'ui_on_text' => '',
@@ -1733,10 +1739,10 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                         3 => array(
                             'key' => 'field_5a266baf943ae',
-                            'label' => __('Conditonal field', 'modularity-form-builder'),
+                            'label' => 'Conditonal field',
                             'name' => 'conditonal_field',
                             'type' => 'select',
-                            'instructions' => __('Display field if this value is selected.', 'modularity-form-builder'),
+                            'instructions' => 'Display field if this value is selected.',
                             'required' => 0,
                             'conditional_logic' => array(
                                 0 => array(
@@ -1811,7 +1817,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => 'Skicka',
+            'default_value' => __('Skicka', 'modularity-form-builder'),
             'maxlength' => '',
             'placeholder' => '',
             'prepend' => '',
@@ -2371,17 +2377,17 @@ if (function_exists('acf_add_local_field_group')) {
                 'id' => '',
             ),
             'choices' => array(
-                'form-submissions' => 'Form submissions',
+                'form-submissions' => __('Form submissions', 'modularity-form-builder'),
                 'event' => __('Händelse', 'modularity-form-builder'),
                 'ticket' => __('Ärende', 'modularity-form-builder'),
                 'listing' => __('Lista', 'modularity-form-builder'),
                 'lovprogram' => __('Lovprogram', 'modularity-form-builder'),
                 'johan-test123' => __('Johan-test123', 'modularity-form-builder'),
-                'projekt' => 'Projekt',
-                'idea' => 'Ideas',
+                'projekt' => __('Projekt', 'modularity-form-builder'),
+                'idea' => __('Ideas', 'modularity-form-builder'),
             ),
             'default_value' => array(
-                0 => 'form-submissions',
+                0 => __('form-submissions', 'modularity-form-builder'),
             ),
             'allow_null' => 0,
             'multiple' => 0,
@@ -2530,7 +2536,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => 'I det här formuläret samlar vi in personuppgifter om dig för att [det formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något annat syfte, och kommer att raderas när [ärendet är avslutat]. <a href="https://helsingborg.se/toppmeny/om-webbplatsen/sa-har-behandlar-vi-dina-personuppgifter/">Läs om hur Helsingborgs stad hanterar personuppgifter</a>.',
+            'default_value' => __('I det här formuläret samlar vi in personuppgifter om dig för att [det formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något annat syfte, och kommer att raderas när [ärendet är avslutat]. <a href="https://helsingborg.se/toppmeny/om-webbplatsen/sa-har-behandlar-vi-dina-personuppgifter/">Läs om hur Helsingborgs stad hanterar personuppgifter</a>.', 'modularity-form-builder'),
             'tabs' => 'all',
             'toolbar' => 'full',
             'media_upload' => 0,
@@ -2629,8 +2635,7 @@ if (function_exists('acf_add_local_field_group')) {
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => 1,
+    'active' => true,
     'description' => '',
 ));
-
-}
+}

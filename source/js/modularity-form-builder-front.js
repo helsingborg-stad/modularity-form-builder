@@ -3,7 +3,6 @@ import GetLocation from './front/get-location';
 import HandleConditions from './front/handle-conditions';
 import SubmitHandler from './front/submit-handler';
 import Validation from './front/validation';
-import Files from './front/files';
 import CheckboxRequired from './front/checkbox-required';
 
 const FormBuilderFront = {
@@ -12,6 +11,5 @@ const FormBuilderFront = {
   HandleConditions,
   SubmitHandler,
   Validation,
-  Files,
   CheckboxRequired
 };
