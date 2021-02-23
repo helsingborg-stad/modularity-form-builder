@@ -2,8 +2,17 @@
 
 namespace ModularityFormBuilder;
 
+use HelsingborgStad\RecaptchaIntegration as Captcha;
+
+/**
+ * Class Submission
+ * @package ModularityFormBuilder
+ */
 class Submission
 {
+    /**
+     * Submission constructor.
+     */
     public function __construct()
     {
         add_action('init', function () {
@@ -22,17 +31,9 @@ class Submission
      */
     public function submit()
     {
-        if (class_exists('\Municipio\Helper\ReCaptcha')) {
-            if (defined('G_RECAPTCHA_KEY') && defined('G_RECAPTCHA_SECRET')) {
-                if (!is_user_logged_in()) {
-                    $response = (isset($_POST['g-recaptcha-response']) && strlen($_POST['g-recaptcha-response']) > 0) ? $_POST['g-recaptcha-response'] : null;
-                    $reCaptcha = \Municipio\Helper\ReCaptcha::controlReCaptcha($response);
-                    if (!$reCaptcha) {
-                        echo 'false';
-                        wp_die();
-                    }
-                }
-            }
+        # Google ReCaptcha v3.
+        if (!is_user_logged_in()) {
+            Captcha::initCaptcha();
         }
 
         unset($_POST['modularity-form']);
@@ -69,8 +70,8 @@ class Submission
         $_POST = array_merge($_POST, $files);
 
         // Set post title, content, form page and referer
-        $postTitle      = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
-        $postContent    = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
+        $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
+        $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
 
         // Referer & page url
         $postReferer = esc_url($_POST['modularity-form-history']);
@@ -195,8 +196,8 @@ class Submission
 
     /**
      * Upload files
-     * @param  array $fileslist
-     * @param  int $formId
+     * @param array $fileslist
+     * @param int   $formId
      * @return array
      */
     public static function uploadFiles($fileslist, $formId)
@@ -253,18 +254,19 @@ class Submission
 
                 //Encrypt file if encryption is enabled
                 if (get_option('options_mod_form_crypt') && empty($fields[$key]['upload_videos_external']) && $encryptionConfigDefined) {
-                        $encrypted = file_put_contents(
-                            $files['tmp_name'][$i],
-                            \ModularityFormBuilder\App::encryptDecryptFile(
-                                'encrypt',
-                                file_get_contents($files['tmp_name'][$i])
-                            )
-                        );
 
+                    $encrypted = file_put_contents(
+                        $files['tmp_name'][$i],
+                        \ModularityFormBuilder\App::encryptDecryptFile(
+                            'encrypt',
+                            file_get_contents($files['tmp_name'][$i])
+                        )
+                    );
+                    
+                    if ($encrypted !== false) {
+                        $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
+                    }
 
-                        if ($encrypted !== false) {
-                            $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
-                        }
 
                 } else {
                     $targetFile = $uploadsFolder . '/' . uniqid('', true)  . '-' . sanitize_file_name($fileName) . '.' . $fileext;
@@ -276,7 +278,7 @@ class Submission
                     // Upload video to YouTube
                     if (!empty($fields[$key]['upload_videos_external']) && in_array('.' . $fileext, $allowedVideoTypes)) {
                         $uploadVideo = \ModularityFormBuilder\Helper\YoutubeUploader::uploadVideo($targetFile, ucwords($fileName), '', '22');
-                        $targetFile  = ($uploadVideo) ? $uploadVideo : $targetFile;
+                        $targetFile = ($uploadVideo) ? $uploadVideo : $targetFile;
                     }
 
                 } else {
@@ -299,7 +301,7 @@ class Submission
 
     /**
      * Get file upload fields in form
-     * @param  int $formId
+     * @param int $formId
      * @return array
      */
     public static function getFileFields(int $formId): array
@@ -318,7 +320,7 @@ class Submission
 
     /**
      * Create upload folder if needed
-     * @param  string $path
+     * @param string $path
      * @return string
      */
     public static function maybeCreateFolder(string $path): string
@@ -334,7 +336,8 @@ class Submission
      * Get the download link to the file
      * @return string
      */
-    public function getMailDownloadLink($filePath) {
+    public function getMailDownloadLink($filePath)
+    {
 
         //Check if encrypted
         if (strpos($filePath, sanitize_file_name("-enc-" . ENCRYPT_METHOD)) !== false) {
@@ -349,11 +352,13 @@ class Submission
      * @param  [type] $filePath [description]
      * @return [type]           [description]
      */
-    private function createToken($filePath) {
+    private function createToken($filePath)
+    {
         return md5(hash_file('md5', $filePath) . NONCE_KEY);
     }
 
-    public function forceEcryptedPublicFileDownload() {
+    public function forceEcryptedPublicFileDownload()
+    {
 
         if (isset($_GET['modFormDownloadEncFilePublic']) && isset($_GET['token'])) {
 
@@ -373,7 +378,7 @@ class Submission
             }
 
             //Decrypt and return
-            if(file_exists($filePath)) {
+            if (file_exists($filePath)) {
                 if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
                     $fileContents = \ModularityFormBuilder\App::encryptDecryptFile(
                         'decrypt',
@@ -383,13 +388,13 @@ class Submission
             }
 
             //Return file force download
-            if(isset($fileContents) && !empty($fileContents)) {
+            if (isset($fileContents) && !empty($fileContents)) {
                 header("Pragma: public");
                 header("Expires: 0");
                 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
                 header("Cache-Control: private", false);
                 header("Content-Type: application/octet-stream");
-                header("Content-Disposition: attachment; filename=\"" . $_GET['modFormDownloadEncFilePublic'] . "\";" );
+                header("Content-Disposition: attachment; filename=\"" . $_GET['modFormDownloadEncFilePublic'] . "\";");
                 header("Content-Transfer-Encoding: binary");
 
                 echo $fileContents;
@@ -408,7 +413,7 @@ class Submission
 
     /**
      * Get data of a submission
-     * @param  int $submissionId
+     * @param int $submissionId
      * @return array
      */
     public static function getSubmissionData($submissionId): array
@@ -454,9 +459,9 @@ class Submission
 
     /**
      * Notify users about new submission
-     * @param  string $email
-     * @param  int $formId
-     * @param  int $submissionId
+     * @param string $email
+     * @param int    $formId
+     * @param int    $submissionId
      * @return void
      */
     public function notify($email, $formId, $submissionId, $from = null)
@@ -529,9 +534,9 @@ class Submission
 
     /**
      * Send submission data copy to sender email
-     * @param  string $email Email to send to
-     * @param  int $formId Form id
-     * @param  int $submissionId Submission id
+     * @param string $email        Email to send to
+     * @param int    $formId       Form id
+     * @param int    $submissionId Submission id
      * @return void
      */
     public function sendCopy($email, $formId, $submissionId, $from = null)
@@ -581,8 +586,8 @@ class Submission
 
     /**
      * Send autoreply to sender
-     * @param  string $email
-     * @param  int $submissionId
+     * @param string $email
+     * @param int    $submissionId
      * @return void
      */
     public function autoreply($email, $submissionId, $from = null)

@@ -21,7 +21,8 @@
         "helsingborg-stad/acf-export-manager": ">=1.0.0",
         "google/apiclient": "2.7.2",
         "guzzlehttp/guzzle": "7.0.1",
-        "guzzlehttp/psr7": "1.7.0"
+        "guzzlehttp/psr7": "1.7.0",
+        "helsingborg-stad/recaptcha-integration": ">=1.0.8"
     },
     "repositories": [
         {
