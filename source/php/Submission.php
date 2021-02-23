@@ -247,7 +247,7 @@ class Submission
 
 
                     if ($encrypted !== false) {
-                        $targetFile = $uploadsFolder . '/' . uniqid() . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
+                        $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName . "-enc-" . ENCRYPT_METHOD) . '.' . $fileext;
                     }
 
                 } else {
