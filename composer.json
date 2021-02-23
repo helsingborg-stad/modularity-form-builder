@@ -19,7 +19,8 @@
     "minimum-stability": "stable",
     "require": {
         "helsingborg-stad/acf-export-manager": ">=1.0.0",
-        "google/apiclient": "^2.0"
+        "google/apiclient": "^2.0",
+        "helsingborg-stad/recaptcha-integration": ">=1.0.8"
     },
     "repositories": [
         {

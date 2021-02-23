@@ -39,17 +39,7 @@
         @if ($allow_sender_copy)
             @include('fields.sender-copy')
         @endif
-
-        @if (!is_user_logged_in() && !isset($_GET['form']) || $_GET['form'] != 'success' )
-            <div class="grid">
-                <div class="grid-md-12">
-                    <div class="g-recaptcha u-mt-2"></div>
-                    <div class="form-notice text-danger captcha-warning text-sm"
-                         aria-live="polite"><?php _e('You must confirm you\'re not a robot.', 'modularity-form-builder'); ?></div>
-                </div>
-            </div>
-        @endif
-
+        
         @if (!isset($_GET['form']) || $_GET['form'] != 'success')
             <div class="grid">
                 <div class="grid-md-12">
@@ -89,6 +79,8 @@
                 </div>
             </div>
         @endif
-
+            @if (!is_user_logged_in())
+                <input type="hidden" class="g-recaptcha-response" name="g-recaptcha-response" value="" />
+            @endif
     </form>
 </div>
