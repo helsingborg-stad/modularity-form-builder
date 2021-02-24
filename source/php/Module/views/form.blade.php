@@ -55,6 +55,13 @@
                             </div>
                         @endif
                     @endif
+                        @if (!is_user_logged_in())
+                            <p class="text-sm text-dark-gray">
+                                <?php echo _e('Denna webbplats är skyddad av reCAPTCHA och Googles
+                                            <a href="https://policies.google.com/privacy">Integritetspolicy</a> och
+                                            <a href="https://policies.google.com/terms">Användarvillkor</a> tillämpas.', 'modularity-form-builder'); ?>
+                            </p>
+                        @endif
                     <button type="submit" class="btn btn-primary u-mt-2">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
                 </div>
             </div>
