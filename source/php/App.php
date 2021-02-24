@@ -33,7 +33,7 @@ class App
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
         add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
-        add_action('wp_enqueue_scripts', array($this, 'enqueueCaptchaScript'), 30);
+        add_action('wp_enqueue_scripts', array($this, 'enqueueCaptchaScript'), 40);
     }
 
     public function enqueueCaptchaScript(){
