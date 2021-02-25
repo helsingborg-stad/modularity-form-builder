@@ -97,7 +97,15 @@
                     </div>
                 </div>
             @endif
-
+    
+             @if (!is_user_logged_in())
+                    @typography([
+                        "variant" => "meta"
+                    ])
+                        {!! $googleCaptchaTerms !!}
+                    @endtypography
+             @endif
+             
             @if (isset($_GET['form']) && $_GET['form'] == 'success')
                 <div class="o-grid">
                     <div class="o-grid-12@md">
