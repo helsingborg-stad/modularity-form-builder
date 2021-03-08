@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2020-05-28 14:08+0200\n"
-"PO-Revision-Date: 2020-05-28 14:11+0200\n"
+"POT-Creation-Date: 2021-02-25 17:06+0100\n"
+"PO-Revision-Date: 2021-02-25 17:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 1.8.12\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: modularity-form-builder.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -20,745 +20,397 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: acf-fields/php/form.php:12 acf-fields/php/form.php:1781
+#: acf-fields/php/form.php:6 source/php/Entity/PostType.php:401
+#: source/php/Entity/PostType.php:610 source/php/Module/Form.php:29
+#: source/php/Submission.php:84 source/php/Submission.php:511
+#, fuzzy
+msgid "Form"
+msgstr "Det finns %d svar på det här formuläret."
+
+#: acf-fields/php/form.php:10 acf-fields/php/form.php:1787
 msgid "Formulärsfält"
 msgstr ""
 
-#: acf-fields/php/form.php:28
+#: acf-fields/php/form.php:26
 msgid "Fält"
 msgstr ""
 
-#: acf-fields/php/form.php:43
+#: acf-fields/php/form.php:41
 msgid "Avsändare"
 msgstr ""
 
-#: acf-fields/php/form.php:48
-msgid "Fields to display"
-msgstr "Visa fält"
-
-#: acf-fields/php/form.php:60 acf-fields/php/form.php:91
-#: acf-fields/php/form.php:144 source/php/Helper/SenderLabels.php:13
-msgid "Firstname"
-msgstr "Förnamn"
-
-#: acf-fields/php/form.php:61 acf-fields/php/form.php:92
-#: acf-fields/php/form.php:171 source/php/Helper/SenderLabels.php:14
-msgid "Lastname"
-msgstr "Efternamn"
-
-#: acf-fields/php/form.php:62 acf-fields/php/form.php:93
-#: acf-fields/php/form.php:198 acf-fields/php/form.php:542
-#: source/php/Helper/SenderLabels.php:15
-msgid "Email"
-msgstr "E-post"
-
-#: acf-fields/php/form.php:63 acf-fields/php/form.php:94
-#: acf-fields/php/form.php:225 source/php/Helper/SenderLabels.php:16
-msgid "Phone"
-msgstr "Telefonnummer"
-
-#: acf-fields/php/form.php:64 acf-fields/php/form.php:95 source/php/App.php:211
-#: source/php/Helper/SenderLabels.php:17
-msgid "Address"
-msgstr "Adress"
-
-#: acf-fields/php/form.php:79
-msgid "Required fields"
-msgstr "Obligatoriska fält"
-
-#: acf-fields/php/form.php:110
-msgid "Custom labels"
-msgstr ""
-
-#: acf-fields/php/form.php:113
-msgid ""
-"Check this box to add custom labels for sender input fields. Leave empty to "
-"use default labels"
-msgstr ""
-
-#: acf-fields/php/form.php:125
-#, fuzzy
-msgid "Add labels"
-msgstr "Lägg till ny %s"
-
-#: acf-fields/php/form.php:252 source/php/Helper/SenderLabels.php:18
-msgid "Street address"
-msgstr "Gatuadress"
-
-#: acf-fields/php/form.php:279 source/php/Helper/SenderLabels.php:19
-msgid "Postal code"
-msgstr "Postnummer"
-
-#: acf-fields/php/form.php:306 source/php/Helper/SenderLabels.php:20
-msgid "City"
-msgstr "Stad"
-
-#: acf-fields/php/form.php:340
+#: acf-fields/php/form.php:338
 #, fuzzy
 msgid "Meddelande"
 msgstr "Visa meddelande som beskriver hur vi hanterar användaruppgifter."
 
-#: acf-fields/php/form.php:345 acf-fields/php/form.php:490
-#: acf-fields/php/form.php:877 acf-fields/php/form.php:1035
-#: acf-fields/php/form.php:1193 acf-fields/php/form.php:1351
-msgid "Field label"
-msgstr "Fältetikett"
-
-#: acf-fields/php/form.php:364 acf-fields/php/form.php:509
-#: acf-fields/php/form.php:896 acf-fields/php/form.php:1054
-#: acf-fields/php/form.php:1212 acf-fields/php/form.php:1370
-#, fuzzy
-msgid "Field description"
-msgstr "Villkorsfält"
-
-#: acf-fields/php/form.php:383 acf-fields/php/form.php:770
-#: acf-fields/php/form.php:782 acf-fields/php/form.php:955
-#: acf-fields/php/form.php:967 acf-fields/php/form.php:1113
-#: acf-fields/php/form.php:1125 acf-fields/php/form.php:1271
-#: acf-fields/php/form.php:1283 acf-fields/php/form.php:1521
-#: acf-fields/php/form.php:1532
-msgid "Required"
-msgstr "Obligatoriskt"
-
-#: acf-fields/php/form.php:395
-msgid "Required field"
-msgstr "Obligatoriskt fält"
-
-#: acf-fields/php/form.php:402 acf-fields/php/form.php:789
-#: acf-fields/php/form.php:974 acf-fields/php/form.php:1132
-#: acf-fields/php/form.php:1290 acf-fields/php/form.php:1540
-#: acf-fields/php/form.php:1620 acf-fields/php/form.php:1717
-msgid "Conditional logic"
-msgstr "Visningsvillkor"
-
-#: acf-fields/php/form.php:405 acf-fields/php/form.php:792
-#: acf-fields/php/form.php:977 acf-fields/php/form.php:1135
-#: acf-fields/php/form.php:1293 acf-fields/php/form.php:1543
-#: acf-fields/php/form.php:1623 acf-fields/php/form.php:1720
-msgid ""
-"Use conditional logic statement to display the field depending on other "
-"choices in the form. Works only with \"Radio\" form field type."
-msgstr ""
-"Använd visningsvillkor för att visa fältet beroende på andra val i "
-"formuläret. Fungerar endast med fälttyp \"Radio\"."
-
-#: acf-fields/php/form.php:413 acf-fields/php/form.php:800
-#: acf-fields/php/form.php:985 acf-fields/php/form.php:1143
-#: acf-fields/php/form.php:1301 acf-fields/php/form.php:1551
-#: acf-fields/php/form.php:1631 acf-fields/php/form.php:1728
-msgid "Add conditional logic"
-msgstr "Lägg till visningsvillkor"
-
-#: acf-fields/php/form.php:421 acf-fields/php/form.php:808
-#: acf-fields/php/form.php:993 acf-fields/php/form.php:1151
-#: acf-fields/php/form.php:1309 acf-fields/php/form.php:1559
-#: acf-fields/php/form.php:1639 acf-fields/php/form.php:1736
-msgid "Conditonal field"
-msgstr "Villkorsfält"
-
-#: acf-fields/php/form.php:424 acf-fields/php/form.php:811
-#: acf-fields/php/form.php:996 acf-fields/php/form.php:1154
-#: acf-fields/php/form.php:1312 acf-fields/php/form.php:1562
-#: acf-fields/php/form.php:1642 acf-fields/php/form.php:1739
-msgid "Display field if this value is selected."
-msgstr "Visa fältet om detta värde är valt."
-
-#: acf-fields/php/form.php:453
-msgid "Custom post type content"
-msgstr ""
-
-#: acf-fields/php/form.php:472
-msgid "Use this field as post content. Default is empty content field."
-msgstr ""
-
-#: acf-fields/php/form.php:485
+#: acf-fields/php/form.php:483
 msgid "Inmatning"
 msgstr ""
 
-#: acf-fields/php/form.php:528
-msgid "Field value type"
-msgstr "Fälttyp"
-
-#: acf-fields/php/form.php:540
-#, fuzzy
-msgid "Text"
-msgstr "Knapp text"
-
-#: acf-fields/php/form.php:541
-msgid "Number"
-msgstr "Siffror"
-
-#: acf-fields/php/form.php:543
-msgid "Phone number"
-msgstr "Telefonnummer"
-
-#: acf-fields/php/form.php:544
-msgid "Color"
-msgstr "Färg"
-
-#: acf-fields/php/form.php:545 source/php/Entity/PostType.php:597
-msgid "Date"
-msgstr "Datum"
-
-#: acf-fields/php/form.php:546
-msgid "Month"
-msgstr "Månad"
-
-#: acf-fields/php/form.php:547
-msgid "Week"
-msgstr "Vecka"
-
-#: acf-fields/php/form.php:548
-msgid "Range"
-msgstr "Intervall"
-
-#: acf-fields/php/form.php:549
-#, fuzzy
-msgid "Search"
-msgstr "Sök %s"
-
-#: acf-fields/php/form.php:550
-msgid "Time"
-msgstr "Tid"
-
-#: acf-fields/php/form.php:551
-#, fuzzy
-msgid "Url"
-msgstr ""
-"När du ställer in din api-nyckel, vänligen ange följande adress som "
-"”redirect adress”: "
-
-#: acf-fields/php/form.php:564
-msgid "Min value"
-msgstr "Minsta värde"
-
-#: acf-fields/php/form.php:600
-msgid "Max value"
-msgstr "Maxvärde"
-
-#: acf-fields/php/form.php:636
-msgid "Step"
-msgstr "Steg"
-
-#: acf-fields/php/form.php:672
-msgid "Min date"
-msgstr "Datum från"
-
-#: acf-fields/php/form.php:697
-msgid "Max date"
-msgstr "Datum till"
-
-#: acf-fields/php/form.php:722
-#, fuzzy
-#| msgid "Min date"
-msgid "Min time"
-msgstr "Tid"
-
-#: acf-fields/php/form.php:725
-msgid "Select minimum time frame"
-msgstr ""
-
-#: acf-fields/php/form.php:746
-#, fuzzy
-#| msgid "Max date"
-msgid "Max time"
-msgstr "Tid"
-
-#: acf-fields/php/form.php:749
-msgid "Select maximum time frame"
-msgstr ""
-
-#: acf-fields/php/form.php:840
-msgid "Custom post type title"
-msgstr ""
-
-#: acf-fields/php/form.php:859
-msgid "Use this field as post title. Default title is the forms name."
-msgstr ""
-
-#: acf-fields/php/form.php:872
+#: acf-fields/php/form.php:870
 msgid "Radiofält"
 msgstr ""
 
-#: acf-fields/php/form.php:915 acf-fields/php/form.php:1073
-#: acf-fields/php/form.php:1231
-msgid "Field values"
-msgstr "Fältvärden"
-
-#: acf-fields/php/form.php:934 acf-fields/php/form.php:1092
-#: acf-fields/php/form.php:1250
-msgid "Value"
-msgstr "Värde"
-
-#: acf-fields/php/form.php:1030
+#: acf-fields/php/form.php:1028
 msgid "Kryssruta"
 msgstr ""
 
-#: acf-fields/php/form.php:1188
+#: acf-fields/php/form.php:1186
 msgid "Välj"
 msgstr ""
 
-#: acf-fields/php/form.php:1346
+#: acf-fields/php/form.php:1344
 msgid "Filuppladdning"
 msgstr ""
 
-#: acf-fields/php/form.php:1389
-msgid "Type"
-msgstr "Typ"
-
-#: acf-fields/php/form.php:1401
-msgid "Single"
-msgstr "Enskilt"
-
-#: acf-fields/php/form.php:1402
-msgid "Multiple"
-msgstr "Flera"
-
-#: acf-fields/php/form.php:1413
-msgid "Max number of files"
-msgstr "Max antal filer"
-
-#: acf-fields/php/form.php:1416
-msgid "-1 for no limit"
-msgstr "-1 är lika med ingen gräns"
-
-#: acf-fields/php/form.php:1434
-msgid "Allowed filetypes"
-msgstr "Tillåtna filtyper"
-
-#: acf-fields/php/form.php:1446
-msgid "All video types"
-msgstr "Alla videoformat"
-
-#: acf-fields/php/form.php:1447
-msgid "All image types"
-msgstr "Alla bildformat"
-
-#: acf-fields/php/form.php:1448
-msgid "jpg"
-msgstr ""
-
-#: acf-fields/php/form.php:1449
-msgid "png"
-msgstr ""
-
-#: acf-fields/php/form.php:1450
-msgid "gif"
-msgstr ""
-
-#: acf-fields/php/form.php:1451
-msgid "mov"
-msgstr ""
-
-#: acf-fields/php/form.php:1452
-msgid "webm"
-msgstr ""
-
-#: acf-fields/php/form.php:1453
-msgid "mp4"
-msgstr ""
-
-#: acf-fields/php/form.php:1454
-msgid "mp3"
-msgstr ""
-
-#: acf-fields/php/form.php:1455
-msgid "ogg"
-msgstr ""
-
-#: acf-fields/php/form.php:1456
-msgid "aac"
-msgstr ""
-
-#: acf-fields/php/form.php:1457
-msgid "doc"
-msgstr ""
-
-#: acf-fields/php/form.php:1458
-msgid "docx"
-msgstr ""
-
-#: acf-fields/php/form.php:1459
-msgid "xls"
-msgstr ""
-
-#: acf-fields/php/form.php:1460
-msgid "xlsx"
-msgstr ""
-
-#: acf-fields/php/form.php:1461
-msgid "pdf"
-msgstr ""
-
-#: acf-fields/php/form.php:1473
-msgid "Upload videos to external service"
-msgstr ""
-
-#: acf-fields/php/form.php:1476
-msgid ""
-"Check this box to upload upload videos to an external service instead of "
-"locally."
-msgstr ""
-
-#: acf-fields/php/form.php:1513
-#, fuzzy
-msgid "Upload external"
-msgstr "Uppladdningen lyckades"
-
-#: acf-fields/php/form.php:1596
+#: acf-fields/php/form.php:1602
 msgid "Eget innehåll"
 msgstr ""
 
-#: acf-fields/php/form.php:1601
-msgid "Content"
-msgstr "Innehåll"
-
-#: acf-fields/php/form.php:1604
-msgid ""
-"Add custom content to the form. This will not be sent in e-mail messages."
-msgstr ""
-"Lägg till eget innehåll till formuläret. Detta kommer inte skickas med i e-"
-"postmeddelanden."
-
-#: acf-fields/php/form.php:1676
+#: acf-fields/php/form.php:1682
 msgid "Fäll ihop"
 msgstr ""
 
-#: acf-fields/php/form.php:1681
-msgid "Collapse"
-msgstr "Fäll ihop"
-
-#: acf-fields/php/form.php:1692
-msgid ""
-"Adds a collapse button that toggles all fields below. This is a layout field "
-"and will not be sent in e-mail messages."
-msgstr ""
-
-#: acf-fields/php/form.php:1698
-msgid "Button text"
-msgstr "Knapp text"
-
-#: acf-fields/php/form.php:1787
+#: acf-fields/php/form.php:1793
 msgid "Formulärsvar"
 msgstr ""
 
-#: acf-fields/php/form.php:1803
+#: acf-fields/php/form.php:1809
 msgid "Text på skicka-knapp"
 msgstr ""
 
-#: acf-fields/php/form.php:1822
+#: acf-fields/php/form.php:1820
+msgid "Skicka"
+msgstr ""
+
+#: acf-fields/php/form.php:1828
 msgid "Meddelande vid inskickning"
 msgstr ""
 
-#: acf-fields/php/form.php:1825
+#: acf-fields/php/form.php:1831
 msgid "Text som visas när ett formulär skickats."
 msgstr ""
 
-#: acf-fields/php/form.php:1841
+#: acf-fields/php/form.php:1847
 msgid "Notiser"
 msgstr ""
 
-#: acf-fields/php/form.php:1857
+#: acf-fields/php/form.php:1863
 msgid "Notifikation när formulär skickas"
 msgstr ""
 
-#: acf-fields/php/form.php:1874
+#: acf-fields/php/form.php:1880
 msgid "Notifiera e-postadresser"
 msgstr ""
 
-#: acf-fields/php/form.php:1877
-msgid ""
-"Ett mail skickas ut till nedanstående användare med innehållet i svaret."
+#: acf-fields/php/form.php:1883
+msgid "Ett mail skickas ut till nedanstående användare med innehållet i svaret."
 msgstr ""
 
-#: acf-fields/php/form.php:1889
+#: acf-fields/php/form.php:1895
 msgid "Lägg till e-postadress"
 msgstr ""
 
-#: acf-fields/php/form.php:1893
+#: acf-fields/php/form.php:1899
 msgid "E-postadress"
 msgstr ""
 
-#: acf-fields/php/form.php:1911
+#: acf-fields/php/form.php:1917
 msgid "Lägg till villkor"
 msgstr ""
 
-#: acf-fields/php/form.php:1930
+#: acf-fields/php/form.php:1936
 msgid "Krav"
 msgstr ""
 
-#: acf-fields/php/form.php:1949
-#, fuzzy
-#| msgid ""
-#| "<div style=\"margin: 5px 0 15px;\r\n"
-#| "        background: #f1f1f157;\r\n"
-#| "        border-left: 4px solid #b2b500;\r\n"
-#| "        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n"
-#| "        padding: 10px;\">Conditional fields must be a multi-choise field "
-#| "that is required to fill in and lacks conditional arguments. Note that "
-#| "you may not get email notfications if the requirements aren't fulfilled.</"
-#| "div>"
+#: acf-fields/php/form.php:1955
 msgid ""
-"<div style=\"margin: 5px 0 15px;\n"
-"                                                                background: "
-"#f1f1f157;\n"
-"                                                                border-left: "
-"4px solid #b2b500;\n"
-"                                                                box-shadow: "
-"0 1px 1px 0 rgba(0,0,0,.1);\n"
-"                                                                padding: "
-"10px;\">Conditional fields must be a multi-choise field that is required to "
-"fill in and lacks conditional arguments. Note that you may not get email "
-"notfications if the requirements aren't fulfilled.</div>"
-msgstr ""
 "<div style=\"margin: 5px 0 15px;\r\n"
-"        background: #f1f1f157;\r\n"
-"        border-left: 4px solid #b2b500;\r\n"
-"        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n"
-"        padding: 10px;\">Villkorsfält måste vara obligatoriska fält där "
-"endast ett val är tillåtet (välj/radioknapp). Fältet får i sig inte heller "
-"ha några beroende på andra fält.</div>"
+"                                                                background: "
+"#f1f1f157;\r\n"
+"                                                                border-left: "
+"4px solid #b2b500;\r\n"
+"                                                                box-shadow: 0 "
+"1px 1px 0 rgba(0,0,0,.1);\r\n"
+"                                                                padding: 10px;"
+"\">Conditional fields must be a multi-choise field that is required to fill in "
+"and lacks conditional arguments. Note that you may not get email notfications "
+"if the requirements aren't fulfilled.</div>"
+msgstr ""
 
-#: acf-fields/php/form.php:1959
+#: acf-fields/php/form.php:1965
 msgid "Skicka bara när"
 msgstr ""
 
-#: acf-fields/php/form.php:1991
+#: acf-fields/php/form.php:1997
 msgid "Matchar"
 msgstr ""
 
-#: acf-fields/php/form.php:2025
+#: acf-fields/php/form.php:2031
 msgid "Egen ämnesrad"
 msgstr ""
 
-#: acf-fields/php/form.php:2036 acf-fields/php/form.php:2163
+#: acf-fields/php/form.php:2042 acf-fields/php/form.php:2169
 msgid "Kryssa i rutan för att ange egen ämnesrad."
 msgstr ""
 
-#: acf-fields/php/form.php:2044 acf-fields/php/form.php:2171
+#: acf-fields/php/form.php:2050 acf-fields/php/form.php:2177
 msgid "Ämnesrad"
 msgstr ""
 
-#: acf-fields/php/form.php:2047
+#: acf-fields/php/form.php:2053
 msgid "Ange egen ämnesrad. Standardvärde är “Nytt formulärsvar”."
 msgstr ""
 
-#: acf-fields/php/form.php:2071
+#: acf-fields/php/form.php:2077
 msgid "Meddelande i notis"
 msgstr ""
 
-#: acf-fields/php/form.php:2090
+#: acf-fields/php/form.php:2096
 msgid "Notisdata"
 msgstr ""
 
-#: acf-fields/php/form.php:2102
+#: acf-fields/php/form.php:2108
 msgid "Visa svarsdata i notisens innehåll"
 msgstr ""
 
-#: acf-fields/php/form.php:2109
+#: acf-fields/php/form.php:2115
 msgid "Svarskopia"
 msgstr ""
 
-#: acf-fields/php/form.php:2125
+#: acf-fields/php/form.php:2131
 msgid "Tillåt svarskopia"
 msgstr ""
 
-#: acf-fields/php/form.php:2128
+#: acf-fields/php/form.php:2134
 msgid "Skicka en kopia av svaret till avsändarens e-postadress."
 msgstr ""
 
-#: acf-fields/php/form.php:2137
+#: acf-fields/php/form.php:2143
 msgid "Ja, tillåt användare att få en svarskopia"
 msgstr ""
 
-#: acf-fields/php/form.php:2144
+#: acf-fields/php/form.php:2150
 msgid "Egen ämnesrad för svarskopia"
 msgstr ""
 
-#: acf-fields/php/form.php:2174
+#: acf-fields/php/form.php:2180
 msgid "Ange egen ämnesrad. Standardvärde är “Svarskopia”."
 msgstr ""
 
-#: acf-fields/php/form.php:2203
+#: acf-fields/php/form.php:2209
 msgid "Meddelande i svarskopia"
 msgstr ""
 
-#: acf-fields/php/form.php:2206
+#: acf-fields/php/form.php:2212
 msgid "Meddelandet kommer att skickas tillsammans med svarsdatan."
 msgstr ""
 
-#: acf-fields/php/form.php:2230 acf-fields/php/form.php:2246
+#: acf-fields/php/form.php:2236 acf-fields/php/form.php:2252
 msgid "Autosvar"
 msgstr ""
 
-#: acf-fields/php/form.php:2258
+#: acf-fields/php/form.php:2264
 msgid "Skicka autosvar när formuläret har skickats"
 msgstr ""
 
-#: acf-fields/php/form.php:2265
+#: acf-fields/php/form.php:2271
 msgid "Ämne för autosvar"
 msgstr ""
 
-#: acf-fields/php/form.php:2292
+#: acf-fields/php/form.php:2298
 msgid "Meddelande för autosvar"
 msgstr ""
 
-#: acf-fields/php/form.php:2319
+#: acf-fields/php/form.php:2325
 msgid "Avancerade inställningar"
 msgstr ""
 
-#: acf-fields/php/form.php:2335
+#: acf-fields/php/form.php:2341
 msgid "Spara till posttyp"
 msgstr ""
 
-#: acf-fields/php/form.php:2346
+#: acf-fields/php/form.php:2352
 msgid "Spara formulärsvar till en anpassad posttyp."
 msgstr ""
 
-#: acf-fields/php/form.php:2354
+#: acf-fields/php/form.php:2360
 msgid "Posttyp"
 msgstr ""
 
-#: acf-fields/php/form.php:2357
+#: acf-fields/php/form.php:2363
 msgid "Välj posttyp"
 msgstr ""
 
-#: acf-fields/php/form.php:2375
+#: acf-fields/php/form.php:2380 source/php/App.php:48 source/php/Options.php:135
+msgid "Form submissions"
+msgstr "Formulärsvar"
+
+#: acf-fields/php/form.php:2381
 msgid "Händelse"
 msgstr ""
 
-#: acf-fields/php/form.php:2376
+#: acf-fields/php/form.php:2382
 msgid "Ärende"
 msgstr ""
 
-#: acf-fields/php/form.php:2377
+#: acf-fields/php/form.php:2383
 msgid "Lista"
 msgstr ""
 
-#: acf-fields/php/form.php:2378
+#: acf-fields/php/form.php:2384
 msgid "Lovprogram"
 msgstr ""
 
-#: acf-fields/php/form.php:2379
+#: acf-fields/php/form.php:2385
 msgid "Johan-test123"
 msgstr ""
 
-#: acf-fields/php/form.php:2395
+#: acf-fields/php/form.php:2386
+msgid "Projekt"
+msgstr ""
+
+#: acf-fields/php/form.php:2387
+msgid "Ideas"
+msgstr ""
+
+#: acf-fields/php/form.php:2390
+msgid "form-submissions"
+msgstr ""
+
+#: acf-fields/php/form.php:2401
 msgid "Redigerbar för användaren"
 msgstr ""
 
-#: acf-fields/php/form.php:2414
+#: acf-fields/php/form.php:2420
 msgid "Redigerbar för redaktör"
 msgstr ""
 
-#: acf-fields/php/form.php:2433
+#: acf-fields/php/form.php:2439
 msgid "GDPR & Confidentiality"
 msgstr "GDPR & Sekretess"
 
-#: acf-fields/php/form.php:2449
+#: acf-fields/php/form.php:2455
 msgid "Notis om allmän handling"
 msgstr ""
 
-#: acf-fields/php/form.php:2452
+#: acf-fields/php/form.php:2458
 msgid ""
 "Lägger till ett meddelande som informerar användaren om att formulärsvaret "
 "blir en allmän handling."
 msgstr ""
 
-#: acf-fields/php/form.php:2460
+#: acf-fields/php/form.php:2466
 msgid "Lägg till notis om allmän handling"
 msgstr ""
 
-#: acf-fields/php/form.php:2468
+#: acf-fields/php/form.php:2474
 #, fuzzy
 #| msgid "Public act notice content"
 msgid "Public act content"
 msgstr "Innehåll"
 
-#: acf-fields/php/form.php:2495
+#: acf-fields/php/form.php:2501
 #, fuzzy
 msgid "GDPR överensstämmelsemeddelande"
 msgstr "GDPR & Sekretess"
 
-#: acf-fields/php/form.php:2498
+#: acf-fields/php/form.php:2504
 msgid "Innehåller information om hur personlig data hanteras."
 msgstr ""
 
-#: acf-fields/php/form.php:2506
+#: acf-fields/php/form.php:2512
 msgid ""
 "Visa ett meddelande (och en checkbox) som är nödvändig för att posta "
 "formuläret."
 msgstr "Visa meddelande som beskriver hur vi hanterar användaruppgifter."
 
-#: acf-fields/php/form.php:2514
+#: acf-fields/php/form.php:2520
 msgid "Innehåll för GDPR meddelande"
 msgstr ""
 
-#: acf-fields/php/form.php:2541
+#: acf-fields/php/form.php:2539
+msgid ""
+"I det här formuläret samlar vi in personuppgifter om dig för att [det "
+"formuläret ska användas till]. Uppgifterna kommer inte att hanteras för något "
+"annat syfte, och kommer att raderas när [ärendet är avslutat]. <a href="
+"\"https://helsingborg.se/toppmeny/om-webbplatsen/sa-har-behandlar-vi-dina-"
+"personuppgifter/\">Läs om hur Helsingborgs stad hanterar personuppgifter</a>."
+msgstr ""
+
+#: acf-fields/php/form.php:2547
 msgid "Databaslagring"
 msgstr ""
 
-#: acf-fields/php/form.php:2552
+#: acf-fields/php/form.php:2558
 msgid "Lagra inte postad data i databasen."
 msgstr ""
 
-#: acf-fields/php/form.php:2560
+#: acf-fields/php/form.php:2566
 msgid "Användarbegränsning"
 msgstr ""
 
-#: acf-fields/php/form.php:2587
+#: acf-fields/php/form.php:2593
 msgid "Betrodda användare"
 msgstr ""
 
-#: acf-fields/php/form.php:2590
+#: acf-fields/php/form.php:2596
 msgid ""
-"Lägg till betrodda användare som har access till det som postas från "
-"formulären"
+"Lägg till betrodda användare som har access till det som postas från formulären"
 msgstr ""
 
-#: source/php/App.php:45
+#: source/php/App.php:47
 msgid "Form submission"
 msgstr "Formulärsvar"
 
-#: source/php/App.php:46 source/php/Options.php:135
-msgid "Form submissions"
-msgstr "Formulärsvar"
+#: source/php/App.php:213 source/php/Helper/SenderLabels.php:17
+msgid "Address"
+msgstr "Adress"
 
-#: source/php/App.php:291 source/php/App.php:328
+#: source/php/App.php:293 source/php/App.php:330
 msgid "Missing arguments"
 msgstr "Saknade argument"
 
-#: source/php/App.php:341 source/php/Module/views/form.blade.php:27
+#: source/php/App.php:343
 msgid "Something went wrong, please try again."
 msgstr "Något gick fel, var god försök igen."
 
-#: source/php/App.php:358
+#: source/php/App.php:360
 msgid "Upload succeeded"
 msgstr "Uppladdningen lyckades"
 
-#: source/php/App.php:361
+#: source/php/App.php:363
 msgid "File was missing, please try again."
 msgstr "Filen saknas, var god försök igen."
 
-#: source/php/App.php:368 source/php/Module/Form.php:300
+#: source/php/App.php:370 source/php/App.php:608
 msgid "Something went wrong"
 msgstr "Något gick fel"
 
-#: source/php/App.php:405
+#: source/php/App.php:407
 msgid "Saved"
 msgstr "Sparad"
 
-#: source/php/App.php:527
+#: source/php/App.php:529
 msgid "Hello, you do not have permission to edit this form"
 msgstr ""
 
-#: source/php/App.php:528
+#: source/php/App.php:530
 msgid "Please ask the creator/author of the form to grant you access."
 msgstr ""
 
-#: source/php/App.php:557
+#: source/php/App.php:559
 msgid "Select form…"
 msgstr "Välj formulär..."
+
+#: source/php/App.php:606
+msgid "Sending"
+msgstr "Skickar"
+
+#: source/php/App.php:607 source/php/Entity/PostType.php:62
+msgid "You must check at least one option"
+msgstr "Du måste kryssa för minst ett alternativ"
 
 #: source/php/Entity/Filter.php:26
 msgid "Show All"
@@ -769,13 +421,9 @@ msgstr "Visa alla"
 msgid "Edit"
 msgstr "Redigera"
 
-#: source/php/Entity/PostType.php:61 source/php/Module/Form.php:277
+#: source/php/Entity/PostType.php:61 source/php/Module/Form.php:308
 msgid "Are you sure you want to delete this file?"
 msgstr "Är du säker på att du vill radera den här filen?"
-
-#: source/php/Entity/PostType.php:62 source/php/Module/Form.php:299
-msgid "You must check at least one option"
-msgstr "Du måste kryssa för minst ett alternativ"
 
 #: source/php/Entity/PostType.php:79 source/php/Entity/PostType.php:80
 #, fuzzy, php-format
@@ -840,17 +488,17 @@ msgstr "Saknade argument"
 msgid "You are not authorized to download this file."
 msgstr "Är du säker på att du vill radera den här filen?"
 
-#: source/php/Entity/PostType.php:212 source/php/Submission.php:342
+#: source/php/Entity/PostType.php:212 source/php/Submission.php:376
 msgid "Unauthorized request"
 msgstr ""
 
-#: source/php/Entity/PostType.php:250 source/php/Submission.php:380
+#: source/php/Entity/PostType.php:250 source/php/Submission.php:407
 msgid ""
-"The file you requested could not be found. The file might have been deleted "
-"or corrupted."
+"The file you requested could not be found. The file might have been deleted or "
+"corrupted."
 msgstr ""
 
-#: source/php/Entity/PostType.php:251 source/php/Submission.php:381
+#: source/php/Entity/PostType.php:251 source/php/Submission.php:408
 #, fuzzy
 msgid "File not found"
 msgstr "Ingen fil vald"
@@ -873,33 +521,30 @@ msgstr "Välj en fil"
 msgid "Unknown file"
 msgstr "Välj en fil"
 
-#: source/php/Entity/PostType.php:388 source/php/Submission.php:85
+#: source/php/Entity/PostType.php:388 source/php/Submission.php:86
 msgid "Previous page"
 msgstr "Föregående sida"
 
-#: source/php/Entity/PostType.php:393 source/php/Submission.php:480
+#: source/php/Entity/PostType.php:393 source/php/Submission.php:507
 msgid "No Referrer"
 msgstr "Besökaren kom från extern länk"
 
-#: source/php/Entity/PostType.php:401 source/php/Entity/PostType.php:595
-#: source/php/Module/Form.php:29 source/php/Submission.php:83
-#: source/php/Submission.php:484
-#, fuzzy
-msgid "Form"
-msgstr "Det finns %d svar på det här formuläret."
-
-#: source/php/Entity/PostType.php:593
+#: source/php/Entity/PostType.php:608
 #: source/php/Module/views/form-edit-front.blade.php:13
 msgid "Title"
 msgstr "Titel"
 
-#: source/php/Entity/PostType.php:594 source/php/Entity/PostType.php:646
+#: source/php/Entity/PostType.php:609 source/php/Entity/PostType.php:661
 msgid "ID"
 msgstr "Id"
 
-#: source/php/Entity/PostType.php:596
+#: source/php/Entity/PostType.php:611
 msgid "Referer"
 msgstr "Referens"
+
+#: source/php/Entity/PostType.php:612
+msgid "Date"
+msgstr "Datum"
 
 #: source/php/Entity/Taxonomy.php:30
 #, php-format
@@ -920,6 +565,34 @@ msgstr "Lägg till ny %s"
 #, php-format
 msgid "New %s Name"
 msgstr "Ny %s namn"
+
+#: source/php/Helper/SenderLabels.php:13
+msgid "Firstname"
+msgstr "Förnamn"
+
+#: source/php/Helper/SenderLabels.php:14
+msgid "Lastname"
+msgstr "Efternamn"
+
+#: source/php/Helper/SenderLabels.php:15
+msgid "Email"
+msgstr "E-post"
+
+#: source/php/Helper/SenderLabels.php:16
+msgid "Phone"
+msgstr "Telefonnummer"
+
+#: source/php/Helper/SenderLabels.php:18
+msgid "Street address"
+msgstr "Gatuadress"
+
+#: source/php/Helper/SenderLabels.php:19
+msgid "Postal code"
+msgstr "Postnummer"
+
+#: source/php/Helper/SenderLabels.php:20
+msgid "City"
+msgstr "Stad"
 
 #: source/php/Module/Form.php:30
 msgid "Forms"
@@ -950,15 +623,21 @@ msgstr "Visa svar"
 msgid "Export csv"
 msgstr "Exportera csv"
 
-#: source/php/Module/Form.php:276
+#: source/php/Module/Form.php:192
+msgid ""
+"This site is protected by reCAPTCHA and the Google <a href=\"https://policies."
+"google.com/privacy\">Privacy Policy</a> and <a href=\"https://policies.google."
+"com/terms\">Terms of Service</a> apply."
+msgstr ""
+"Denna webbplats är skyddad av reCAPTCHA och Googles <a href=\"https://policies."
+"google.com/privacy\">Integritetspolicy</a> och <a href=\"https://policies."
+"google.com/terms\">Användarvillkor</a> tillämpas."
+
+#: source/php/Module/Form.php:307
 msgid "Please create radio selections before adding conditional logic."
 msgstr ""
 "Vänligen skapa formulärfält med radioknappar innan du lägger till "
 "visningsvillkor."
-
-#: source/php/Module/Form.php:298
-msgid "Sending"
-msgstr "Skickar"
 
 #: source/php/Module/views/fields-editable/file_upload.blade.php:4
 msgid "Attached files"
@@ -968,21 +647,15 @@ msgstr "Bifogade filer"
 msgid "Delete"
 msgstr "Radera"
 
-#: source/php/Module/views/fields/file_upload.blade.php:12
-#: source/php/Module/views/fields/file_upload.blade.php:20
-msgid "Select file"
-msgstr "Välj en fil"
-
-#: source/php/Module/views/fields/file_upload.blade.php:13
-#: source/php/Module/views/fields/file_upload.blade.php:21
+#: source/php/Module/views/fields/file_upload.blade.php:25
 msgid "No file selected"
 msgstr "Ingen fil vald"
 
-#: source/php/Module/views/fields/sender-copy.blade.php:5
+#: source/php/Module/views/fields/sender-copy.blade.php:6
 msgid "Send copy of this submission to my email address"
 msgstr "Skicka en kopia till mig"
 
-#: source/php/Module/views/fields/sender.blade.php:82
+#: source/php/Module/views/fields/sender.blade.php:170
 msgid "Find my location"
 msgstr "Hitta min position"
 
@@ -994,20 +667,6 @@ msgstr "Stäng"
 msgid "Update"
 msgstr "Uppdatera"
 
-#: source/php/Module/views/form.blade.php:17
-msgid "The for was submitted, thank you!"
-msgstr "Tack! Formuläret har skickats iväg till mottagaren."
-
-#: source/php/Module/views/form.blade.php:48
-#, fuzzy
-#| msgid "You must confirm your not a robot."
-msgid "You must confirm you're not a robot."
-msgstr "Du måste bekräfta att du inte är en robot."
-
-#: source/php/Module/views/form.blade.php:88
-msgid "Show form"
-msgstr "Visa formulär"
-
 #: source/php/Options.php:21
 #, fuzzy
 #| msgid "Modularity Form Builder options"
@@ -1018,15 +677,15 @@ msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
 msgid "Options"
 msgstr "Inställningar"
 
-#: source/php/Submission.php:341
+#: source/php/Submission.php:375
 msgid "The download token provided was not correct."
 msgstr ""
 
-#: source/php/Submission.php:450
+#: source/php/Submission.php:477
 msgid "New form submission"
 msgstr "Nytt formulärsvar"
 
-#: source/php/Submission.php:454
+#: source/php/Submission.php:481
 #, php-format
 msgid ""
 "This is a notification about a new form submission to the form \"%s\"."
@@ -1035,16 +694,16 @@ msgstr ""
 "Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
 "notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
 
-#: source/php/Submission.php:472 source/php/Submission.php:538
+#: source/php/Submission.php:499 source/php/Submission.php:565
 #, fuzzy
 msgid "Open file"
 msgstr "Välj en fil"
 
-#: source/php/Submission.php:479
+#: source/php/Submission.php:506
 msgid "Referrer"
 msgstr "Förgående sida"
 
-#: source/php/Submission.php:524
+#: source/php/Submission.php:551
 msgid "Form submission copy"
 msgstr "Svarskopia"
 
@@ -1058,21 +717,19 @@ msgstr "Youtube API nyckel"
 
 #: templates/options.php:14
 msgid ""
-"To upload videos to YouTube from your forms you need to authenticate this "
-"web applicaiton. Enter your Google OAuth 2.0 client keys and submit the "
-"request."
+"To upload videos to YouTube from your forms you need to authenticate this web "
+"applicaiton. Enter your Google OAuth 2.0 client keys and submit the request."
 msgstr ""
 "För att ladda upp videofiler till YouTube behöver du en api-nyckel. Ange en "
-"Google OAuuth 2.0 klientnyckel som har rättigheter till minst ett "
-"youtubekonto."
+"Google OAuuth 2.0 klientnyckel som har rättigheter till minst ett youtubekonto."
 
 #: templates/options.php:15
 msgid ""
 "When you are setting up your OAuth Web application set \"Authorized redirect "
 "URIs\" to this URL: "
 msgstr ""
-"När du ställer in din api-nyckel, vänligen ange följande adress som "
-"”redirect adress”: "
+"När du ställer in din api-nyckel, vänligen ange följande adress som ”redirect "
+"adress”: "
 
 #: templates/options.php:22 templates/options.php:81
 msgid "Client ID"
@@ -1091,18 +748,17 @@ msgid ""
 "If you want to encrypt the form data before it saves to database you need to "
 "check the following checkbox "
 msgstr ""
-"Om du vill kryptera data som postas i formulären, behöver du checka "
-"checkboxen här under."
+"Om du vill kryptera data som postas i formulären, behöver du checka checkboxen "
+"här under."
 
 #: templates/options.php:41
 msgid ""
-"You also have to add following lines to your config file and replace ADD-"
-"YOUR-KEY-HERE-1 and ADD-YOUR-KEY-HERE-2 with your own keys, 16 character "
-"minimum."
+"You also have to add following lines to your config file and replace ADD-YOUR-"
+"KEY-HERE-1 and ADD-YOUR-KEY-HERE-2 with your own keys, 16 character minimum."
 msgstr ""
-"Du behöver också lägga till följande PHP kod i din wp-config fil. Ändra "
-"sedan DIN-KRYPTERINGS-NYCKEL-1 och DIN-KRYPTERINGS-NYCKEL-2 till egna "
-"nycklar som minst måste vara 16 tecken långa."
+"Du behöver också lägga till följande PHP kod i din wp-config fil. Ändra sedan "
+"DIN-KRYPTERINGS-NYCKEL-1 och DIN-KRYPTERINGS-NYCKEL-2 till egna nycklar som "
+"minst måste vara 16 tecken långa."
 
 #: templates/options.php:43
 msgid "define(\"ENCRYPT_METHOD\", \"AES-256-CBC\", true);"
@@ -1118,11 +774,11 @@ msgstr "define(\"ENCRYPT_SECRET_VI\", \"DIN-KRYPTERINGS-NYCKEL-2\", true);"
 
 #: templates/options.php:48
 msgid ""
-"Dont forget to keep the keys in a safe place, cause you will never be able "
-"to decrypt the already encrypted data without them."
+"Dont forget to keep the keys in a safe place, cause you will never be able to "
+"decrypt the already encrypted data without them."
 msgstr ""
-"Glöm inte att spara dina nycklar på ett säkert ställe. Du kan inte "
-"avkryptera redan krypterad data med fel nycklar."
+"Glöm inte att spara dina nycklar på ett säkert ställe. Du kan inte avkryptera "
+"redan krypterad data med fel nycklar."
 
 #: templates/options.php:52
 msgid "Yes I want to encrypt my form data"
@@ -1149,6 +805,19 @@ msgstr "Exportera med AcfExportManager"
 msgid "Exported %d fieldgroup(s)."
 msgstr "Exporterade %d fältgrupp(er)."
 
+#: vendor/helsingborg-stad/recaptcha-integration/src/RecaptchaIntegration.php:47
+msgid ""
+"Municipio: constant 'G_RECAPTCHA_KEY' or 'G_RECAPTCHA_SECRET' is not defined."
+msgstr ""
+
+#: vendor/helsingborg-stad/recaptcha-integration/src/Validation.php:42
+msgid "Error"
+msgstr ""
+
+#: vendor/helsingborg-stad/recaptcha-integration/src/Validation.php:43
+msgid "reCaptcha validation failed"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "Modularity Form Builder"
 msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
@@ -1164,6 +833,204 @@ msgstr "Bygg formulär som kan visas i en modul"
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
+
+#~ msgid "Fields to display"
+#~ msgstr "Visa fält"
+
+#~ msgid "Required fields"
+#~ msgstr "Obligatoriska fält"
+
+#, fuzzy
+#~ msgid "Add labels"
+#~ msgstr "Lägg till ny %s"
+
+#~ msgid "Field label"
+#~ msgstr "Fältetikett"
+
+#, fuzzy
+#~ msgid "Field description"
+#~ msgstr "Villkorsfält"
+
+#~ msgid "Required"
+#~ msgstr "Obligatoriskt"
+
+#~ msgid "Required field"
+#~ msgstr "Obligatoriskt fält"
+
+#~ msgid "Conditional logic"
+#~ msgstr "Visningsvillkor"
+
+#~ msgid ""
+#~ "Use conditional logic statement to display the field depending on other "
+#~ "choices in the form. Works only with \"Radio\" form field type."
+#~ msgstr ""
+#~ "Använd visningsvillkor för att visa fältet beroende på andra val i "
+#~ "formuläret. Fungerar endast med fälttyp \"Radio\"."
+
+#~ msgid "Add conditional logic"
+#~ msgstr "Lägg till visningsvillkor"
+
+#~ msgid "Conditonal field"
+#~ msgstr "Villkorsfält"
+
+#~ msgid "Display field if this value is selected."
+#~ msgstr "Visa fältet om detta värde är valt."
+
+#~ msgid "Field value type"
+#~ msgstr "Fälttyp"
+
+#, fuzzy
+#~ msgid "Text"
+#~ msgstr "Knapp text"
+
+#~ msgid "Number"
+#~ msgstr "Siffror"
+
+#~ msgid "Phone number"
+#~ msgstr "Telefonnummer"
+
+#~ msgid "Color"
+#~ msgstr "Färg"
+
+#~ msgid "Month"
+#~ msgstr "Månad"
+
+#~ msgid "Week"
+#~ msgstr "Vecka"
+
+#~ msgid "Range"
+#~ msgstr "Intervall"
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Sök %s"
+
+#~ msgid "Time"
+#~ msgstr "Tid"
+
+#, fuzzy
+#~ msgid "Url"
+#~ msgstr ""
+#~ "När du ställer in din api-nyckel, vänligen ange följande adress som "
+#~ "”redirect adress”: "
+
+#~ msgid "Min value"
+#~ msgstr "Minsta värde"
+
+#~ msgid "Max value"
+#~ msgstr "Maxvärde"
+
+#~ msgid "Step"
+#~ msgstr "Steg"
+
+#~ msgid "Min date"
+#~ msgstr "Datum från"
+
+#~ msgid "Max date"
+#~ msgstr "Datum till"
+
+#, fuzzy
+#~| msgid "Min date"
+#~ msgid "Min time"
+#~ msgstr "Tid"
+
+#, fuzzy
+#~| msgid "Max date"
+#~ msgid "Max time"
+#~ msgstr "Tid"
+
+#~ msgid "Field values"
+#~ msgstr "Fältvärden"
+
+#~ msgid "Value"
+#~ msgstr "Värde"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgid "Single"
+#~ msgstr "Enskilt"
+
+#~ msgid "Multiple"
+#~ msgstr "Flera"
+
+#~ msgid "Max number of files"
+#~ msgstr "Max antal filer"
+
+#~ msgid "-1 for no limit"
+#~ msgstr "-1 är lika med ingen gräns"
+
+#~ msgid "Allowed filetypes"
+#~ msgstr "Tillåtna filtyper"
+
+#~ msgid "All video types"
+#~ msgstr "Alla videoformat"
+
+#~ msgid "All image types"
+#~ msgstr "Alla bildformat"
+
+#, fuzzy
+#~ msgid "Upload external"
+#~ msgstr "Uppladdningen lyckades"
+
+#~ msgid "Content"
+#~ msgstr "Innehåll"
+
+#~ msgid ""
+#~ "Add custom content to the form. This will not be sent in e-mail messages."
+#~ msgstr ""
+#~ "Lägg till eget innehåll till formuläret. Detta kommer inte skickas med i e-"
+#~ "postmeddelanden."
+
+#~ msgid "Collapse"
+#~ msgstr "Fäll ihop"
+
+#~ msgid "Button text"
+#~ msgstr "Knapp text"
+
+#, fuzzy
+#~| msgid ""
+#~| "<div style=\"margin: 5px 0 15px;\r\n"
+#~| "        background: #f1f1f157;\r\n"
+#~| "        border-left: 4px solid #b2b500;\r\n"
+#~| "        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n"
+#~| "        padding: 10px;\">Conditional fields must be a multi-choise field "
+#~| "that is required to fill in and lacks conditional arguments. Note that you "
+#~| "may not get email notfications if the requirements aren't fulfilled.</div>"
+#~ msgid ""
+#~ "<div style=\"margin: 5px 0 15px;\n"
+#~ "                                                                background: "
+#~ "#f1f1f157;\n"
+#~ "                                                                border-"
+#~ "left: 4px solid #b2b500;\n"
+#~ "                                                                box-shadow: "
+#~ "0 1px 1px 0 rgba(0,0,0,.1);\n"
+#~ "                                                                padding: "
+#~ "10px;\">Conditional fields must be a multi-choise field that is required to "
+#~ "fill in and lacks conditional arguments. Note that you may not get email "
+#~ "notfications if the requirements aren't fulfilled.</div>"
+#~ msgstr ""
+#~ "<div style=\"margin: 5px 0 15px;\r\n"
+#~ "        background: #f1f1f157;\r\n"
+#~ "        border-left: 4px solid #b2b500;\r\n"
+#~ "        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n"
+#~ "        padding: 10px;\">Villkorsfält måste vara obligatoriska fält där "
+#~ "endast ett val är tillåtet (välj/radioknapp). Fältet får i sig inte heller "
+#~ "ha några beroende på andra fält.</div>"
+
+#~ msgid "Select file"
+#~ msgstr "Välj en fil"
+
+#~ msgid "The for was submitted, thank you!"
+#~ msgstr "Tack! Formuläret har skickats iväg till mottagaren."
+
+#, fuzzy
+#~| msgid "You must confirm your not a robot."
+#~ msgid "You must confirm you're not a robot."
+#~ msgstr "Du måste bekräfta att du inte är en robot."
+
+#~ msgid "Show form"
+#~ msgstr "Visa formulär"
 
 #~ msgid "Message"
 #~ msgstr "Meddelande"
@@ -1238,8 +1105,8 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 #~ msgstr "Notifiera e-postadresser"
 
 #~ msgid ""
-#~ "Notifications will be sent to below added email addresses when receiving "
-#~ "a new form submission."
+#~ "Notifications will be sent to below added email addresses when receiving a "
+#~ "new form submission."
 #~ msgstr ""
 #~ "Ett mail skickas ut till nedanstående användare med innehållet i svaret."
 
@@ -1357,8 +1224,8 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 #~ "Adds a notice that informs the user that the submission will become a "
 #~ "public act."
 #~ msgstr ""
-#~ "Lägger till ett meddelande som informerar användaren om att "
-#~ "formulärsvaret blir en allmän handling."
+#~ "Lägger till ett meddelande som informerar användaren om att formulärsvaret "
+#~ "blir en allmän handling."
 
 #~ msgid "Add public act notice"
 #~ msgstr "Lägg till notis om allmän handling"
@@ -1370,8 +1237,7 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 #~ msgstr "Innehåller information om hur personlig data hanteras."
 
 #~ msgid ""
-#~ "Show a message (and checkbox) that is required to check to submit all "
-#~ "forms."
+#~ "Show a message (and checkbox) that is required to check to submit all forms."
 #~ msgstr ""
 #~ "Visa ett meddelande (och en checkbox) som är nödvändig för att posta "
 #~ "formuläret."
@@ -1381,13 +1247,13 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 
 #~ msgid ""
 #~ "When you submit the form, we will process your personal information to "
-#~ "perform the task that the form concerns. The data will not be used for "
-#~ "any other purpose."
+#~ "perform the task that the form concerns. The data will not be used for any "
+#~ "other purpose."
 #~ msgstr ""
 #~ "I det här formuläret samlar vi in personuppgifter om dig för att [det "
 #~ "formuläret ska användas till]. Uppgifterna kommer inte att hanteras för "
-#~ "något annat syfte, och kommer att raderas när [ärendet är avslutat]. Läs "
-#~ "om hur Helsingborgs stad hanterar personuppgifter."
+#~ "något annat syfte, och kommer att raderas när [ärendet är avslutat]. Läs om "
+#~ "hur Helsingborgs stad hanterar personuppgifter."
 
 #~ msgid "DB storage"
 #~ msgstr "Databaslagring"
@@ -1454,11 +1320,10 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 #~ msgstr "Policys och lagar"
 
 #~ msgid ""
-#~ "Note that your comment will become a public act that can be read by "
-#~ "others."
+#~ "Note that your comment will become a public act that can be read by others."
 #~ msgstr ""
-#~ "Observera att de uppgifter som du lämnar kan bli en allmän handling som "
-#~ "kan komma att läsas av andra."
+#~ "Observera att de uppgifter som du lämnar kan bli en allmän handling som kan "
+#~ "komma att läsas av andra."
 
 #~ msgid "GDPR complience notice"
 #~ msgstr "GDPR meddelande"
