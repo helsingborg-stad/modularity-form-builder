@@ -17,7 +17,7 @@
                     @option([
                         'type' => 'checkbox',
                         'attributeList' => [
-                            'name' => sanitize_title($field['label']),
+                            'name' => sanitize_title($field['label']) . '[]',
                             'value' => $value['value'],
                         ],
                         'label' => $value['value']
