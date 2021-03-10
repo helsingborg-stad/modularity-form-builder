@@ -1,6 +1,7 @@
 <?php
 
 namespace ModularityFormBuilder;
+use HelsingborgStad\RecaptchaIntegration as Captcha;
 
 class Submission
 {
@@ -22,17 +23,9 @@ class Submission
      */
     public function submit()
     {
-        if (class_exists('\Municipio\Helper\ReCaptcha')) {
-            if (defined('G_RECAPTCHA_KEY') && defined('G_RECAPTCHA_SECRET')) {
-                if (!is_user_logged_in()) {
-                    $response = (isset($_POST['g-recaptcha-response']) && strlen($_POST['g-recaptcha-response']) > 0) ? $_POST['g-recaptcha-response'] : null;
-                    $reCaptcha = \Municipio\Helper\ReCaptcha::controlReCaptcha($response);
-                    if (!$reCaptcha) {
-                        echo 'false';
-                        wp_die();
-                    }
-                }
-            }
+        # Google ReCaptcha v3.
+        if (!is_user_logged_in()) {
+            Captcha::initCaptcha();
         }
 
         unset($_POST['modularity-form']);

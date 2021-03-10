@@ -1,6 +1,7 @@
 <?php
 
 namespace ModularityFormBuilder;
+use \HelsingborgStad\RecaptchaIntegration as Captcha;
 
 class App
 {
@@ -32,6 +33,14 @@ class App
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
         add_filter('Municipio/blade/view_paths', array($this, 'addTemplatePaths'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueueCaptchaScript'), 40);
+    }
+
+    public function enqueueCaptchaScript(){
+        // If Captcha Script is not Enqueued
+        if( !wp_script_is( 'municipio-google-recaptcha' ) ) {
+            Captcha::initScripts();
+        }
     }
 
     /**
