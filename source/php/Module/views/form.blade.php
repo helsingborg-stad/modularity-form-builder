@@ -3,7 +3,7 @@
 ])
     @if (!$hideTitle && !empty($post_title))
         <div class="c-card__header">
-            <h4 class="box-title">{!! apply_filters('the_title', $post_title) !!}</h4>
+            <h4>{!! apply_filters('the_title', $post_title) !!}</h4>
         </div>
     @endif
 
