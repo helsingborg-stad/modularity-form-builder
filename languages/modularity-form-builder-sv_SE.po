@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2021-02-25 17:06+0100\n"
-"PO-Revision-Date: 2021-02-25 17:06+0100\n"
+"POT-Creation-Date: 2021-05-03 13:56+0200\n"
+"PO-Revision-Date: 2021-05-03 13:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: modularity-form-builder.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: acf-fields/php/form.php:6 source/php/Entity/PostType.php:401
 #: source/php/Entity/PostType.php:610 source/php/Module/Form.php:29
-#: source/php/Submission.php:84 source/php/Submission.php:511
+#: source/php/Submission.php:85 source/php/Submission.php:518
 #, fuzzy
 msgid "Form"
 msgstr "Det finns %d svar på det här formuläret."
@@ -488,17 +488,17 @@ msgstr "Saknade argument"
 msgid "You are not authorized to download this file."
 msgstr "Är du säker på att du vill radera den här filen?"
 
-#: source/php/Entity/PostType.php:212 source/php/Submission.php:376
+#: source/php/Entity/PostType.php:212 source/php/Submission.php:383
 msgid "Unauthorized request"
 msgstr ""
 
-#: source/php/Entity/PostType.php:250 source/php/Submission.php:407
+#: source/php/Entity/PostType.php:250 source/php/Submission.php:414
 msgid ""
 "The file you requested could not be found. The file might have been deleted or "
 "corrupted."
 msgstr ""
 
-#: source/php/Entity/PostType.php:251 source/php/Submission.php:408
+#: source/php/Entity/PostType.php:251 source/php/Submission.php:415
 #, fuzzy
 msgid "File not found"
 msgstr "Ingen fil vald"
@@ -521,11 +521,11 @@ msgstr "Välj en fil"
 msgid "Unknown file"
 msgstr "Välj en fil"
 
-#: source/php/Entity/PostType.php:388 source/php/Submission.php:86
+#: source/php/Entity/PostType.php:388 source/php/Submission.php:87
 msgid "Previous page"
 msgstr "Föregående sida"
 
-#: source/php/Entity/PostType.php:393 source/php/Submission.php:507
+#: source/php/Entity/PostType.php:393 source/php/Submission.php:514
 msgid "No Referrer"
 msgstr "Besökaren kom från extern länk"
 
@@ -651,6 +651,14 @@ msgstr "Radera"
 msgid "No file selected"
 msgstr "Ingen fil vald"
 
+#: source/php/Module/views/fields/file_upload.blade.php:25
+msgid "Max number of files"
+msgstr "Max antal filer"
+
+#: source/php/Module/views/fields/file_upload.blade.php:25
+msgid "Select file"
+msgstr "Välj en fil"
+
 #: source/php/Module/views/fields/sender-copy.blade.php:6
 msgid "Send copy of this submission to my email address"
 msgstr "Skicka en kopia till mig"
@@ -677,15 +685,15 @@ msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
 msgid "Options"
 msgstr "Inställningar"
 
-#: source/php/Submission.php:375
+#: source/php/Submission.php:382
 msgid "The download token provided was not correct."
 msgstr ""
 
-#: source/php/Submission.php:477
+#: source/php/Submission.php:484
 msgid "New form submission"
 msgstr "Nytt formulärsvar"
 
-#: source/php/Submission.php:481
+#: source/php/Submission.php:488
 #, php-format
 msgid ""
 "This is a notification about a new form submission to the form \"%s\"."
@@ -694,16 +702,16 @@ msgstr ""
 "Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
 "notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
 
-#: source/php/Submission.php:499 source/php/Submission.php:565
+#: source/php/Submission.php:506 source/php/Submission.php:572
 #, fuzzy
 msgid "Open file"
 msgstr "Välj en fil"
 
-#: source/php/Submission.php:506
+#: source/php/Submission.php:513
 msgid "Referrer"
 msgstr "Förgående sida"
 
-#: source/php/Submission.php:551
+#: source/php/Submission.php:558
 msgid "Form submission copy"
 msgstr "Svarskopia"
 
@@ -810,11 +818,11 @@ msgid ""
 "Municipio: constant 'G_RECAPTCHA_KEY' or 'G_RECAPTCHA_SECRET' is not defined."
 msgstr ""
 
-#: vendor/helsingborg-stad/recaptcha-integration/src/Validation.php:42
+#: vendor/helsingborg-stad/recaptcha-integration/src/Validation.php:43
 msgid "Error"
 msgstr ""
 
-#: vendor/helsingborg-stad/recaptcha-integration/src/Validation.php:43
+#: vendor/helsingborg-stad/recaptcha-integration/src/Validation.php:44
 msgid "reCaptcha validation failed"
 msgstr ""
 
@@ -954,9 +962,6 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 #~ msgid "Multiple"
 #~ msgstr "Flera"
 
-#~ msgid "Max number of files"
-#~ msgstr "Max antal filer"
-
 #~ msgid "-1 for no limit"
 #~ msgstr "-1 är lika med ingen gräns"
 
@@ -1017,9 +1022,6 @@ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 #~ "        padding: 10px;\">Villkorsfält måste vara obligatoriska fält där "
 #~ "endast ett val är tillåtet (välj/radioknapp). Fältet får i sig inte heller "
 #~ "ha några beroende på andra fält.</div>"
-
-#~ msgid "Select file"
-#~ msgstr "Välj en fil"
 
 #~ msgid "The for was submitted, thank you!"
 #~ msgstr "Tack! Formuläret har skickats iväg till mottagaren."
