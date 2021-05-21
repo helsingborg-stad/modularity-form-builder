@@ -52,8 +52,8 @@ class Submission
 
         // Upload files
         $files = array();
-        
-        if (!empty($_FILES)) {
+
+        if (!empty($_FILES) && $_FILES[0]['error'] !== 4) { //error code 4 = empty file
             $files = self::uploadFiles($_FILES, $_POST['modularity-form-id']);
 
             // Return to form if upload failed
@@ -67,6 +67,8 @@ class Submission
                 exit;
             }
         }
+
+        
 
         $_POST = array_merge($_POST, $files);
         
