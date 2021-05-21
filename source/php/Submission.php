@@ -68,8 +68,6 @@ class Submission
             }
         }
 
-        
-
         $_POST = array_merge($_POST, $files);
         
         // Set post title, content, form page and referer
