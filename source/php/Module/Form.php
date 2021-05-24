@@ -218,7 +218,9 @@ class Form extends \Modularity\Module
                         'label' => $label,
                         'value' => $option_value
                     );
-                    $value['conditional_value'] = json_encode($conditional_value);
+
+                    //HTML attribute breaks when using double quotes, therefore single quotes are used
+                    $value['conditional_value'] = str_replace('"', "'", json_encode($conditional_value));
                 }
             }
 
