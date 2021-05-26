@@ -14,6 +14,7 @@ class Form extends \Modularity\Module
     public $cacheTtl = 3600 * 24 * 7; // Defaults to 7 days
     public $hideTitle = false;
     public $isDeprecated = false;
+    public $isBlockCompatible = false;
 
     /**
      * Available "magic" methods for modules:
