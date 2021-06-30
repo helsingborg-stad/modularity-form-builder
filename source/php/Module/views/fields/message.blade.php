@@ -6,11 +6,11 @@
         <!-- Textarea component from Component Library  -->
             @textarea([
                 'type' => 'text',
+                'id' => $module_id . "-message",
                 'attributeList' => [
                     'name' => $field['attributeList']['name'],
                     'type' => 'textarea',
                     'rows' => "10",
-                    'id' => $module_id . "-message"
                 ],
                 'label' => '',
                 'required' => $field['required']
