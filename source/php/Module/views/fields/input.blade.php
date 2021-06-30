@@ -8,7 +8,7 @@ use ModularityFormBuilder\Helper\SanitizeData;
     <div class="o-grid-12@md">
         <div class="form-group">
 
-            <label for="{{ $module_id }}-input-{{ sanitize_title($field['label']) }}">
+            <label for="input_{{ $module_id }}-input-{{ sanitize_title($field['label']) }}">
                 {{ $field['label'] }}
                 @if ($field['required'])
                     <span class="text-danger">*</span>
@@ -24,9 +24,9 @@ use ModularityFormBuilder\Helper\SanitizeData;
             @field([
                 'type' => $field['value_type'],
                 'value' => '',
+                'id' => $module_id . '-input-' . sanitize_title($field['label']),
                 'attributeList' => $field['attributeList'],
                 'required' => $field['required'] ? true : false,
-              
             ])
             @endfield
 
