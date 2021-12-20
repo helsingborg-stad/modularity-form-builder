@@ -529,6 +529,7 @@ class PostType
     public function addViewPaths($array)
     {
         $array[] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin';
+        $array[] = FORM_BUILDER_MODULE_PATH . 'source/php/Module/views';
 
         return $array;
     }
