@@ -516,7 +516,9 @@ class PostType
         $template = new \Municipio\template;
         $view = \Municipio\Helper\Template::locateTemplate($fileName, $path);
         $view = $template->cleanViewPath($fileName);
-        $template->renderView($view, $data);
+        if (function_exists('render_blade_view')) {
+            echo render_blade_view($view, $data);
+        }
     }
 
     /**
