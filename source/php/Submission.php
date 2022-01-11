@@ -145,6 +145,7 @@ class Submission
                     '', $_SERVER['SERVER_NAME']) . '>' : 'no-reply@' . preg_replace('/www\./i', '',
                     $_SERVER['SERVER_NAME']);
         }
+        $fromHelsingborg = _x( 'Helsingborgs Stad', 'email: autoreply from name', 'modularity-form-builder' ) . ' <no-reply@' . preg_replace('/www\./i', '', $_SERVER['SERVER_NAME']) . '>';
         // Send notifications
         if ($notify) {
             foreach ($notify as $email) {
@@ -169,7 +170,7 @@ class Submission
         }
         // Send auto reply
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
-            $this->autoreply($fromEmail, $submission, $fromEmail);
+            $this->autoreply($fromEmail, $submission, $fromHelsingborg);
         }
         $referer = parse_url($referer, PHP_URL_PATH);
         // Redirect
