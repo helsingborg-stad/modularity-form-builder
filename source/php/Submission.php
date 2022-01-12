@@ -145,6 +145,12 @@ class Submission
                     '', $_SERVER['SERVER_NAME']) . '>' : 'no-reply@' . preg_replace('/www\./i', '',
                     $_SERVER['SERVER_NAME']);
         }
+        
+        $siteDomain = preg_replace( '/www\./i', '', parse_url( get_home_url() )['host'] );
+        $siteMailFromDomain = defined( 'MOD_FORMS_MAIL_FROM_DOMAIN' ) && !empty( MOD_FORMS_MAIL_FROM_DOMAIN ) ? MOD_FORMS_MAIL_FROM_DOMAIN : $siteDomain;
+        $siteMailFromName = defined( 'MOD_FORMS_MAIL_FROM_NAME' ) && !empty( MOD_FORMS_MAIL_FROM_NAME ) ? MOD_FORMS_MAIL_FROM_NAME : get_bloginfo( 'name' );
+        $autoReplyFrom = $siteMailFromName . ' <no-reply@' . $siteMailFromDomain . '>';
+
         // Send notifications
         if ($notify) {
             foreach ($notify as $email) {
@@ -169,7 +175,7 @@ class Submission
         }
         // Send auto reply
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
-            $this->autoreply($fromEmail, $submission, $fromEmail);
+            $this->autoreply($fromEmail, $submission, $autoReplyFrom);
         }
         $referer = parse_url($referer, PHP_URL_PATH);
         // Redirect
