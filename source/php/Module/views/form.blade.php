@@ -17,8 +17,8 @@
             <input type="hidden" id="modularity-gdpr-data" name="modularity-gdpr-data" value="{{$dataStorage}}">
 
             <?php /* These field is not allowed to change. Honeypot function. */ ?>
-            <input type="text" id="modularity-v-field" name="modularity-v-field" value="7y0dwakjbdwabclsglcaw" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;">
-            <input type="text" id="modularity-e-field" name="modularity-e-field" value="" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;">
+            <input autocomplete="off" type="text" id="modularity-v-field" name="modularity-v-field" value="7y0dwakjbdwabclsglcaw" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;">
+            <input autocomplete="off" type="text" id="modularity-e-field" name="modularity-e-field" value="" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;">
 
             @if (isset($_GET['form']) && $_GET['form'] == 'success')
                 <div class="o-grid">
