@@ -15,6 +15,17 @@ class Submission
     {
         add_action('init', function () {
             if (isset($_POST['modularity-form']) && wp_verify_nonce($_POST['modularity-form'], 'submit')) {
+
+                // Honeypot validation check
+                if (!isset($_POST['modularity-v-field']) || isset($_POST['modularity-v-field']) && $_POST['modularity-v-field'] != '7y0dwakjbdwabclsglcaw')
+                {
+                    wp_die("Could not verify form (v-field).");
+                }
+                if (!isset($_POST['modularity-e-field']) || isset($_POST['modularity-e-field']) && $_POST['modularity-e-field'] != '')
+                {
+                    wp_die("Could not verify form (e-field).");
+                }
+
                 $this->submit();
             }
         }, 13);
