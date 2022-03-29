@@ -2,8 +2,6 @@
 
 namespace ModularityFormBuilder;
 
-use HelsingborgStad\RecaptchaIntegration as Captcha;
-
 /**
  * Class Submission
  * @package ModularityFormBuilder
@@ -16,7 +14,6 @@ class Submission
     public function __construct()
     {
         add_action('init', function () {
-            
             if (isset($_POST['modularity-form']) && wp_verify_nonce($_POST['modularity-form'], 'submit')) {
                 $this->submit();
             }
@@ -32,11 +29,6 @@ class Submission
      */
     public function submit()
     {
-        # Google ReCaptcha v3.
-        if (!is_user_logged_in()) {
-            Captcha::initCaptcha();
-        }
-
         unset($_POST['modularity-form']);
         $referer = esc_url(remove_query_arg('form', $_POST['_wp_http_referer']));
         unset($_POST['_wp_http_referer']);
