@@ -26,6 +26,11 @@ class Submission
                     wp_die("Could not verify form (e-field).");
                 }
 
+                if (!isset($_POST['modularity-t-field']) || isset($_POST['modularity-t-field']) && $_POST['modularity-t-field'] != '5000')
+                {
+                    wp_die("Could not verify form (t-field).");
+                }
+
                 $this->submit();
             }
         }, 13);
