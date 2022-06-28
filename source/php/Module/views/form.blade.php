@@ -130,8 +130,17 @@
                             @endif
                         @endif
                         
-                        @button([
+                        {{-- @button([
                             'text' => translate( 'Show form', 'modularity-form-builder' ),
+                            'classList' => ['js-return_to_form'],
+                            'attributeList' => [
+                                'onClick' => 'window.location = window.location.pathname'
+                            ]
+                        ])
+                        @endbutton --}}
+
+                        @button([
+                            'text' => $showFormLang,
                             'classList' => ['js-return_to_form'],
                             'attributeList' => [
                                 'onClick' => 'window.location = window.location.pathname'
