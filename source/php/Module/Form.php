@@ -192,10 +192,7 @@ class Form extends \Modularity\Module
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
         $data['googleCaptchaTerms']= __('This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.', 'modularity-form-builder');
         $data['dataStorage'] = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
-
-        // Translate func
-        // $data['showFormLang'] = __('Show form', 'modularity-form-builder');
-        $data['showFormLang'] = translate('Show form', 'modularity-form-builder');
+        $data['showFormLang'] = __('Show form', 'modularity-form-builder');
 
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
