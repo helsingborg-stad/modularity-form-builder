@@ -129,9 +129,9 @@
                                 </div>
                             @endif
                         @endif
-                        
+
                         @button([
-                            'text' => translate( 'Show form', 'modularity-form-builder' ),
+                            'text' => $showFormLang,
                             'classList' => ['js-return_to_form'],
                             'attributeList' => [
                                 'onClick' => 'window.location = window.location.pathname'
