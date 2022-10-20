@@ -192,12 +192,21 @@ class Form extends \Modularity\Module
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
         $data['googleCaptchaTerms']= __('This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.', 'modularity-form-builder');
         $data['dataStorage'] = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
+
         $data['showFormLang'] = __('Show form', 'modularity-form-builder');
+        $data['selectFileLabel'] = __('Select file', 'modularity-form-builder');
 
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
+            
             $field = $this->setAttributeList($field);
-
+            
+            if ('multiple' === $field['type'] && 0 < (int) $field['files_max']) {
+                $field['maxFilesNotice'] = __('Max allowed files:', 'modularity-form-builder') . ' '. $field['files_max'];
+            } else {
+                $field['maxFilesNotice'] = false;
+            }
+            
             $field['conditional_hidden'] = '';
             if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
                 $field['conditional_hidden'] = "style='display:none;' conditional-target='" . $field['conditonal_field'] . "'";
