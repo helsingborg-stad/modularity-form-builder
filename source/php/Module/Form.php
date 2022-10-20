@@ -320,7 +320,6 @@ class Form extends \Modularity\Module
      */
     public function script()
     {
-
         wp_register_script('form-builder-js-referer', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-referer.js'), false, true);
         wp_enqueue_script('form-builder-js-referer');
 
@@ -331,13 +330,13 @@ class Form extends \Modularity\Module
         }
 
         add_action('wp_enqueue_scripts', array($this, 'initScriptsQue'), 30);
-
     }
 
     /**
      * Fix for queuing up scripts the correct way
      */
-    public function initScriptsQue(){
+    public function initScriptsQue()
+    {
         \ModularityFormBuilder\App::enqueueFormBuilderScripts();
     }
 
