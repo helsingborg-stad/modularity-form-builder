@@ -194,7 +194,7 @@ class Form extends \Modularity\Module
         $data['dataStorage'] = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
 
         $data['showFormLang'] = __('Show form', 'modularity-form-builder');
-        $data['selectFileLabel'] = __('Select file', 'modularity-form-builder');
+        $data['selectFileLabel'] = __('Select file');
 
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
