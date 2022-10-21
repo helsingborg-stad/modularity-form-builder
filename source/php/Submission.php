@@ -63,19 +63,15 @@ class Submission
             // Return to form if upload failed
             if (isset($files['error'])) {
 
-				$errorCode = 'failed';
 				if ( isset( $files['errorData'] ) && is_wp_error( $files['errorData'] ) ) {
-					$errorCode = $files['errorData']->get_error_code();
+					$errorCode = "&reason=" . $files['errorData']->get_error_code();
+				} else {
+					$errorCode = '';
 				}
 
-                if (strpos($referer, '?') > -1) {
-					$referer .= '&';
-                } else {
-                    $referer .= '?';
-                }
+				$referer .= (strpos($referer, '?') > -1) ? '&' : '?' . "form=failed{$errorCode}";
 
-				$referer .= "form={$errorCode}";
-                wp_safe_redirect($referer);
+				wp_safe_redirect($referer);
                 exit;
             }
         }

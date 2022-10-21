@@ -54,14 +54,14 @@
                 </div>
             @endif
 
-            @if (isset($_GET['form']) && $_GET['form'] == 'failed')
+            @if ($submissionResult === 'failed')
                 <div class="o-grid">
                     <div class="o-grid-12@md">
                         
                         @notice([
                             'type' => 'warning',
                             'message' => [
-                                'text' =>  __('Something went wrong, please try again.', 'modularity-form-builder'),
+                                'text' =>  $reason,
                                 'size' => 'sm'
                             ],
                             'icon' => [

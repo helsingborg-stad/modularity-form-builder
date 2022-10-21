@@ -44,11 +44,25 @@ class Form extends \Modularity\Module
     public function data(): array
     {
         $data                       = get_fields($this->ID);
-        $formParams = isset($_GET['form']) ? $_GET['form'] : array();
 
-        if (! empty($formParams)) {
-            $data['form'] = $formParams;
-        }
+        $data['submissionResult'] = isset($_GET['form']) ? wp_kses( $_GET['form'], array()) : false;
+
+		if ( isset( $_GET['reason'])) {
+			switch ($_GET['reason']) {
+				case 'filetype-not-allowed':
+					$data['reason'] = __('Filetype not allowed', 'modularity-form-builder');
+					break;
+				case 'file-not-uploaded':
+					$data['reason'] = __('File not uploaded', 'modularity-form-builder');
+					break;
+				
+				default:
+					$data['reason'] = __('An unknown error occurred, please try again.', 'modularity-form-builder');
+					break;
+			}
+		} else {
+			$data['reason'] = false;
+		}
         
         $data['classes']            = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
         $data['module_id']          = $this->ID;
