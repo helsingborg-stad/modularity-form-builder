@@ -39,7 +39,7 @@
                         @notice([
                             'type' => 'success',
                             'message' => [
-                                'text' =>  get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'),
+                                'text' =>  $submissionNotice,
                                 'size' => 'sm'
                             ],
                             'icon' => [
