@@ -62,12 +62,20 @@ class Submission
 
             // Return to form if upload failed
             if (isset($files['error'])) {
+
+				$errorCode = 'failed';
+				if ( isset( $files['errorData'] ) && is_wp_error( $files['errorData'] ) ) {
+					$errorCode = $files['errorData']->get_error_code();
+				}
+
                 if (strpos($referer, '?') > -1) {
-                    $referer .= '&form=failed';
+					$referer .= '&';
                 } else {
-                    $referer .= '?form=failed';
+                    $referer .= '?';
                 }
-                wp_redirect($referer);
+
+				$referer .= "form={$errorCode}";
+                wp_safe_redirect($referer);
                 exit;
             }
         }
@@ -270,7 +278,7 @@ class Submission
                 if (!in_array('.' . $fileext, $fields[$key]['filetypes'])) {
                     error_log('Filetype not allowed');
                     $uploaded['error'] = true;
-                    $uploaded['errorMessage'] = new WP_Error('error', __('Filetype not allowed', 'modularity-form-builder'));
+                    $uploaded['errorData'] = new \WP_Error('filetype-not-allowed', __('Filetype not allowed', 'modularity-form-builder'));
                     continue;
                 }
 
@@ -304,7 +312,7 @@ class Submission
                 } else {
                     error_log('File not uploaded');
                     $uploaded['error'] = true;
-                    $uploaded['errorMessage'] = new WP_Error('error', __('Filetype not uploaded', 'modularity-form-builder'));
+                    $uploaded['errorData'] = new \WP_Error('file-not-uploaded', __('File not uploaded', 'modularity-form-builder'));
 
                     continue;
                 }
