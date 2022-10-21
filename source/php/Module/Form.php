@@ -43,15 +43,19 @@ class Form extends \Modularity\Module
      */
     public function data(): array
     {
-        $data = get_fields($this->ID);
-        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
-        $data['module_id'] = $this->ID;
-        $data['hasFileUpload'] = false;
-        $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
-        $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
-        $data['googleCaptchaTerms']= __('This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.', 'modularity-form-builder');
-        $data['dataStorage'] = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
-        $data['showFormLang'] = __('Show form', 'modularity-form-builder');
+        $data                       = get_fields($this->ID);
+        
+        $data['classes']            = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
+        $data['module_id']          = $this->ID;
+
+        $data['hasFileUpload']      = false;
+        $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type']: 'form-submissions';
+      
+        $data['googleGeocoding']    = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
+        $data['googleCaptchaTerms'] = __('This site is protected by reCAPTCHA and the Google <a href = "https: //policies.google.com/privacy">Privacy Policy</a> and <a href = "https: //policies.google.com/terms">Terms of Service</a> apply.', 'modularity-form-builder');
+      
+        $data['dataStorage']        = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
+        $data['showFormLang']       = __('Show form', 'modularity-form-builder');
 
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
