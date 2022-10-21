@@ -44,6 +44,11 @@ class Form extends \Modularity\Module
     public function data(): array
     {
         $data                       = get_fields($this->ID);
+        $formParams = isset($_GET['form']) ? $_GET['form'] : array();
+
+        if (! empty($formParams)) {
+            $data['form'] = $formParams;
+        }
         
         $data['classes']            = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
         $data['module_id']          = $this->ID;

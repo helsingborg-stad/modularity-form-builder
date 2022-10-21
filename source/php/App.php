@@ -32,7 +32,6 @@ class App
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
         add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
-
     }
 
     /**
@@ -207,13 +206,15 @@ class App
                 $metaVal = $this->getDataAsArray($metaVal);
 
                 if (is_array($metaVal)) {
-
                     // Loop through address array
                     $addressKey = sanitize_title(__('Address', 'modularity-form-builder'));
                     if (!empty($metaVal[$addressKey])) {
                         foreach ($updatedKeys as $changedVal) {
-                            $metaVal[$addressKey] = $this->replaceKey($metaVal[$addressKey], $changedVal['old'],
-                                $changedVal['new']);
+                            $metaVal[$addressKey] = $this->replaceKey(
+                                $metaVal[$addressKey],
+                                $changedVal['old'],
+                                $changedVal['new']
+                            );
                         }
                     }
 
@@ -339,7 +340,11 @@ class App
 
             // Return if upload failed
             if (isset($files['error'])) {
-                wp_send_json_error(__('Something went wrong, please try again.', 'modularity-form-builder'));
+                if (isset($files['errorMessage']) && is_wp_error($files['errorMessage'])) {
+                    wp_send_json_error($files['errorMessage']->get_error_message());
+                } else {
+                    wp_send_json_error(__('Something went wrong, please try again.', 'modularity-form-builder'));
+                }
             }
 
             // Save new file to array or marge with existing
@@ -364,8 +369,10 @@ class App
 
     public function frontEndSavePost()
     {
-        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'],
-                'update')) {
+        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce(
+            $_POST['update-modularity-form'],
+            'update'
+        )) {
             wp_send_json_error(__('Something went wrong', 'modularity-form-builder'));
         }
 
@@ -373,7 +380,6 @@ class App
 
         // Save form data
         if (!empty($_POST['mod-form'])) {
-
             $updatedData = $_POST['mod-form'];
             if (!get_option('options_mod_form_crypt')) {
                 $currentData = get_post_meta($postId, 'form-data', true);
@@ -412,22 +418,30 @@ class App
      * @param $data    mixed data to encrypt or decrypt
      * @return string
      */
-    static function encryptDecryptData($method, $data)
+    public static function encryptDecryptData($method, $data)
     {
         if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
             switch ($method) {
                 case 'encrypt':
                     $data = is_array($data) ? serialize($data) : $data;
-                    return base64_encode(openssl_encrypt(json_encode($data), ENCRYPT_METHOD,
-                        hash('sha256', ENCRYPT_SECRET_KEY), 0,
-                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
+                    return base64_encode(openssl_encrypt(
+                        json_encode($data),
+                        ENCRYPT_METHOD,
+                        hash('sha256', ENCRYPT_SECRET_KEY),
+                        0,
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                    ));
                     break;
                 case 'decrypt':
-                    return json_decode(openssl_decrypt(base64_decode($data), ENCRYPT_METHOD,
-                        hash('sha256', ENCRYPT_SECRET_KEY), 0,
-                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)));
+                    return json_decode(openssl_decrypt(
+                        base64_decode($data),
+                        ENCRYPT_METHOD,
+                        hash('sha256', ENCRYPT_SECRET_KEY),
+                        0,
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                    ));
                     break;
-                default;
+                default:
                     return $data;
             }
         } else {
@@ -441,7 +455,7 @@ class App
      * @param $data    mixed data to encrypt or decrypt
      * @return string
      */
-    static function encryptDecryptFile($method, $data)
+    public static function encryptDecryptFile($method, $data)
     {
         if (defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD')) {
             switch ($method) {
@@ -463,7 +477,7 @@ class App
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
                     );
                     break;
-                default;
+                default:
                     return $data;
             }
         } else {
@@ -505,7 +519,6 @@ class App
      */
     public function checkPermission()
     {
-
         if (isset($_GET['post'])) {
             $userRestriction = get_field('user_restriction', $_GET['post']);
 
@@ -608,8 +621,5 @@ class App
         ));
 
         wp_enqueue_script('form-builder-js-front');
-
     }
-
 }
-
