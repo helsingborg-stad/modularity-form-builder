@@ -63,9 +63,7 @@ class Form extends \Modularity\Module
 		} else {
 			$data['reason'] = false;
 		}
-
-		$data['submissionNotice'] = get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The form was submitted, thank you!', 'modularity-form-builder');
-		
+        
         $data['classes']            = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
         $data['module_id']          = $this->ID;
 
