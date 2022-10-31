@@ -26,7 +26,7 @@
                     {{($field['type'] === 'multiple' ? $field['files_max'] : '1')}}
                 @endtypography        
             @endif
-
+            
             @fileinput([
                 'name' => sanitize_title($field['label']),
                 'display' => 'area',
