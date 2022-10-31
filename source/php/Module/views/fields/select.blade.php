@@ -1,14 +1,21 @@
+<?php
+
+use ModularityFormBuilder\Helper\SanitizeData;
+
+?>
 <div class="o-grid mod-form-field" {!! $field['conditional_hidden'] !!}>
     <div class="o-grid-12@md">
         <div class="form-group">
-            <label for="{{ $module_id }}-{{ sanitize_title($field['label']) }}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
-            {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
-
-            <select name="{{ sanitize_title($field['label']) }}" id="{{ $module_id }}-{{ sanitize_title($field['label']) }}">
-            @foreach ($field['values'] as $value)
-            <option value="{{ $value['value'] }}">{{ $value['value'] }}</option>
-            @endforeach
-            </select>
+            @select([
+                'label' => $field['label'],       
+                'options' => $field['select_options'],
+                'description' => 
+                    (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) : '',                
+                'id' => $module_id . '-input-' . sanitize_title($field['label']),
+                'attributeList' => $field['attributeList'],
+                'required' => $field['required'] ? true : false,
+            ])
+            @endselect            
         </div>
     </div>
 </div>

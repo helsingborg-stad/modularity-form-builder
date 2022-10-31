@@ -226,6 +226,15 @@ class Form extends \Modularity\Module
                 }
             }
 
+            if ($field['acf_fc_layout'] === 'select') {
+                // Format the select options according to @select component's needs
+                $options = array();
+                foreach ($field['values'] as $select_value) {
+                    $options[$select_value['value']] = $select_value['value'];
+                } 
+                $field['select_options'] = $options;
+            }
+
             if (isset($field['required_fields']) && empty($field['required_fields'])) {
                 $field['required_fields'] = array();
             }
