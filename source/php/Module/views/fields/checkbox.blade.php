@@ -1,12 +1,12 @@
 <div class="o-grid mod-form-field" {!! $field['conditional_hidden'] !!}>
     <div class="o-grid-12@md">
-        <div class="form-group checkbox-group {{$field['required'] ? 'checkbox-group-required' : ''}}">
+        <div class="form-group c-field checkbox-group {{$field['required'] ? 'checkbox-group-required' : ''}}">
         
             @if($field['required'])
                 <input class="js-checkbox-valid u-display--none" aria-label="For validating checkbox group" {{$field['required'] ? 'required' : ''}} type="checkbox"/>
             @endif
 
-            <label for="{{ $module_id }}-{{ sanitize_title($field['label']) }}" id="{{uniqid()}}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="text-danger">*</span>' : '' !!}</label>
+            <label class="c-field__label" for="{{ $module_id }}-{{ sanitize_title($field['label']) }}" id="{{uniqid()}}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="u-color__text--danger">*</span>' : '' !!}</label>
 
             {!! !empty($field['description']) ? '<div class="text-sm text-dark-gray">' . ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) . '</div>' : '' !!}
 

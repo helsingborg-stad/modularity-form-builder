@@ -3,8 +3,8 @@
     <div class="o-grid mod-form-field">
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['firstname'], 
                     'type' => 'text',
                     'id' =>  $module_id . "-firstname",
                     'attributeList' => [
@@ -21,8 +21,8 @@
         </div>
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-lastname">{{ $field['labels']['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['lastname'],
                     'type' => 'text',
                     'id' =>  $module_id . "-lastname",
                     'attributeList' => [
@@ -42,8 +42,8 @@
     <div class="o-grid mod-form-field">
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-firstname">{{ $field['labels']['firstname'] }}{!! in_array('firstname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['firstname'],
                     'type' => 'text',
                     'id' =>  $module_id . "-firstname",
                     'attributeList' => [
@@ -62,9 +62,9 @@
 @elseif (!in_array('firstname', $field['fields']) && in_array('lastname', $field['fields']))
     <div class="o-grid mod-form-field">
         <div class="o-grid-6@md">
-            <div class="form-group">
-                <label for="input_{{ $module_id }}-lastname">{{ $field['labels']['lastname'] }}{!! in_array('lastname', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+            <div class="form-group">               
                 @field([
+                    'label' => $field['labels']['lastname'],
                     'type' => 'text',
                     'id' =>  $module_id . "-lastname",
                     'attributeList' => [
@@ -87,8 +87,8 @@
     <div class="o-grid mod-form-field">
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['email'],
                     'type' => 'email',
                     'id' =>  $module_id . "-email",
                     'attributeList' => [
@@ -105,8 +105,8 @@
         </div>
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-phone">{{ $field['labels']['phone'] }}{!! in_array('phone', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['phone'],
                     'type' => 'number',
                     'id' =>  $module_id . "-phone",
                     'attributeList' => [
@@ -126,8 +126,8 @@
     <div class="o-grid mod-form-field">
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-email">{{ $field['labels']['email'] }}{!! in_array('email', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['email'],
                     'type' => 'text',
                     'id' =>  $module_id . "-email",
                     'attributeList' => [
@@ -147,8 +147,8 @@
     <div class="o-grid mod-form-field">
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-phone">{{ $field['labels']['phone'] }}{!! in_array('phone', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['phone'],
                     'type' => 'number',
                     'id' =>  $module_id . "-phone",
                     'attributeList' => [
@@ -171,14 +171,15 @@
     <div class="o-grid mod-form-field">
         <div class="o-grid-12@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-address-street">{{ $field['labels']['street_address'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @if ($googleGeocoding)
+                    <label for="input_{{ $module_id }}-address-street">{{ $field['labels']['street_address'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                     <div class="input-group">
                         <input type="text" name="{{ sanitize_title($field['labels']['address']) }}[{{ sanitize_title($field['labels']['street_address']) }}]" class="form-control" id="input_{{ $module_id }}-address-street" {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
                         <span class="input-group-addon-btn"><button id="form-get-location" class="btn"><i class="pricon pricon-location-pin"></i> <?php _e('Find my location', 'modularity-form-builder'); ?></button></span>
                     </div>
                 @else
                     @field([
+                        'label' => $field['labels']['street_address'],
                         'type' => 'text',
                         'id' =>  $module_id . "-address-street",
                         'attributeList' => [
@@ -197,9 +198,9 @@
     </div>
     <div class="o-grid mod-form-field">
         <div class="o-grid-6@md">
-            <div class="form-group">
-                <label for="input_{{ $module_id }}-address-postal-code">{{ $field['labels']['postal_code'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
+            <div class="form-group">               
                 @field([
+                    'label' => $field['labels']['postal_code'],
                     'type' => 'number',
                     'id' =>  $module_id . "-address-postal-code",
                     'attributeList' => [
@@ -216,8 +217,8 @@
         </div>
         <div class="o-grid-6@md">
             <div class="form-group">
-                <label for="input_{{ $module_id }}-address-city">{{ $field['labels']['city'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 @field([
+                    'label' => $field['labels']['city'],
                     'type' => 'text',
                     'id' =>  $module_id . "-address-city",
                     'attributeList' => [
