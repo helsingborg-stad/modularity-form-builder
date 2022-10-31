@@ -7,23 +7,12 @@ use ModularityFormBuilder\Helper\SanitizeData;
 <div class="o-grid mod-form-field" {!! $field['conditional_hidden'] !!}>
     <div class="o-grid-12@md">
         <div class="form-group">
-
-            <label for="input_{{ $module_id }}-input-{{ sanitize_title($field['label']) }}">
-                {{ $field['label'] }}
-                @if ($field['required'])
-                    <span class="text-danger">*</span>
-                @endif
-            </label>
-
-            @if (!empty($field['description']))
-                <div class="text-sm text-dark-gray">
-                    {!! SanitizeData::convertLinks($field['description']) !!}
-                </div>
-            @endif
-
             @field([
+                'label' => $field['label'],            
                 'type' => $field['value_type'],
                 'value' => '',
+                'description' => 
+                    (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) : '',                
                 'id' => $module_id . '-input-' . sanitize_title($field['label']),
                 'attributeList' => $field['attributeList'],
                 'required' => $field['required'] ? true : false,
