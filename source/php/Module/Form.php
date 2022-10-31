@@ -45,24 +45,24 @@ class Form extends \Modularity\Module
     {
         $data                       = get_fields($this->ID);
 
-        $data['submissionResult'] = isset($_GET['form']) ? wp_kses( $_GET['form'], array()) : false;
+        $data['submissionResult'] = isset($_GET['form']) ? wp_kses($_GET['form'], array()) : false;
 
-		if ( isset( $_GET['reason'])) {
-			switch ($_GET['reason']) {
-				case 'filetype-not-allowed':
-					$data['reason'] = __('Filetype not allowed', 'modularity-form-builder');
-					break;
-				case 'file-not-uploaded':
-					$data['reason'] = __('File not uploaded', 'modularity-form-builder');
-					break;
-				
-				default:
-					$data['reason'] = __('An unknown error occurred, please try again.', 'modularity-form-builder');
-					break;
-			}
-		} else {
-			$data['reason'] = false;
-		}
+        if (isset($_GET['reason'])) {
+            switch ($_GET['reason']) {
+                case 'filetype-not-allowed':
+                    $data['reason'] = __('Filetype not allowed', 'modularity-form-builder');
+                    break;
+                case 'file-not-uploaded':
+                    $data['reason'] = __('File not uploaded', 'modularity-form-builder');
+                    break;
+                
+                default:
+                    $data['reason'] = __('An unknown error occurred, please try again.', 'modularity-form-builder');
+                    break;
+            }
+        } else {
+            $data['reason'] = false;
+        }
         
         $data['classes']            = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
         $data['module_id']          = $this->ID;
@@ -276,101 +276,6 @@ class Form extends \Modularity\Module
         echo '<a href="' . admin_url('edit.php?post_type=' . $postType . '&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a>';
         echo ' <a href="' . admin_url('post.php?post=' . $post->ID . '&action=edit&export=csv&posttype=' . $postType) . '" class="button" target="_blank">' . __('Export csv', 'modularity-form-builder') . '</a>';
         echo '</p>';
-    }
-
-    /**
-     * View data
-     * @return array
-     */
-    public function data(): array
-    {
-        $data = get_fields($this->ID);
-        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('c-card--panel',), $this->post_type, $this->args));
-        $data['module_id'] = $this->ID;
-        $data['hasFileUpload'] = false;
-        $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
-        $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
-        $data['googleCaptchaTerms']= __('This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.', 'modularity-form-builder');
-        $data['dataStorage'] = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
-
-        $data['showFormLang'] = __('Show form', 'modularity-form-builder');
-        $data['selectFileLabel'] = __('Select file');
-
-        foreach ($data['form_fields'] as &$field) {
-            $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
-            
-            $field = $this->setAttributeList($field);
-            
-            if ('multiple' === $field['type'] && 0 < (int) $field['files_max']) {
-                $field['maxFilesNotice'] = __('Max allowed files:', 'modularity-form-builder') . ' '. $field['files_max'];
-            } else {
-                $field['maxFilesNotice'] = false;
-            }
-            
-            $field['conditional_hidden'] = '';
-            if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
-                $field['conditional_hidden'] = "style='display:none;' conditional-target='" . $field['conditonal_field'] . "'";
-            }
-
-            if ($field['acf_fc_layout'] === 'sender') {
-                $field['labels'] = Helper\SenderLabels::getLabels();
-
-                // Merge default and custom labels
-                if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
-                    $field['labels'] = array_merge($field['labels'], array_filter($field['custom_sender_labels']));
-                }
-            }
-
-            if ($field['acf_fc_layout'] === 'radio') {
-                foreach ($field['values'] as &$value) {
-                    $label = $this->conditionalString($field['label']);
-                    $option_value = $this->conditionalString($value['value']);
-                    $conditional_value = array(
-                        'label' => $label,
-                        'value' => $option_value
-                    );
-
-                    //HTML attribute breaks when using double quotes, therefore single quotes are used
-                    $value['conditional_value'] = str_replace('"', "'", json_encode($conditional_value));
-                }
-            }
-
-            if ($field['acf_fc_layout'] === 'select') {
-                // Format the select options according to @select component's needs
-                $options = array();
-                foreach ($field['values'] as $select_value) {
-                    $options[$select_value['value']] = $select_value['value'];
-                } 
-                $field['select_options'] = $options;
-            }
-
-            if (isset($field['required_fields']) && empty($field['required_fields'])) {
-                $field['required_fields'] = array();
-            }
-
-            if ($field['acf_fc_layout'] === 'file_upload') {
-                $data['hasFileUpload'] = true;
-            }
-        }
-
-        //Define user details (to prefill sender sections)
-        $data['user_details'] = array(
-            'firstname' => '',
-            'lastname' => '',
-            'email' => ''
-        );
-
-        //Fill array if logged in
-        if (is_user_logged_in()) {
-            $current_user = wp_get_current_user(get_current_user_id());
-            $data['user_details'] = array(
-                'firstname' => $current_user->first_name,
-                'lastname' => $current_user->last_name,
-                'email' => $current_user->user_email,
-            );
-        }
-
-        return $data;
     }
 
     private function setAttributeList($field)
