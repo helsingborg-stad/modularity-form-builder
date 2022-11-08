@@ -8,7 +8,7 @@
     @endif
 
     <div class="c-card__body">
-        <form class="box-content modularity-validation mod-form" method="post" action="" {!! $hasFileUpload ? 'enctype="multipart/form-data"' : '' !!}>
+        <form class="box-content modularity-validation mod-form js-form-validation" method="post" action="" {!! $hasFileUpload ? 'enctype="multipart/form-data"' : '' !!}>
             <?php wp_nonce_field('submit', 'modularity-form'); ?>
             <input type="hidden" name="modularity-form-id" value="{{ $ID }}">
             <input type="hidden" name="modularity-form-post-type" value="{{ $submissionPostType }}">

@@ -8,8 +8,6 @@
                     'type' => 'text',
                     'id' =>  $module_id . "-firstname",
                     'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['firstname'])
                     ],
                     'value' => $user_details['firstname'],
                     'name' => sanitize_title($field['labels']['firstname']),
@@ -26,8 +24,7 @@
                     'type' => 'text',
                     'id' =>  $module_id . "-lastname",
                     'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['lastname'])
+
                     ],
                     'value' => $user_details['lastname'],
                     'name' => sanitize_title($field['labels']['lastname']),
@@ -47,8 +44,7 @@
                     'type' => 'text',
                     'id' =>  $module_id . "-firstname",
                     'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['firstname'])
+
                     ],
                     'value' => $user_details['firstname'],
                     'name' => sanitize_title($field['labels']['firstname']),
@@ -68,8 +64,7 @@
                     'type' => 'text',
                     'id' =>  $module_id . "-lastname",
                     'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['lastname'])
+
                     ],
                     'value' => $user_details['lastname'],
                     'name' => sanitize_title($field['labels']['lastname']),
@@ -92,8 +87,7 @@
                     'type' => 'email',
                     'id' =>  $module_id . "-email",
                     'attributeList' => [
-                        'type' => 'email',
-                        'name' => sanitize_title($field['labels']['email'])
+
                     ],
                     'value' => $user_details['email'],
                     'name' => sanitize_title($field['labels']['email']),
@@ -110,8 +104,7 @@
                     'type' => 'number',
                     'id' =>  $module_id . "-phone",
                     'attributeList' => [
-                        'type' => 'tel',
-                        'name' => sanitize_title($field['labels']['phone'])
+
                     ],
                     'value' => $user_details['phone'],
                     'name' => sanitize_title($field['labels']['phone']),
@@ -131,8 +124,7 @@
                     'type' => 'text',
                     'id' =>  $module_id . "-email",
                     'attributeList' => [
-                        'type' => 'email',
-                        'name' => sanitize_title($field['labels']['email'])
+
                     ],
                     'value' => $user_details['email'],
                     'name' => sanitize_title($field['labels']['email']),
@@ -152,8 +144,7 @@
                     'type' => 'number',
                     'id' =>  $module_id . "-phone",
                     'attributeList' => [
-                        'type' => 'tel',
-                        'name' => sanitize_title($field['labels']['phone'])
+
                     ],
                     'value' => $user_details['phone'],
                     'name' => sanitize_title($field['labels']['phone']),
@@ -183,8 +174,7 @@
                         'type' => 'text',
                         'id' =>  $module_id . "-address-street",
                         'attributeList' => [
-                            'type' => 'text',
-                            'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['street_address']) . ']'
+
                         ],
                         'value' => $user_details['address'],
                         'name' => sanitize_title($field['labels']['address']),
@@ -204,8 +194,7 @@
                     'type' => 'number',
                     'id' =>  $module_id . "-address-postal-code",
                     'attributeList' => [
-                        'type' => 'number',
-                        'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['postal_code']) . ']'
+
                     ],
                     'value' => $user_details['postal_code'],
                     'name' => sanitize_title($field['labels']['postal_code']),
@@ -222,8 +211,7 @@
                     'type' => 'text',
                     'id' =>  $module_id . "-address-city",
                     'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['city']) . ']'
+
                     ],
                     'value' => $user_details['city'],
                     'name' => sanitize_title($field['labels']['city']),
