@@ -11,10 +11,10 @@ use ModularityFormBuilder\Helper\SanitizeData;
                 'label' => $field['label'],            
                 'type' => $field['value_type'],
                 'value' => '',
+                'invalidMessage' => $field['invalidMessages'][$field['value_type']],
                 'description' => 
                     (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) : '',                
                 'id' => $module_id . '-input-' . sanitize_title($field['label']),
-                'attributeList' => $field['attributeList'],
                 'required' => $field['required'] ? true : false,
             ])
             @endfield

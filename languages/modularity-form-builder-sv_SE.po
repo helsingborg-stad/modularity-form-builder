@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2022-10-20 16:19+0200\n"
-"PO-Revision-Date: 2022-10-20 16:23+0200\n"
+"POT-Creation-Date: 2022-11-08 16:28+0100\n"
+"PO-Revision-Date: 2022-11-08 16:31+0100\n"
 "Last-Translator: Anna Johansson <anna@thehappyhipster.se>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: acf-fields/php/form.php:7 source/php/Entity/PostType.php:401
 #: source/php/Entity/PostType.php:613 source/php/Module/Form.php:30
-#: source/php/Submission.php:93 source/php/Submission.php:532
+#: source/php/Submission.php:94 source/php/Submission.php:543
 msgid "Form"
 msgstr "Formulär"
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Välj posttyp"
 msgstr ""
 
-#: acf-fields/php/form.php:2377 source/php/App.php:47
+#: acf-fields/php/form.php:2377 source/php/App.php:46
 #: source/php/Options.php:135
 msgid "Form submissions"
 msgstr "Formulärsvar"
@@ -354,55 +354,55 @@ msgid ""
 "formulären"
 msgstr ""
 
-#: source/php/App.php:46
+#: source/php/App.php:45
 msgid "Form submission"
 msgstr "Formulärsvar"
 
-#: source/php/App.php:212 source/php/Helper/SenderLabels.php:17
+#: source/php/App.php:210 source/php/Helper/SenderLabels.php:17
 msgid "Address"
 msgstr "Adress"
 
-#: source/php/App.php:292 source/php/App.php:329
+#: source/php/App.php:293 source/php/App.php:330
 msgid "Missing arguments"
 msgstr "Saknade argument"
 
-#: source/php/App.php:342
+#: source/php/App.php:346
 msgid "Something went wrong, please try again."
 msgstr "Något gick fel, var god försök igen."
 
-#: source/php/App.php:359
+#: source/php/App.php:364
 msgid "Upload succeeded"
 msgstr "Uppladdningen lyckades"
 
-#: source/php/App.php:362
+#: source/php/App.php:367
 msgid "File was missing, please try again."
 msgstr "Filen saknas, var god försök igen."
 
-#: source/php/App.php:369 source/php/App.php:607
+#: source/php/App.php:376 source/php/App.php:620
 msgid "Something went wrong"
 msgstr "Något gick fel"
 
-#: source/php/App.php:406
+#: source/php/App.php:412
 msgid "Saved"
 msgstr "Sparad"
 
-#: source/php/App.php:528
+#: source/php/App.php:541
 msgid "Hello, you do not have permission to edit this form"
 msgstr "Du har inte behörighet att redigera detta formulär"
 
-#: source/php/App.php:529
+#: source/php/App.php:542
 msgid "Please ask the creator/author of the form to grant you access."
 msgstr "Be den som skapade formuläret att ge dig access."
 
-#: source/php/App.php:558
+#: source/php/App.php:571
 msgid "Select form…"
 msgstr "Välj formulär..."
 
-#: source/php/App.php:605
+#: source/php/App.php:618
 msgid "Sending"
 msgstr "Skickar"
 
-#: source/php/App.php:606 source/php/Entity/PostType.php:62
+#: source/php/App.php:619 source/php/Entity/PostType.php:62
 msgid "You must check at least one option"
 msgstr "Du måste kryssa för minst ett alternativ"
 
@@ -415,7 +415,7 @@ msgstr "Visa alla"
 msgid "Edit"
 msgstr "Redigera"
 
-#: source/php/Entity/PostType.php:61 source/php/Module/Form.php:321
+#: source/php/Entity/PostType.php:61 source/php/Module/Form.php:348
 msgid "Are you sure you want to delete this file?"
 msgstr "Är du säker på att du vill radera den här filen?"
 
@@ -476,17 +476,17 @@ msgstr ""
 msgid "You are not authorized to download this file."
 msgstr "Du har inte behörighet att ladda ner den här filen."
 
-#: source/php/Entity/PostType.php:212 source/php/Submission.php:397
+#: source/php/Entity/PostType.php:212 source/php/Submission.php:399
 msgid "Unauthorized request"
 msgstr "Otillåten begäran"
 
-#: source/php/Entity/PostType.php:250 source/php/Submission.php:428
+#: source/php/Entity/PostType.php:250 source/php/Submission.php:430
 msgid ""
 "The file you requested could not be found. The file might have been deleted "
 "or corrupted."
 msgstr ""
 
-#: source/php/Entity/PostType.php:251 source/php/Submission.php:429
+#: source/php/Entity/PostType.php:251 source/php/Submission.php:431
 msgid "File not found"
 msgstr "Filen hittades inte"
 
@@ -506,11 +506,11 @@ msgstr "Fil borttagen"
 msgid "Unknown file"
 msgstr "Okänd fil"
 
-#: source/php/Entity/PostType.php:388 source/php/Submission.php:95
+#: source/php/Entity/PostType.php:388 source/php/Submission.php:98
 msgid "Previous page"
 msgstr "Föregående sida"
 
-#: source/php/Entity/PostType.php:393 source/php/Submission.php:528
+#: source/php/Entity/PostType.php:393 source/php/Submission.php:538
 msgid "No Referrer"
 msgstr "Besökaren kom från extern länk"
 
@@ -587,50 +587,101 @@ msgstr "Formulär"
 msgid "Build submittable forms"
 msgstr "Bygg webbformulär"
 
-#: source/php/Module/Form.php:140
-msgid "Responses"
-msgstr "Svar"
+#: source/php/Module/Form.php:53 source/php/Submission.php:277
+#, fuzzy
+#| msgid "File not found"
+msgid "Filetype not allowed"
+msgstr "Filen hittades inte"
 
-#: source/php/Module/Form.php:169
-msgid "There is no submissions for this form."
-msgstr "Det finns inga svar på detta formulär."
+#: source/php/Module/Form.php:56 source/php/Submission.php:311
+#, fuzzy
+#| msgid "File not found"
+msgid "File not uploaded"
+msgstr "Filen hittades inte"
 
-#: source/php/Module/Form.php:174
-#, php-format
-msgid "There is %d submissions to this form."
-msgstr "Det finns %d svar på det här formuläret."
+#: source/php/Module/Form.php:60
+#, fuzzy
+#| msgid "Something went wrong, please try again."
+msgid "An unknown error occurred, please try again."
+msgstr "Något gick fel, var god försök igen."
 
-#: source/php/Module/Form.php:176
-msgid "View submissions"
-msgstr "Visa svar"
-
-#: source/php/Module/Form.php:177
-msgid "Export csv"
-msgstr "Exportera csv"
-
-#: source/php/Module/Form.php:193
+#: source/php/Module/Form.php:74
+#, fuzzy
+#| msgid ""
+#| "This site is protected by reCAPTCHA and the Google <a href=\"https://"
+#| "policies.google.com/privacy\">Privacy Policy</a> and <a href=\"https://"
+#| "policies.google.com/terms\">Terms of Service</a> apply."
 msgid ""
-"This site is protected by reCAPTCHA and the Google <a href=\"https://"
-"policies.google.com/privacy\">Privacy Policy</a> and <a href=\"https://"
+"This site is protected by reCAPTCHA and the Google <a href = \"https: //"
+"policies.google.com/privacy\">Privacy Policy</a> and <a href = \"https: //"
 "policies.google.com/terms\">Terms of Service</a> apply."
 msgstr ""
 "Denna webbplats är skyddad av reCAPTCHA och Googles <a href=\"https://"
 "policies.google.com/privacy\">Integritetspolicy</a> och <a href=\"https://"
 "policies.google.com/terms\">Användarvillkor</a> tillämpas."
 
-#: source/php/Module/Form.php:196
+#: source/php/Module/Form.php:77
 msgid "Show form"
 msgstr "Visa formulär"
 
-#: source/php/Module/Form.php:197
-msgid "Select file"
-msgstr "Välj en fil"
+#: source/php/Module/Form.php:240
+msgid "Responses"
+msgstr "Svar"
 
-#: source/php/Module/Form.php:205
-msgid "Max allowed files:"
-msgstr "Max antal tillåtna filer:"
+#: source/php/Module/Form.php:269
+msgid "There is no submissions for this form."
+msgstr "Det finns inga svar på detta formulär."
 
-#: source/php/Module/Form.php:320
+#: source/php/Module/Form.php:274
+#, php-format
+msgid "There is %d submissions to this form."
+msgstr "Det finns %d svar på det här formuläret."
+
+#: source/php/Module/Form.php:276
+msgid "View submissions"
+msgstr "Visa svar"
+
+#: source/php/Module/Form.php:277
+msgid "Export csv"
+msgstr "Exportera csv"
+
+#: source/php/Module/Form.php:310
+msgid "You need to add a valid E-mail!"
+msgstr "Du måste ange en giltig e-postadress!"
+
+#: source/php/Module/Form.php:311
+msgid "You need to add a valid date!"
+msgstr "Du måste ange ett giltigt datum!"
+
+#: source/php/Module/Form.php:312
+msgid "Must be a number."
+msgstr "Måste vara ett nummer."
+
+#: source/php/Module/Form.php:313
+msgid "Please enter a valid phone number."
+msgstr "Var god och ange ett giltigt telefonnummer."
+
+#: source/php/Module/Form.php:314
+msgid "Please enter a password!"
+msgstr "Var god och ange ett lösenord!"
+
+#: source/php/Module/Form.php:315
+msgid "Please enter a valid month."
+msgstr "Var god och ange en giltig månad."
+
+#: source/php/Module/Form.php:316
+msgid "Please enter a valid week."
+msgstr "Var god och ange en giltig vecka."
+
+#: source/php/Module/Form.php:317
+msgid "Please enter a valid time."
+msgstr "Var god och ange en giltig tid."
+
+#: source/php/Module/Form.php:318
+msgid "Please enter a valid URL."
+msgstr "Var god och ange en giltig URL."
+
+#: source/php/Module/Form.php:347
 msgid "Please create radio selections before adding conditional logic."
 msgstr ""
 "Vänligen skapa formulärfält med radioknappar innan du lägger till "
@@ -644,7 +695,7 @@ msgstr "Bifogade filer"
 msgid "Delete"
 msgstr "Radera"
 
-#: source/php/Module/views/fields/file_upload.blade.php:27
+#: source/php/Module/views/fields/file_upload.blade.php:44
 msgid "No file selected"
 msgstr "Ingen fil vald"
 
@@ -652,7 +703,7 @@ msgstr "Ingen fil vald"
 msgid "Send copy of this submission to my email address"
 msgstr "Skicka en kopia till mig"
 
-#: source/php/Module/views/fields/sender.blade.php:178
+#: source/php/Module/views/fields/sender.blade.php:148
 msgid "Find my location"
 msgstr "Hitta min position"
 
@@ -674,15 +725,15 @@ msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
 msgid "Options"
 msgstr "Inställningar"
 
-#: source/php/Submission.php:396
+#: source/php/Submission.php:398
 msgid "The download token provided was not correct."
 msgstr ""
 
-#: source/php/Submission.php:498
+#: source/php/Submission.php:503
 msgid "New form submission"
 msgstr "Nytt formulärsvar"
 
-#: source/php/Submission.php:502
+#: source/php/Submission.php:508
 #, php-format
 msgid ""
 "This is a notification about a new form submission to the form \"%s\"."
@@ -691,15 +742,15 @@ msgstr ""
 "Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
 "notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
 
-#: source/php/Submission.php:520 source/php/Submission.php:586
+#: source/php/Submission.php:527 source/php/Submission.php:613
 msgid "Open file"
 msgstr "Öppna fil"
 
-#: source/php/Submission.php:527
+#: source/php/Submission.php:535
 msgid "Referrer"
 msgstr "Förgående sida"
 
-#: source/php/Submission.php:572
+#: source/php/Submission.php:599
 msgid "Form submission copy"
 msgstr "Svarskopia"
 
@@ -795,6 +846,15 @@ msgstr "Autensierad"
 msgid "Delete credentials"
 msgstr "Ta bort information"
 
+#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:364
+msgid "Export with AcfExportManager"
+msgstr ""
+
+#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:408
+#, php-format
+msgid "Exported %d fieldgroup(s)."
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "Modularity Form Builder"
 msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
@@ -810,3 +870,9 @@ msgstr "Bygg formulär som kan visas i en modul"
 #. Author of the plugin/theme
 msgid "Kristoffer Svanmark, Sebastian Thulin"
 msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
+
+#~ msgid "Select file"
+#~ msgstr "Välj en fil"
+
+#~ msgid "Max allowed files:"
+#~ msgstr "Max antal tillåtna filer:"
