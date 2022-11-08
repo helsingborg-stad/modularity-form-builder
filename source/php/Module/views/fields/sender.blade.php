@@ -7,10 +7,6 @@
                     'label' => $field['labels']['firstname'], 
                     'type' => 'text',
                     'id' =>  $module_id . "-firstname",
-                    'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['firstname'])
-                    ],
                     'value' => $user_details['firstname'],
                     'name' => sanitize_title($field['labels']['firstname']),
                     'required' => in_array('firstname', $field['required_fields'])
@@ -25,10 +21,6 @@
                     'label' => $field['labels']['lastname'],
                     'type' => 'text',
                     'id' =>  $module_id . "-lastname",
-                    'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['lastname'])
-                    ],
                     'value' => $user_details['lastname'],
                     'name' => sanitize_title($field['labels']['lastname']),
                     'required' => in_array('lastname', $field['required_fields'])
@@ -46,10 +38,6 @@
                     'label' => $field['labels']['firstname'],
                     'type' => 'text',
                     'id' =>  $module_id . "-firstname",
-                    'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['firstname'])
-                    ],
                     'value' => $user_details['firstname'],
                     'name' => sanitize_title($field['labels']['firstname']),
                     'required' => in_array('firstname', $field['required_fields'])
@@ -67,10 +55,6 @@
                     'label' => $field['labels']['lastname'],
                     'type' => 'text',
                     'id' =>  $module_id . "-lastname",
-                    'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['lastname'])
-                    ],
                     'value' => $user_details['lastname'],
                     'name' => sanitize_title($field['labels']['lastname']),
                     'required' => in_array('lastname', $field['required_fields'])
@@ -91,10 +75,7 @@
                     'label' => $field['labels']['email'],
                     'type' => 'email',
                     'id' =>  $module_id . "-email",
-                    'attributeList' => [
-                        'type' => 'email',
-                        'name' => sanitize_title($field['labels']['email'])
-                    ],
+                    'invalidMessage' => $field['invalidMessages']['email'],
                     'value' => $user_details['email'],
                     'name' => sanitize_title($field['labels']['email']),
                     'required' => in_array('email', $field['required_fields'])
@@ -109,10 +90,7 @@
                     'label' => $field['labels']['phone'],
                     'type' => 'number',
                     'id' =>  $module_id . "-phone",
-                    'attributeList' => [
-                        'type' => 'tel',
-                        'name' => sanitize_title($field['labels']['phone'])
-                    ],
+                    'invalidMessage' => $field['invalidMessages']['number'],
                     'value' => $user_details['phone'],
                     'name' => sanitize_title($field['labels']['phone']),
                     'required' => in_array('phone', $field['required_fields'])
@@ -130,14 +108,9 @@
                     'label' => $field['labels']['email'],
                     'type' => 'text',
                     'id' =>  $module_id . "-email",
-                    'attributeList' => [
-                        'type' => 'email',
-                        'name' => sanitize_title($field['labels']['email'])
-                    ],
                     'value' => $user_details['email'],
                     'name' => sanitize_title($field['labels']['email']),
                     'required' => in_array('email', $field['required_fields'])
-
                 ])
                 @endfield
             </div>
@@ -151,10 +124,7 @@
                     'label' => $field['labels']['phone'],
                     'type' => 'number',
                     'id' =>  $module_id . "-phone",
-                    'attributeList' => [
-                        'type' => 'tel',
-                        'name' => sanitize_title($field['labels']['phone'])
-                    ],
+                    'invalidMessage' => $field['invalidMessages']['number'],
                     'value' => $user_details['phone'],
                     'name' => sanitize_title($field['labels']['phone']),
                     'required' => in_array('phone', $field['required_fields'])
@@ -182,10 +152,6 @@
                         'label' => $field['labels']['street_address'],
                         'type' => 'text',
                         'id' =>  $module_id . "-address-street",
-                        'attributeList' => [
-                            'type' => 'text',
-                            'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['street_address']) . ']'
-                        ],
                         'value' => $user_details['address'],
                         'name' => sanitize_title($field['labels']['address']),
                         'required' => in_array('address', $field['required_fields'])
@@ -203,10 +169,7 @@
                     'label' => $field['labels']['postal_code'],
                     'type' => 'number',
                     'id' =>  $module_id . "-address-postal-code",
-                    'attributeList' => [
-                        'type' => 'number',
-                        'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['postal_code']) . ']'
-                    ],
+                    'invalidMessage' => $field['invalidMessages']['number'],
                     'value' => $user_details['postal_code'],
                     'name' => sanitize_title($field['labels']['postal_code']),
                     'required' => in_array('postal_code', $field['required_fields'])
@@ -221,10 +184,6 @@
                     'label' => $field['labels']['city'],
                     'type' => 'text',
                     'id' =>  $module_id . "-address-city",
-                    'attributeList' => [
-                        'type' => 'text',
-                        'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['city']) . ']'
-                    ],
                     'value' => $user_details['city'],
                     'name' => sanitize_title($field['labels']['city']),
                     'required' => in_array('city', $field['required_fields'])

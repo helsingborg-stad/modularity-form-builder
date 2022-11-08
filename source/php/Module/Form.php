@@ -281,6 +281,7 @@ class Form extends \Modularity\Module
     private function setAttributeList($field)
     {
         $field['attributeList'] = [];
+        
 
         $field['attributeList']['type'] = $field['value_type'];
         $field['attributeList']['name'] = sanitize_title($field['label']);
@@ -304,6 +305,18 @@ class Form extends \Modularity\Module
         if ($field['filetypes'] && is_array($field['filetypes'])) {
             $field['attributeList']['accept'] = implode(',', $field['filetypes']);
         }
+
+          $field['invalidMessages'] = array(
+            'email' => __('You need to add a valid E-mail!', 'modularity-form-builder'),
+            'date' => __('You need to add a valid date!', 'modularity-form-builder'),
+            'number' => __('Must be a number.', 'modularity-form'),
+            'tel' => __('Please enter a valid phone number.', 'modularity-form'),
+            'password' => __('Please enter a password!', 'modularity-form'),
+            'month' => __('Please enter a valid month.', 'modularity-form'),
+            'week' => __('Please enter a valid week.', 'modularity-form'),
+            'time' => __('Please enter a valid time.', 'modularity-form'),
+            'url' => __('Please enter a valid URL.', 'modularity-form'),
+        );
 
         return $field;
     }
