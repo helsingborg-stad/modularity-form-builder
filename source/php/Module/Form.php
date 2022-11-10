@@ -78,7 +78,14 @@ class Form extends \Modularity\Module
 
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
+            
             $field = $this->setAttributeList($field);
+
+            if ('multiple' === $field['type'] && 0 < (int) $field['files_max']) {
+                $field['maxFilesNotice'] = __('Max allowed files:', 'modularity-form-builder') . ' '. $field['files_max'];
+            } else {
+                $field['maxFilesNotice'] = false;
+            }
 
             $field['conditional_hidden'] = '';
             if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
