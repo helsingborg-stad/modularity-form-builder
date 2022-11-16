@@ -288,7 +288,6 @@ class Form extends \Modularity\Module
     private function setAttributeList($field)
     {
         $field['attributeList'] = [];
-        
 
         if ($field['value_type' === 'date']) {
             $field['attributeList']['min'] = SanitizeData::formatDate($field['min_value']);
@@ -306,7 +305,7 @@ class Form extends \Modularity\Module
             $field['attributeList']['accept'] = implode(',', $field['filetypes']);
         }
 
-          $field['invalidMessages'] = array(
+        $field['invalidMessages'] = array(
             'email' => __('You need to add a valid E-mail!', 'modularity-form-builder'),
             'date' => __('You need to add a valid date!', 'modularity-form-builder'),
             'number' => __('Must be a number.', 'modularity-form'),
