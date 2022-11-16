@@ -9,7 +9,7 @@ use ModularityFormBuilder\Helper\SanitizeData;
             @select([
                 'name' => sanitize_title($field['label']),
                 'label' => $field['label'],       
-                'options' => $field['select_options'],
+                'options' => $field['values'],
                 'description' => (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks(
                     $field['description']
                 ) : '',                
