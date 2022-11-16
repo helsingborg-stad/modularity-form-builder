@@ -4,16 +4,16 @@
 
             @field([
                 'label' => $field['label'] ? $field['label'] : 'Message',
-                'description' => 
-                    (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) : '',
-                'multiline' => true,
+                'description' => (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks(
+                    $field['description']
+                ) : '',
+                'multiline' => 10,
                 'value' => '',
                 'id' => $module_id . "-message",
-                'attributeList' => [
-                    'name' => $field['attributeList']['name'],
-                    'rows' => "10",
-                ],
+                'name' => $field['attributeList']['name'],
                 'required' => $field['required'] ? true : false,
+                'attributeList' => $field['attributeList'],
+                'autocomplete' => 'off'
             ])
             @endfield
              

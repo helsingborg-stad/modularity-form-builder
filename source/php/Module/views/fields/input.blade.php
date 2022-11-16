@@ -1,9 +1,4 @@
-<?php
-
-use ModularityFormBuilder\Helper\SanitizeData;
-
-?>
-
+<?php use ModularityFormBuilder\Helper\SanitizeData; ?>
 <div class="o-grid mod-form-field" {!! $field['conditional_hidden'] !!}>
     <div class="o-grid-12@md">
         <div class="form-group">
@@ -11,11 +6,14 @@ use ModularityFormBuilder\Helper\SanitizeData;
                 'label' => $field['label'],            
                 'type' => $field['value_type'],
                 'value' => '',
-                'invalidMessage' => $field['invalidMessages'][$field['value_type']],
-                'description' => 
-                    (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) : '',                
+                'invalidMessage' => $field['invalidMessages'][$field['value_type']],     
+                'name' => sanitize_title($field['label']),
+                'description' => (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks(
+                    $field['description']
+                ) : '',                
                 'id' => $module_id . '-input-' . sanitize_title($field['label']),
                 'required' => $field['required'] ? true : false,
+                'attributeList' => $field['attributeList']
             ])
             @endfield
 

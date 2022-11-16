@@ -6,11 +6,13 @@
                 @field([
                     'label' => $field['labels']['firstname'], 
                     'type' => 'text',
+                    'name' => sanitize_title($field['labels']['firstname']),
                     'id' =>  $module_id . "-firstname",
                     'value' => $user_details['firstname'],
                     'name' => sanitize_title($field['labels']['firstname']),
-                    'required' => in_array('firstname', $field['required_fields'])
-
+                    'required' => in_array('firstname', $field['required_fields']),
+                    'autocomplete' => 'given-name',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -21,10 +23,12 @@
                     'label' => $field['labels']['lastname'],
                     'type' => 'text',
                     'id' =>  $module_id . "-lastname",
+                    'name' => sanitize_title($field['labels']['lastname']),
                     'value' => $user_details['lastname'],
                     'name' => sanitize_title($field['labels']['lastname']),
-                    'required' => in_array('lastname', $field['required_fields'])
-
+                    'required' => in_array('lastname', $field['required_fields']),
+                    'autocomplete' => 'family-name',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -40,8 +44,9 @@
                     'id' =>  $module_id . "-firstname",
                     'value' => $user_details['firstname'],
                     'name' => sanitize_title($field['labels']['firstname']),
-                    'required' => in_array('firstname', $field['required_fields'])
-
+                    'required' => in_array('firstname', $field['required_fields']),
+                    'autocomplete' => 'given-name',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -57,8 +62,9 @@
                     'id' =>  $module_id . "-lastname",
                     'value' => $user_details['lastname'],
                     'name' => sanitize_title($field['labels']['lastname']),
-                    'required' => in_array('lastname', $field['required_fields'])
-
+                    'required' => in_array('lastname', $field['required_fields']),
+                    'autocomplete' => 'family-name',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -78,8 +84,9 @@
                     'invalidMessage' => $field['invalidMessages']['email'],
                     'value' => $user_details['email'],
                     'name' => sanitize_title($field['labels']['email']),
-                    'required' => in_array('email', $field['required_fields'])
-
+                    'required' => in_array('email', $field['required_fields']),
+                    'autocomplete' => 'email',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -93,8 +100,9 @@
                     'invalidMessage' => $field['invalidMessages']['number'],
                     'value' => $user_details['phone'],
                     'name' => sanitize_title($field['labels']['phone']),
-                    'required' => in_array('phone', $field['required_fields'])
-
+                    'required' => in_array('phone', $field['required_fields']),
+                    'autocomplete' => 'tel',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -108,9 +116,12 @@
                     'label' => $field['labels']['email'],
                     'type' => 'text',
                     'id' =>  $module_id . "-email",
+                    'invalidMessage' => $field['invalidMessages']['email'],
                     'value' => $user_details['email'],
                     'name' => sanitize_title($field['labels']['email']),
-                    'required' => in_array('email', $field['required_fields'])
+                    'required' => in_array('email', $field['required_fields']),
+                    'autocomplete' => 'email',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -127,8 +138,9 @@
                     'invalidMessage' => $field['invalidMessages']['number'],
                     'value' => $user_details['phone'],
                     'name' => sanitize_title($field['labels']['phone']),
-                    'required' => in_array('phone', $field['required_fields'])
-
+                    'required' => in_array('phone', $field['required_fields']),
+                    'autocomplete' => 'tel',
+                    'attributeList' => $field['attributeList']
                 ])
                 @endfield
             </div>
@@ -153,9 +165,10 @@
                         'type' => 'text',
                         'id' =>  $module_id . "-address-street",
                         'value' => $user_details['address'],
-                        'name' => sanitize_title($field['labels']['address']),
-                        'required' => in_array('address', $field['required_fields'])
-
+                        'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['street_address']) . ']',
+                        'required' => in_array('address', $field['required_fields']),
+                        'autocomplete' => 'street-address',
+                        'attributeList' => $field['attributeList']
                     ])
                     @endfield
                 @endif
@@ -171,9 +184,9 @@
                     'id' =>  $module_id . "-address-postal-code",
                     'invalidMessage' => $field['invalidMessages']['number'],
                     'value' => $user_details['postal_code'],
-                    'name' => sanitize_title($field['labels']['postal_code']),
-                    'required' => in_array('postal_code', $field['required_fields'])
-
+                    'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['postal_code']) . ']',
+                    'required' => in_array('postal_code', $field['required_fields']),
+                    'autocomplete' => 'postal-code'
                 ])
                 @endfield
             </div>
@@ -185,9 +198,9 @@
                     'type' => 'text',
                     'id' =>  $module_id . "-address-city",
                     'value' => $user_details['city'],
-                    'name' => sanitize_title($field['labels']['city']),
-                    'required' => in_array('city', $field['required_fields'])
-
+                    'name' => sanitize_title($field['labels']['address']) . '[' . sanitize_title($field['labels']['city']) . ']',
+                    'required' => in_array('city', $field['required_fields']),
+                    'autocomplete' => 'on'
                 ])
                 @endfield
             </div>

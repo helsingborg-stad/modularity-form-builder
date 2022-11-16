@@ -290,13 +290,6 @@ class Form extends \Modularity\Module
         $field['attributeList'] = [];
         
 
-        $field['attributeList']['type'] = $field['value_type'];
-        $field['attributeList']['name'] = sanitize_title($field['label']);
-
-        if ($field['required']) {
-            $field['attributeList']['required'] = 'required';
-        }
-
         if ($field['value_type' === 'date']) {
             $field['attributeList']['min'] = SanitizeData::formatDate($field['min_value']);
             $field['attributeList']['max'] = SanitizeData::formatDate($field['max_value']);
