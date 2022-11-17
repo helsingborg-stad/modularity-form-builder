@@ -8,7 +8,16 @@
     @endif
 
     <div class="c-card__body">
-        <form class="box-content modularity-validation mod-form js-form-validation" method="post" action="" {!! $hasFileUpload ? 'enctype="multipart/form-data"' : '' !!}>
+            @form([
+                'errorMessage' => $lang['errorMessage'],
+                'validateMessage' => $lang['validateMessage'],
+                'classList' => [
+                    'box-content', 'modularity-validation', 'mod-form', 'js-form-validation'
+                ],
+                'attributeList' => [
+                    'enctype' => $hasFileUpload ? 'multipart/form-data' : '',
+                ]
+            ])
             <?php wp_nonce_field('submit', 'modularity-form'); ?>
             <input type="hidden" class="js-no-validation" name="modularity-form-id" value="{{ $ID }}">
             <input type="hidden" class="js-no-validation" name="modularity-form-post-type" value="{{ $submissionPostType }}">
@@ -142,6 +151,6 @@
                     </div>
                 </div>
             @endif
-        </form>
+            @endform
     </div>
 @endcard
