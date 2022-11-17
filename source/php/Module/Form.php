@@ -287,6 +287,10 @@ class Form extends \Modularity\Module
 
     private function setAttributeList($field)
     {
+        if ($field['acf_fc_layout'] == 'select') {
+            $field['values'] = $this->normalizeOptions($field['values']);
+        }
+
         $field['attributeList'] = [];
 
         if ($field['value_type' === 'date']) {
@@ -318,6 +322,20 @@ class Form extends \Modularity\Module
         );
 
         return $field;
+    }
+
+    private function normalizeOptions($options) {
+        if (count($options) != count($options, COUNT_RECURSIVE)) {
+            $return = [];
+            array_walk_recursive(
+                $options,
+                function ($value) use (&$return) {
+                    $return[$value] = $value;
+                }
+            );
+            return $return;
+        }
+        return $return;
     }
 
     /**
