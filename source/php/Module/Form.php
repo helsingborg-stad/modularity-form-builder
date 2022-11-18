@@ -76,6 +76,11 @@ class Form extends \Modularity\Module
         $data['dataStorage']        = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
         $data['showFormLang']       = __('Show form', 'modularity-form-builder');
 
+        $data['lang'] = [
+            'errorMessage' => __('Something went wrong. Please look over the provided information and try again.', 'modularity-form-builder'),
+            'validateMessage' => __('Form is successfully being sent.', 'modularity-form-builder'),
+        ];
+
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
             
