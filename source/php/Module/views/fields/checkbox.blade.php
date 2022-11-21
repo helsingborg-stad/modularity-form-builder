@@ -18,7 +18,6 @@
                         'type' => 'checkbox',
                         'value' => $value['value'],
                         'label' => $value['value'],
-                        'required' => $field['required'] ? true : false,
                         'attributeList' => [
                             'conditional' => $value['conditional_value'],
                             'name' => sanitize_title($field['label']) . '[]',
