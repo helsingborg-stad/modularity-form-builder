@@ -14,7 +14,7 @@ export default (() => {
                     let validator = checkboxGroup.querySelectorAll('.c-option [type="checkbox"]:checked');
                     if(validator.length > 0) {
                         validationElement.setAttribute('checked', true);
-                        checkboxGroup.querySelector('label').classList.remove('u-color__text--danger');
+                        checkboxGroup.querySelector('.c-field__label').classList.remove('u-color__text--danger');
                     } else {
                         validationElement.removeAttribute('checked');
                     }
