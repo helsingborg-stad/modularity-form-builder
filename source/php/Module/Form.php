@@ -422,7 +422,7 @@ class Form extends \Modularity\Module
 
         $moduleId = $_POST['moduleId'];
         $fieldName = $_POST['fieldName'];
-        preg_match('#\[(\d+)\]#', $fieldName, $match);
+        preg_match('/\[row-(\d+)\]/', $fieldName, $match);
         if (!empty($match[1])) {
             $key = 'form_fields_' . $match[1] . '_conditonal_field';
             $selected = get_post_meta($moduleId, $key, true);
