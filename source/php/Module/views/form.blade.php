@@ -21,14 +21,14 @@
             <?php wp_nonce_field('submit', 'modularity-form'); ?>
             <input type="hidden" class="js-no-validation" name="modularity-form-id" value="{{ $ID }}">
             <input type="hidden" class="js-no-validation" name="modularity-form-post-type" value="{{ $submissionPostType }}">
-            <input type="hidden" class="js-no-validation" id="modularity-form-history" name="modularity-form-history" value="">
-            <input type="hidden" class="js-no-validation" id="modularity-form-url" name="modularity-form-url" value="">
-            <input type="hidden" class="js-no-validation" id="modularity-gdpr-data" name="modularity-gdpr-data" value="{{$dataStorage}}">
+            <input type="hidden" class="js-no-validation" id="modularity-form-{{ $ID }}-history" name="modularity-form-history" value="">
+            <input type="hidden" class="js-no-validation" id="modularity-form-{{ $ID }}-url" name="modularity-form-url" value="">
+            <input type="hidden" class="js-no-validation" id="modularity-gdpr-{{ $ID }}-data" name="modularity-gdpr-data" value="{{$dataStorage}}">
 
             <?php /* These field is not allowed to change. Honeypot function. */ ?>
-            <input aria-hidden="true" autocomplete="off" class="modularity-v-field js-no-validation" type="text" id="modularity-v-field" name="modularity-v-field" value="7y0dwakjbdwabclsglcaw" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
-            <input aria-hidden="true" autocomplete="off" class="modularity-e-field js-no-validation" type="text" id="modularity-e-field" name="modularity-e-field" value="" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
-            <input aria-hidden="true" autocomplete="off" class="modularity-t-field js-no-validation" type="text" id="modularity-t-field" name="modularity-t-field" value="89dwaohdwa9y8"  style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
+            <input aria-hidden="true" autocomplete="off" class="modularity-v-field js-no-validation" type="text" id="modularity-{{ $ID }}-v-field" name="modularity-v-field" value="7y0dwakjbdwabclsglcaw" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
+            <input aria-hidden="true" autocomplete="off" class="modularity-e-field js-no-validation" type="text" id="modularity-{{ $ID }}-e-field" name="modularity-e-field" value="" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
+            <input aria-hidden="true" autocomplete="off" class="modularity-t-field js-no-validation" type="text" id="modularity-{{ $ID }}-t-field" name="modularity-t-field" value="89dwaohdwa9y8"  style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
 
             <?php /* User must be on page for at least 5 seconds. Honeypot function. */ ?>  
             <script type="text/javascript">
