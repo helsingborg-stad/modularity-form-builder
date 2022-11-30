@@ -145,6 +145,17 @@ class Form extends \Modularity\Module
                 'email' => $current_user->user_email,
             );
         }
+        
+        if(isset($_GET['form'])) {
+            if('success-' . $data['module_id'] == $_GET['form']) {
+                $data['formWasSent'] = true;
+            }
+            else {
+                $data['formWasSent'] = false;
+            }
+        } else {
+            $data['formWasSent'] = false;
+        }
 
         return $data;
     }

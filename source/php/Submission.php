@@ -41,6 +41,7 @@ class Submission
      */
     public function submit()
     {
+          
         unset($_POST['modularity-form']);
         $referer = esc_url(remove_query_arg('form', $_POST['_wp_http_referer']));
         unset($_POST['_wp_http_referer']);
@@ -200,7 +201,7 @@ class Submission
         if (strpos($referer, '?') > -1) {
             $referer .= '&form=success';
         } else {
-            $referer .= '?form=success';
+            $referer .= '?form=success-' . $_POST['modularity-form-id'];
         }
         if (empty($postReferer) || $checkReferer !== 0 || $checkReferer !== null) {
             $referer .= '&modularityReferrer=' . urlencode($postReferer);
