@@ -8,6 +8,7 @@
     @endif
 
     <div class="c-card__body">
+        @if(!$formWasSent)
             @form([
                 'errorMessage' => $lang['errorMessage'],
                 'validateMessage' => $lang['validateMessage'],
@@ -95,7 +96,7 @@
                 @include('fields.sender-copy')
             @endif
             
-            @if (!isset($_GET['form']) || $_GET['form'] != 'success')
+ 
                 <div class="o-grid">
                     <div class="o-grid-12@md">
                         @if($submission_public_act || $gdpr_complience_notice)
@@ -121,11 +122,26 @@
                         
                     </div>
                 </div>
-            @endif
-             
-            @if (isset($_GET['form']) && $_GET['form'] == 'success')
+                @endform
+                @else
                 <div class="o-grid">
                     <div class="o-grid-12@md">
+                           @notice([
+                            'type' => 'success',
+                            'message' => [
+                                'text' =>  $subimission_notice ? $subimission_notice : 'Thank you for contacting us.',
+                                'size' => 'sm'
+                            ],
+                            'classList' => [
+                                'u-margin__bottom--3'
+                            ],
+                            'icon' => [
+                                'name' => 'report',
+                                'size' => 'md',
+                                'color' => 'white'
+                            ]
+                        ])
+                        @endnotice
                         @if($submission_public_act || $gdpr_complience_notice)
                             @if($submission_public_act && !empty($submission_public_act_content))
                                 <p class="text-sm gutter gutter-sm gutter-bottom">
@@ -138,7 +154,6 @@
                                 </div>
                             @endif
                         @endif
-
                         @button([
                             'text' => $showFormLang,
                             'classList' => ['js-return_to_form'],
@@ -150,7 +165,6 @@
                         
                     </div>
                 </div>
-            @endif
-            @endform
+                @endif
     </div>
 @endcard
