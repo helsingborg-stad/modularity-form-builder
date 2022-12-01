@@ -17,8 +17,8 @@
     <label class="checkbox js-policy-acceptance">
         @option([
             'type' => 'checkbox',
-            'value' => 'I accept',
-            'label' => 'I accept<span class="u-color__text--danger">*</span>',
+            'value' =>  $lang['policy'],
+            'label' => $lang['policy'] . '<span class="u-color__text--danger">*</span>',
             'required' => true,
             'classList' => ['u-margin__bottom--3']
         ])
