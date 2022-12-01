@@ -42,28 +42,6 @@
                 });
             </script>
 
-            @if (isset($_GET['form']) && $_GET['form'] == 'success')
-                <div class="o-grid">
-                    <div class="o-grid-12@md">
-    
-                        @notice([
-                            'type' => 'success',
-                            'message' => [
-                                'text' =>  get_field('subimission_notice', $ID) ? get_field('subimission_notice', $ID) : __('The for was submitted, thank you!', 'modularity-form-builder'),
-                                'size' => 'sm'
-                            ],
-                            'icon' => [
-                                'name' => 'report',
-                                'size' => 'md',
-                                'color' => 'white'
-                            ]
-                        ])
-                        @endnotice
-
-                    </div>
-                </div>
-            @endif
-
             @if ($submissionResult === 'failed')
                 <div class="o-grid">
                     <div class="o-grid-12@md">
@@ -99,24 +77,7 @@
  
                 <div class="o-grid">
                     <div class="o-grid-12@md">
-                        @if($submission_public_act || $gdpr_complience_notice)
-                            @if($submission_public_act && !empty($submission_public_act_content))
-                                @typography([
-                                    "variant" => "meta",
-                                    "element" => "p"
-                                ])
-                                    {{$submission_public_act_content}}
-                                @endtypography
-                            @endif
-                            @if($gdpr_complience_notice && !empty($gdpr_complience_notice_content))
-                                @typography([
-                                    "variant" => "meta",
-                                    "element" => "p"
-                                ])
-                                    {!! $gdpr_complience_notice_content !!}
-                                @endtypography
-                            @endif
-                        @endif
+                        @includeWhen($submission_public_act || $gdpr_complience_notice, 'partials.policy')
                     
                         <button type="submit" class="c-button c-button__filled c-button__filled--primary c-button--md">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
                         
@@ -124,47 +85,34 @@
                 </div>
                 @endform
                 @else
-                <div class="o-grid">
-                    <div class="o-grid-12@md">
-                           @notice([
-                            'type' => 'success',
-                            'message' => [
-                                'text' =>  $subimission_notice ? $subimission_notice : 'Thank you for contacting us.',
-                                'size' => 'sm'
-                            ],
-                            'classList' => [
-                                'u-margin__bottom--3'
-                            ],
-                            'icon' => [
-                                'name' => 'report',
-                                'size' => 'md',
-                                'color' => 'white'
-                            ]
-                        ])
-                        @endnotice
-                        @if($submission_public_act || $gdpr_complience_notice)
-                            @if($submission_public_act && !empty($submission_public_act_content))
-                                <p class="text-sm gutter gutter-sm gutter-bottom">
-                                    {{$submission_public_act_content}}
-                                </p>
-                            @endif
-                            @if($gdpr_complience_notice && !empty($gdpr_complience_notice_content))
-                                <div class="text-sm gutter gutter-sm gutter-bottom">
-                                    {!! $gdpr_complience_notice_content !!}
-                                </div>
-                            @endif
-                        @endif
-                        @button([
-                            'text' => $showFormLang,
-                            'classList' => ['js-return_to_form'],
-                            'attributeList' => [
-                                'onClick' => 'window.location = window.location.pathname'
-                            ]
-                        ])
-                        @endbutton
-                        
-                    </div>
+            <div class="o-grid">
+                <div class="o-grid-12@md">
+                    @notice([
+                        'type' => 'success',
+                        'message' => [
+                            'text' =>  $subimission_notice ? $subimission_notice :  __('The for was submitted, thank you!', 'modularity-form-builder'),
+                            'size' => 'sm'
+                        ],
+                        'classList' => [
+                            'u-margin__bottom--3'
+                        ],
+                        'icon' => [
+                            'name' => 'report',
+                            'size' => 'md',
+                            'color' => 'white'
+                        ]
+                    ])
+                    @endnotice
+                    @button([
+                        'text' => $showFormLang,
+                        'classList' => ['js-return_to_form'],
+                        'attributeList' => [
+                            'onClick' => 'window.location = window.location.pathname'
+                        ]
+                    ])
+                    @endbutton               
                 </div>
-                @endif
+            </div>
+        @endif
     </div>
 @endcard

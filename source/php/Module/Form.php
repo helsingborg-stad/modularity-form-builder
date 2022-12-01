@@ -79,6 +79,7 @@ class Form extends \Modularity\Module
         $data['lang'] = [
             'errorMessage' => __('Something went wrong. Please look over the provided information and try again.', 'modularity-form-builder'),
             'validateMessage' => __('Form is successfully being sent.', 'modularity-form-builder'),
+            'policy' => __('I consent', 'modularity-form-builder'),
         ];
 
         foreach ($data['form_fields'] as &$field) {
