@@ -1404,7 +1404,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_638df1031a07f",
+                            "key": "field_638e0eadbf005",
                             "label": "Button label",
                             "name": "button_label",
                             "type": "text",
@@ -2729,20 +2729,6 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "mod-form"
-            }
-        ],
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "all"
-            }
-        ],
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "all"
             }
         ],
         [

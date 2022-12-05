@@ -1,5 +1,5 @@
 <?php 
-
+
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
     'key' => 'group_58eb301ecb36a',
@@ -1412,7 +1412,7 @@
                             'append' => '',
                         ),
                         1 => array(
-                            'key' => 'field_638df1031a07f',
+                            'key' => 'field_638e0eadbf005',
                             'label' => __('Button label', 'modularity-form-builder'),
                             'name' => 'button_label',
                             'type' => 'text',
@@ -2078,10 +2078,10 @@
                         'class' => '',
                         'id' => '',
                     ),
-                    'message' => __('<div style="margin: 5px 0 15px;
-                                                                background: #f1f1f157;
-                                                                border-left: 4px solid #b2b500;
-                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                    'message' => __('<div style="margin: 5px 0 15px;
+                                                                background: #f1f1f157;
+                                                                border-left: 4px solid #b2b500;
+                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
                                                                 padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
@@ -2754,20 +2754,6 @@
             ),
         ),
         1 => array(
-            0 => array(
-                'param' => 'block',
-                'operator' => '==',
-                'value' => 'all',
-            ),
-        ),
-        2 => array(
-            0 => array(
-                'param' => 'block',
-                'operator' => '==',
-                'value' => 'all',
-            ),
-        ),
-        3 => array(
             0 => array(
                 'param' => 'block',
                 'operator' => '==',
