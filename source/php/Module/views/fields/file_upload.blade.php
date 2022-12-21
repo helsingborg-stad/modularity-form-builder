@@ -1,19 +1,13 @@
 <div {!! $field['conditional_hidden'] !!} class="o-grid mod-form-field">
     <div class="o-grid-12@md">
         <div class="form-group">
-            <label
-                for="{{ $module_id }}-{{ sanitize_title($field['label']) }}">{{ $field['label'] }}{!! $field['required'] ? '<span class="u-color__text--danger">*</span>' : '' !!}</label>
-            {!! !empty($field['description'])
-                ? '<div class="text-sm text-dark-gray">' .
-                    ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) .
-                    '</div>'
-                : '' !!}
-
             @fileinput([
                 'name' => sanitize_title($field['label']),
                 'description' => !empty($field['description'])
                     ? ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description'])
                     : '',
+                'buttonLabel' => $field['button_label'],
+                'required' => $field['required'] ? true : false,
                 'display' => 'area',
                 'multiple' => $field['type'] === 'multiple' ? true : false,
                 'label' => $field['label'],
