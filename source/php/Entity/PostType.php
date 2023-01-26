@@ -164,7 +164,6 @@ class PostType
             $userRestriction = get_field('user_restriction', $moduleId);
 
             if ($userRestriction) {
-
                 //Always allow administrators
                 if (current_user_can('administrator')) {
                     return true;
@@ -196,7 +195,6 @@ class PostType
     public function forceEcryptedFileDownload()
     {
         if (isset($_GET['modFormDownloadEncFile'])) {
-
             //Verify that there is a module id included
             if (!isset($_GET['modFormModuleId']) || (isset($_GET['modFormModuleId']) && !is_numeric($_GET['modFormModuleId']))) {
                 wp_die(
@@ -293,7 +291,6 @@ class PostType
 
         //Check if user is granted to view this data
         if (!$this->isGrantedUser($data['module_id'])) {
-
             //Error message
             $this->renderBlade(
                 'unauthorized.blade.php',
@@ -327,7 +324,6 @@ class PostType
         );
 
         if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
-
             //Editable
             $this->renderBlade(
                 'form-edit.blade.php',
@@ -337,7 +333,6 @@ class PostType
                 $data
             );
         } elseif (self::editableFrontend($post)) {
-
             //Editor settings
             $data['editor_settings'] = array(
                 'wpautop' => true,
@@ -367,7 +362,6 @@ class PostType
                 $data
             );
         } else {
-
             //Static
             $this->renderBlade(
                 'form-data.blade.php',
@@ -513,7 +507,7 @@ class PostType
     public function renderBlade($fileName, $path, $data = array())
     {
         add_filter('Municipio/blade/view_paths', array($this, 'addViewPaths'), 2, 1);
-        $template = new \Municipio\template;
+        $template = new \Municipio\template();
         $view = \Municipio\Helper\Template::locateTemplate($fileName, $path);
         $view = $template->cleanViewPath($fileName);
         if (function_exists('render_blade_view')) {
@@ -534,7 +528,7 @@ class PostType
         return $array;
     }
 
-    
+
 
     public function appendFormdata($content)
     {
@@ -606,14 +600,14 @@ class PostType
      */
     public function tableColumns($columns)
     {
-        return array(
-            'cb' => '',
+        return [
+            'cb' => '<input type="checkbox" />',
             'title' => __('Title'),
             'id' => __('ID'),
             'form' => __('Form', 'modularity-form-builder'),
             'referer' => __('Referer', 'modularity-form-builder'),
             'date' => __('Date')
-        );
+        ];
     }
 
     /**
@@ -638,6 +632,9 @@ class PostType
                 if ($referer) {
                     echo '<a href="' . $referer . '" target="_blank">' . $referer . '</a>';
                 }
+                break;
+            case 'cb':
+                echo '<label class="screen-reader-text" for="cb-select-all-1">Välj alla</label><input id="cb-select-all-1" type="checkbox">';
                 break;
         }
     }
@@ -678,10 +675,12 @@ class PostType
         }
 
         // Check nonce and if form data exist
-        if (!isset($_POST['update-modularity-form'])
+        if (
+            !isset($_POST['update-modularity-form'])
             || !wp_verify_nonce($_POST['update-modularity-form'], 'update')
             || !isset($_POST['modularity-form-id'])
-            || !isset($_POST['mod-form'])) {
+            || !isset($_POST['mod-form'])
+        ) {
             return;
         }
 
