@@ -76,6 +76,12 @@ class Form extends \Modularity\Module
         $data['dataStorage']        = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
         $data['showFormLang']       = __('Show form', 'modularity-form-builder');
 
+        $data['lang'] = [
+            'errorMessage' => __('Something went wrong. Please look over the provided information and try again.', 'modularity-form-builder'),
+            'validateMessage' => __('Form is successfully being sent.', 'modularity-form-builder'),
+            'policy' => __('I consent', 'modularity-form-builder'),
+        ];
+
         foreach ($data['form_fields'] as &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
             
@@ -139,6 +145,17 @@ class Form extends \Modularity\Module
                 'lastname' => $current_user->last_name,
                 'email' => $current_user->user_email,
             );
+        }
+        
+        if(isset($_GET['form'])) {
+            if('success-' . $data['module_id'] == $_GET['form']) {
+                $data['formWasSent'] = true;
+            }
+            else {
+                $data['formWasSent'] = false;
+            }
+        } else {
+            $data['formWasSent'] = false;
         }
 
         return $data;
@@ -417,7 +434,7 @@ class Form extends \Modularity\Module
 
         $moduleId = $_POST['moduleId'];
         $fieldName = $_POST['fieldName'];
-        preg_match('#\[(\d+)\]#', $fieldName, $match);
+        preg_match('/\[row-(\d+)\]/', $fieldName, $match);
         if (!empty($match[1])) {
             $key = 'form_fields_' . $match[1] . '_conditonal_field';
             $selected = get_post_meta($moduleId, $key, true);

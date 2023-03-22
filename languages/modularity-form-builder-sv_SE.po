@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2022-11-10 14:25+0100\n"
-"PO-Revision-Date: 2022-11-10 14:27+0100\n"
+"POT-Creation-Date: 2022-12-01 12:13+0100\n"
+"PO-Revision-Date: 2022-12-01 12:14+0100\n"
 "Last-Translator: Anna Johansson <anna@thehappyhipster.se>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: modularity-form-builder.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: acf-fields/php/form.php:7 source/php/Entity/PostType.php:401
 #: source/php/Entity/PostType.php:613 source/php/Module/Form.php:30
-#: source/php/Submission.php:94 source/php/Submission.php:543
+#: source/php/Submission.php:95 source/php/Submission.php:544
 msgid "Form"
 msgstr "Formulär"
 
@@ -327,10 +327,9 @@ msgstr ""
 msgid ""
 "I det här formuläret samlar vi in personuppgifter om dig för att [det "
 "formuläret ska användas till]. Uppgifterna kommer inte att hanteras för "
-"något annat syfte, och kommer att raderas när [ärendet är avslutat]. <a "
-"href=\"https://helsingborg.se/toppmeny/om-webbplatsen/sa-har-behandlar-vi-"
-"dina-personuppgifter/\">Läs om hur Helsingborgs stad hanterar "
-"personuppgifter</a>."
+"något annat syfte, och kommer att raderas när [ärendet är avslutat]. <a href="
+"\"https://helsingborg.se/toppmeny/om-webbplatsen/sa-har-behandlar-vi-dina-"
+"personuppgifter/\">Läs om hur Helsingborgs stad hanterar personuppgifter</a>."
 msgstr ""
 
 #: acf-fields/php/form.php:2544
@@ -416,7 +415,7 @@ msgstr "Visa alla"
 msgid "Edit"
 msgstr "Redigera"
 
-#: source/php/Entity/PostType.php:61 source/php/Module/Form.php:355
+#: source/php/Entity/PostType.php:61 source/php/Module/Form.php:382
 msgid "Are you sure you want to delete this file?"
 msgstr "Är du säker på att du vill radera den här filen?"
 
@@ -477,17 +476,17 @@ msgstr ""
 msgid "You are not authorized to download this file."
 msgstr "Du har inte behörighet att ladda ner den här filen."
 
-#: source/php/Entity/PostType.php:212 source/php/Submission.php:399
+#: source/php/Entity/PostType.php:212 source/php/Submission.php:400
 msgid "Unauthorized request"
 msgstr "Otillåten begäran"
 
-#: source/php/Entity/PostType.php:250 source/php/Submission.php:430
+#: source/php/Entity/PostType.php:250 source/php/Submission.php:431
 msgid ""
 "The file you requested could not be found. The file might have been deleted "
 "or corrupted."
 msgstr ""
 
-#: source/php/Entity/PostType.php:251 source/php/Submission.php:431
+#: source/php/Entity/PostType.php:251 source/php/Submission.php:432
 msgid "File not found"
 msgstr "Filen hittades inte"
 
@@ -507,11 +506,11 @@ msgstr "Fil borttagen"
 msgid "Unknown file"
 msgstr "Okänd fil"
 
-#: source/php/Entity/PostType.php:388 source/php/Submission.php:98
+#: source/php/Entity/PostType.php:388 source/php/Submission.php:99
 msgid "Previous page"
 msgstr "Föregående sida"
 
-#: source/php/Entity/PostType.php:393 source/php/Submission.php:538
+#: source/php/Entity/PostType.php:393 source/php/Submission.php:539
 msgid "No Referrer"
 msgstr "Besökaren kom från extern länk"
 
@@ -588,13 +587,13 @@ msgstr "Formulär"
 msgid "Build submittable forms"
 msgstr "Bygg webbformulär"
 
-#: source/php/Module/Form.php:53 source/php/Submission.php:277
+#: source/php/Module/Form.php:53 source/php/Submission.php:278
 #, fuzzy
 #| msgid "File not found"
 msgid "Filetype not allowed"
 msgstr "Filen hittades inte"
 
-#: source/php/Module/Form.php:56 source/php/Submission.php:311
+#: source/php/Module/Form.php:56 source/php/Submission.php:312
 #, fuzzy
 #| msgid "File not found"
 msgid "File not uploaded"
@@ -623,68 +622,84 @@ msgstr ""
 msgid "Show form"
 msgstr "Visa formulär"
 
-#: source/php/Module/Form.php:85
+#: source/php/Module/Form.php:80
+msgid ""
+"Something went wrong. Please look over the provided information and try "
+"again."
+msgstr ""
+"Något gick fel. Var god och se över din angivna informationen och försök "
+"igen."
+
+#: source/php/Module/Form.php:81
+msgid "Form is successfully being sent."
+msgstr "Formuläret skickas."
+
+#: source/php/Module/Form.php:82
+msgid "I consent"
+msgstr "Jag godkänner"
+
+#: source/php/Module/Form.php:91
 msgid "Max allowed files:"
 msgstr "Max antal tillåtna filer:"
 
-#: source/php/Module/Form.php:247
+#: source/php/Module/Form.php:264
 msgid "Responses"
 msgstr "Svar"
 
-#: source/php/Module/Form.php:276
+#: source/php/Module/Form.php:293
 msgid "There is no submissions for this form."
 msgstr "Det finns inga svar på detta formulär."
 
-#: source/php/Module/Form.php:281
+#: source/php/Module/Form.php:298
 #, php-format
 msgid "There is %d submissions to this form."
 msgstr "Det finns %d svar på det här formuläret."
 
-#: source/php/Module/Form.php:283
+#: source/php/Module/Form.php:300
 msgid "View submissions"
 msgstr "Visa svar"
 
-#: source/php/Module/Form.php:284
+#: source/php/Module/Form.php:301
 msgid "Export csv"
 msgstr "Exportera csv"
 
-#: source/php/Module/Form.php:317
+#: source/php/Module/Form.php:330
 msgid "You need to add a valid E-mail!"
 msgstr "Du måste ange en giltig e-postadress!"
 
-#: source/php/Module/Form.php:318
+#: source/php/Module/Form.php:331
 msgid "You need to add a valid date!"
 msgstr "Du måste ange ett giltigt datum!"
 
-#: source/php/Module/Form.php:319
+#: source/php/Module/Form.php:332
 msgid "Must be a number."
 msgstr "Måste vara ett nummer."
 
-#: source/php/Module/Form.php:320
+#: source/php/Module/Form.php:333
 msgid "Please enter a valid phone number."
 msgstr "Var god och ange ett giltigt telefonnummer."
 
-#: source/php/Module/Form.php:321
+#: source/php/Module/Form.php:334
 msgid "Please enter a password!"
 msgstr "Var god och ange ett lösenord!"
 
-#: source/php/Module/Form.php:322
+#: source/php/Module/Form.php:335
 msgid "Please enter a valid month."
 msgstr "Var god och ange en giltig månad."
 
-#: source/php/Module/Form.php:323
+#: source/php/Module/Form.php:336
 msgid "Please enter a valid week."
 msgstr "Var god och ange en giltig vecka."
 
-#: source/php/Module/Form.php:324
+#: source/php/Module/Form.php:337
 msgid "Please enter a valid time."
 msgstr "Var god och ange en giltig tid."
 
-#: source/php/Module/Form.php:325
+#: source/php/Module/Form.php:338
 msgid "Please enter a valid URL."
 msgstr "Var god och ange en giltig URL."
 
-#: source/php/Module/Form.php:354
+#: source/php/Module/Form.php:381
 msgid "Please create radio selections before adding conditional logic."
 msgstr ""
 "Vänligen skapa formulärfält med radioknappar innan du lägger till "
@@ -702,7 +717,7 @@ msgstr "Radera"
 msgid "Send copy of this submission to my email address"
 msgstr "Skicka en kopia till mig"
 
-#: source/php/Module/views/fields/sender.blade.php:148
+#: source/php/Module/views/fields/sender.blade.php:160
 msgid "Find my location"
 msgstr "Hitta min position"
 
@@ -722,15 +737,15 @@ msgstr ""
 msgid "Options"
 msgstr "Inställningar"
 
-#: source/php/Submission.php:398
+#: source/php/Submission.php:399
 msgid "The download token provided was not correct."
 msgstr ""
 
-#: source/php/Submission.php:503
+#: source/php/Submission.php:504
 msgid "New form submission"
 msgstr "Nytt formulärsvar"
 
-#: source/php/Submission.php:508
+#: source/php/Submission.php:509
 #, php-format
 msgid ""
 "This is a notification about a new form submission to the form \"%s\"."
@@ -739,15 +754,15 @@ msgstr ""
 "Det har inkommit ett svar på ett formulär (\"%s\") som du har aktiverat "
 "notifikationer på. <br><br><a href=\"%s\">Läs hela svaret här.</a>."
 
-#: source/php/Submission.php:527 source/php/Submission.php:613
+#: source/php/Submission.php:528 source/php/Submission.php:614
 msgid "Open file"
 msgstr "Öppna fil"
 
-#: source/php/Submission.php:535
+#: source/php/Submission.php:536
 msgid "Referrer"
 msgstr "Förgående sida"
 
-#: source/php/Submission.php:599
+#: source/php/Submission.php:600
 msgid "Form submission copy"
 msgstr "Svarskopia"
 
@@ -852,20 +867,24 @@ msgstr ""
 msgid "Exported %d fieldgroup(s)."
 msgstr ""
 
+#. Plugin Name of the plugin/theme
+msgid "Modularity Form Builder"
+msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
+
+#. Plugin URI of the plugin/theme
+msgid "http://github.com/helsingborg-stad"
+msgstr "http://github.com/helsingborg-stad"
+
+#. Description of the plugin/theme
+msgid "Build submittable form(s) to display with module"
+msgstr "Bygg formulär som kan visas i en modul"
+
+#. Author of the plugin/theme
+msgid "Kristoffer Svanmark, Sebastian Thulin"
+msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
+
 #~ msgid "No file selected"
 #~ msgstr "Ingen fil vald"
-
-#~ msgid "Modularity Form Builder"
-#~ msgstr "Modularity Formulärbyggare (Modularity Form Builder)"
-
-#~ msgid "http://github.com/helsingborg-stad"
-#~ msgstr "http://github.com/helsingborg-stad"
-
-#~ msgid "Build submittable form(s) to display with module"
-#~ msgstr "Bygg formulär som kan visas i en modul"
-
-#~ msgid "Kristoffer Svanmark, Sebastian Thulin"
-#~ msgstr "Kristoffer Svanmark, Sebastian Thulin, Jonatan Hansson"
 
 #~ msgid "Select file"
 #~ msgstr "Välj en fil"
