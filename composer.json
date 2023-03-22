@@ -19,9 +19,9 @@
     "minimum-stability": "stable",
     "require": {
         "helsingborg-stad/acf-export-manager": ">=1.0.0",
-        "google/apiclient": "2.7.2",
-        "guzzlehttp/guzzle": "7.0.1",
-        "guzzlehttp/psr7": "1.7.0"
+        "google/apiclient": "2.13",
+        "guzzlehttp/guzzle": "7.4",
+        "guzzlehttp/psr7": "2.4"
     },
     "repositories": [
         {
