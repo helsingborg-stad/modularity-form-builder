@@ -250,11 +250,14 @@ class Submission
         // Data to be returned
         $uploaded = array();
 
+        // Remove empty file items from list.
+        $fileslist = self::sanitizeFilesList($fileslist);
+    
         foreach ($fileslist as $key => $files) {
             if (!is_array($files['name'])) {
                 $files = self::convertItemToArray($files);
             }
-            
+
             for ($i = 0, $iMax = count($files['name']); $i < $iMax; $i++) {
                 $fileName = pathinfo((string)$files['name'][$i], PATHINFO_FILENAME);
                 $fileext = strtolower(pathinfo((string)$files['name'][$i], PATHINFO_EXTENSION));
@@ -324,6 +327,25 @@ class Submission
         }
 
         return $uploaded;
+    }
+
+    public static function sanitizeFilesList($filesList):array {
+
+        $sanitizedFilesList = [];
+
+        foreach ($filesList as $key => $file) {
+            foreach ($file['type'] as $typeKey => $type) {
+                if (empty($type)) {
+                    unset($filesList[$key]['type'][$typeKey]);
+                }
+            }
+
+            if( !empty($filesList[$key]['type']) ) {
+                $sanitizedFilesList[$key] = $filesList[$key];
+            }
+        }
+
+        return $sanitizedFilesList;
     }
 
     /**
