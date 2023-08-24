@@ -87,7 +87,7 @@ class Form extends \Modularity\Module
             
             $field = $this->setAttributeList($field);
 
-            if ('multiple' === $field['type'] && 0 < (int) $field['files_max']) {
+            if (!empty($field['type']) && 'multiple' === $field['type'] && 0 < (int) $field['files_max']) {
                 $field['maxFilesNotice'] = __('Max allowed files:', 'modularity-form-builder') . ' '. $field['files_max'];
             } else {
                 $field['maxFilesNotice'] = false;
@@ -304,25 +304,25 @@ class Form extends \Modularity\Module
 
     private function setAttributeList($field)
     {
-        if ($field['acf_fc_layout'] == 'select') {
+        if (!empty($field['acf_fc_layout']) && $field['acf_fc_layout'] == 'select') {
             $field['values'] = $this->normalizeOptions($field['values']);
         }
 
         $field['attributeList'] = [];
 
-        if ($field['value_type' === 'date']) {
+        if (!empty($field['value_type']) && $field['value_type' === 'date']) {
             $field['attributeList']['min'] = SanitizeData::formatDate($field['min_value']);
             $field['attributeList']['max'] = SanitizeData::formatDate($field['max_value']);
-        } elseif ($field['value_type'] === 'time') {
+        } elseif (!empty($field['value_type']) && $field['value_type'] === 'time') {
             $field['attributeList']['min'] = trim($field['min_time_value']);
             $field['attributeList']['max'] = trim($field['max_time_value']);
-        } elseif (in_array($field['value_type'], array('number', 'range'))) {
+        } elseif (!empty($field['value_type']) && in_array($field['value_type'], array('number', 'range'))) {
             $field['attributeList']['min'] = trim($field['min_value']);
             $field['attributeList']['max'] = trim($field['max_value']);
             $field['attributeLIst']['step'] = trim($field['step']);
         }
 
-        if ($field['filetypes'] && is_array($field['filetypes'])) {
+        if (!empty($field['filetypes']) && is_array($field['filetypes'])) {
             $field['attributeList']['accept'] = implode(',', $field['filetypes']);
         }
 
