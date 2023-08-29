@@ -164,11 +164,13 @@ class App
                     }
 
                     // Loop through all other field labels
-                    if ($fieldObject['_name'] == 'label' && !empty($oldValues[$key][$fieldKey]) && $newValues[$key][$fieldKey] != $oldValues[$key][$fieldKey]) {
-                        $updatedValues[] = array(
-                            'old' => sanitize_title($oldValues[$key][$fieldKey]),
-                            'new' => sanitize_title($newValues[$key][$fieldKey])
-                        );
+                    if (is_array($newValues[$key][$fieldKey]) && is_array($oldValues[$key][$fieldKey])) {
+                        if ($fieldObject['_name'] == 'label' && !empty($oldValues[$key][$fieldKey]) && $newValues[$key][$fieldKey] != $oldValues[$key][$fieldKey]) {
+                            $updatedValues[] = array(
+                                'old' => sanitize_title($oldValues[$key][$fieldKey]),
+                                'new' => sanitize_title($newValues[$key][$fieldKey])
+                            );
+                        }
                     }
                 }
             }

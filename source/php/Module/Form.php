@@ -310,9 +310,9 @@ class Form extends \Modularity\Module
 
         $field['attributeList'] = [];
 
-        if (!empty($field['value_type']) && $field['value_type' === 'date']) {
-            $field['attributeList']['min'] = SanitizeData::formatDate($field['min_value']);
-            $field['attributeList']['max'] = SanitizeData::formatDate($field['max_value']);
+        if (!empty($field['value_type']) && $field['value_type']  === 'date') {
+            $field['attributeList']['min'] = \ModularityFormBuilder\Helper\SanitizeData::formatDate($field['min_value']);
+            $field['attributeList']['max'] = \ModularityFormBuilder\Helper\SanitizeData::formatDate($field['max_value']);
         } elseif (!empty($field['value_type']) && $field['value_type'] === 'time') {
             $field['attributeList']['min'] = trim($field['min_time_value']);
             $field['attributeList']['max'] = trim($field['max_time_value']);
