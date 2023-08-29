@@ -303,17 +303,10 @@ class Submission
                 }
 
                 // Upload the file to server
-                if (move_uploaded_file($files['tmp_name'][$i], $targetFile)) {
-                    // Upload video to YouTube
-                    if (!empty($fields[$key]['upload_videos_external']) && in_array('.' . $fileext, $allowedVideoTypes)) {
-                        $uploadVideo = \ModularityFormBuilder\Helper\YoutubeUploader::uploadVideo($targetFile, ucwords($fileName), '', '22');
-                        $targetFile = ($uploadVideo) ? $uploadVideo : $targetFile;
-                    }
-                } else {
+                if (!move_uploaded_file($files['tmp_name'][$i], $targetFile)) {
                     error_log('File not uploaded');
                     $uploaded['error'] = true;
                     $uploaded['errorData'] = new \WP_Error('file-not-uploaded', __('File not uploaded', 'modularity-form-builder'));
-
                     continue;
                 }
 
