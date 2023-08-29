@@ -516,6 +516,7 @@ class Submission
         $headers = array('Content-Type: text/html; charset=UTF-8');
         if (!is_null($from) && !empty($from)) {
             $headers[] = 'From: ' . $from;
+            $headers[] = 'Reply-To: ' . $from;
         }
         $data = self::getSubmissionData($submissionId);
         $showData = get_field('submission_notice_data', $formId);
