@@ -28,7 +28,7 @@
                         'value' => $value['value'],
                         'label' => $value['value'],
                         'attributeList' => [
-                            'conditional' => $value['conditional_value'],
+                            'conditional' => !empty($value['conditional_value']) ? $value['conditional_value'] : false,
                             'name' => sanitize_title($field['label']) . '[]',
                         ]
                     ])
