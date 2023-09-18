@@ -11,7 +11,7 @@
                 'description' => (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks(
                     $field['description']
                 ) : '',                
-                'id' => $module_id . '-input-' . sanitize_title($field['label']),
+                'id' => $module_id . '-input-' . sanitize_title($field['label']) . '-'. $field['key'],
                 'required' => $field['required'] ? true : false,
                 'attributeList' => $field['attributeList']
             ])

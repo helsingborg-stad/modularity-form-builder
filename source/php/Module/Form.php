@@ -82,9 +82,9 @@ class Form extends \Modularity\Module
             'policy' => __('I consent', 'modularity-form-builder'),
         ];
 
-        foreach ($data['form_fields'] as &$field) {
+        foreach ($data['form_fields'] as $key => &$field) {
             $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
-            
+            $field['key'] = $key;
             $field = $this->setAttributeList($field);
 
             if (!empty($field['type']) && 'multiple' === $field['type'] && 0 < (int) $field['files_max']) {
