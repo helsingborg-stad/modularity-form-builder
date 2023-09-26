@@ -28,7 +28,8 @@
     ],
     "autoload": {
         "psr-4": {
-          "ModularityFormBuilder\\": "source/php/"
+            "ModularityFormBuilder\\": "source/php/"
         }
-    }
+    },
+    "version": "2.0.0"
 }
