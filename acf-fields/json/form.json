@@ -2613,7 +2613,7 @@
                 "id": ""
             },
             "message": "Visa ett meddelande (och en checkbox) som \u00e4r n\u00f6dv\u00e4ndig f\u00f6r att posta formul\u00e4ret.",
-            "default_value": 0,
+            "default_value": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
