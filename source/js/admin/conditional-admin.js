@@ -22,21 +22,23 @@ export default (function ($) {
 				selected = $selected.val();
 			} else {
 				// Get selected from database
-				var fieldName = $(element).attr('name');
-				$.ajax({
-		            url: ajaxurl,
-		            type: 'post',
-		            data: {
-		                action    : 'get_selected_field',
-		                moduleId  : modularity_current_post_id,
-		                fieldName : fieldName
-		            },
-		            success: function(response) {
-		            	if (response != 'error') {
-		            		$("option[value='" + response + "']", element).prop('selected', true);
-		            	}
-		            }
-		        });
+				if (typeof modularity_current_post_id !== 'undefined') {
+					var fieldName = $(element).attr('name');
+					$.ajax({
+						url: ajaxurl,
+						type: 'post',
+						data: {
+							action    : 'get_selected_field',
+							moduleId  : modularity_current_post_id,
+							fieldName : fieldName
+						},
+						success: function(response) {
+							if (response != 'error') {
+								$("option[value='" + response + "']", element).prop('selected', true);
+							}
+						}
+					});
+				}
 			}
 
 			// Reset select options
