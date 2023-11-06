@@ -1,9 +1,9 @@
 <div class="o-grid mod-form-field" {!! $field['conditional_hidden'] !!}>
     <div class="o-grid-12@md">
         <div role="group" 
-            aria-labelledby="label-{{ $module_id }}-{{ sanitize_title($field['label']) }}" 
+            aria-labelledby="label-{{ $module_id }}-{{ sanitize_title($field['label']) }}-{{ $field['key'] }}" 
             @if(!empty($field['description']))
-                aria-describedby="description-{{ $module_id }}-{{ sanitize_title($field['label']) }}" 
+                aria-describedby="description-{{ $module_id }}-{{ sanitize_title($field['label']) }}-{{ $field['key'] }}" 
             @endif
             class="form-group c-field checkbox-group {{$field['required'] ? 'checkbox-group-required' : ''}}">
         
@@ -11,10 +11,10 @@
                 <input class="js-checkbox-valid u-display--none" aria-label="For validating checkbox group" {{$field['required'] ? 'js-required' : ''}} type="checkbox"/>
             @endif
 
-            <div class="c-field__label" id="label-{{ $module_id }}-{{ sanitize_title($field['label']) }}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="u-color__text--danger">*</span>' : '' !!}</div>
+            <div class="c-field__label" id="label-{{ $module_id }}-{{ sanitize_title($field['label']) }}-{{ $field['key'] }}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="u-color__text--danger">*</span>' : '' !!}</div>
 
             @if(!empty($field['description']))
-                <div class="text-sm text-dark-gray" id="description-{{ $module_id }}-{{ sanitize_title($field['label']) }}">
+                <div class="text-sm text-dark-gray" id="description-{{ $module_id }}-{{ sanitize_title($field['label']) }}-{{ $field['key'] }}">
                     {!! ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description']) !!}
                 </div>
             @endif
