@@ -4,8 +4,36 @@ export default (function ($) {
         $(document).ready(function () {
         	this.populateSelectFields();
         	this.handleEvents();
+			this.handleAcfConditionals();
         }.bind(this));
     }
+
+	Conditional.prototype.handleAcfConditionals = () => {
+		if (typeof(acf) !== 'undefined') {
+			const forms = document.querySelectorAll('.acf-field[data-name="form_fields"]');
+			console.log(forms);
+			forms.forEach(form => {
+				const conditionalFields = document.querySelectorAll('[data-name="conditonal_field"]');
+				console.log(conditionalFields);
+
+				if (conditionalFields) {
+					Conditional.prototype.handleSelectedConditionalFields(conditionalFields);
+				}
+			});
+		}
+	}
+
+	Conditional.prototype.handleSelectedConditionalFields = function (conditionalFields) {
+		conditionalFields.forEach(field => {
+			const selectField = field.querySelector('select');
+			const hiddenField = field.querySelector('input[type="hidden"]');
+
+			if (hiddenField && hiddenField.value) {
+				console.log(selectField.value);
+				selectField.value = hiddenField.value;
+			}
+		});
+	}
 
     /**
      * Populate conditional field selectors
