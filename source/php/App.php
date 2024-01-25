@@ -117,7 +117,7 @@ class App
         }
 
         $val = is_string($field['value']) ? $field['value'] : '';
-        echo '<input type="hidden" name="current-' . $field['name'] . '" value="' . $val . '">';
+        echo '<input type="hidden" name="current-' . esc_attr($field['name']) . '" value="' . esc_attr(htmlspecialchars($val, ENT_QUOTES, 'UTF-8')) . '">';
     }
 
     /**
