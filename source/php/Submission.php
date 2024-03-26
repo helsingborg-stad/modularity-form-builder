@@ -138,9 +138,14 @@ class Submission
         
         
         foreach ($fields as $key => $field) {
-            if ($field['acf_fc_layout'] == 'checkbox' && is_array($field['values'])) {
+            if (
+                $field['acf_fc_layout'] == 'checkbox' && 
+                is_array($field['values']) && 
+                !empty($_POST[sanitize_title($field['label'])])
+            ) {
                 $_POST['ange-vilka-handlingar-du-vill-bestalla'] = implode(",", $_POST[sanitize_title($field['label'])]);
             }
+            
             if ($field['acf_fc_layout'] == 'sender') {
                 if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
                     $labels = array_merge($labels, array_filter($field['custom_sender_labels']));
