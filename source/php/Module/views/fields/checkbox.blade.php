@@ -8,7 +8,7 @@
             class="form-group c-field checkbox-group {{$field['required'] ? 'checkbox-group-required' : ''}}">
         
             @if($field['required'])
-                <input class="js-checkbox-valid u-display--none" aria-label="For validating checkbox group" {{$field['required'] ? 'js-required' : ''}} type="checkbox"/>
+                <input class="js-checkbox-valid u-display--none" aria-label="For validating checkbox group" {{$field['required'] ? 'data-js-required' : ''}} type="checkbox"/>
             @endif
 
             <div class="c-field__label" id="label-{{ $module_id }}-{{ sanitize_title($field['label']) }}">{{ $field['label'] }}{!!  $field['required'] ? '<span class="u-color__text--danger">*</span>' : '' !!}</div>

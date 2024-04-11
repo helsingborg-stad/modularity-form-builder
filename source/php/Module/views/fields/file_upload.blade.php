@@ -13,7 +13,7 @@
                 'label' => $field['label'],
                 'accept' => $field['filetypes'] && is_array($field['filetypes']) ? $field['attributeList']['accept'] : '',
                 'filesMax' => $field['type'] === 'multiple' ? $field['files_max'] : 1,
-                'classList' => [$field['required'] ? 'js-required' : ''],
+                'classList' => [$field['required'] ? 'data-js-required' : ''],
             ])
             @endfileinput
 
