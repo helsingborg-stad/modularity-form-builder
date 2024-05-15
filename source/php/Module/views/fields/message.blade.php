@@ -10,7 +10,7 @@
                 'multiline' => 10,
                 'value' => '',
                 'id' => $module_id . "-message-" . sanitize_title($field['label']),
-                'name' => sanitize_title($field['label']),
+                'name' => sanitize_title($field['name']),
                 'required' => $field['required'] ? true : false,
                 'attributeList' => $field['attributeList'],
                 'autocomplete' => 'off'

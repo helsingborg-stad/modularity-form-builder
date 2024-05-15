@@ -7,7 +7,7 @@
                 'type' => $field['value_type'],
                 'value' => '',
                 'invalidMessage' => !empty($field['invalidMessages'][$field['value_type']]) ? $field['invalidMessages'][$field['value_type']] : 'Invalid value',     
-                'name' => sanitize_title($field['label']),
+                'name' => sanitize_title($field['name']),
                 'description' => (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks(
                     $field['description']
                 ) : '',                

@@ -446,11 +446,24 @@ class PostType
             $formId
         );
 
-        foreach ($fields['form_fields'] as $field) {
+        $nestedIndataArray = array();
+        if (is_array($indata)) {
+            foreach ($indata as $key => $value) {
+                $pattern = '/id-\d+-/';
+                $key = preg_replace($pattern, "", sanitize_title($key), 1);
+                $nestedIndataArray[] = [
+                    'key' => $key,
+                    'value' => $value
+                ];
+            }
+        }
+
+        foreach ($fields['form_fields'] as $key => $field) {
             // Skip layout fields
             if (in_array($field['acf_fc_layout'], $excludedGlobal)) {
                 continue;
             }
+    
 
             if (!empty($field['custom_post_type_title'])) {
                 $data['custom_post_type_title'] = true;
@@ -490,12 +503,32 @@ class PostType
                 $field,
                 array(
                     'name' => sanitize_title($field['label']),
-                    'value' => (!empty($indata[sanitize_title($field['label'])])) ? $indata[sanitize_title($field['label'])] : '',
+                    'value' => self::findMatchingNestedIndataArrayValue($nestedIndataArray, sanitize_title($field['label'])),
                 )
             );
         }
 
         return $data;
+    }
+
+    /**
+     * Finds and returns the value associated with a given key in a nested indata array.
+     * Handles multiple items with the same label/key
+     *
+     * @param array $nestedIndataArray The nested indata array to search in.
+     * @param string $key The key to search for.
+     * @return mixed The value associated with the given key, or an empty string if the key is not found.
+     */
+    private static function findMatchingNestedIndataArrayValue(&$nestedIndataArray, $key)
+    {
+        foreach ($nestedIndataArray as $index => $item) {
+            if ($item['key'] == $key) {
+                unset($nestedIndataArray[$index]);
+                return $item['value'];
+            }
+        }
+
+        return '';
     }
 
     /**

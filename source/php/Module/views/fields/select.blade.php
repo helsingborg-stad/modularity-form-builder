@@ -7,7 +7,7 @@ use ModularityFormBuilder\Helper\SanitizeData;
     <div class="o-grid-12@md">
         <div class="form-group">
             @select([
-                'name' => sanitize_title($field['label']),
+                'name' => sanitize_title($field['name']),
                 'label' => $field['label'],       
                 'options' => $field['values'],
                 'description' => (!empty($field['description'])) ? ModularityFormBuilder\Helper\SanitizeData::convertLinks(

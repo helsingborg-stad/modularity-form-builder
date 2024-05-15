@@ -2,7 +2,7 @@
     <div class="o-grid-12@md">
         <div class="form-group">
             @fileinput([
-                'name' => sanitize_title($field['label']),
+                'name' => sanitize_title($field['name']),
                 'description' => !empty($field['description'])
                     ? ModularityFormBuilder\Helper\SanitizeData::convertLinks($field['description'])
                     : '',
