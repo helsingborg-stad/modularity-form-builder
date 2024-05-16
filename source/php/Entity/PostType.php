@@ -503,8 +503,8 @@ class PostType
                 $field,
                 array(
                     'name' => sanitize_title($field['label']),
-                    'value' => self::findMatchingNestedIndataArrayValue($nestedIndataArray, sanitize_title($field['label'])),
-                )
+                    'value' => self::findMatchingNestedIndataArrayValue($nestedIndataArray, sanitize_title($field['label'])) ?? ((!empty($indata[sanitize_title($field['label'])])) ? $indata[sanitize_title($field['label'])] : ''),
+                ),
             );
         }
 
@@ -528,7 +528,7 @@ class PostType
             }
         }
 
-        return '';
+        return null;
     }
 
     /**
