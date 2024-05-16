@@ -449,7 +449,7 @@ class PostType
         $nestedIndataArray = array();
         if (is_array($indata)) {
             foreach ($indata as $key => $value) {
-                $pattern = '/id-\d+-/';
+                $pattern = '/^id-\d+-/';
                 $key = preg_replace($pattern, "", sanitize_title($key), 1);
                 $nestedIndataArray[] = [
                     'key' => $key,
