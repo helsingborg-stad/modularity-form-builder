@@ -23,7 +23,7 @@
                         'required' => $field['required'],
                         'attributeList' => [
                             'conditional' => $value['conditional_value'],
-                            'name' => sanitize_title($field['label']),
+                            'name' => sanitize_title($field['name']),
                         ]
                     ])
                     @endoption

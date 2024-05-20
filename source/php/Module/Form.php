@@ -82,8 +82,9 @@ class Form extends \Modularity\Module
             'policy' => __('I consent', 'modularity-form-builder'),
         ];
 
-        foreach ($data['form_fields'] as &$field) {
-            $field['name'] = isset($field['label']) ? sanitize_title($field['label']) : '';
+        $fieldNames = [];
+        foreach ($data['form_fields'] as $key => &$field) {
+            $field['name'] = isset($field['label']) ? 'id-' . $key . '-' . sanitize_title($field['label']) : '';
             
             $field = $this->setAttributeList($field);
 
@@ -160,6 +161,7 @@ class Form extends \Modularity\Module
 
         return $data;
     }
+
     /**
      * Export from submissions
      * @return void
