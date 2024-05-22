@@ -2,6 +2,8 @@
 
 namespace ModularityFormBuilder;
 
+use ModularityFormBuilder\Helper\NestedFields;
+
 /**
  * Class Submission
  * @package ModularityFormBuilder
@@ -466,6 +468,7 @@ class Submission
         if (!$formId) {
             return array();
         }
+
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
         if (get_option('options_mod_form_crypt')) {
@@ -482,6 +485,9 @@ class Submission
             'custom_content',
             'collapse'
         );
+
+        $nestedDataArray = NestedFields::createNestedArrayFromFieldData($data);
+
         foreach ($fields as $field) {
             if ($field['acf_fc_layout'] === 'sender') {
                 // Merge default and custom labels
@@ -494,12 +500,53 @@ class Submission
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                $formdata[$field['label']] = $data[sanitize_title($field['label'])] ?? '';
+                $formdata[$field['label'] . self::increaseKeyValue($formdata, $field['label'])] = self::findMatchingNestedIndataArrayValue($nestedDataArray, sanitize_title($field['label'])) ?? ((!empty($data[sanitize_title($field['label'])])) ? $data[sanitize_title($field['label'])] : '');
             }
         }
+
         $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
         $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
         return $formdata;
+    }
+
+    /**
+     * Increases the key value for a given form data array.
+     *
+     * @param array $formdata The form data array.
+     * @param string $key The key to increase the value for.
+     * @return string The increased key value.
+     */
+    private static function increaseKeyValue($formdata, $key)
+    {
+        $i = 0;
+        if (array_key_exists($key, $formdata)) {
+            $i = 1;
+            while (array_key_exists($key . '-' . $i, $formdata)) {
+                $i++;
+            }
+        }
+
+        return ($i > 0) ? '-' . $i : '';
+    }
+
+    /**
+     * Finds and returns the value associated with a given key in a nested indata array.
+     * Handles multiple items with the same label/key
+     *
+     * @param array $nestedIndataArray The nested indata array to search in.
+     * @param string $key The key to search for.
+     * @return mixed The value associated with the given key, or an empty string if the key is not found.
+     */
+    private static function findMatchingNestedIndataArrayValue(&$nestedIndataArray, $key)
+    {
+        foreach ($nestedIndataArray as $index => $item) {
+            if ($item['key'] == $key) {
+                unset($nestedIndataArray[$index]);
+                return $item['value'];
+            }
+        }
+
+        return '';
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace ModularityFormBuilder\Entity;
 
+use ModularityFormBuilder\Helper\NestedFields;
+
 class PostType
 {
     public $postTypeSlug;
@@ -446,17 +448,7 @@ class PostType
             $formId
         );
 
-        $nestedIndataArray = array();
-        if (is_array($indata)) {
-            foreach ($indata as $key => $value) {
-                $pattern = '/^id-\d+-/';
-                $key = preg_replace($pattern, "", sanitize_title($key), 1);
-                $nestedIndataArray[] = [
-                    'key' => $key,
-                    'value' => $value
-                ];
-            }
-        }
+        $nestedIndataArray = NestedFields::createNestedArrayFromFieldData($indata);
 
         foreach ($fields['form_fields'] as $key => $field) {
             // Skip layout fields
