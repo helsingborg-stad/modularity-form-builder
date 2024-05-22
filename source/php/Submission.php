@@ -145,7 +145,7 @@ class Submission
                 is_array($field['values']) && 
                 !empty($_POST[sanitize_title($field['label'])])
             ) {
-                // $_POST['ange-vilka-handlingar-du-vill-bestalla'] = implode(",", $_POST[sanitize_title($field['label'])]);
+                $_POST['ange-vilka-handlingar-du-vill-bestalla'] = implode(",", $_POST[sanitize_title($field['label'])]);
             }
             
             if ($field['acf_fc_layout'] == 'sender') {
