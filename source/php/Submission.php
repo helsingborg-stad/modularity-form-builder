@@ -488,7 +488,7 @@ class Submission
             foreach ($data as $key => $value) {
                 $pattern = '/id-\d+-/';
                 $key = preg_replace($pattern, "", sanitize_title($key), 1);
-                $nestedIndataArray[] = [
+                $nestedDataArray[] = [
                     'key' => $key,
                     'value' => $value
                 ];
@@ -507,7 +507,7 @@ class Submission
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                $formdata[$field['label']] = self::findMatchingNestedIndataArrayValue($nestedIndataArray, sanitize_title($field['label'])) ?? ((!empty($data[sanitize_title($field['label'])])) ? $data[sanitize_title($field['label'])] : '');
+                $formdata[$field['label']] = self::findMatchingNestedIndataArrayValue($nestedDataArray, sanitize_title($field['label'])) ?? ((!empty($data[sanitize_title($field['label'])])) ? $data[sanitize_title($field['label'])] : '');
             }
         }
 
