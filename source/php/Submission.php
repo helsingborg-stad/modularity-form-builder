@@ -509,6 +509,13 @@ class Submission
         return $formdata;
     }
 
+    /**
+     * Increases the key value for a given form data array.
+     *
+     * @param array $formdata The form data array.
+     * @param string $key The key to increase the value for.
+     * @return string The increased key value.
+     */
     private static function increaseKeyValue($formdata, $key)
     {
         $i = 0;
