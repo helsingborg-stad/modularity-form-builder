@@ -2,6 +2,8 @@
 
 namespace ModularityFormBuilder;
 
+use ModularityFormBuilder\Helper\NestedFields;
+
 /**
  * Class Submission
  * @package ModularityFormBuilder
@@ -143,7 +145,7 @@ class Submission
                 is_array($field['values']) && 
                 !empty($_POST[sanitize_title($field['label'])])
             ) {
-                $_POST['ange-vilka-handlingar-du-vill-bestalla'] = implode(",", $_POST[sanitize_title($field['label'])]);
+                // $_POST['ange-vilka-handlingar-du-vill-bestalla'] = implode(",", $_POST[sanitize_title($field['label'])]);
             }
             
             if ($field['acf_fc_layout'] == 'sender') {
@@ -466,6 +468,7 @@ class Submission
         if (!$formId) {
             return array();
         }
+
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
         if (get_option('options_mod_form_crypt')) {
@@ -483,17 +486,7 @@ class Submission
             'collapse'
         );
 
-        $nestedDataArray = array();
-        if (is_array($data)) {
-            foreach ($data as $key => $value) {
-                $pattern = '/id-\d+-/';
-                $key = preg_replace($pattern, "", sanitize_title($key), 1);
-                $nestedDataArray[] = [
-                    'key' => $key,
-                    'value' => $value
-                ];
-            }
-        }
+        $nestedDataArray = NestedFields::createNestedArrayFromFieldData($data);
 
         foreach ($fields as $field) {
             if ($field['acf_fc_layout'] === 'sender') {
@@ -507,13 +500,26 @@ class Submission
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                $formdata[$field['label']] = self::findMatchingNestedIndataArrayValue($nestedDataArray, sanitize_title($field['label'])) ?? ((!empty($data[sanitize_title($field['label'])])) ? $data[sanitize_title($field['label'])] : '');
+                $formdata[$field['label'] . self::increaseKeyValue($formdata, $field['label'])] = self::findMatchingNestedIndataArrayValue($nestedDataArray, sanitize_title($field['label'])) ?? ((!empty($data[sanitize_title($field['label'])])) ? $data[sanitize_title($field['label'])] : '');
             }
         }
 
         $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
         $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
         return $formdata;
+    }
+
+    private static function increaseKeyValue($formdata, $key)
+    {
+        $i = 0;
+        if (array_key_exists($key, $formdata)) {
+            $i = 1;
+            while (array_key_exists($key . '-' . $i, $formdata)) {
+                $i++;
+            }
+        }
+
+        return ($i > 0) ? '-' . $i : '';
     }
 
     /**
