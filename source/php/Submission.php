@@ -482,6 +482,19 @@ class Submission
             'custom_content',
             'collapse'
         );
+
+        $nestedDataArray = array();
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                $pattern = '/id-\d+-/';
+                $key = preg_replace($pattern, "", sanitize_title($key), 1);
+                $nestedIndataArray[] = [
+                    'key' => $key,
+                    'value' => $value
+                ];
+            }
+        }
+
         foreach ($fields as $field) {
             if ($field['acf_fc_layout'] === 'sender') {
                 // Merge default and custom labels
@@ -494,12 +507,33 @@ class Submission
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                $formdata[$field['label']] = $data[sanitize_title($field['label'])] ?? '';
+                $formdata[$field['label']] = self::findMatchingNestedIndataArrayValue($nestedIndataArray, sanitize_title($field['label'])) ?? ((!empty($data[sanitize_title($field['label'])])) ? $data[sanitize_title($field['label'])] : '');
             }
         }
+
         $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
         $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
         return $formdata;
+    }
+
+    /**
+     * Finds and returns the value associated with a given key in a nested indata array.
+     * Handles multiple items with the same label/key
+     *
+     * @param array $nestedIndataArray The nested indata array to search in.
+     * @param string $key The key to search for.
+     * @return mixed The value associated with the given key, or an empty string if the key is not found.
+     */
+    private static function findMatchingNestedIndataArrayValue(&$nestedIndataArray, $key)
+    {
+        foreach ($nestedIndataArray as $index => $item) {
+            if ($item['key'] == $key) {
+                unset($nestedIndataArray[$index]);
+                return $item['value'];
+            }
+        }
+
+        return '';
     }
 
     /**
