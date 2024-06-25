@@ -178,18 +178,27 @@ class Submission
         $autoReplyFrom = $siteMailFromName . ' <no-reply@' . $siteMailFromDomain . '>';
 
         // Send notifications
+        // Pattern for every field name is id-index-fieldName
         if ($notify) {
             foreach ($notify as $email) {
                 $sendMail = true;
                 if ($email['condition']) {
-                    $conditionalFieldKey = sanitize_title($email['form_conditional_field']);
-                    $sendMail = false;
-                    if (array_key_exists($conditionalFieldKey, $_POST)) {
-                        if ($_POST[$conditionalFieldKey] == $email['form_conditional_field_equals']) {
-                            $sendMail = true;
+                    $fieldNamePattern = '/^id-\d+-/';
+                    $matchingValue = array_filter($_POST, function ($value, $key) use ($email, $fieldNamePattern) {
+                        if ($value != $email['form_conditional_field_equals']) {
+                            return false;
                         }
-                    }
+
+                        if (!preg_replace($fieldNamePattern, '', $key) == sanitize_title($email['form_conditional_field'])) {
+                            return false;
+                        }
+                        
+                        return true;
+                    }, ARRAY_FILTER_USE_BOTH);
+
+                    $sendMail = !empty($matchingValue);
                 }
+
                 if ($sendMail) {
                     $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
                 }
