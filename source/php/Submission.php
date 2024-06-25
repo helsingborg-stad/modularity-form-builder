@@ -182,14 +182,23 @@ class Submission
             foreach ($notify as $email) {
                 $sendMail = true;
                 if ($email['condition']) {
-                    $conditionalFieldKey = sanitize_title($email['form_conditional_field']);
-                    $sendMail = false;
-                    if (array_key_exists($conditionalFieldKey, $_POST)) {
-                        if ($_POST[$conditionalFieldKey] == $email['form_conditional_field_equals']) {
-                            $sendMail = true;
+                    $pattern = '/^id-\d+-/';
+                    $key = preg_replace($pattern, "", sanitize_title($key), 1);
+                    $matchingValue = array_filter($_POST, function ($value, $key) use ($email, $pattern) {
+                        if ($value != $email['form_conditional_field_equals']) {
+                            return false;
                         }
-                    }
+
+                        if (!preg_replace($pattern, '', $key) == sanitize_title($email['form_conditional_field'])) {
+                            return false;
+                        }
+                        
+                        return true;
+                    }, ARRAY_FILTER_USE_BOTH);
+
+                    $sendMail = !empty($matchingValue);
                 }
+
                 if ($sendMail) {
                     $this->notify($email['email'], $_POST['modularity-form-id'], $submission, $from);
                 }
