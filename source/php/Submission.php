@@ -178,17 +178,18 @@ class Submission
         $autoReplyFrom = $siteMailFromName . ' <no-reply@' . $siteMailFromDomain . '>';
 
         // Send notifications
+        // Pattern for every field name is id-index-fieldName
         if ($notify) {
             foreach ($notify as $email) {
                 $sendMail = true;
                 if ($email['condition']) {
-                    $pattern = '/^id-\d+-/';
-                    $matchingValue = array_filter($_POST, function ($value, $key) use ($email, $pattern) {
+                    $fieldNamePattern = '/^id-\d+-/';
+                    $matchingValue = array_filter($_POST, function ($value, $key) use ($email, $fieldNamePattern) {
                         if ($value != $email['form_conditional_field_equals']) {
                             return false;
                         }
 
-                        if (!preg_replace($pattern, '', $key) == sanitize_title($email['form_conditional_field'])) {
+                        if (!preg_replace($fieldNamePattern, '', $key) == sanitize_title($email['form_conditional_field'])) {
                             return false;
                         }
                         
