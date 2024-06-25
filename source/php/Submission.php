@@ -183,7 +183,6 @@ class Submission
                 $sendMail = true;
                 if ($email['condition']) {
                     $pattern = '/^id-\d+-/';
-                    $key = preg_replace($pattern, "", sanitize_title($key), 1);
                     $matchingValue = array_filter($_POST, function ($value, $key) use ($email, $pattern) {
                         if ($value != $email['form_conditional_field_equals']) {
                             return false;
