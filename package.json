@@ -1,5 +1,5 @@
 {
-    "name": "modularity-form-builder",
+    "name": "@helsingborg-stad/modularity-form-builder",
     "version": "3.2.3",
     "description": "Formbuilder for modularity",
     "main": "",
@@ -22,6 +22,7 @@
         "> 1%",
         "not dead"
     ],
+    "files": ["dist/"],
     "devDependencies": {
         "@babel/core": "^7.17.2",
         "@babel/plugin-proposal-class-properties": "^7.16.7",
