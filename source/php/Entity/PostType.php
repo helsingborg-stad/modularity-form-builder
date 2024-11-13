@@ -2,6 +2,7 @@
 
 namespace ModularityFormBuilder\Entity;
 
+use ModularityFormBuilder\Blade\Blade;
 use ModularityFormBuilder\Helper\NestedFields;
 
 class PostType
@@ -11,7 +12,7 @@ class PostType
     public $namePlural;
     public $args;
 
-    public function __construct($postTypeSlug, $nameSingular, $namePlural, $args = array())
+    public function __construct(private Blade $bladeInstance, $postTypeSlug, $nameSingular, $namePlural, $args = array())
     {
         $this->postTypeSlug = $postTypeSlug;
         $this->nameSingular = $nameSingular;
@@ -295,10 +296,8 @@ class PostType
         if (!$this->isGrantedUser($data['module_id'])) {
             //Error message
             $this->renderBlade(
-                'unauthorized.blade.php',
-                array(
-                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
-                ),
+                'unauthorized',
+                '/admin',
                 array(
                     'title' => __("Access denied", 'modularity-form-builder'),
                     'message' => __("You don't have the sufficient permissions to view this post.", 'modularity-form-builder'),
@@ -328,10 +327,8 @@ class PostType
         if (is_admin() && isset($fields['editable_back_end']) && $fields['editable_back_end'] == true) {
             //Editable
             $this->renderBlade(
-                'form-edit.blade.php',
-                array(
-                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'
-                ),
+                'form-edit',
+                '',
                 $data
             );
         } elseif (self::editableFrontend($post)) {
@@ -348,28 +345,22 @@ class PostType
 
             //Static
             $this->renderBlade(
-                'form-data.blade.php',
-                array(
-                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
-                ),
+                'form-data',
+                '/admin',
                 $data
             );
 
             //Editable
             $this->renderBlade(
-                'form-edit-front.blade.php',
-                array(
-                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views'
-                ),
+                'form-edit-front',
+                "",
                 $data
             );
         } else {
             //Static
             $this->renderBlade(
-                'form-data.blade.php',
-                array(
-                    FORM_BUILDER_MODULE_PATH . 'source/php/Module/views/admin'
-                ),
+                'form-data',
+                '/admin',
                 $data
             );
         }
@@ -529,15 +520,16 @@ class PostType
      * @param array  $path     Array with file paths
      * @param array  $data     Template data
      */
-    public function renderBlade($fileName, $path, $data = array())
+    public function renderBlade(string $viewName, string $path = '', $data = array())
     {
-        add_filter('Municipio/blade/view_paths', array($this, 'addViewPaths'), 2, 1);
-        $template = new \Municipio\template();
-        $view = \Municipio\Helper\Template::locateTemplate($fileName, $path);
-        $view = $template->cleanViewPath($fileName);
-        if (function_exists('render_blade_view')) {
-            echo render_blade_view($view, $data);
-        }
+        $html = $this->bladeInstance->render(
+            $viewName,
+            $data,
+            true,
+            [FORM_BUILDER_MODULE_VIEW_PATH . $path]
+        );
+
+        echo $html;
     }
 
     /**
