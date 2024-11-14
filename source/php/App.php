@@ -2,11 +2,13 @@
 
 namespace ModularityFormBuilder;
 
+use ModularityFormBuilder\Blade\Blade;
+
 class App
 {
     public $postType = 'mod-form';
 
-    public function __construct()
+    public function __construct(private Blade $bladeInstance)
     {
         new Submission();
         new Options();
@@ -41,6 +43,7 @@ class App
     {
         // Default form submission post type
         new Entity\PostType(
+            $this->bladeInstance,
             'form-submissions',
             __('Form submission', 'modularity-form-builder'),
             __('Form submissions', 'modularity-form-builder')
@@ -77,6 +80,7 @@ class App
                 unset($postTypeArr['cap']);
 
                 new Entity\PostType(
+                    $this->bladeInstance,
                     $postTypeArr['name'],
                     $postTypeArr['labels']['singular_name'] ?? $postTypeArr['label'],
                     $postTypeArr['label'],

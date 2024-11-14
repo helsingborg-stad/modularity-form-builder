@@ -7,9 +7,13 @@
  * Author: Kristoffer Svanmark, Sebastian Thulin
  */
 
+use ModularityFormBuilder\Blade\Blade;
+use ComponentLibrary\Init as ComponentLibraryInit;
+
 define('FORM_BUILDER_MODULE_PATH', plugin_dir_path(__FILE__));
 define('FORM_BUILDER_MODULE_URL', plugins_url('', __FILE__));
 define('FORM_BUILDER_MODULE_TEMPLATE_PATH', FORM_BUILDER_MODULE_PATH . 'templates/');
+define('FORM_BUILDER_MODULE_VIEW_PATH', FORM_BUILDER_MODULE_PATH . 'source/php/Module/views');
 
 //Load lang
 load_plugin_textdomain('modularity-form-builder', false, plugin_basename(dirname(__FILE__)) . '/languages');
@@ -18,6 +22,8 @@ require_once FORM_BUILDER_MODULE_PATH . 'Public.php';
 if (file_exists(FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php')) {
     require_once FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php';
 }
+
+$bladeInstance = new Blade(new ComponentLibraryInit([]));
 
 // Acf auto import and export
 add_action('plugins_loaded', function () {
@@ -32,5 +38,5 @@ add_action('plugins_loaded', function () {
 
 // Start application
 if (function_exists('get_field')) {
-    new ModularityFormBuilder\App();
+    new ModularityFormBuilder\App($bladeInstance);
 }
