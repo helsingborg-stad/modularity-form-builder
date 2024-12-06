@@ -22,8 +22,6 @@
             <?php wp_nonce_field('submit', 'modularity-form'); ?>
             <input type="hidden" class="js-no-validation" name="modularity-form-id" value="{{ $ID }}">
             <input type="hidden" class="js-no-validation" name="modularity-form-post-type" value="{{ $submissionPostType }}">
-            <input type="hidden" class="js-no-validation" id="modularity-form-{{ $ID }}-history" name="modularity-form-history" value="">
-            <input type="hidden" class="js-no-validation" id="modularity-form-{{ $ID }}-url" name="modularity-form-url" value="">
             <input type="hidden" class="js-no-validation" id="modularity-gdpr-{{ $ID }}-data" name="modularity-gdpr-data" value="{{$dataStorage}}">
 
             <?php /* These field is not allowed to change. Honeypot function. */ ?>

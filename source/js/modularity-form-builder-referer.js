@@ -82,27 +82,7 @@ export default class ModularityFormBuilderReferer {
                 );
             }
         }
-
-        this.addStorageRefererToDoom();
     };
-
-    /**
-     *  Adding referer URL to doom
-     */
-    addStorageRefererToDoom() {
-    
-        if (document.querySelector("input[name='modularity-form-history']") &&
-            document.querySelector("input[name='modularity-form-history']").length !== 0) {
-            document.querySelector("input[name='modularity-form-history']").value = this.checkStorage(
-                'refUrlStorageHistory'
-            );
-
-            document.querySelector("input[name='modularity-form-url']").value = this.checkStorage(
-                'refUrlStorage'
-            );
-        }
-    };
-
 }
 
 new ModularityFormBuilderReferer();

@@ -364,32 +364,6 @@ class PostType
                 $data
             );
         }
-
-        if (is_admin()) {
-            $indata = (is_array(get_post_meta($post->ID, 'form-data', true))) ? get_post_meta($post->ID, 'form-data', true) : unserialize(\ModularityFormBuilder\App::encryptDecryptData(
-                'decrypt',
-                get_post_meta($post->ID, 'form-data', true)
-            ));
-
-            if (isset($indata['modularity-form-history'])) {
-                echo "<p><strong>" . __('Previous page', 'modularity-form-builder') . "</strong><br />";
-
-                if (trim($indata['modularity-form-history']) !== 'null' && trim($indata['modularity-form-history']) !== 'http://null' && trim($indata['modularity-form-history']) !== 'https://null') {
-                    echo "<a href=\"" . $indata['modularity-form-history'] . "\">" . $indata['modularity-form-history'] . "</a>";
-                } else {
-                    echo __('No Referrer', 'modularity-form-builder');
-                }
-
-                echo "<br /></p>";
-            }
-
-            if (isset($indata['modularity-form-url'])) {
-                echo "<p><strong>" . __(
-                    'Form',
-                    'modularity-form-builder'
-                ) . "</strong><br /><a href=\"" . $indata['modularity-form-url'] . "\">" . $indata['modularity-form-url'] . "</a></p>";
-            }
-        }
     }
 
 

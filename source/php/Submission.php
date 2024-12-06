@@ -86,22 +86,7 @@ class Submission
         $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
         
         // Referer & page url
-        $postReferer = esc_url($_POST['modularity-form-history']);
-        $postFormPage = esc_url($_POST['modularity-form-url']);
-        $checkReferer = url_to_postid($postReferer);
-        $checkFormPage = url_to_postid($postFormPage);
         $dbStorage = sanitize_title($_POST['modularity-gdpr-data']);
-        
-        if (empty($postReferer) || $checkReferer !== 0 && $checkFormPage !== 0) {
-            $formUrl = "\r\n " . __(
-                'Form',
-                'modularity-form-builder'
-            ) . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
-            $refHistory = ($postReferer !== null && $postReferer !== 'null') ? "\r\n" . __(
-                'Previous page',
-                'modularity-form-builder'
-            ) . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>" : '';
-        }
         
         // Save submission
         $submission = wp_insert_post(array(
@@ -120,16 +105,6 @@ class Submission
         
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
-        
-        //The form url
-        if (isset($formUrl)) {
-            update_post_meta($submission, 'modularity-form-url', $formUrl);
-        }
-        
-        //Reference url
-        if (isset($refHistory)) {
-            update_post_meta($submission, 'modularity-form-history', $refHistory);
-        }
         
         // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
@@ -514,8 +489,6 @@ class Submission
             }
         }
 
-        $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
-        $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
         return $formdata;
     }
 
@@ -608,23 +581,8 @@ class Submission
                             $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
                         }
                     }
-                } else {
-                    if ($key === 'modularity-form-history') {
-                        $message .= ($value !== null && $value !== 'null') ? '<strong>' . __(
-                            'Referrer',
-                            'modularity-form-builder'
-                        ) . '</strong><br>' . $value : __(
-                            'No Referrer',
-                            'modularity-form-builder'
-                        );
-                    } else {
-                        if ($key === 'modularity-form-url') {
-                            $message .= '<strong>' . __('Form', 'modularity-form-builder') . '</strong><br>' . $value;
-                        } else {
-                            $message .= '<strong>' . $key . '</strong><br>' . $value;
-                        }
-                    }
                 }
+
                 $i++;
             }
         }
