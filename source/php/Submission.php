@@ -608,11 +608,14 @@ class Submission
                             $message .= (!empty($subvalue)) ? $subvalue . $lineBreak : '';
                         }
                     }
+                } else {
+                    $message .= '<strong>' . $key . '</strong><br>' . $value;
                 }
                 
                 $i++;
             }
         }
+
         if ($messagePrefix) {
             $message = $messagePrefix . '<br><br>' . $message;
         }
