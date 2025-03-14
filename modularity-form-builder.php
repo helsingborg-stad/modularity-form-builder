@@ -16,7 +16,9 @@ define('FORM_BUILDER_MODULE_TEMPLATE_PATH', FORM_BUILDER_MODULE_PATH . 'template
 define('FORM_BUILDER_MODULE_VIEW_PATH', FORM_BUILDER_MODULE_PATH . 'source/php/Module/views');
 
 //Load lang
-load_plugin_textdomain('modularity-form-builder', false, plugin_basename(dirname(__FILE__)) . '/languages');
+add_action('init', function () {
+    load_plugin_textdomain('modularity-form-builder', false, plugin_basename(dirname(__FILE__)) . '/languages');
+});
 
 require_once FORM_BUILDER_MODULE_PATH . 'Public.php';
 if (file_exists(FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php')) {
