@@ -25,10 +25,10 @@ if (file_exists(FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php')) {
     require_once FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php';
 }
 
-$bladeInstance = new Blade(new ComponentLibraryInit([]));
 
 // Acf auto import and export
 add_action('plugins_loaded', function () {
+    $bladeInstance = new Blade(new ComponentLibraryInit([]));
     $acfExportManager = new \AcfExportManager\AcfExportManager();
     $acfExportManager->setTextdomain('modularity-form-builder');
     $acfExportManager->setExportFolder(FORM_BUILDER_MODULE_PATH . 'acf-fields/');
@@ -36,9 +36,9 @@ add_action('plugins_loaded', function () {
         'form' => 'group_58eb301ecb36a',
     ));
     $acfExportManager->import();
+
+    if (function_exists('get_field')) {
+        new ModularityFormBuilder\App($bladeInstance);
+    }
 });
 
-// Start application
-if (function_exists('get_field')) {
-    new ModularityFormBuilder\App($bladeInstance);
-}

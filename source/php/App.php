@@ -14,14 +14,12 @@ class App
         new Options();
 
         // Register Form module
-        add_action('plugins_loaded', function () {
-            if (function_exists('modularity_register_module')) {
-                modularity_register_module(
-                    FORM_BUILDER_MODULE_PATH . 'source/php/Module',
-                    'Form'
-                );
-            }
-        });
+        if (function_exists('modularity_register_module')) {
+            modularity_register_module(
+                FORM_BUILDER_MODULE_PATH . 'source/php/Module',
+                'Form'
+            );
+        }
         add_action('init', array($this, 'registerPostTypes'), 11);
         add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
         add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
