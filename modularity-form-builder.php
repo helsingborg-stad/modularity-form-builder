@@ -36,6 +36,7 @@ add_action('plugins_loaded', function () {
         'form' => 'group_58eb301ecb36a',
     ));
     $acfExportManager->import();
+
     if (function_exists('get_field')) {
         new ModularityFormBuilder\App($bladeInstance);
     }
