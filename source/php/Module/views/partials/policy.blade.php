@@ -14,15 +14,14 @@
         {!! $gdpr_complience_notice_content !!}
     @endtypography
 
-    <label class="checkbox js-policy-acceptance">
-        @option([
-            'type' => 'checkbox',
-            'value' =>  $lang['policy'],
-            'label' => $lang['policy'] . '<span class="u-color__text--danger">*</span>',
-            'required' => true,
-            'classList' => ['u-margin__bottom--3']
-        ])
-        @endoption
-    <label>
+    @option([
+        'type' => 'checkbox',
+        'value' =>  $lang['policy'],
+        'label' => $lang['policy'] . '<span class="u-color__text--danger">*</span>',
+        'required' => true,
+        'classList' => ['u-margin__bottom--3']
+    ])
+    @endoption
+    
 @endif
 
