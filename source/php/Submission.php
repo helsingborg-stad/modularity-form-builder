@@ -514,8 +514,6 @@ class Submission
             }
         }
 
-        $formdata['modularity-form-history'] = $data['modularity-form-history'] ?? '';
-        $formdata['modularity-form-url'] = $data['modularity-form-url'] ?? '';
         return $formdata;
     }
 
