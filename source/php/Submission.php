@@ -92,17 +92,6 @@ class Submission
         $checkFormPage = url_to_postid($postFormPage);
         $dbStorage = sanitize_title($_POST['modularity-gdpr-data']);
         
-        if (empty($postReferer) || $checkReferer !== 0 && $checkFormPage !== 0) {
-            $formUrl = "\r\n " . __(
-                'Form',
-                'modularity-form-builder'
-            ) . "<a href=\"" . $postFormPage . "\" >" . $postFormPage . "</a>";
-            $refHistory = ($postReferer !== null && $postReferer !== 'null') ? "\r\n" . __(
-                'Previous page',
-                'modularity-form-builder'
-            ) . "<a href=\"" . $postReferer . "\" >" . $postReferer . "</a>" : '';
-        }
-        
         // Save submission
         $submission = wp_insert_post(array(
             'post_title' => $postTitle,
@@ -120,16 +109,6 @@ class Submission
         
         update_post_meta($submission, 'modularity-form-id', $_POST['modularity-form-id']);
         update_post_meta($submission, 'modularity-form-referer', strtok($referer, '?'));
-        
-        //The form url
-        if (isset($formUrl)) {
-            update_post_meta($submission, 'modularity-form-url', $formUrl);
-        }
-        
-        //Reference url
-        if (isset($refHistory)) {
-            update_post_meta($submission, 'modularity-form-history', $refHistory);
-        }
         
         // Get emails to send notification to
         $notify = get_field('notify', $_POST['modularity-form-id']);
@@ -657,7 +636,9 @@ class Submission
             $headers[] = 'From: ' . $from;
         }
         $data = self::getSubmissionData($submissionId);
+
         $message = '';
+
         $subject = (get_field('copy_custom_subject', $formId) == true) ? get_field(
             'copy_subject',
             $formId
@@ -665,6 +646,7 @@ class Submission
         $uploadFolder = wp_upload_dir();
         $uploadFolder = $uploadFolder['baseurl'] . '/modularity-form-builder/';
         $i = 0;
+
         foreach ($data as $key => $value) {
             if ($i > 0) {
                 $message .= '<br><br>';
@@ -685,6 +667,7 @@ class Submission
             }
             $i++;
         }
+
         if ($prefix = get_field('sender_copy_message', $formId)) {
             $message = $prefix . '<br><br>' . $message;
         }
@@ -704,6 +687,7 @@ class Submission
             $submissionId,
             $data
         );
+
         if (!wp_mail($email, $subject, $message, $headers)) {
             error_log("Could not send mail copy.");
         }
