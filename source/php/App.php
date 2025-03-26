@@ -33,18 +33,21 @@ class App
         add_action('restrict_manage_posts', array($this, 'formFilter'));
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
-        add_action('wp', array($this, 'scheduleRemoveOldCron'));
-
         add_action($this->scheduledRemoveOldCron, array($this, 'removeOldPostsCron'));
 
         add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
     }
 
-    public function scheduleRemoveOldCron()
+    public static function activatePlugin()
     {
-        if (!wp_next_scheduled($this->scheduledRemoveOldCron)) {
-            wp_schedule_event(strtotime('03:00:00'), 'daily', $this->scheduledRemoveOldCron);
+        if (!wp_next_scheduled(self::$scheduledRemoveOldCron)) {
+            wp_schedule_event(strtotime('03:00:00'), 'daily', self::$scheduledRemoveOldCron);
         }
+    }
+
+    public static function deactivatePlugin()
+    {
+        wp_clear_scheduled_hook(self::$scheduledRemoveOldCron);
     }
 
     public function removeOldPostsCron() {
@@ -57,7 +60,7 @@ class App
                     'before'  => '90 days ago',
                 ),
             ),
-            'posts_per_page' => -1,
+            'posts_per_page' => 2000,
             'fields'         => 'ids',
         );
     
@@ -659,3 +662,7 @@ class App
         wp_enqueue_script('form-builder-js-front');
     }
 }
+
+// Register activation and deactivation hooks
+register_activation_hook(__FILE__, array('ModularityFormBuilder\App', 'activatePlugin'));
+register_deactivation_hook(__FILE__, array('ModularityFormBuilder\App', 'deactivatePlugin'));
