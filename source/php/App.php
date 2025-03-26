@@ -8,12 +8,15 @@ class App
 {
     public $postType = 'mod-form';
     private $savedFormsPostType = 'form-submission';
-    private $scheduledRemoveOldCron = 'mod_form_builder_remove_old_forms';
+    private static $scheduledRemoveOldCron = 'mod_form_builder_remove_old_forms';
 
     public function __construct(private Blade $bladeInstance)
     {
         new Submission();
         new Options();
+
+        $upgradeInstance = new Upgrade();
+        new WpCli($upgradeInstance);
 
         // Register Form module
         if (function_exists('modularity_register_module')) {
@@ -33,7 +36,7 @@ class App
         add_action('restrict_manage_posts', array($this, 'formFilter'));
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
-        add_action($this->scheduledRemoveOldCron, array($this, 'removeOldPostsCron'));
+        add_action(self::$scheduledRemoveOldCron, array($this, 'removeOldPostsCron'));
 
         add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
     }
