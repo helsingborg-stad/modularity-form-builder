@@ -7,6 +7,8 @@ use ModularityFormBuilder\Blade\Blade;
 class App
 {
     public $postType = 'mod-form';
+    private $savedFormsPostType = 'form-submission';
+    private $scheduledRemoveOldCron = 'mod_form_builder_remove_old_forms';
 
     public function __construct(private Blade $bladeInstance)
     {
@@ -31,7 +33,37 @@ class App
         add_action('restrict_manage_posts', array($this, 'formFilter'));
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
+        add_action('wp', array($this, 'scheduleRemoveOldCron'));
+
+        add_action($this->scheduledRemoveOldCron, array($this, 'removeOldPostsCron'));
+
         add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
+    }
+
+    public function scheduleRemoveOldCron()
+    {
+        if (!wp_next_scheduled($this->scheduledRemoveOldCron)) {
+            wp_schedule_event(strtotime('03:00:00'), 'daily', $this->scheduledRemoveOldCron);
+        }
+    }
+
+    public function removeOldPostsCron() {
+        $args = array(
+            'post_type'      => $this->savedFormsPostType,
+            'post_status'    => 'any',
+            'date_query'     => array(
+                array(
+                    'column' => 'post_date',
+                    'before'  => '90 days ago',
+                ),
+            ),
+            'posts_per_page' => -1,
+            'fields'         => 'ids',
+        );
+    
+        foreach (get_posts($args) as $postId) {
+            wp_delete_post($postId, true);
+        }
     }
 
     /**
@@ -42,7 +74,7 @@ class App
         // Default form submission post type
         new Entity\PostType(
             $this->bladeInstance,
-            'form-submissions',
+            $this->savedFormsPostType,
             __('Form submission', 'modularity-form-builder'),
             __('Form submissions', 'modularity-form-builder')
         );
