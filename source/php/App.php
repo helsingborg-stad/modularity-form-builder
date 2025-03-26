@@ -7,11 +7,16 @@ use ModularityFormBuilder\Blade\Blade;
 class App
 {
     public $postType = 'mod-form';
+    private $savedFormsPostType = 'form-submission';
+    private static $scheduledRemoveOldCron = 'mod_form_builder_remove_old_forms';
 
     public function __construct(private Blade $bladeInstance)
     {
         new Submission();
         new Options();
+
+        $upgradeInstance = new Upgrade();
+        new WpCli($upgradeInstance);
 
         // Register Form module
         if (function_exists('modularity_register_module')) {
@@ -31,7 +36,40 @@ class App
         add_action('restrict_manage_posts', array($this, 'formFilter'));
         add_action('admin_head', array($this, 'jsonSelectedValues'));
 
+        add_action(self::$scheduledRemoveOldCron, array($this, 'removeOldPostsCron'));
+
         add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
+    }
+
+    public static function activatePlugin()
+    {
+        if (!wp_next_scheduled(self::$scheduledRemoveOldCron)) {
+            wp_schedule_event(strtotime('03:00:00'), 'daily', self::$scheduledRemoveOldCron);
+        }
+    }
+
+    public static function deactivatePlugin()
+    {
+        wp_clear_scheduled_hook(self::$scheduledRemoveOldCron);
+    }
+
+    public function removeOldPostsCron() {
+        $args = array(
+            'post_type'      => $this->savedFormsPostType,
+            'post_status'    => 'any',
+            'date_query'     => array(
+                array(
+                    'column' => 'post_date',
+                    'before'  => '90 days ago',
+                ),
+            ),
+            'posts_per_page' => 2000,
+            'fields'         => 'ids',
+        );
+    
+        foreach (get_posts($args) as $postId) {
+            wp_delete_post($postId, true);
+        }
     }
 
     /**
@@ -42,7 +80,7 @@ class App
         // Default form submission post type
         new Entity\PostType(
             $this->bladeInstance,
-            'form-submissions',
+            $this->savedFormsPostType,
             __('Form submission', 'modularity-form-builder'),
             __('Form submissions', 'modularity-form-builder')
         );
@@ -627,3 +665,7 @@ class App
         wp_enqueue_script('form-builder-js-front');
     }
 }
+
+// Register activation and deactivation hooks
+register_activation_hook(__FILE__, array('ModularityFormBuilder\App', 'activatePlugin'));
+register_deactivation_hook(__FILE__, array('ModularityFormBuilder\App', 'deactivatePlugin'));
