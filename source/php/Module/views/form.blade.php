@@ -49,7 +49,7 @@
                         @notice([
                             'type' => 'warning',
                             'message' => [
-                                'text' =>  $reason,
+                                'text' =>  strip_tags($reason),
                                 'size' => 'sm'
                             ],
                             'icon' => [
@@ -90,7 +90,7 @@
                     @notice([
                         'type' => 'success',
                         'message' => [
-                            'text' =>  $subimission_notice ? $subimission_notice :  __('The for was submitted, thank you!', 'modularity-form-builder'),
+                            'text' => strip_tags($subimission_notice) ? strip_tags($subimission_notice) :  __('The for was submitted, thank you!', 'modularity-form-builder'),
                             'size' => 'sm'
                         ],
                         'classList' => [
