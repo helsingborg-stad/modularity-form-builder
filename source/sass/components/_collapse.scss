@@ -12,4 +12,8 @@
     &__icon {
         float: right;
     }
+
+    .c-button .c-button__label {
+        justify-content: start;
+    }
 }
