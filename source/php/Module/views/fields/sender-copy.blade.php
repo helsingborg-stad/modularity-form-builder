@@ -1,10 +1,18 @@
 <div class="o-grid">
     <div class="o-grid-12@md">
         <div class="form-group">
-            <label class="checkbox">
-                <input type="checkbox" name="sender-copy" value="on"> 
-                <?php _e('Send copy of this submission to my email address', 'modularity-form-builder'); ?>
-            </label>
+            @option([
+                'type' => 'checkbox',
+                'value' => 'on',
+                'label' => __('Send copy of this submission to my email address', 'modularity-form-builder'),
+                'attributeList' => [
+                    'sender-copy'
+                ]
+            ])
+            @endoption
         </div>
     </div>
 </div>
+
+
+

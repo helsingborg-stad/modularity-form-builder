@@ -79,8 +79,13 @@
                     <div class="o-grid-12@md">
                         @includeWhen($submission_public_act || $gdpr_complience_notice, 'partials.policy')
                     
-                        <button type="submit" class="c-button c-button__filled c-button__filled--primary c-button--md">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
-                        
+                        @button([
+                            'color' => 'primary',
+                            'icon' => 'send',
+                            'type' => 'submit',
+                            'text' => $submit_button_text ? $submit_button_text : 'Send',
+                        ])
+                        @endbutton    
                     </div>
                 </div>
                 @endform
