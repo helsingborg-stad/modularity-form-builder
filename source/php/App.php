@@ -7,7 +7,7 @@ use ModularityFormBuilder\Blade\Blade;
 class App
 {
     public $postType = 'mod-form';
-    private $savedFormsPostType = 'form-submission';
+    private $savedFormsPostType = 'form-submissions';
     private static $scheduledRemoveOldCron = 'mod_form_builder_remove_old_forms';
 
     public function __construct(private Blade $bladeInstance)
