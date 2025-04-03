@@ -2,7 +2,7 @@
 
 namespace ModularityFormBuilder\Upgrade\Version;
 
-use Modularity\Upgrade\Version\VersionInterface;
+use ModularityFormBuilder\Upgrade\Version\VersionInterface;
 use WP_CLI;
 
 class V1 implements VersionInterface {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modularity\Upgrade\Version;
+namespace ModularityFormBuilder\Upgrade\Version;
 
 /**
  * Interface MigratorInterface
