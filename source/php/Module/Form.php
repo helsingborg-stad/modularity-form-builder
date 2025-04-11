@@ -128,6 +128,7 @@ class Form extends \Modularity\Module
 
             if ($field['acf_fc_layout'] === 'file_upload') {
                 $data['hasFileUpload'] = true;
+                $field['button_remove_label'] = __('Remove file', 'modularity-form-builder');
             }
         }
 
