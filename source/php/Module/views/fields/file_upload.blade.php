@@ -8,6 +8,7 @@
                     : '',
                 'buttonLabel' => $field['button_label'],
                 'buttonRemoveLabel' => $field['button_remove_label'] ?? '',
+                'buttonDropLabel' => $field['button_drop_label'] ?? '',
                 'required' => $field['required'] ? true : false,
                 'multiple' => $field['type'] === 'multiple' ? true : false,
                 'label' => $field['label'],

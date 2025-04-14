@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Form Builder\n"
-"POT-Creation-Date: 2025-04-14 13:11+0200\n"
-"PO-Revision-Date: 2025-04-14 13:12+0200\n"
+"POT-Creation-Date: 2025-04-14 13:17+0200\n"
+"PO-Revision-Date: 2025-04-14 13:18+0200\n"
 "Last-Translator: Anna Johansson <anna@thehappyhipster.se>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -813,7 +813,7 @@ msgstr "Visa alla"
 msgid "Edit"
 msgstr "Redigera"
 
-#: source/php/Entity/PostType.php:64 source/php/Module/Form.php:386
+#: source/php/Entity/PostType.php:64 source/php/Module/Form.php:387
 msgid "Are you sure you want to delete this file?"
 msgstr "Är du säker på att du vill radera den här filen?"
 
@@ -1012,64 +1012,68 @@ msgstr "Max antal tillåtna filer:"
 msgid "Remove file"
 msgstr "Ta bort"
 
-#: source/php/Module/Form.php:267
+#: source/php/Module/Form.php:132
+msgid "Drop file(s) here"
+msgstr "Släpp fil(er) här"
+
+#: source/php/Module/Form.php:268
 msgid "Responses"
 msgstr "Svar"
 
-#: source/php/Module/Form.php:296
+#: source/php/Module/Form.php:297
 msgid "There is no submissions for this form."
 msgstr "Det finns inga svar på detta formulär."
 
-#: source/php/Module/Form.php:301
+#: source/php/Module/Form.php:302
 #, php-format
 msgid "There is %d submissions to this form."
 msgstr "Det finns %d svar på det här formuläret."
 
-#: source/php/Module/Form.php:303
+#: source/php/Module/Form.php:304
 msgid "View submissions"
 msgstr "Visa svar"
 
-#: source/php/Module/Form.php:304
+#: source/php/Module/Form.php:305
 msgid "Export csv"
 msgstr "Exportera csv"
 
-#: source/php/Module/Form.php:334
+#: source/php/Module/Form.php:335
 msgid "You need to add a valid E-mail!"
 msgstr "Du måste ange en giltig e-postadress!"
 
-#: source/php/Module/Form.php:335
+#: source/php/Module/Form.php:336
 msgid "You need to add a valid date!"
 msgstr "Du måste ange ett giltigt datum!"
 
-#: source/php/Module/Form.php:336
+#: source/php/Module/Form.php:337
 msgid "Must be a number."
 msgstr "Måste vara ett nummer."
 
-#: source/php/Module/Form.php:337
+#: source/php/Module/Form.php:338
 msgid "Please enter a valid phone number."
 msgstr "Var god och ange ett giltigt telefonnummer."
 
-#: source/php/Module/Form.php:338
+#: source/php/Module/Form.php:339
 msgid "Please enter a password!"
 msgstr "Var god och ange ett lösenord!"
 
-#: source/php/Module/Form.php:339
+#: source/php/Module/Form.php:340
 msgid "Please enter a valid month."
 msgstr "Var god och ange en giltig månad."
 
-#: source/php/Module/Form.php:340
+#: source/php/Module/Form.php:341
 msgid "Please enter a valid week."
 msgstr "Var god och ange en giltig vecka."
 
-#: source/php/Module/Form.php:341
+#: source/php/Module/Form.php:342
 msgid "Please enter a valid time."
 msgstr "Var god och ange en giltig tid."
 
-#: source/php/Module/Form.php:342
+#: source/php/Module/Form.php:343
 msgid "Please enter a valid URL."
 msgstr "Var god och ange en giltig URL."
 
-#: source/php/Module/Form.php:385
+#: source/php/Module/Form.php:386
 msgid "Please create radio selections before adding conditional logic."
 msgstr ""
 "Vänligen skapa formulärfält med radioknappar innan du lägger till "
