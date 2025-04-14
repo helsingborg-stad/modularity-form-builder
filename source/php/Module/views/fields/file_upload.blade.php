@@ -16,11 +16,6 @@
                 'classList' => [$field['required'] ? 'data-js-required' : ''],
             ])
             @endfileinput
-
-            @typography(['element' => 'p', 'variant' => 'meta'])
-                {{ $field['maxFilesNotice'] }}
-            @endtypography
-
         </div>
     </div>
 </div>
