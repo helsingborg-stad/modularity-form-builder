@@ -130,6 +130,10 @@ class Form extends \Modularity\Module
                 $data['hasFileUpload'] = true;
                 $field['button_remove_label'] = __('Remove file', 'modularity-form-builder');
                 $field['button_drop_label'] = __('Drop file(s) here', 'modularity-form-builder');
+
+                if(empty($field['button_label'])) {
+                    $field['button_label'] = __('Select file', 'modularity-form-builder');
+                }
             }
         }
 
