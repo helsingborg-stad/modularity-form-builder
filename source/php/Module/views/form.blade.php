@@ -1,13 +1,17 @@
-@card([
-    'classList' => [$classes ]
+@group([
+    'direction' => 'vertical',
+    'classList' => [$classes]
 ])
     @if (!$hideTitle && !empty($post_title))
-        <div class="c-card__header">
-            <h4>{!! apply_filters('the_title', $post_title) !!}</h4>
-        </div>
+        @typography([
+            'element' => 'h2',
+            'variant' => 'h2',
+        ])
+            {!! apply_filters('the_title', $post_title) !!}
+        @endtypography
     @endif
 
-    <div class="c-card__body">
+    <div class="o-container o-container--remove-spacing">
         @if(!$formWasSent)
             @form([
                 'errorMessage' => $lang['errorMessage'],
@@ -115,4 +119,4 @@
             </div>
         @endif
     </div>
-@endcard
+@endgroup
