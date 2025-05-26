@@ -124,6 +124,11 @@
                                 'id' => '',
                             ),
                             'layout' => 'row',
+                            'acfe_seamless_style' => 0,
+                            'acfe_group_modal' => 0,
+                            'acfe_group_modal_close' => 0,
+                            'acfe_group_modal_button' => '',
+                            'acfe_group_modal_size' => 'large',
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_5a0ac34055126',
@@ -342,11 +347,26 @@
                                     'maxlength' => '',
                                 ),
                             ),
-                            'acfe_seamless_style' => 0,
-                            'acfe_group_modal' => 0,
-                            'acfe_group_modal_close' => 0,
-                            'acfe_group_modal_button' => '',
-                            'acfe_group_modal_size' => 'large',
+                        ),
+                        3 => array(
+                            'key' => 'field_683483f668d3e',
+                            'label' => __('Display using columns', 'modularity-form-builder'),
+                            'name' => 'columns',
+                            'aria-label' => '',
+                            'type' => 'true_false',
+                            'instructions' => __('This is generally not recommended but available for legacy reasons', 'modularity-form-builder'),
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'message' => __('Yes', 'modularity-form-builder'),
+                            'default_value' => 1,
+                            'ui' => 0,
+                            'ui_on_text' => '',
+                            'ui_off_text' => '',
                         ),
                     ),
                     'min' => '',
@@ -2189,10 +2209,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                                                                background: #f1f1f157;
-                                                                border-left: 4px solid #b2b500;
-                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                                                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+                                                                                                                                background: #f1f1f157;
+                                                                                                                                border-left: 4px solid #b2b500;
+                                                                                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                                                                                                                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                     'parent_repeater' => 'field_58eb6ee89aa7c',
@@ -2636,7 +2656,7 @@
                 'id' => '',
             ),
             'choices' => array(
-                'form-submissions' => __('Formulärsvar', 'modularity-form-builder'),
+                'form-submissions' => __('Form submissions', 'modularity-form-builder'),
                 'event' => __('Händelse', 'modularity-form-builder'),
                 'ticket' => __('Ärende', 'modularity-form-builder'),
                 'listing' => __('Lista', 'modularity-form-builder'),
@@ -2645,6 +2665,11 @@
                 'projekt' => __('Projekt', 'modularity-form-builder'),
                 'idea' => __('Ideas', 'modularity-form-builder'),
                 'news' => __('News', 'modularity-form-builder'),
+                'nyheter' => __('Nyheter', 'modularity-form-builder'),
+                'jag-ar' => __('Jag är', 'modularity-form-builder'),
+                'rss-demo' => __('RSS-Demo', 'modularity-form-builder'),
+                'rss-feed' => __('RSS-Feed', 'modularity-form-builder'),
+                'area' => __('Area', 'modularity-form-builder'),
             ),
             'default_value' => __('form-submissions', 'modularity-form-builder'),
             'allow_null' => 0,
@@ -2902,6 +2927,27 @@
             ),
         ),
         1 => array(
+            0 => array(
+                'param' => 'block',
+                'operator' => '==',
+                'value' => 'all',
+            ),
+        ),
+        2 => array(
+            0 => array(
+                'param' => 'block',
+                'operator' => '==',
+                'value' => 'all',
+            ),
+        ),
+        3 => array(
+            0 => array(
+                'param' => 'block',
+                'operator' => '==',
+                'value' => 'all',
+            ),
+        ),
+        4 => array(
             0 => array(
                 'param' => 'block',
                 'operator' => '==',
