@@ -106,6 +106,12 @@ class Form extends \Modularity\Module
                 if (!empty($field['custom_sender_labels']['add_sender_labels'])) {
                     $field['labels'] = array_merge($field['labels'], array_filter($field['custom_sender_labels']));
                 }
+                
+                // Legacy support for columns, default to true because of legacy setting
+                $field['columns'] = isset($field['columns']) && is_bool($field['columns']) ? $field['columns'] : true;
+                $field['gridClass'] = $field['columns'] === true
+                    ? 'o-grid-6@md'
+                    : 'o-grid';
             }
 
             if ($field['acf_fc_layout'] === 'radio') {
