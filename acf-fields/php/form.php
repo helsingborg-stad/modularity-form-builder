@@ -1,7 +1,9 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group(array(
     'key' => 'group_58eb301ecb36a',
     'title' => __('Form', 'modularity-form-builder'),
     'fields' => array(
@@ -124,6 +126,11 @@
                                 'id' => '',
                             ),
                             'layout' => 'row',
+                            'acfe_seamless_style' => 0,
+                            'acfe_group_modal' => 0,
+                            'acfe_group_modal_close' => 0,
+                            'acfe_group_modal_button' => '',
+                            'acfe_group_modal_size' => 'large',
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_5a0ac34055126',
@@ -342,11 +349,6 @@
                                     'maxlength' => '',
                                 ),
                             ),
-                            'acfe_seamless_style' => 0,
-                            'acfe_group_modal' => 0,
-                            'acfe_group_modal_close' => 0,
-                            'acfe_group_modal_button' => '',
-                            'acfe_group_modal_size' => 'large',
                         ),
                     ),
                     'min' => '',
@@ -2189,10 +2191,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                                                                background: #f1f1f157;
-                                                                border-left: 4px solid #b2b500;
-                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                                                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+                                                                                                                                background: #f1f1f157;
+                                                                                                                                border-left: 4px solid #b2b500;
+                                                                                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                                                                                                                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                     'parent_repeater' => 'field_58eb6ee89aa7c',
@@ -2636,7 +2638,7 @@
                 'id' => '',
             ),
             'choices' => array(
-                'form-submissions' => __('Formulärsvar', 'modularity-form-builder'),
+                'form-submissions' => __('Form submissions', 'modularity-form-builder'),
                 'event' => __('Händelse', 'modularity-form-builder'),
                 'ticket' => __('Ärende', 'modularity-form-builder'),
                 'listing' => __('Lista', 'modularity-form-builder'),
@@ -2645,6 +2647,11 @@
                 'projekt' => __('Projekt', 'modularity-form-builder'),
                 'idea' => __('Ideas', 'modularity-form-builder'),
                 'news' => __('News', 'modularity-form-builder'),
+                'nyheter' => __('Nyheter', 'modularity-form-builder'),
+                'jag-ar' => __('Jag är', 'modularity-form-builder'),
+                'rss-demo' => __('RSS-Demo', 'modularity-form-builder'),
+                'rss-feed' => __('RSS-Feed', 'modularity-form-builder'),
+                'area' => __('Area', 'modularity-form-builder'),
             ),
             'default_value' => __('form-submissions', 'modularity-form-builder'),
             'allow_null' => 0,
@@ -2697,6 +2704,26 @@
             'ui_off_text' => '',
         ),
         26 => array(
+            'key' => 'field_68399d1b76506',
+            'label' => __('Visa i vanlig behållare (ej kort)', 'modularity-form-builder'),
+            'name' => 'no_card_container',
+            'aria-label' => '',
+            'type' => 'true_false',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '50',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => '',
+            'default_value' => 0,
+            'ui' => 0,
+            'ui_on_text' => '',
+            'ui_off_text' => '',
+        ),
+        27 => array(
             'key' => 'field_5b51a469880c0',
             'label' => __('GDPR & Confidentiality', 'modularity-form-builder'),
             'name' => '',
@@ -2713,7 +2740,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        27 => array(
+        28 => array(
             'key' => 'field_59df53ac189b8',
             'label' => __('Notis om allmän handling', 'modularity-form-builder'),
             'name' => 'submission_public_act',
@@ -2733,7 +2760,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        28 => array(
+        29 => array(
             'key' => 'field_5b51c75ca46d1',
             'label' => __('Public act content', 'modularity-form-builder'),
             'name' => 'submission_public_act_content',
@@ -2762,7 +2789,7 @@
             'new_lines' => '',
             'acfe_textarea_code' => 0,
         ),
-        29 => array(
+        30 => array(
             'key' => 'field_5b3c8d3f4e20a',
             'label' => __('GDPR överensstämmelsemeddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice',
@@ -2782,7 +2809,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        30 => array(
+        31 => array(
             'key' => 'field_5b3c8e0a6e7f2',
             'label' => __('Innehåll för GDPR meddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice_content',
@@ -2810,7 +2837,7 @@
             'media_upload' => 0,
             'delay' => 0,
         ),
-        31 => array(
+        32 => array(
             'key' => 'field_5b2a3840ff029',
             'label' => __('Databaslagring', 'modularity-form-builder'),
             'name' => 'db_storage',
@@ -2830,7 +2857,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        32 => array(
+        33 => array(
             'key' => 'field_5b3384dbf9cac',
             'label' => __('Användarbegränsning', 'modularity-form-builder'),
             'name' => 'user_restriction',
@@ -2858,7 +2885,7 @@
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        33 => array(
+        34 => array(
             'key' => 'field_5b338525f9cad',
             'label' => __('Betrodda användare', 'modularity-form-builder'),
             'name' => 'granted_users',
@@ -2924,4 +2951,5 @@
     'acfe_meta' => '',
     'acfe_note' => '',
 ));
-}
+
+}
