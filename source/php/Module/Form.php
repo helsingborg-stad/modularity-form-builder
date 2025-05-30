@@ -75,6 +75,7 @@ class Form extends \Modularity\Module
       
         $data['dataStorage']        = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
         $data['showFormLang']       = __('Show form', 'modularity-form-builder');
+        $data['showAsCard']         = isset($data['no_card_container']) && $data['no_card_container'] ? false : true;
 
         $data['lang'] = [
             'errorMessage' => __('Something went wrong. Please look over the provided information and try again.', 'modularity-form-builder'),
