@@ -1,7 +1,9 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group(array(
     'key' => 'group_58eb301ecb36a',
     'title' => __('Form', 'modularity-form-builder'),
     'fields' => array(
@@ -2930,27 +2932,6 @@
             0 => array(
                 'param' => 'block',
                 'operator' => '==',
-                'value' => 'all',
-            ),
-        ),
-        2 => array(
-            0 => array(
-                'param' => 'block',
-                'operator' => '==',
-                'value' => 'all',
-            ),
-        ),
-        3 => array(
-            0 => array(
-                'param' => 'block',
-                'operator' => '==',
-                'value' => 'all',
-            ),
-        ),
-        4 => array(
-            0 => array(
-                'param' => 'block',
-                'operator' => '==',
                 'value' => 'acf/form',
             ),
         ),
@@ -2970,4 +2951,5 @@
     'acfe_meta' => '',
     'acfe_note' => '',
 ));
-}
+
+}

@@ -2907,27 +2907,6 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "all"
-            }
-        ],
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "all"
-            }
-        ],
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "all"
-            }
-        ],
-        [
-            {
-                "param": "block",
-                "operator": "==",
                 "value": "acf\/form"
             }
         ]
@@ -2947,4 +2926,4 @@
     "acfe_meta": "",
     "acfe_note": ""
 }]
-
+
