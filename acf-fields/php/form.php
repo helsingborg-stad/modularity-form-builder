@@ -21,6 +21,7 @@
             ),
             'placement' => 'top',
             'endpoint' => 0,
+            'selected' => 0,
         ),
         1 => array(
             'key' => 'field_58eb302883a68',
@@ -124,6 +125,11 @@
                                 'id' => '',
                             ),
                             'layout' => 'row',
+                            'acfe_seamless_style' => 0,
+                            'acfe_group_modal' => 0,
+                            'acfe_group_modal_close' => 0,
+                            'acfe_group_modal_button' => '',
+                            'acfe_group_modal_size' => 'large',
                             'sub_fields' => array(
                                 0 => array(
                                     'key' => 'field_5a0ac34055126',
@@ -342,11 +348,6 @@
                                     'maxlength' => '',
                                 ),
                             ),
-                            'acfe_seamless_style' => 0,
-                            'acfe_group_modal' => 0,
-                            'acfe_group_modal_close' => 0,
-                            'acfe_group_modal_button' => '',
-                            'acfe_group_modal_size' => 'large',
                         ),
                     ),
                     'min' => '',
@@ -479,6 +480,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                         5 => array(
                             'key' => 'field_5a1be0449d8b8',
@@ -603,6 +606,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                         3 => array(
                             'key' => 'field_58eb572440304',
@@ -890,6 +895,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                         13 => array(
                             'key' => 'field_5a18388b007a2',
@@ -1095,6 +1102,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                     ),
                     'min' => '',
@@ -1272,6 +1281,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                     ),
                     'min' => '',
@@ -1449,6 +1460,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                     ),
                     'min' => '',
@@ -1746,6 +1759,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                     ),
                     'min' => '',
@@ -1838,6 +1853,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                     ),
                     'min' => '',
@@ -1948,6 +1965,8 @@
                             'placeholder' => '',
                             'allow_custom' => 0,
                             'search_placeholder' => '',
+                            'create_options' => 0,
+                            'save_options' => 0,
                         ),
                     ),
                     'min' => '',
@@ -2027,6 +2046,7 @@
             ),
             'placement' => 'top',
             'endpoint' => 0,
+            'selected' => 0,
         ),
         3 => array(
             'key' => 'field_58eb3700191e7',
@@ -2084,6 +2104,7 @@
             ),
             'placement' => 'top',
             'endpoint' => 0,
+            'selected' => 0,
         ),
         6 => array(
             'key' => 'field_59a4259acfea0',
@@ -2189,10 +2210,10 @@
                         'id' => '',
                     ),
                     'message' => __('<div style="margin: 5px 0 15px;
-                                                                background: #f1f1f157;
-                                                                border-left: 4px solid #b2b500;
-                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-                                                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
+                                                                                                                                background: #f1f1f157;
+                                                                                                                                border-left: 4px solid #b2b500;
+                                                                                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+                                                                                                                                padding: 10px;">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren\'t fulfilled.</div>', 'modularity-form-builder'),
                     'new_lines' => '',
                     'esc_html' => 0,
                     'parent_repeater' => 'field_58eb6ee89aa7c',
@@ -2231,6 +2252,8 @@
                     'parent_repeater' => 'field_58eb6ee89aa7c',
                     'allow_custom' => 0,
                     'search_placeholder' => '',
+                    'create_options' => 0,
+                    'save_options' => 0,
                 ),
                 4 => array(
                     'key' => 'field_5a55db0812774',
@@ -2266,6 +2289,8 @@
                     'parent_repeater' => 'field_58eb6ee89aa7c',
                     'allow_custom' => 0,
                     'search_placeholder' => '',
+                    'create_options' => 0,
+                    'save_options' => 0,
                 ),
             ),
         ),
@@ -2322,7 +2347,7 @@
             'label' => __('Meddelande i notis', 'modularity-form-builder'),
             'name' => 'notification_message',
             'aria-label' => '',
-            'type' => 'wysiwyg',
+            'type' => 'textarea',
             'instructions' => '',
             'required' => 0,
             'conditional_logic' => 0,
@@ -2331,11 +2356,13 @@
                 'class' => '',
                 'id' => '',
             ),
-            'tabs' => 'all',
-            'toolbar' => 'full',
-            'media_upload' => 1,
             'default_value' => '',
-            'delay' => 0,
+            'acfe_textarea_code' => 0,
+            'maxlength' => '',
+            'allow_in_bindings' => 0,
+            'rows' => '',
+            'placeholder' => '',
+            'new_lines' => '',
         ),
         11 => array(
             'key' => 'field_58f5b1a066797',
@@ -2373,6 +2400,7 @@
             ),
             'placement' => 'top',
             'endpoint' => 0,
+            'selected' => 0,
         ),
         13 => array(
             'key' => 'field_58f5b1c266798',
@@ -2499,6 +2527,7 @@
             ),
             'placement' => 'top',
             'endpoint' => 0,
+            'selected' => 0,
         ),
         18 => array(
             'key' => 'field_58f5be7475dbf',
@@ -2592,6 +2621,7 @@
             ),
             'placement' => 'top',
             'endpoint' => 0,
+            'selected' => 0,
         ),
         22 => array(
             'key' => 'field_5a1837b50079f',
@@ -2655,6 +2685,8 @@
             'placeholder' => '',
             'allow_custom' => 0,
             'search_placeholder' => '',
+            'create_options' => 0,
+            'save_options' => 0,
         ),
         24 => array(
             'key' => 'field_5a12ae16f9445',
@@ -2712,6 +2744,7 @@
             ),
             'placement' => 'top',
             'endpoint' => 0,
+            'selected' => 0,
         ),
         27 => array(
             'key' => 'field_59df53ac189b8',
