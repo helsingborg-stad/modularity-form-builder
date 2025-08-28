@@ -344,6 +344,26 @@
                                     "maxlength": ""
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_683483f668d3e",
+                            "label": "Display using columns",
+                            "name": "columns",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "This is generally not recommended but available for legacy reasons",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Yes",
+                            "default_value": 1,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
