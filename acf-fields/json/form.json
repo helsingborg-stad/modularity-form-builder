@@ -121,6 +121,11 @@
                                 "id": ""
                             },
                             "layout": "row",
+                            "acfe_seamless_style": 0,
+                            "acfe_group_modal": 0,
+                            "acfe_group_modal_close": 0,
+                            "acfe_group_modal_button": "",
+                            "acfe_group_modal_size": "large",
                             "sub_fields": [
                                 {
                                     "key": "field_5a0ac34055126",
@@ -338,12 +343,7 @@
                                     "append": "",
                                     "maxlength": ""
                                 }
-                            ],
-                            "acfe_seamless_style": 0,
-                            "acfe_group_modal": 0,
-                            "acfe_group_modal_close": 0,
-                            "acfe_group_modal_button": "",
-                            "acfe_group_modal_size": "large"
+                            ]
                         }
                     ],
                     "min": "",
@@ -2172,7 +2172,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<div style=\"margin: 5px 0 15px;\r\n                                background: #f1f1f157;\r\n                                border-left: 4px solid #b2b500;\r\n                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
+                    "message": "<div style=\"margin: 5px 0 15px;\r\n                                                                background: #f1f1f157;\r\n                                                                border-left: 4px solid #b2b500;\r\n                                                                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);\r\n                                                                padding: 10px;\">Conditional fields must be a multi-choise field that is required to fill in and lacks conditional arguments. Note that you may not get email notfications if the requirements aren't fulfilled.<\/div>",
                     "new_lines": "",
                     "esc_html": 0,
                     "parent_repeater": "field_58eb6ee89aa7c"
@@ -2614,7 +2614,7 @@
                 "id": ""
             },
             "choices": {
-                "form-submissions": "Formul\u00e4rsvar",
+                "form-submissions": "Form submissions",
                 "event": "H\u00e4ndelse",
                 "ticket": "\u00c4rende",
                 "listing": "Lista",
@@ -2622,7 +2622,12 @@
                 "johan-test123": "Johan-test123",
                 "projekt": "Projekt",
                 "idea": "Ideas",
-                "news": "News"
+                "news": "News",
+                "nyheter": "Nyheter",
+                "jag-ar": "Jag \u00e4r",
+                "rss-demo": "RSS-Demo",
+                "rss-feed": "RSS-Feed",
+                "area": "Area"
             },
             "default_value": "form-submissions",
             "allow_null": 0,
@@ -2658,6 +2663,26 @@
             "key": "field_5a12afecf9446",
             "label": "Redigerbar f\u00f6r redakt\u00f6r",
             "name": "editable_back_end",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_68399d1b76506",
+            "label": "Visa i vanlig beh\u00e5llare (ej kort)",
+            "name": "no_card_container",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -2901,4 +2926,4 @@
     "acfe_meta": "",
     "acfe_note": ""
 }]
-
+
