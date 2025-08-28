@@ -2724,6 +2724,26 @@ if (function_exists('acf_add_local_field_group')) {
             'ui_off_text' => '',
         ),
         26 => array(
+            'key' => 'field_68399d1b76506',
+            'label' => __('Visa i vanlig behållare (ej kort)', 'modularity-form-builder'),
+            'name' => 'no_card_container',
+            'aria-label' => '',
+            'type' => 'true_false',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '50',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => '',
+            'default_value' => 0,
+            'ui' => 0,
+            'ui_on_text' => '',
+            'ui_off_text' => '',
+        ),
+        27 => array(
             'key' => 'field_5b51a469880c0',
             'label' => __('GDPR & Confidentiality', 'modularity-form-builder'),
             'name' => '',
@@ -2740,7 +2760,7 @@ if (function_exists('acf_add_local_field_group')) {
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        27 => array(
+        28 => array(
             'key' => 'field_59df53ac189b8',
             'label' => __('Notis om allmän handling', 'modularity-form-builder'),
             'name' => 'submission_public_act',
@@ -2760,7 +2780,7 @@ if (function_exists('acf_add_local_field_group')) {
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        28 => array(
+        29 => array(
             'key' => 'field_5b51c75ca46d1',
             'label' => __('Public act content', 'modularity-form-builder'),
             'name' => 'submission_public_act_content',
@@ -2789,7 +2809,7 @@ if (function_exists('acf_add_local_field_group')) {
             'new_lines' => '',
             'acfe_textarea_code' => 0,
         ),
-        29 => array(
+        30 => array(
             'key' => 'field_5b3c8d3f4e20a',
             'label' => __('GDPR överensstämmelsemeddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice',
@@ -2809,7 +2829,7 @@ if (function_exists('acf_add_local_field_group')) {
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        30 => array(
+        31 => array(
             'key' => 'field_5b3c8e0a6e7f2',
             'label' => __('Innehåll för GDPR meddelande', 'modularity-form-builder'),
             'name' => 'gdpr_complience_notice_content',
@@ -2837,7 +2857,7 @@ if (function_exists('acf_add_local_field_group')) {
             'media_upload' => 0,
             'delay' => 0,
         ),
-        31 => array(
+        32 => array(
             'key' => 'field_5b2a3840ff029',
             'label' => __('Databaslagring', 'modularity-form-builder'),
             'name' => 'db_storage',
@@ -2857,7 +2877,7 @@ if (function_exists('acf_add_local_field_group')) {
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        32 => array(
+        33 => array(
             'key' => 'field_5b3384dbf9cac',
             'label' => __('Användarbegränsning', 'modularity-form-builder'),
             'name' => 'user_restriction',
@@ -2885,7 +2905,7 @@ if (function_exists('acf_add_local_field_group')) {
             'ui_on_text' => '',
             'ui_off_text' => '',
         ),
-        33 => array(
+        34 => array(
             'key' => 'field_5b338525f9cad',
             'label' => __('Betrodda användare', 'modularity-form-builder'),
             'name' => 'granted_users',

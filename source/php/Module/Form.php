@@ -75,6 +75,7 @@ class Form extends \Modularity\Module
       
         $data['dataStorage']        = (isset($data['db_storage']) && $data['db_storage']) ? 1 : 0;
         $data['showFormLang']       = __('Show form', 'modularity-form-builder');
+        $data['showAsCard']         = isset($data['no_card_container']) && $data['no_card_container'] ? false : true;
 
         $data['lang'] = [
             'errorMessage' => __('Something went wrong. Please look over the provided information and try again.', 'modularity-form-builder'),
@@ -136,6 +137,10 @@ class Form extends \Modularity\Module
                 $data['hasFileUpload'] = true;
                 $field['button_remove_label'] = __('Remove file', 'modularity-form-builder');
                 $field['button_drop_label'] = __('Drop file(s) here', 'modularity-form-builder');
+
+                if(empty($field['button_label'])) {
+                    $field['button_label'] = __('Select file', 'modularity-form-builder');
+                }
             }
         }
 
