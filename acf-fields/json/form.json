@@ -17,7 +17,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_58eb302883a68",
@@ -494,7 +495,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_5a1be0449d8b8",
@@ -618,7 +621,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_58eb572440304",
@@ -904,7 +909,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_5a18388b007a2",
@@ -1108,7 +1115,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         }
                     ],
                     "min": "",
@@ -1284,7 +1293,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         }
                     ],
                     "min": "",
@@ -1460,7 +1471,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         }
                     ],
                     "min": "",
@@ -1755,7 +1768,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         }
                     ],
                     "min": "",
@@ -1846,7 +1861,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         }
                     ],
                     "min": "",
@@ -1955,7 +1972,9 @@
                             "return_format": "value",
                             "placeholder": "",
                             "allow_custom": 0,
-                            "search_placeholder": ""
+                            "search_placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         }
                     ],
                     "min": "",
@@ -2030,7 +2049,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_58eb3700191e7",
@@ -2087,7 +2107,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_59a4259acfea0",
@@ -2229,7 +2250,9 @@
                     "placeholder": "",
                     "parent_repeater": "field_58eb6ee89aa7c",
                     "allow_custom": 0,
-                    "search_placeholder": ""
+                    "search_placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_5a55db0812774",
@@ -2263,7 +2286,9 @@
                     "placeholder": "",
                     "parent_repeater": "field_58eb6ee89aa7c",
                     "allow_custom": 0,
-                    "search_placeholder": ""
+                    "search_placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 }
             ]
         },
@@ -2320,7 +2345,7 @@
             "label": "Meddelande i notis",
             "name": "notification_message",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -2329,11 +2354,13 @@
                 "class": "",
                 "id": ""
             },
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
             "default_value": "",
-            "delay": 0
+            "acfe_textarea_code": 0,
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         },
         {
             "key": "field_58f5b1a066797",
@@ -2370,7 +2397,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_58f5b1c266798",
@@ -2496,7 +2524,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_58f5be7475dbf",
@@ -2589,7 +2618,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_5a1837b50079f",
@@ -2657,7 +2687,9 @@
             "return_format": "value",
             "placeholder": "",
             "allow_custom": 0,
-            "search_placeholder": ""
+            "search_placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_5a12ae16f9445",
@@ -2734,7 +2766,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_59df53ac189b8",
