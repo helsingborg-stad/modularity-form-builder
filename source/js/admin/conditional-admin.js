@@ -11,7 +11,6 @@ export default (function ($) {
 	Conditional.prototype.handleAcfConditionals = () => {
 		if (typeof(acf) !== 'undefined') {
 			const forms = document.querySelectorAll('.acf-field[data-name="form_fields"]');
-			console.log(forms);
 			forms.forEach(form => {
 				const conditionalFields = document.querySelectorAll('[data-name="conditonal_field"]');
 				console.log(conditionalFields);
@@ -29,7 +28,6 @@ export default (function ($) {
 			const hiddenField = field.querySelector('input[type="hidden"]');
 
 			if (hiddenField && hiddenField.value) {
-				console.log(selectField.value);
 				selectField.value = hiddenField.value;
 			}
 		});
