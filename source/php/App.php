@@ -19,12 +19,14 @@ class App
         new WpCli($upgradeInstance);
 
         // Register Form module
-        if (function_exists('modularity_register_module')) {
-            modularity_register_module(
-                FORM_BUILDER_MODULE_PATH . 'source/php/Module',
-                'Form'
-            );
-        }
+        add_action('init', function() {
+            if (function_exists('modularity_register_module')) {
+                modularity_register_module(
+                    FORM_BUILDER_MODULE_PATH . 'source/php/Module',
+                    'Form'
+                );
+            }
+        });
         add_action('init', array($this, 'registerPostTypes'), 11);
         add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
         add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
