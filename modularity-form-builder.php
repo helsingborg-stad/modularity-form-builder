@@ -3,7 +3,7 @@
  * Plugin Name: Modularity Form Builder
  * Plugin URI: http://github.com/helsingborg-stad
  * Description: Build submittable form(s) to display with module
- * Version: 3.6.2
+ * Version: 4.0.0
  * Author: Kristoffer Svanmark, Sebastian Thulin
  */
 
