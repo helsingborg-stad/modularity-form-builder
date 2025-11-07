@@ -43,7 +43,7 @@
             "ModularityFormBuilder\\": "source/php/"
         }
     },
-    "version": "3.6.1",
+    "version": "4.0.0",
     "config": {
         "allow-plugins": {
             "composer/installers": true
