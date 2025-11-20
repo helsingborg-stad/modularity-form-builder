@@ -1,6 +1,6 @@
 {
     "name": "@helsingborg-stad/modularity-form-builder",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "description": "Formbuilder for modularity",
     "main": "",
     "scripts": {
