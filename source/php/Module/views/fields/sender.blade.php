@@ -1,3 +1,8 @@
+<?php
+
+declare(strict_types=1);
+
+?>
 @if ($field['columns'])
     <div class="o-grid">
 @endif
@@ -97,7 +102,10 @@
                 <label for="input_{{ $module_id }}-address-street">{{ $field['labels']['street_address'] }}{!! in_array('address', $field['required_fields']) ? '<span class="text-danger">*</span>' : '' !!}</label>
                 <div class="input-group">
                     <input type="text" name="{{ sanitize_title($field['labels']['address']) }}[{{ sanitize_title($field['labels']['street_address']) }}]" class="form-control" id="input_{{ $module_id }}-address-street-"{{uniqid()}} {{ in_array('address', $field['required_fields']) ? 'required' : '' }}>
-                    <span class="input-group-addon-btn"><button id="form-get-location" class="btn"><i class="pricon pricon-location-pin"></i> <?php _e('Find my location', 'modularity-form-builder'); ?></button></span>
+                    <span class="input-group-addon-btn"><button id="form-get-location" class="btn"><i class="pricon pricon-location-pin"></i> <?php _e(
+                        'Find my location',
+                        'modularity-form-builder',
+                    ); ?></button></span>
                 </div>
             @else
                 @field([
