@@ -431,22 +431,17 @@ class Form extends \Modularity\Module
      */
     public function adminEnqueue()
     {
-        wp_register_script(
-            'form-builder-js-admin',
-            FORM_BUILDER_MODULE_URL
-            . '/dist/'
-            . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-admin.js'),
-        );
-
-        wp_localize_script('form-builder-js-admin', 'formbuilder', [
-            'mod_form_authorized' => get_option('options_mod_form_access_token') == true ? true : false,
-            'selections_missing' => __(
-                'Please create radio selections before adding conditional logic.',
-                'modularity-form-builder',
-            ),
-            'delete_confirm' => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
-        ]);
-        wp_enqueue_script('form-builder-js-admin');
+        $this->wpEnqueue
+            ?->add('js/modularity-form-builder-admin.js')
+            ->with()
+            ->translation('formbuilder', [
+                'mod_form_authorized' => get_option('options_mod_form_access_token') == true ? true : false,
+                'selections_missing' => __(
+                    'Please create radio selections before adding conditional logic.',
+                    'modularity-form-builder',
+                ),
+                'delete_confirm' => __('Are you sure you want to delete this file?', 'modularity-form-builder'),
+            ]);
     }
 
     /**
@@ -455,15 +450,7 @@ class Form extends \Modularity\Module
      */
     public function script()
     {
-        wp_register_script(
-            'form-builder-js-referer',
-            FORM_BUILDER_MODULE_URL
-            . '/dist/'
-            . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-referer.js'),
-            false,
-            true,
-        );
-        wp_enqueue_script('form-builder-js-referer');
+        $this->wpEnqueue?->add('js/modularity-form-builder-referer.js', [], null, true);
 
         global $post;
 
@@ -479,7 +466,22 @@ class Form extends \Modularity\Module
      */
     public function initScriptsQue()
     {
-        \ModularityFormBuilder\App::enqueueFormBuilderScripts();
+        if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
+            $this->wpEnqueue?->add(
+                '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp',
+                [],
+                null,
+                true,
+            );
+        }
+        $this->wpEnqueue
+            ?->add('js/modularity-form-builder-front.js', [], null, true)
+            ->with()
+            ->translation('formbuilder', [
+                'sending' => __('Sending', 'modularity-form-builder'),
+                'checkbox_required' => __('You must check at least one option', 'modularity-form-builder'),
+                'something_went_wrong' => __('Something went wrong', 'modularity-form-builder'),
+            ]);
     }
 
     /**
@@ -488,10 +490,7 @@ class Form extends \Modularity\Module
      */
     public function style()
     {
-        wp_enqueue_style(
-            'form-builder',
-            FORM_BUILDER_MODULE_URL . '/dist/' . Helper\CacheBust::name('css/modularity-form-builder.css'),
-        );
+        $this->wpEnqueue?->add('css/modularity-form-builder.css');
     }
 
     /**

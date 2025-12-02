@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ModularityFormBuilder;
 
 use ModularityFormBuilder\Blade\Blade;
+use WpUtilService\Features\Enqueue\EnqueueManager;
 
 class App
 {
@@ -14,6 +15,7 @@ class App
 
     public function __construct(
         private Blade $bladeInstance,
+        private EnqueueManager $wpEnqueue,
     ) {
         new Submission();
         new Options();
@@ -83,6 +85,7 @@ class App
         // Default form submission post type
         new Entity\PostType(
             $this->bladeInstance,
+            $this->wpEnqueue,
             $this->savedFormsPostType,
             __('Form submission', 'modularity-form-builder'),
             __('Form submissions', 'modularity-form-builder'),
@@ -118,6 +121,7 @@ class App
 
                 new Entity\PostType(
                     $this->bladeInstance,
+                    $this->wpEnqueue,
                     $postTypeArr['name'],
                     $postTypeArr['labels']['singular_name'] ?? $postTypeArr['label'],
                     $postTypeArr['label'],
@@ -677,40 +681,6 @@ class App
         if (is_array($result) && !empty($result)) {
             echo "<script> var notificationConditions = '" . json_encode($result) . "'; </script>";
         }
-    }
-
-    /**
-     * Enqueues widget/module assets Scripts and External Scripts
-     * @return void
-     */
-    public static function enqueueFormBuilderScripts()
-    {
-        if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
-            wp_enqueue_script(
-                'google-maps-api',
-                '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp',
-                [],
-                false,
-                true,
-            );
-        }
-
-        wp_register_script(
-            'form-builder-js-front',
-            FORM_BUILDER_MODULE_URL
-            . '/dist/'
-            . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'),
-            false,
-            true,
-        );
-
-        wp_localize_script('form-builder-js-front', 'formbuilder', [
-            'sending' => __('Sending', 'modularity-form-builder'),
-            'checkbox_required' => __('You must check at least one option', 'modularity-form-builder'),
-            'something_went_wrong' => __('Something went wrong', 'modularity-form-builder'),
-        ]);
-
-        wp_enqueue_script('form-builder-js-front');
     }
 }
 

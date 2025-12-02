@@ -7,8 +7,10 @@
  * Author: Kristoffer Svanmark, Sebastian Thulin
  */
 
-use ModularityFormBuilder\Blade\Blade;
 use ComponentLibrary\Init as ComponentLibraryInit;
+use ModularityFormBuilder\Blade\Blade;
+use WpService\Implementations\NativeWpService;
+use WpUtilService\WpUtilService;
 
 define('FORM_BUILDER_MODULE_PATH', plugin_dir_path(__FILE__));
 define('FORM_BUILDER_MODULE_URL', plugins_url('', __FILE__));
@@ -25,7 +27,6 @@ if (file_exists(FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php')) {
     require_once FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php';
 }
 
-
 // Acf auto import and export
 add_action('plugins_loaded', function () {
     $bladeInstance = new Blade(new ComponentLibraryInit([]));
@@ -38,7 +39,9 @@ add_action('plugins_loaded', function () {
     $acfExportManager->import();
 
     if (function_exists('get_field')) {
-        new ModularityFormBuilder\App($bladeInstance);
+        $wpService = new NativeWpService();
+        $wpUtilService = new WpUtilService($wpService);
+
+        new ModularityFormBuilder\App($bladeInstance, $wpUtilService->enqueue(__DIR__));
     }
 });
-
