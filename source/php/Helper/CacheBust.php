@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ModularityFormBuilder\Helper;
 
 class CacheBust
@@ -27,12 +29,20 @@ class CacheBust
      */
     public static function getRevManifest()
     {
-        $jsonPath = FORM_BUILDER_MODULE_PATH . apply_filters('modularityFormBuilder/Helper/CacheBust/RevManifestPath', 'dist/rev-manifest.json');
+        $jsonPath =
+            FORM_BUILDER_MODULE_PATH
+            . apply_filters('modularityFormBuilder/Helper/CacheBust/RevManifestPath', 'dist/rev-manifest.json');
 
         if (file_exists($jsonPath)) {
             return json_decode(file_get_contents($jsonPath), true);
         } elseif (WP_DEBUG) {
-            echo '<div style="color:red">Error: Assets not built. Go to ' . FORM_BUILDER_MODULE_PATH . ' and run gulp. See '. FORM_BUILDER_MODULE_PATH . 'README.md for more info.</div>';
+            echo
+                '<div style="color:red">Error: Assets not built. Go to '
+                    . FORM_BUILDER_MODULE_PATH
+                    . ' and run gulp. See '
+                    . FORM_BUILDER_MODULE_PATH
+                    . 'README.md for more info.</div>'
+            ;
         }
     }
 }

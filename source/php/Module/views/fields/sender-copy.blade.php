@@ -1,3 +1,8 @@
+<?php
+
+declare(strict_types=1);
+
+?>
 <div class="o-grid">
     <div class="o-grid-12@md">
         <div class="form-group">

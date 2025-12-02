@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ModularityFormBuilder;
 
 use ModularityFormBuilder\Blade\Blade;
@@ -10,8 +12,9 @@ class App
     private $savedFormsPostType = 'form-submissions';
     private static $scheduledRemoveOldCron = 'mod_form_builder_remove_old_forms';
 
-    public function __construct(private Blade $bladeInstance)
-    {
+    public function __construct(
+        private Blade $bladeInstance,
+    ) {
         new Submission();
         new Options();
 
@@ -19,28 +22,25 @@ class App
         new WpCli($upgradeInstance);
 
         // Register Form module
-        add_action('init', function() {
+        add_action('init', static function () {
             if (function_exists('modularity_register_module')) {
-                modularity_register_module(
-                    FORM_BUILDER_MODULE_PATH . 'source/php/Module',
-                    'Form'
-                );
+                modularity_register_module(FORM_BUILDER_MODULE_PATH . 'source/php/Module', 'Form');
             }
         });
-        add_action('init', array($this, 'registerPostTypes'), 11);
-        add_action('acf/render_field', array($this, 'addHiddenFields'), 10, 1);
-        add_action('acf/save_post', array($this, 'updateFieldKeys'), 9);
-        add_action('acf/update_value/name=granted_users', array($this, 'updateGrantedUser'), 10, 3);
-        add_action('wp_ajax_delete_file', array($this, 'deleteFile'));
-        add_action('wp_ajax_upload_files', array($this, 'uploadFiles'));
-        add_action('wp_ajax_save_post', array($this, 'frontEndSavePost'));
-        add_action('current_screen', array($this, 'restrictUserPages'));
-        add_action('restrict_manage_posts', array($this, 'formFilter'));
-        add_action('admin_head', array($this, 'jsonSelectedValues'));
+        add_action('init', [$this, 'registerPostTypes'], 11);
+        add_action('acf/render_field', [$this, 'addHiddenFields'], 10, 1);
+        add_action('acf/save_post', [$this, 'updateFieldKeys'], 9);
+        add_action('acf/update_value/name=granted_users', [$this, 'updateGrantedUser'], 10, 3);
+        add_action('wp_ajax_delete_file', [$this, 'deleteFile']);
+        add_action('wp_ajax_upload_files', [$this, 'uploadFiles']);
+        add_action('wp_ajax_save_post', [$this, 'frontEndSavePost']);
+        add_action('current_screen', [$this, 'restrictUserPages']);
+        add_action('restrict_manage_posts', [$this, 'formFilter']);
+        add_action('admin_head', [$this, 'jsonSelectedValues']);
 
-        add_action(self::$scheduledRemoveOldCron, array($this, 'removeOldPostsCron'));
+        add_action(self::$scheduledRemoveOldCron, [$this, 'removeOldPostsCron']);
 
-        add_filter('/Modularity/externalViewPath', array($this, 'addTemplatePaths'));
+        add_filter('/Modularity/externalViewPath', [$this, 'addTemplatePaths']);
     }
 
     public static function activatePlugin()
@@ -55,20 +55,21 @@ class App
         wp_clear_scheduled_hook(self::$scheduledRemoveOldCron);
     }
 
-    public function removeOldPostsCron() {
-        $args = array(
-            'post_type'      => $this->savedFormsPostType,
-            'post_status'    => 'any',
-            'date_query'     => array(
-                array(
+    public function removeOldPostsCron()
+    {
+        $args = [
+            'post_type' => $this->savedFormsPostType,
+            'post_status' => 'any',
+            'date_query' => [
+                [
                     'column' => 'post_date',
-                    'before'  => '90 days ago',
-                ),
-            ),
+                    'before' => '90 days ago',
+                ],
+            ],
             'posts_per_page' => 2000,
-            'fields'         => 'ids',
-        );
-    
+            'fields' => 'ids',
+        ];
+
         foreach (get_posts($args) as $postId) {
             wp_delete_post($postId, true);
         }
@@ -84,25 +85,23 @@ class App
             $this->bladeInstance,
             $this->savedFormsPostType,
             __('Form submission', 'modularity-form-builder'),
-            __('Form submissions', 'modularity-form-builder')
+            __('Form submissions', 'modularity-form-builder'),
         );
 
         global $wpdb;
-        $postTypes = $wpdb->get_col(
-            "
+        $postTypes = $wpdb->get_col("
             SELECT pm1.meta_value FROM $wpdb->posts as p
             LEFT JOIN $wpdb->postmeta pm1 ON p.ID = pm1.post_id
             LEFT JOIN $wpdb->postmeta pm2 ON p.ID = pm2.post_id
             WHERE p.post_status = 'publish'
             AND pm1.meta_key = 'submission_post_type'
             AND pm2.meta_key = 'custom_submission_post_type' && pm2.meta_value = 1
-            "
-        );
+            ");
 
         // Re-register custom form post types
         if (!empty($postTypes)) {
             foreach ($postTypes as $postType) {
-                if (!$postTypeObj = get_post_type_object($postType)) {
+                if (!($postTypeObj = get_post_type_object($postType))) {
                     continue;
                 }
                 $supports = $this->getPostTypeSupports($postType);
@@ -122,7 +121,7 @@ class App
                     $postTypeArr['name'],
                     $postTypeArr['labels']['singular_name'] ?? $postTypeArr['label'],
                     $postTypeArr['label'],
-                    $postTypeArr
+                    $postTypeArr,
                 );
             }
         }
@@ -144,7 +143,7 @@ class App
             return $features;
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -154,12 +153,21 @@ class App
      */
     public function addHiddenFields($field)
     {
-        if (get_post_type() != $this->postType || ($field['parent'] != 'field_58eb302883a68' && $field['parent'] != 'field_5a0abd4a4342a')) {
+        if (
+            get_post_type() != $this->postType
+            || $field['parent'] != 'field_58eb302883a68' && $field['parent'] != 'field_5a0abd4a4342a'
+        ) {
             return;
         }
 
         $val = is_string($field['value']) ? $field['value'] : '';
-        echo '<input type="hidden" name="current-' . esc_attr($field['name']) . '" value="' . esc_attr(htmlspecialchars($val, ENT_QUOTES, 'UTF-8')) . '">';
+        echo
+            '<input type="hidden" name="current-'
+            . esc_attr($field['name'])
+                . '" value="'
+                . esc_attr(htmlspecialchars($val, ENT_QUOTES, 'UTF-8'))
+                . '">'
+        ;
     }
 
     /**
@@ -178,41 +186,51 @@ class App
         $newValues = $_POST['acf']['field_58eb302883a68'];
         $oldValues = $_POST['current-acf']['field_58eb302883a68'];
         $defaultLabels = Helper\SenderLabels::getLabels();
-        $updatedValues = array();
+        $updatedValues = [];
 
         // Gather updated field labels (used as keys)
         foreach ($newValues as $key => $fieldGroup) {
-            if (is_array($fieldGroup) && !empty($fieldGroup)) {
-                foreach ($fieldGroup as $fieldKey => $field) {
-                    // Get ACF field object
-                    $fieldObject = get_field_object($fieldKey);
+            if (!(is_array($fieldGroup) && !empty($fieldGroup))) {
+                continue;
+            }
 
-                    // Loop through custom sender labels
-                    if ($fieldKey == 'field_5a0abd4a4342a') {
-                        foreach ($field as $senderKey => $senderField) {
-                            // Get ACF field object
-                            $senderObject = get_field_object($senderKey);
-                            $defaultLabel = isset($defaultLabels[$senderObject['_name']]) ? $defaultLabels[$senderObject['_name']] : null;
-                            $oldVal = !empty($oldValues[$key][$fieldKey][$senderKey]) ? $oldValues[$key][$fieldKey][$senderKey] : $defaultLabel;
-                            $newVal = !empty($senderField) ? $senderField : $defaultLabel;
+            foreach ($fieldGroup as $fieldKey => $field) {
+                // Get ACF field object
+                $fieldObject = get_field_object($fieldKey);
 
-                            if ($oldVal != $newVal) {
-                                $updatedValues[] = array(
-                                    'old' => sanitize_title($oldVal),
-                                    'new' => sanitize_title($newVal)
-                                );
-                            }
+                // Loop through custom sender labels
+                if ($fieldKey == 'field_5a0abd4a4342a') {
+                    foreach ($field as $senderKey => $senderField) {
+                        // Get ACF field object
+                        $senderObject = get_field_object($senderKey);
+                        $defaultLabel = isset($defaultLabels[$senderObject['_name']])
+                            ? $defaultLabels[$senderObject['_name']]
+                            : null;
+                        $oldVal = !empty($oldValues[$key][$fieldKey][$senderKey])
+                            ? $oldValues[$key][$fieldKey][$senderKey]
+                            : $defaultLabel;
+                        $newVal = !empty($senderField) ? $senderField : $defaultLabel;
+
+                        if ($oldVal != $newVal) {
+                            $updatedValues[] = [
+                                'old' => sanitize_title($oldVal),
+                                'new' => sanitize_title($newVal),
+                            ];
                         }
                     }
+                }
 
-                    // Loop through all other field labels
-                    if (is_array($newValues[$key][$fieldKey]) && is_array($oldValues[$key][$fieldKey])) {
-                        if ($fieldObject['_name'] == 'label' && !empty($oldValues[$key][$fieldKey]) && $newValues[$key][$fieldKey] != $oldValues[$key][$fieldKey]) {
-                            $updatedValues[] = array(
-                                'old' => sanitize_title($oldValues[$key][$fieldKey]),
-                                'new' => sanitize_title($newValues[$key][$fieldKey])
-                            );
-                        }
+                // Loop through all other field labels
+                if (is_array($newValues[$key][$fieldKey]) && is_array($oldValues[$key][$fieldKey])) {
+                    if (
+                        $fieldObject['_name'] == 'label'
+                        && !empty($oldValues[$key][$fieldKey])
+                        && $newValues[$key][$fieldKey] != $oldValues[$key][$fieldKey]
+                    ) {
+                        $updatedValues[] = [
+                            'old' => sanitize_title($oldValues[$key][$fieldKey]),
+                            'new' => sanitize_title($newValues[$key][$fieldKey]),
+                        ];
                     }
                 }
             }
@@ -246,7 +264,7 @@ class App
         if (!empty($posts)) {
             foreach ($posts as $key => $post) {
                 // Get current form data
-                $metaVal = get_post_meta((int)$post['ID'], 'form-data', true);
+                $metaVal = get_post_meta((int) $post['ID'], 'form-data', true);
                 $metaVal = $this->getDataAsArray($metaVal);
 
                 if (is_array($metaVal)) {
@@ -257,7 +275,7 @@ class App
                             $metaVal[$addressKey] = $this->replaceKey(
                                 $metaVal[$addressKey],
                                 $changedVal['old'],
-                                $changedVal['new']
+                                $changedVal['new'],
                             );
                         }
                     }
@@ -269,9 +287,9 @@ class App
                 }
                 // Update form field data with new keys
                 if (!get_option('options_mod_form_crypt')) {
-                    update_post_meta((int)$post['ID'], 'form-data', $metaVal);
+                    update_post_meta((int) $post['ID'], 'form-data', $metaVal);
                 } else {
-                    update_post_meta((int)$post['ID'], 'form-data', self::encryptDecryptData('encrypt', $metaVal));
+                    update_post_meta((int) $post['ID'], 'form-data', self::encryptDecryptData('encrypt', $metaVal));
                 }
             }
         }
@@ -306,7 +324,7 @@ class App
     public function replaceKey($array, $oldKey, $newKey)
     {
         $keys = array_keys($array);
-        if (false === $index = array_search($oldKey, $keys)) {
+        if (false === ($index = array_search($oldKey, $keys))) {
             error_log(sprintf('Key "%s" does not exist', $oldKey));
             // Return array if the key does'nt exist
             return $array;
@@ -333,7 +351,12 @@ class App
      */
     public function deleteFile()
     {
-        if (!isset($_POST['postId']) || !isset($_POST['formId']) || !isset($_POST['filePath']) || !isset($_POST['fieldName'])) {
+        if (
+            !isset($_POST['postId'])
+            || !isset($_POST['formId'])
+            || !isset($_POST['filePath'])
+            || !isset($_POST['fieldName'])
+        ) {
             echo _e('Missing arguments', 'modularity-form-builder');
             die();
         }
@@ -345,12 +368,14 @@ class App
 
         if (is_array($formData[$fieldName])) {
             foreach ($formData[$fieldName] as $key => $file) {
-                if ($filePath == $file) {
-                    unset($formData[$fieldName][$key]);
+                if ($filePath != $file) {
+                    continue;
+                }
 
-                    if (file_exists($filePath)) {
-                        unlink($filePath);
-                    }
+                unset($formData[$fieldName][$key]);
+
+                if (file_exists($filePath)) {
+                    unlink($filePath);
                 }
             }
         }
@@ -374,8 +399,8 @@ class App
             wp_send_json_error(__('Missing arguments', 'modularity-form-builder'));
         }
 
-        $postId = (int)$_POST['postId'];
-        $formId = (int)$_POST['formId'];
+        $postId = (int) $_POST['postId'];
+        $formId = (int) $_POST['formId'];
         $fieldName = $_POST['fieldName'];
         $formData = get_post_meta($postId, 'form-data', true);
 
@@ -404,7 +429,6 @@ class App
                 update_post_meta($postId, 'form-data', self::encryptDecryptData('encrypt', $formData));
             }
 
-
             wp_send_json_success(__('Upload succeeded', 'modularity-form-builder'));
         }
 
@@ -413,10 +437,11 @@ class App
 
     public function frontEndSavePost()
     {
-        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce(
-            $_POST['update-modularity-form'],
-            'update'
-        )) {
+        if (
+            empty($_POST['post_id'])
+            || !isset($_POST['update-modularity-form'])
+            || !wp_verify_nonce($_POST['update-modularity-form'], 'update')
+        ) {
             wp_send_json_error(__('Something went wrong', 'modularity-form-builder'));
         }
 
@@ -428,7 +453,11 @@ class App
             if (!get_option('options_mod_form_crypt')) {
                 $currentData = get_post_meta($postId, 'form-data', true);
             } else {
-                $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta($postId, 'form-data', true)));
+                $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta(
+                    $postId,
+                    'form-data',
+                    true,
+                )));
             }
 
             // Merge old values with new ones
@@ -444,7 +473,7 @@ class App
         }
 
         // Update post title and content
-        $post = array('ID' => $postId);
+        $post = ['ID' => $postId];
         if (!empty($_POST['mod-form']['post-title'])) {
             $post['post_title'] = $_POST['mod-form']['post-title'];
         }
@@ -473,7 +502,7 @@ class App
                         ENCRYPT_METHOD,
                         hash('sha256', ENCRYPT_SECRET_KEY),
                         0,
-                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16),
                     ));
                     break;
                 case 'decrypt':
@@ -482,7 +511,7 @@ class App
                         ENCRYPT_METHOD,
                         hash('sha256', ENCRYPT_SECRET_KEY),
                         0,
-                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16),
                     ));
                     break;
                 default:
@@ -509,7 +538,7 @@ class App
                         ENCRYPT_METHOD,
                         hash('sha256', ENCRYPT_SECRET_KEY),
                         0,
-                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16),
                     );
                     break;
                 case 'decrypt':
@@ -518,7 +547,7 @@ class App
                         ENCRYPT_METHOD,
                         hash('sha256', ENCRYPT_SECRET_KEY),
                         0,
-                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16)
+                        substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16),
                     );
                     break;
                 default:
@@ -539,7 +568,6 @@ class App
         }
         return $value;
     }
-
 
     /**
      * Check if user have permission to edit or view form
@@ -575,16 +603,22 @@ class App
                     $granted = false;
                     if (isset($grantedUsers) && !empty($grantedUsers)) {
                         foreach ($grantedUsers as $user) {
-                            if ($user['ID'] === get_current_user_id()) {
-                                $granted = true;
+                            if ($user['ID'] !== get_current_user_id()) {
+                                continue;
                             }
+
+                            $granted = true;
                         }
                     }
                     if ($granted === false) {
                         wp_die(
-                            '<h1>' . __('Hello, you do not have permission to edit this form') . '</h1>' .
-                            '<p>' . __('Please ask the creator/author of the form to grant you access.') . '</p>',
-                            403
+                            '<h1>'
+                            . __('Hello, you do not have permission to edit this form')
+                            . '</h1>'
+                            . '<p>'
+                            . __('Please ask the creator/author of the form to grant you access.')
+                            . '</p>',
+                            403,
                         );
                     }
                 }
@@ -605,12 +639,12 @@ class App
             return;
         }
 
-        $forms = get_posts(array(
+        $forms = get_posts([
             'post_type' => 'mod-form',
             'post_status' => 'publish',
             'posts_per_page' => -1,
-            'numberposts' => -1
-        ));
+            'numberposts' => -1,
+        ]);
 
         echo '<select name="form"><option value="-1">' . __('Select form…', 'modularity-form-builder') . '</option>';
 
@@ -621,22 +655,21 @@ class App
         echo '</select>';
     }
 
-
     public function jsonSelectedValues()
     {
         //Get saved data
         $fieldData = get_field('notify');
 
         //Declare result
-        $result = array();
+        $result = [];
 
         //Fill result array
         if (isset($fieldData) && is_array($fieldData) && !empty($fieldData)) {
             foreach ($fieldData as $field) {
-                $result[] = array(
+                $result[] = [
                     'conditional_field' => $field['form_conditional_field'],
-                    'conditional_field_equals' => $field['form_conditional_field_equals']
-                );
+                    'conditional_field_equals' => $field['form_conditional_field_equals'],
+                ];
             }
         }
 
@@ -653,21 +686,34 @@ class App
     public static function enqueueFormBuilderScripts()
     {
         if (defined('G_GEOCODE_KEY') && G_GEOCODE_KEY) {
-            wp_enqueue_script('google-maps-api', '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp', array(), false, true);
+            wp_enqueue_script(
+                'google-maps-api',
+                '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . G_GEOCODE_KEY . '&ver=3.exp',
+                [],
+                false,
+                true,
+            );
         }
 
-        wp_register_script('form-builder-js-front', FORM_BUILDER_MODULE_URL . '/dist/' . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'), false, true);
+        wp_register_script(
+            'form-builder-js-front',
+            FORM_BUILDER_MODULE_URL
+            . '/dist/'
+            . \ModularityFormBuilder\Helper\CacheBust::name('js/modularity-form-builder-front.js'),
+            false,
+            true,
+        );
 
-        wp_localize_script('form-builder-js-front', 'formbuilder', array(
+        wp_localize_script('form-builder-js-front', 'formbuilder', [
             'sending' => __('Sending', 'modularity-form-builder'),
             'checkbox_required' => __('You must check at least one option', 'modularity-form-builder'),
             'something_went_wrong' => __('Something went wrong', 'modularity-form-builder'),
-        ));
+        ]);
 
         wp_enqueue_script('form-builder-js-front');
     }
 }
 
 // Register activation and deactivation hooks
-register_activation_hook(__FILE__, array('ModularityFormBuilder\App', 'activatePlugin'));
-register_deactivation_hook(__FILE__, array('ModularityFormBuilder\App', 'deactivatePlugin'));
+register_activation_hook(__FILE__, ['ModularityFormBuilder\App', 'activatePlugin']);
+register_deactivation_hook(__FILE__, ['ModularityFormBuilder\App', 'deactivatePlugin']);
