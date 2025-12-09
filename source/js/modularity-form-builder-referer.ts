@@ -12,7 +12,7 @@ export default class ModularityFormBuilderReferer {
 	 * Create Local Storage.
 	 */
 	constructor() {
-		if (typeof Storage !== "undefined") {
+		if (typeof Storage !== 'undefined') {
 			this.setStorage();
 		}
 	}
@@ -24,11 +24,11 @@ export default class ModularityFormBuilderReferer {
 	 */
 	getUrlParameter(uriParam) {
 		let pageUri = decodeURIComponent(window.location.search.substring(1)),
-			uriVars = pageUri.split("&"),
+			uriVars = pageUri.split('&'),
 			paramName;
 
 		for (let i = 0; i < uriVars.length; i++) {
-			paramName = uriVars[i].split("=");
+			paramName = uriVars[i].split('=');
 
 			if (paramName[0] === uriParam) {
 				return paramName[1] === undefined ? true : paramName[1];
@@ -49,27 +49,21 @@ export default class ModularityFormBuilderReferer {
 	 *  Creates a Local storage
 	 */
 	setStorage() {
-		if (this.checkStorage("refUrlStorage") !== window.location.href) {
-			if (this.getUrlParameter("modularityForm")) {
+		if (this.checkStorage('refUrlStorage') !== window.location.href) {
+			if (this.getUrlParameter('modularityForm')) {
 				refUrlStorageHistory = localStorage.setItem(
-					"refUrlStorageHistory",
-					decodeURIComponent(this.getUrlParameter("modularityForm")),
+					'refUrlStorageHistory',
+					decodeURIComponent(this.getUrlParameter('modularityForm')),
 				);
 
 				refUrlStorage = localStorage.setItem(
-					"refUrlStorageHistory",
-					decodeURIComponent(this.getUrlParameter("modularityReferrer")),
+					'refUrlStorageHistory',
+					decodeURIComponent(this.getUrlParameter('modularityReferrer')),
 				);
 			} else {
-				refUrlStorageHistory = localStorage.setItem(
-					"refUrlStorageHistory",
-					this.checkStorage("refUrlStorage"),
-				);
+				refUrlStorageHistory = localStorage.setItem('refUrlStorageHistory', this.checkStorage('refUrlStorage'));
 
-				refUrlStorage = localStorage.setItem(
-					"refUrlStorage",
-					window.location.href,
-				);
+				refUrlStorage = localStorage.setItem('refUrlStorage', window.location.href);
 			}
 		}
 
@@ -82,14 +76,11 @@ export default class ModularityFormBuilderReferer {
 	addStorageRefererToDoom() {
 		if (
 			document.querySelector("input[name='modularity-form-history']") &&
-			document.querySelector("input[name='modularity-form-history']").length !==
-				0
+			document.querySelector("input[name='modularity-form-history']").length !== 0
 		) {
-			document.querySelector("input[name='modularity-form-history']").value =
-				this.checkStorage("refUrlStorageHistory");
+			document.querySelector("input[name='modularity-form-history']").value = this.checkStorage('refUrlStorageHistory');
 
-			document.querySelector("input[name='modularity-form-url']").value =
-				this.checkStorage("refUrlStorage");
+			document.querySelector("input[name='modularity-form-url']").value = this.checkStorage('refUrlStorage');
 		}
 	}
 }

@@ -10,30 +10,22 @@ export default (($) => {
 	}
 
 	Conditional.prototype.handleAcfConditionals = () => {
-		if (typeof acf !== "undefined") {
-			const forms = document.querySelectorAll(
-				'.acf-field[data-name="form_fields"]',
-			);
+		if (typeof acf !== 'undefined') {
+			const forms = document.querySelectorAll('.acf-field[data-name="form_fields"]');
 			forms.forEach((form) => {
-				const conditionalFields = document.querySelectorAll(
-					'[data-name="conditonal_field"]',
-				);
+				const conditionalFields = document.querySelectorAll('[data-name="conditonal_field"]');
 				console.log(conditionalFields);
 
 				if (conditionalFields) {
-					Conditional.prototype.handleSelectedConditionalFields(
-						conditionalFields,
-					);
+					Conditional.prototype.handleSelectedConditionalFields(conditionalFields);
 				}
 			});
 		}
 	};
 
-	Conditional.prototype.handleSelectedConditionalFields = (
-		conditionalFields,
-	) => {
+	Conditional.prototype.handleSelectedConditionalFields = (conditionalFields) => {
 		conditionalFields.forEach((field) => {
-			const selectField = field.querySelector("select");
+			const selectField = field.querySelector('select');
 			const hiddenField = field.querySelector('input[type="hidden"]');
 
 			if (hiddenField && hiddenField.value) {
@@ -50,29 +42,26 @@ export default (($) => {
 		$('[data-name="conditonal_field"] select').each(
 			function (index, element) {
 				// Check if selected value is set or exist in db
-				var selected = "",
-					$selected = $(":selected", element);
+				var selected = '',
+					$selected = $(':selected', element);
 
 				if ($selected.val()) {
 					selected = $selected.val();
 				} else {
 					// Get selected from database
-					if (typeof modularity_current_post_id !== "undefined") {
-						var fieldName = $(element).attr("name");
+					if (typeof modularity_current_post_id !== 'undefined') {
+						var fieldName = $(element).attr('name');
 						$.ajax({
 							url: ajaxurl,
-							type: "post",
+							type: 'post',
 							data: {
-								action: "get_selected_field",
+								action: 'get_selected_field',
 								moduleId: modularity_current_post_id,
 								fieldName: fieldName,
 							},
 							success: (response) => {
-								if (response != "error") {
-									$("option[value='" + response + "']", element).prop(
-										"selected",
-										true,
-									);
+								if (response != 'error') {
+									$("option[value='" + response + "']", element).prop('selected', true);
 								}
 							},
 						});
@@ -80,16 +69,16 @@ export default (($) => {
 				}
 
 				// Reset select options
-				$("optgroup, option", element).remove();
+				$('optgroup, option', element).remove();
 
 				// Populate select options
 				var options = this.getOptions();
-				if (typeof options !== "undefined" && options.length > 0) {
-					$(".condition-missing").remove();
+				if (typeof options !== 'undefined' && options.length > 0) {
+					$('.condition-missing').remove();
 					$.each(
 						options,
 						function (key, value) {
-							var selectvalues = "";
+							var selectvalues = '';
 
 							$.each(
 								value.selectvalues,
@@ -100,38 +89,21 @@ export default (($) => {
 											label: groubLabel,
 											value: optionValue,
 										};
-									selectvalues +=
-										"<option value='" +
-										JSON.stringify(optionObj) +
-										"'>" +
-										option +
-										"</option>";
+									selectvalues += "<option value='" + JSON.stringify(optionObj) + "'>" + option + '</option>';
 								}.bind(this),
 							);
 
-							var optgroup =
-								'<optgroup label="' +
-								value.groupLabel +
-								'">' +
-								selectvalues +
-								"</optgroup>";
+							var optgroup = '<optgroup label="' + value.groupLabel + '">' + selectvalues + '</optgroup>';
 							$(element).append(optgroup);
 
 							if (selected) {
-								$("option[value='" + selected + "']", element).prop(
-									"selected",
-									true,
-								);
+								$("option[value='" + selected + "']", element).prop('selected', true);
 							}
 						}.bind(this),
 					);
 				} else {
-					$(".condition-missing").remove();
-					$(
-						'<p class="condition-missing">' +
-							formbuilder.selections_missing +
-							"</p>",
-					).insertBefore(element);
+					$('.condition-missing').remove();
+					$('<p class="condition-missing">' + formbuilder.selections_missing + '</p>').insertBefore(element);
 				}
 			}.bind(this),
 		);
@@ -149,7 +121,7 @@ export default (($) => {
 			};
 
 			$('[data-key="field_58eb670d39fef"] table tbody', item)
-				.children("tr.acf-row:not(.acf-clone)")
+				.children('tr.acf-row:not(.acf-clone)')
 				.each((index, item) => {
 					var $item = $(item);
 					var value = $item.find('[data-name="value"] input').val();
@@ -164,16 +136,16 @@ export default (($) => {
 
 	Conditional.prototype.conditionalString = (string) => {
 		string = string.toLowerCase();
-		string = string.replace(/\s+/g, "_");
-		string = string.replace(/[^a-z0-9_]+/gi, "");
-		string = string.replace(/_+$/, "");
+		string = string.replace(/\s+/g, '_');
+		string = string.replace(/[^a-z0-9_]+/gi, '');
+		string = string.replace(/_+$/, '');
 
 		return string;
 	};
 
 	Conditional.prototype.handleEvents = function () {
 		$(document).on(
-			"click",
+			'click',
 			'[data-name="conditional_logic"] [type="checkbox"], [data-layout="radio"] .acf-row-handle > a',
 			function () {
 				this.populateSelectFields();
