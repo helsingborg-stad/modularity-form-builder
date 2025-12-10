@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ModularityFormBuilder\Blade;
 
 use ComponentLibrary\Init as ComponentLibraryInit;
@@ -9,15 +11,16 @@ class Blade
 {
     private BladeServiceInterface $bladeEngine;
 
-    public function __construct(private ComponentLibraryInit $componentLibrary)
-    {
+    public function __construct(
+        private ComponentLibraryInit $componentLibrary,
+    ) {
         $this->bladeEngine = $this->componentLibrary->getEngine();
     }
 
     public function render($view, $data = [], $compress = true, $viewPaths = [FORM_BUILDER_MODULE_VIEW_PATH])
     {
         $markup = '';
-        $data = array_merge($data, array('errorMessage' => false));
+        $data = array_merge($data, ['errorMessage' => false]);
 
         try {
             $markup = $this->bladeEngine->makeView($view, $data, [], $viewPaths)->render();
@@ -26,11 +29,11 @@ class Blade
         }
 
         if ($compress == true) {
-            $replacements = array(
-                ["~<!--(.*?)-->~s", ""],
-                ["/\r|\n/", ""],
-                ["!\s+!", " "]
-            );
+            $replacements = [
+                ['~<!--(.*?)-->~s', ''],
+                ["/\r|\n/",         ''],
+                ["!\s+!",           ' '],
+            ];
 
             foreach ($replacements as $replacement) {
                 $markup = preg_replace($replacement[0], $replacement[1], $markup);

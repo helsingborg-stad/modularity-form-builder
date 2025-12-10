@@ -1,7 +1,5 @@
 <?php
 
-use ModularityFormBuilder\Helper\SanitizeData;
-
 ?>
 
 <div class="mod-form-field">

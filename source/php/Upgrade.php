@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ModularityFormBuilder;
 
 use WP_CLI;
@@ -17,10 +19,10 @@ class Upgrade
 
     public function __construct()
     {
-        add_action('admin_notices', array($this, 'addAdminNotice'));
+        add_action('admin_notices', [$this, 'addAdminNotice']);
     }
 
-    public function addAdminNotice() 
+    public function addAdminNotice()
     {
         if (!is_super_admin()) {
             return;
@@ -28,11 +30,12 @@ class Upgrade
 
         $currentDbVersion = get_option($this->dbVersionKey);
         if (empty($currentDbVersion) || $currentDbVersion < $this->dbVersion) {
-            echo sprintf(
-                '<div class="notice notice-warning update-nag inline">%s</div>',
-                __('The database may need to be updated to accomodate new datatastructures. Run wp-cli "modularity-form-builder upgrade" to upgrade.', 'modularityFormBuilder')
-            );
-            
+            echo
+                sprintf('<div class="notice notice-warning update-nag inline">%s</div>', __(
+                    'The database may need to be updated to accomodate new datatastructures. Run wp-cli "modularity-form-builder upgrade" to upgrade.',
+                    'modularityFormBuilder',
+                ))
+            ;
         }
     }
 
@@ -68,7 +71,7 @@ class Upgrade
         if (empty(get_option($this->dbVersionKey))) {
             update_option($this->dbVersionKey, 0);
         }
-        
+
         $currentDbVersion = is_numeric(get_option($this->dbVersionKey)) ? (int) get_option($this->dbVersionKey) : 0;
         if ($this->dbVersion != $currentDbVersion) {
             if (!is_numeric($this->dbVersion)) {
@@ -78,70 +81,59 @@ class Upgrade
 
             if (!is_numeric($currentDbVersion)) {
                 $this->logError(__('Current database version must be a number.', 'modularity-form-builder'));
-                return; 
+                return;
             }
 
             if ($currentDbVersion > $this->dbVersion) {
-                $this->logError(
-                    __(
-                        'Database cannot be lower than currently installed (cannot downgrade).',
-                        'modularity-form-builder'
-                    )
-                );
-                return; 
+                $this->logError(__(
+                    'Database cannot be lower than currently installed (cannot downgrade).',
+                    'modularity-form-builder',
+                ));
+                return;
             }
-            
+
             //Fetch global wpdb object, save to $db
             $this->globalToLocal('wpdb', 'db');
 
-            $currentDbVersion   = $currentDbVersion + 1;
+            $currentDbVersion += 1;
 
             for ($currentDbVersion; $currentDbVersion <= $this->dbVersion; $currentDbVersion++) {
                 $class = 'ModularityFormBuilder\Upgrade\Version\V' . $currentDbVersion;
 
                 if (class_exists($class) && $this->db) {
+                    WP_CLI::line(sprintf(
+                        __('Initializing database migration to %s.', 'modularity-form-builder'),
+                        $currentDbVersion,
+                    ));
 
-                    WP_CLI::line(
-                        sprintf(
-                            __('Initializing database migration to %s.', 'modularity-form-builder'),
-                            $currentDbVersion
-                        )
-                    );
-
-                    for($halt = 3; $halt > 0; $halt--) {
-                        WP_CLI::line(
-                            sprintf(
-                                __('Upgrade will start in %s seconds.', 'modularity-form-builder'),
-                                $halt
-                            )
-                        );
+                    for ($halt = 3; $halt > 0; $halt--) {
+                        WP_CLI::line(sprintf(
+                            __('Upgrade will start in %s seconds.', 'modularity-form-builder'),
+                            $halt,
+                        ));
 
                         sleep(1);
                     }
-                    
+
                     $version = new $class($this->db);
                     $version->upgrade();
 
-                    WP_CLI::line(
-                        sprintf(
-                            __('Locking database to version %s.', 'modularity-form-builder'),
-                            $currentDbVersion
-                        )
-                    );
+                    WP_CLI::line(sprintf(
+                        __('Locking database to version %s.', 'modularity-form-builder'),
+                        $currentDbVersion,
+                    ));
 
                     update_option($this->dbVersionKey, $currentDbVersion);
 
-                    WP_CLI::line("Flushing cache.");
+                    WP_CLI::line('Flushing cache.');
                     wp_cache_flush();
                 }
             }
 
-            WP_CLI::success(
-                sprintf(
-                    __('Database migration complete; upgraded to version %s.', 'modularity-form-builder'),
-                    $this->dbVersion
-                )
-            );
+            WP_CLI::success(sprintf(
+                __('Database migration complete; upgraded to version %s.', 'modularity-form-builder'),
+                $this->dbVersion,
+            ));
         } else {
             WP_CLI::line(__('Database is already up to date.', 'modularity-form-builder'));
         }

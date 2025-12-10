@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ModularityFormBuilder\Helper;
 
 class SanitizeData
@@ -11,7 +13,7 @@ class SanitizeData
      *
      * @return string Modified string
      */
-    public static function convertLinks($text) : string
+    public static function convertLinks($text): string
     {
         $pattern = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 
@@ -31,7 +33,7 @@ class SanitizeData
      *
      * @return string A formatted version of the date.
      */
-    public static function formatDate($text) : string
+    public static function formatDate($text): string
     {
         $parsed = strtotime($text);
 

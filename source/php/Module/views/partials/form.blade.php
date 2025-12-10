@@ -1,3 +1,8 @@
+<?php
+
+declare(strict_types=1);
+
+?>
 @if(!$formWasSent)
     @form([
         'errorMessage' => $lang['errorMessage'],

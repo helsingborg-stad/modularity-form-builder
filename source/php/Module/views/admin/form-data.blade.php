@@ -1,8 +1,10 @@
 <?php
 
-    foreach ($form_fields as $item) : ?>
+declare(strict_types=1);
+
+foreach ($form_fields as $item): ?>
         <?php
-        if (empty($item['value']) || (isset($excludedFront) && in_array($item['acf_fc_layout'], $excludedFront))) {
+        if (empty($item['value']) || isset($excludedFront) && in_array($item['acf_fc_layout'], $excludedFront)) {
             continue;
         }
         ?>
@@ -23,25 +25,27 @@
 
                     //Get path of file
                     $filePath = file_exists($file) ? $uploadFolder . basename($file) : $file;
-                    $filePath = $parentClass->getDownloadLink($filePath, $module_id); 
+                    $filePath = $parentClass->getDownloadLink($filePath, $module_id);
 
                     //Get filename
                     $fileName = file_exists($file) ? basename($file) : $file;
 
                     //Print link
-                    if($filePath) {
+                    if ($filePath) {
                         echo '<a href="' . $filePath . '" class="link-item link" target="_blank">' . $fileName . '</a>';
-                    } elseif($fileName) {
-                        echo '<span class="link-item link">' . $fileName . ' ('. $translation['removed_file'].')</span>';
+                    } elseif ($fileName) {
+                        echo '<span class="link-item link">' . $fileName . ' (' . $translation['removed_file'] . ')</span>';
                     } else {
-                        echo '<span class="link-item link">'. $translation['unknown_file'].'</span>';
+                        echo '<span class="link-item link">' . $translation['unknown_file'] . '</span>';
                     }
                 }
             } elseif (is_array($item['value'])) {
                 foreach ($item['value'] as $value) {
-                    if (!empty($value)) {
-                        echo nl2br($value) . '<br>';
+                    if (empty($value)) {
+                        continue;
                     }
+
+                    echo nl2br($value) . '<br>';
                 }
             } else {
                 echo nl2br($item['value']);
@@ -51,8 +55,3 @@
 
         </p>
     <?php endforeach;
-
-?>
-
-
-

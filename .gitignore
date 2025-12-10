@@ -8,6 +8,7 @@ dist/js/*
 dist/css/*
 vendor
 vendor/*
+/assets/
 
 .php_cs.cache
 .env
@@ -44,7 +45,8 @@ Thumbs.db
 *.tar
 *.zip
 
-
+phpunit-log.xml
+phpunit-testdox.txt
 # -------------------------
 # BEGIN Whitelisted Files
 # -------------------------
@@ -52,4 +54,6 @@ Thumbs.db
 # track these files, if they exist
 !.gitignore
 !.editorconfig
+!.vscode
+
 

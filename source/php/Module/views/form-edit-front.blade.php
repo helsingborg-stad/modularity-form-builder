@@ -1,3 +1,8 @@
+<?php
+
+declare(strict_types=1);
+
+?>
 <div id="modal-edit-post" class="modal modal-backdrop-2 modal-small" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content material-shadow-lg">
         <form id="edit-post" class="modularity-validation">
