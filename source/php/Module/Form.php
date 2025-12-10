@@ -74,10 +74,7 @@ class Form extends \Modularity\Module
         $data['module_id'] = $this->ID;
 
         $data['hasFileUpload'] = false;
-        $data['submissionPostType'] = !empty($data['custom_submission_post_type'])
-        && !empty($data['submission_post_type'])
-            ? $data['submission_post_type']
-            : 'form-submissions';
+        $data['submissionPostType'] = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
 
         $data['googleGeocoding'] = defined('G_GEOCODE_KEY') && G_GEOCODE_KEY ? true : false;
         $data['googleCaptchaTerms'] = __(
@@ -105,16 +102,14 @@ class Form extends \Modularity\Module
             $field = $this->setAttributeList($field);
 
             if (!empty($field['type']) && 'multiple' === $field['type'] && 0 < (int) $field['files_max']) {
-                $field['maxFilesNotice'] =
-                    __('Max allowed files:', 'modularity-form-builder') . ' ' . $field['files_max'];
+                $field['maxFilesNotice'] = __('Max allowed files:', 'modularity-form-builder') . ' ' . $field['files_max'];
             } else {
                 $field['maxFilesNotice'] = false;
             }
 
             $field['conditional_hidden'] = '';
             if (!empty($field['conditional_logic']) && !empty($field['conditonal_field'])) {
-                $field['conditional_hidden'] =
-                    "style='display:none;' conditional-target='" . $field['conditonal_field'] . "'";
+                $field['conditional_hidden'] = "style='display:none;' conditional-target='" . $field['conditonal_field'] . "'";
             }
 
             if ($field['acf_fc_layout'] === 'sender') {
@@ -201,12 +196,7 @@ class Form extends \Modularity\Module
 
         $screen = get_current_screen();
 
-        if (
-            $screen->post_type !== 'mod-form'
-            || !isset($_GET['post'])
-            || !isset($_GET['export'])
-            || !isset($_GET['posttype'])
-        ) {
+        if ($screen->post_type !== 'mod-form' || !isset($_GET['post']) || !isset($_GET['export']) || !isset($_GET['posttype'])) {
             return;
         }
 
@@ -313,9 +303,7 @@ class Form extends \Modularity\Module
     public function showResponses($post)
     {
         $data = get_fields($post->ID);
-        $postType = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type'])
-            ? $data['submission_post_type']
-            : 'form-submissions';
+        $postType = !empty($data['custom_submission_post_type']) && !empty($data['submission_post_type']) ? $data['submission_post_type'] : 'form-submissions';
 
         $query = new \WP_Query([
             'post_type' => $postType,
@@ -340,20 +328,8 @@ class Form extends \Modularity\Module
         echo '<p>';
         echo sprintf(__('There is %d submissions to this form.', 'modularity-form-builder'), count($submissions));
         echo '</p><p>';
-        echo
-            '<a href="'
-            . admin_url('edit.php?post_type=' . $postType . '&form=' . $post->ID)
-                . '" class="button">'
-                . __('View submissions', 'modularity-form-builder')
-                . '</a>'
-        ;
-        echo
-            ' <a href="'
-            . admin_url('post.php?post=' . $post->ID . '&action=edit&export=csv&posttype=' . $postType)
-                . '" class="button" target="_blank">'
-                . __('Export csv', 'modularity-form-builder')
-                . '</a>'
-        ;
+        echo '<a href="' . admin_url('edit.php?post_type=' . $postType . '&form=' . $post->ID) . '" class="button">' . __('View submissions', 'modularity-form-builder') . '</a>';
+        echo ' <a href="' . admin_url('post.php?post=' . $post->ID . '&action=edit&export=csv&posttype=' . $postType) . '" class="button" target="_blank">' . __('Export csv', 'modularity-form-builder') . '</a>';
         echo '</p>';
     }
 

@@ -35,9 +35,7 @@ class Options
     {
         // Bail if Google_Client is not loaded
         if (!class_exists('\\Google_Client')) {
-            echo
-                '<div class="wrap"><div class="notice error is-dismissible"><p>Install library <strong>Google APIs Client Library for PHP</strong> to continue.</p></div></div>'
-            ;
+            echo '<div class="wrap"><div class="notice error is-dismissible"><p>Install library <strong>Google APIs Client Library for PHP</strong> to continue.</p></div></div>';
             return;
         }
 
@@ -49,21 +47,14 @@ class Options
         }
 
         // Delete oauth credentials
-        if (
-            isset($_POST['delete-oauth-credentials'])
-            && wp_verify_nonce($_POST['delete-oauth-credentials'], 'delete')
-        ) {
+        if (isset($_POST['delete-oauth-credentials']) && wp_verify_nonce($_POST['delete-oauth-credentials'], 'delete')) {
             delete_option('options_mod_form_client_id');
             delete_option('options_mod_form_secret');
             delete_option('options_mod_form_access_token');
         }
 
         // Try to authenticate if all options are set
-        if (
-            !empty(get_option('options_mod_form_client_id'))
-            && !empty(get_option('options_mod_form_secret'))
-            && get_option('options_mod_form_access_token') != true
-        ) {
+        if (!empty(get_option('options_mod_form_client_id')) && !empty(get_option('options_mod_form_secret')) && get_option('options_mod_form_access_token') != true) {
             $oauthRespons = $this->authenticateWebApp();
         }
 
@@ -126,10 +117,7 @@ class Options
                 update_option('options_mod_form_state', $state);
 
                 $authUrl = $client->createAuthUrl();
-                $markup =
-                    '<h3>Authorization Required</h3><p>You need to <a href="'
-                    . $authUrl
-                    . '">authorize access</a> before proceeding.<p>';
+                $markup = '<h3>Authorization Required</h3><p>You need to <a href="' . $authUrl . '">authorize access</a> before proceeding.<p>';
             }
         } catch (\InvalidArgumentException $e) {
             $markup .= sprintf(

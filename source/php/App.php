@@ -157,21 +157,12 @@ class App
      */
     public function addHiddenFields($field)
     {
-        if (
-            get_post_type() != $this->postType
-            || $field['parent'] != 'field_58eb302883a68' && $field['parent'] != 'field_5a0abd4a4342a'
-        ) {
+        if (get_post_type() != $this->postType || $field['parent'] != 'field_58eb302883a68' && $field['parent'] != 'field_5a0abd4a4342a') {
             return;
         }
 
         $val = is_string($field['value']) ? $field['value'] : '';
-        echo
-            '<input type="hidden" name="current-'
-            . esc_attr($field['name'])
-                . '" value="'
-                . esc_attr(htmlspecialchars($val, ENT_QUOTES, 'UTF-8'))
-                . '">'
-        ;
+        echo '<input type="hidden" name="current-' . esc_attr($field['name']) . '" value="' . esc_attr(htmlspecialchars($val, ENT_QUOTES, 'UTF-8')) . '">';
     }
 
     /**
@@ -207,12 +198,8 @@ class App
                     foreach ($field as $senderKey => $senderField) {
                         // Get ACF field object
                         $senderObject = get_field_object($senderKey);
-                        $defaultLabel = isset($defaultLabels[$senderObject['_name']])
-                            ? $defaultLabels[$senderObject['_name']]
-                            : null;
-                        $oldVal = !empty($oldValues[$key][$fieldKey][$senderKey])
-                            ? $oldValues[$key][$fieldKey][$senderKey]
-                            : $defaultLabel;
+                        $defaultLabel = isset($defaultLabels[$senderObject['_name']]) ? $defaultLabels[$senderObject['_name']] : null;
+                        $oldVal = !empty($oldValues[$key][$fieldKey][$senderKey]) ? $oldValues[$key][$fieldKey][$senderKey] : $defaultLabel;
                         $newVal = !empty($senderField) ? $senderField : $defaultLabel;
 
                         if ($oldVal != $newVal) {
@@ -226,11 +213,7 @@ class App
 
                 // Loop through all other field labels
                 if (is_array($newValues[$key][$fieldKey]) && is_array($oldValues[$key][$fieldKey])) {
-                    if (
-                        $fieldObject['_name'] == 'label'
-                        && !empty($oldValues[$key][$fieldKey])
-                        && $newValues[$key][$fieldKey] != $oldValues[$key][$fieldKey]
-                    ) {
+                    if ($fieldObject['_name'] == 'label' && !empty($oldValues[$key][$fieldKey]) && $newValues[$key][$fieldKey] != $oldValues[$key][$fieldKey]) {
                         $updatedValues[] = [
                             'old' => sanitize_title($oldValues[$key][$fieldKey]),
                             'new' => sanitize_title($newValues[$key][$fieldKey]),
@@ -355,12 +338,7 @@ class App
      */
     public function deleteFile()
     {
-        if (
-            !isset($_POST['postId'])
-            || !isset($_POST['formId'])
-            || !isset($_POST['filePath'])
-            || !isset($_POST['fieldName'])
-        ) {
+        if (!isset($_POST['postId']) || !isset($_POST['formId']) || !isset($_POST['filePath']) || !isset($_POST['fieldName'])) {
             echo _e('Missing arguments', 'modularity-form-builder');
             die();
         }
@@ -441,11 +419,7 @@ class App
 
     public function frontEndSavePost()
     {
-        if (
-            empty($_POST['post_id'])
-            || !isset($_POST['update-modularity-form'])
-            || !wp_verify_nonce($_POST['update-modularity-form'], 'update')
-        ) {
+        if (empty($_POST['post_id']) || !isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'], 'update')) {
             wp_send_json_error(__('Something went wrong', 'modularity-form-builder'));
         }
 
@@ -616,12 +590,7 @@ class App
                     }
                     if ($granted === false) {
                         wp_die(
-                            '<h1>'
-                            . __('Hello, you do not have permission to edit this form')
-                            . '</h1>'
-                            . '<p>'
-                            . __('Please ask the creator/author of the form to grant you access.')
-                            . '</p>',
+                            '<h1>' . __('Hello, you do not have permission to edit this form') . '</h1>' . '<p>' . __('Please ask the creator/author of the form to grant you access.') . '</p>',
                             403,
                         );
                     }

@@ -25,8 +25,7 @@ class Filter
 
         if ($typenow == $this->postType) {
             wp_dropdown_categories([
-                'show_option_all' =>
-                    __('Show All', 'modularity-form-builder') . ' ' . get_taxonomy($this->taxonomySlug)->label,
+                'show_option_all' => __('Show All', 'modularity-form-builder') . ' ' . get_taxonomy($this->taxonomySlug)->label,
                 'taxonomy' => $this->taxonomySlug,
                 'name' => $this->taxonomySlug,
                 'orderby' => 'name',
@@ -50,14 +49,7 @@ class Filter
         $q_vars = &$query->query_vars;
 
         //Validate that we are on cirrect page
-        if (
-            $pagenow == 'edit.php'
-            && isset($q_vars['post_type'])
-            && $q_vars['post_type'] == $this->postType
-            && isset($q_vars[$this->taxonomySlug])
-            && is_numeric($q_vars[$this->taxonomySlug])
-            && $q_vars[$this->taxonomySlug] != 0
-        ) {
+        if ($pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $this->postType && isset($q_vars[$this->taxonomySlug]) && is_numeric($q_vars[$this->taxonomySlug]) && $q_vars[$this->taxonomySlug] != 0) {
             $term = get_term_by('id', $q_vars[$this->taxonomySlug], $this->taxonomySlug);
             $q_vars[$this->taxonomySlug] = $term->slug;
         }

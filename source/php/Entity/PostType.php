@@ -49,10 +49,7 @@ class PostType
     public function addEditButton($items, $post)
     {
         if (is_object($post) && self::editableFrontend($post) && $post->post_type == $this->postTypeSlug) {
-            $items[] =
-                '<a href="#modal-edit-post" class="settings-item"><i class="pricon pricon-space-right pricon-pen"></i> '
-                . __('Edit', 'modularity-form-builder')
-                . '</a>';
+            $items[] = '<a href="#modal-edit-post" class="settings-item"><i class="pricon pricon-space-right pricon-pen"></i> ' . __('Edit', 'modularity-form-builder') . '</a>';
         }
 
         return $items;
@@ -211,10 +208,7 @@ class PostType
     {
         if (isset($_GET['modFormDownloadEncFile'])) {
             //Verify that there is a module id included
-            if (
-                !isset($_GET['modFormModuleId'])
-                || isset($_GET['modFormModuleId']) && !is_numeric($_GET['modFormModuleId'])
-            ) {
+            if (!isset($_GET['modFormModuleId']) || isset($_GET['modFormModuleId']) && !is_numeric($_GET['modFormModuleId'])) {
                 wp_die(
                     __('No reference to a module where defined.', 'modularity-form-builder'),
                     __('Module reference missing', 'modularity-form-builder'),
@@ -291,16 +285,7 @@ class PostType
                 $sep = '?';
             }
 
-            return (
-                '//'
-                . $_SERVER['HTTP_HOST']
-                . $_SERVER['REQUEST_URI']
-                . $sep
-                . 'modFormDownloadEncFile='
-                . urlencode(basename($filePath))
-                . '&modFormModuleId='
-                . $moduleId
-            );
+            return '//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $sep . 'modFormDownloadEncFile=' . urlencode(basename($filePath)) . '&modFormModuleId=' . $moduleId;
         }
 
         return $filePath;
@@ -386,18 +371,8 @@ class PostType
             if (isset($indata['modularity-form-history'])) {
                 echo '<p><strong>' . __('Previous page', 'modularity-form-builder') . '</strong><br />';
 
-                if (
-                    trim($indata['modularity-form-history']) !== 'null'
-                    && trim($indata['modularity-form-history']) !== 'http://null'
-                    && trim($indata['modularity-form-history']) !== 'https://null'
-                ) {
-                    echo
-                        "<a href=\""
-                        . $indata['modularity-form-history']
-                            . "\">"
-                            . $indata['modularity-form-history']
-                            . '</a>'
-                    ;
+                if (trim($indata['modularity-form-history']) !== 'null' && trim($indata['modularity-form-history']) !== 'http://null' && trim($indata['modularity-form-history']) !== 'https://null') {
+                    echo "<a href=\"" . $indata['modularity-form-history'] . "\">" . $indata['modularity-form-history'] . '</a>';
                 } else {
                     echo __('No Referrer', 'modularity-form-builder');
                 }
@@ -406,15 +381,7 @@ class PostType
             }
 
             if (isset($indata['modularity-form-url'])) {
-                echo
-                    '<p><strong>'
-                    . __('Form', 'modularity-form-builder')
-                        . "</strong><br /><a href=\""
-                        . $indata['modularity-form-url']
-                        . "\">"
-                        . $indata['modularity-form-url']
-                        . '</a></p>'
-                ;
+                echo '<p><strong>' . __('Form', 'modularity-form-builder') . "</strong><br /><a href=\"" . $indata['modularity-form-url'] . "\">" . $indata['modularity-form-url'] . '</a></p>';
             }
         }
     }
@@ -423,9 +390,7 @@ class PostType
     {
         $data = [];
         $getData = get_post_meta($post->ID, 'form-data', true);
-        $indata = is_array($getData)
-            ? $getData
-            : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', $getData));
+        $indata = is_array($getData) ? $getData : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', $getData));
 
         // Get the form id
         if (!empty($indata['modularity-form-id'])) {
@@ -495,11 +460,8 @@ class PostType
                         'label' => $field['labels'][$subfield],
                         'labels' => $field['labels'],
                         'name' => sanitize_title($field['labels'][$subfield]),
-                        'required' =>
-                            is_array($field['required_fields']) && in_array($subfield, $field['required_fields']),
-                        'value' => !empty($indata[sanitize_title($field['labels'][$subfield])])
-                            ? $indata[sanitize_title($field['labels'][$subfield])]
-                            : '',
+                        'required' => is_array($field['required_fields']) && in_array($subfield, $field['required_fields']),
+                        'value' => !empty($indata[sanitize_title($field['labels'][$subfield])]) ? $indata[sanitize_title($field['labels'][$subfield])] : '',
                     ];
                 }
 
@@ -508,11 +470,7 @@ class PostType
 
             $data['form_fields'][] = array_merge($field, [
                 'name' => sanitize_title($field['label']),
-                'value' =>
-                    self::findMatchingNestedIndataArrayValue($nestedIndataArray, sanitize_title($field['label']))
-                    ?? (
-                        !empty($indata[sanitize_title($field['label'])]) ? $indata[sanitize_title($field['label'])] : ''
-                    ),
+                'value' => self::findMatchingNestedIndataArrayValue($nestedIndataArray, sanitize_title($field['label'])) ?? (!empty($indata[sanitize_title($field['label'])]) ? $indata[sanitize_title($field['label'])] : ''),
             ]);
         }
 
@@ -571,13 +529,7 @@ class PostType
     {
         global $post;
 
-        if (
-            is_object($post)
-            && $post->post_type === $this->postTypeSlug
-            && !is_admin()
-            && !is_archive()
-            && is_main_query()
-        ) {
+        if (is_object($post) && $post->post_type === $this->postTypeSlug && !is_admin() && !is_archive() && is_main_query()) {
             // Apply if content is the same as the global posts content
             $post_content = $post->post_content;
             if (str_contains($post_content, '<!--more-->')) {
@@ -606,11 +558,7 @@ class PostType
         $formId = get_field('modularity-form-id', $post->ID);
         $editable = get_field('editable_front_end', $formId);
 
-        if (
-            $editable
-            && !is_admin()
-            && (current_user_can('administrator') || is_user_logged_in() && $current_user->ID == $post->post_author)
-        ) {
+        if ($editable && !is_admin() && (current_user_can('administrator') || is_user_logged_in() && $current_user->ID == $post->post_author)) {
             return true;
         }
 
@@ -626,15 +574,7 @@ class PostType
     {
         global $pagenow;
 
-        if (
-            !is_admin()
-            || !$pagenow
-            || $pagenow !== 'edit.php'
-            || !isset($_GET['form'])
-            || !$_GET['form']
-            || isset($query->query['post_type']) && $query->query['post_type'] != $this->postTypeSlug
-            || !$query->is_main_query()
-        ) {
+        if (!is_admin() || !$pagenow || $pagenow !== 'edit.php' || !isset($_GET['form']) || !$_GET['form'] || isset($query->query['post_type']) && $query->query['post_type'] != $this->postTypeSlug || !$query->is_main_query()) {
             return;
         }
 
@@ -727,12 +667,7 @@ class PostType
         }
 
         // Check nonce and if form data exist
-        if (
-            !isset($_POST['update-modularity-form'])
-            || !wp_verify_nonce($_POST['update-modularity-form'], 'update')
-            || !isset($_POST['modularity-form-id'])
-            || !isset($_POST['mod-form'])
-        ) {
+        if (!isset($_POST['update-modularity-form']) || !wp_verify_nonce($_POST['update-modularity-form'], 'update') || !isset($_POST['modularity-form-id']) || !isset($_POST['mod-form'])) {
             return;
         }
 

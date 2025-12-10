@@ -53,24 +53,9 @@ class MetaBox
                 if (!empty($custom_fields)) {
                     /* Loop through $custom_fields */
                     foreach ($custom_fields as $label => $type) {
-                        $field_id_name =
-                            strtolower(str_replace(' ', '_', $data['id']))
-                            . '_'
-                            . strtolower(str_replace(' ', '_', $label));
+                        $field_id_name = strtolower(str_replace(' ', '_', $data['id'])) . '_' . strtolower(str_replace(' ', '_', $label));
 
-                        echo
-                            '<label for="'
-                            . $field_id_name
-                            . '">'
-                            . $label
-                            . '</label><input type="text" name="custom_meta['
-                            . $field_id_name
-                            . ']" id="'
-                            . $field_id_name
-                            . '" value="'
-                            . $meta[$field_id_name][0]
-                                . '" />'
-                        ;
+                        echo '<label for="' . $field_id_name . '">' . $label . '</label><input type="text" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />';
                     }
                 }
             },

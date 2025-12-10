@@ -22,24 +22,14 @@ class Submission
             function () {
                 if (isset($_POST['modularity-form']) && wp_verify_nonce($_POST['modularity-form'], 'submit')) {
                     // Honeypot validation check
-                    if (
-                        !isset($_POST['modularity-v-field'])
-                        || isset($_POST['modularity-v-field'])
-                        && $_POST['modularity-v-field'] != '7y0dwakjbdwabclsglcaw'
-                    ) {
+                    if (!isset($_POST['modularity-v-field']) || isset($_POST['modularity-v-field']) && $_POST['modularity-v-field'] != '7y0dwakjbdwabclsglcaw') {
                         wp_die('Could not verify form (v-field).');
                     }
-                    if (
-                        !isset($_POST['modularity-e-field'])
-                        || isset($_POST['modularity-e-field']) && $_POST['modularity-e-field'] != ''
-                    ) {
+                    if (!isset($_POST['modularity-e-field']) || isset($_POST['modularity-e-field']) && $_POST['modularity-e-field'] != '') {
                         wp_die('Could not verify form (e-field).');
                     }
 
-                    if (
-                        !isset($_POST['modularity-t-field'])
-                        || isset($_POST['modularity-t-field']) && $_POST['modularity-t-field'] != '5000'
-                    ) {
+                    if (!isset($_POST['modularity-t-field']) || isset($_POST['modularity-t-field']) && $_POST['modularity-t-field'] != '5000') {
                         wp_die('Could not verify form (t-field).');
                     }
 
@@ -96,12 +86,8 @@ class Submission
         $_POST = array_merge($_POST, $files);
 
         // Set post title, content, form page and referer
-        $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']])
-            ? $_POST[$_POST['post_title']]
-            : get_the_title($_POST['modularity-form-id']);
-        $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']])
-            ? $_POST[$_POST['post_content']]
-            : '';
+        $postTitle = !empty($_POST['post_title']) && !empty($_POST[$_POST['post_title']]) ? $_POST[$_POST['post_title']] : get_the_title($_POST['modularity-form-id']);
+        $postContent = !empty($_POST['post_content']) && !empty($_POST[$_POST['post_content']]) ? $_POST[$_POST['post_content']] : '';
 
         // Referer & page url
         $postReferer = esc_url($_POST['modularity-form-history']);
@@ -140,11 +126,7 @@ class Submission
         $fields = $fields['form_fields'];
 
         foreach ($fields as $key => $field) {
-            if (
-                $field['acf_fc_layout'] == 'checkbox'
-                && is_array($field['values'])
-                && !empty($_POST[sanitize_title($field['label'])])
-            ) {
+            if ($field['acf_fc_layout'] == 'checkbox' && is_array($field['values']) && !empty($_POST[sanitize_title($field['label'])])) {
                 $_POST['ange-vilka-handlingar-du-vill-bestalla'] = implode(
                     ',',
                     $_POST[sanitize_title($field['label'])],
@@ -160,34 +142,16 @@ class Submission
 
         // Get sender data
         $fromEmail = !empty($_POST[sanitize_title($labels['email'])]) ? $_POST[sanitize_title($labels['email'])] : null;
-        $fromFirstName = !empty($_POST[sanitize_title($labels['firstname'])])
-            ? $_POST[sanitize_title($labels['firstname'])]
-            : null;
-        $fromLastName = !empty($_POST[sanitize_title($labels['lastname'])])
-            ? $_POST[sanitize_title($labels['lastname'])]
-            : null;
-        $from = $fromEmail || $fromFirstName || $fromLastName
-            ? $fromFirstName . ' ' . $fromLastName . ' <' . $fromEmail . '>'
-            : $fromEmail;
+        $fromFirstName = !empty($_POST[sanitize_title($labels['firstname'])]) ? $_POST[sanitize_title($labels['firstname'])] : null;
+        $fromLastName = !empty($_POST[sanitize_title($labels['lastname'])]) ? $_POST[sanitize_title($labels['lastname'])] : null;
+        $from = $fromEmail || $fromFirstName || $fromLastName ? $fromFirstName . ' ' . $fromLastName . ' <' . $fromEmail . '>' : $fromEmail;
         if (!$fromEmail) {
-            $from = $fromEmail || $fromFirstName || $fromLastName
-                ? $fromFirstName
-                . ' '
-                . $fromLastName
-                . ' <'
-                . 'no-reply@'
-                . preg_replace('/www\./i', '', $_SERVER['SERVER_NAME'])
-                . '>'
-                : 'no-reply@' . preg_replace('/www\./i', '', $_SERVER['SERVER_NAME']);
+            $from = $fromEmail || $fromFirstName || $fromLastName ? $fromFirstName . ' ' . $fromLastName . ' <' . 'no-reply@' . preg_replace('/www\./i', '', $_SERVER['SERVER_NAME']) . '>' : 'no-reply@' . preg_replace('/www\./i', '', $_SERVER['SERVER_NAME']);
         }
 
         $siteDomain = preg_replace('/www\./i', '', parse_url(get_home_url())['host']);
-        $siteMailFromDomain = defined('MOD_FORMS_MAIL_FROM_DOMAIN') && !empty(MOD_FORMS_MAIL_FROM_DOMAIN)
-            ? MOD_FORMS_MAIL_FROM_DOMAIN
-            : $siteDomain;
-        $siteMailFromName = defined('MOD_FORMS_MAIL_FROM_NAME') && !empty(MOD_FORMS_MAIL_FROM_NAME)
-            ? MOD_FORMS_MAIL_FROM_NAME
-            : get_bloginfo('name');
+        $siteMailFromDomain = defined('MOD_FORMS_MAIL_FROM_DOMAIN') && !empty(MOD_FORMS_MAIL_FROM_DOMAIN) ? MOD_FORMS_MAIL_FROM_DOMAIN : $siteDomain;
+        $siteMailFromName = defined('MOD_FORMS_MAIL_FROM_NAME') && !empty(MOD_FORMS_MAIL_FROM_NAME) ? MOD_FORMS_MAIL_FROM_NAME : get_bloginfo('name');
         $autoReplyFrom = $siteMailFromName . ' <no-reply@' . $siteMailFromDomain . '>';
 
         // Send notifications
@@ -329,33 +293,20 @@ class Submission
                     continue;
                 }
 
-                $encryptionConfigDefined =
-                    defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD');
+                $encryptionConfigDefined = defined('ENCRYPT_SECRET_VI') && defined('ENCRYPT_SECRET_KEY') && defined('ENCRYPT_METHOD');
 
                 //Encrypt file if encryption is enabled
-                if (
-                    get_option('options_mod_form_crypt')
-                    && empty($fields[$sanitizedKey]['upload_videos_external'])
-                    && $encryptionConfigDefined
-                ) {
+                if (get_option('options_mod_form_crypt') && empty($fields[$sanitizedKey]['upload_videos_external']) && $encryptionConfigDefined) {
                     $encrypted = file_put_contents($files['tmp_name'][$i], \ModularityFormBuilder\App::encryptDecryptFile(
                         'encrypt',
                         file_get_contents($files['tmp_name'][$i]),
                     ));
 
                     if ($encrypted !== false) {
-                        $targetFile =
-                            $uploadsFolder
-                            . '/'
-                            . uniqid('', true)
-                            . '-'
-                            . sanitize_file_name($fileName . '-enc-' . ENCRYPT_METHOD)
-                            . '.'
-                            . $fileext;
+                        $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName . '-enc-' . ENCRYPT_METHOD) . '.' . $fileext;
                     }
                 } else {
-                    $targetFile =
-                        $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName) . '.' . $fileext;
+                    $targetFile = $uploadsFolder . '/' . uniqid('', true) . '-' . sanitize_file_name($fileName) . '.' . $fileext;
                 }
 
                 // Upload the file to server
@@ -443,13 +394,7 @@ class Submission
     {
         //Check if encrypted
         if (defined('ENCRYPT_METHOD') && str_contains($filePath, sanitize_file_name('-enc-' . ENCRYPT_METHOD))) {
-            return (
-                home_url('/')
-                . '?modFormDownloadEncFilePublic='
-                . urlencode(basename($filePath))
-                . '&token='
-                . $this->createToken($filePath)
-            );
+            return home_url('/') . '?modFormDownloadEncFilePublic=' . urlencode(basename($filePath)) . '&token=' . $this->createToken($filePath);
         }
 
         return $filePath;
@@ -564,9 +509,7 @@ class Submission
             } elseif (in_array($field['acf_fc_layout'], $excludedFields)) {
                 continue;
             } else {
-                $formdata[$field['label'] . self::increaseKeyValue($formdata, $field['label'])] =
-                    self::findMatchingNestedIndataArrayValue($nestedDataArray, sanitize_title($field['label']))
-                    ?? (!empty($data[sanitize_title($field['label'])]) ? $data[sanitize_title($field['label'])] : '');
+                $formdata[$field['label'] . self::increaseKeyValue($formdata, $field['label'])] = self::findMatchingNestedIndataArrayValue($nestedDataArray, sanitize_title($field['label'])) ?? (!empty($data[sanitize_title($field['label'])]) ? $data[sanitize_title($field['label'])] : '');
             }
         }
 
@@ -632,9 +575,7 @@ class Submission
         $data = self::getSubmissionData($submissionId);
         $showData = get_field('submission_notice_data', $formId);
         $messagePrefix = get_field('notification_message', $formId);
-        $subject = get_field('notification_custom_subject', $formId) == true
-            ? get_field('notification_subject', $formId)
-            : __('New form submission', 'modularity-form-builder');
+        $subject = get_field('notification_custom_subject', $formId) == true ? get_field('notification_subject', $formId) : __('New form submission', 'modularity-form-builder');
         $uploadFolder = wp_upload_dir();
         $uploadFolder = $uploadFolder['baseurl'] . '/modularity-form-builder/';
         $message = sprintf(
@@ -658,14 +599,7 @@ class Submission
                     foreach ($value as $subvalue) {
                         $lineBreak = $subvalue == $last ? '' : '<br>';
                         if (str_contains($subvalue, '/modularity-form-builder/')) {
-                            $message .=
-                                __('Open file', 'modularity-form-builder')
-                                . ': <a target="_blank" href="'
-                                . $this->getMailDownloadLink($uploadFolder . basename($subvalue))
-                                . '">'
-                                . basename($subvalue)
-                                . '</a>'
-                                . $lineBreak;
+                            $message .= __('Open file', 'modularity-form-builder') . ': <a target="_blank" href="' . $this->getMailDownloadLink($uploadFolder . basename($subvalue)) . '">' . basename($subvalue) . '</a>' . $lineBreak;
                         } else {
                             $message .= !empty($subvalue) ? $subvalue . $lineBreak : '';
                         }
@@ -724,9 +658,7 @@ class Submission
 
         $message = '';
 
-        $subject = get_field('copy_custom_subject', $formId) == true
-            ? get_field('copy_subject', $formId)
-            : __('Form submission copy', 'modularity-form-builder');
+        $subject = get_field('copy_custom_subject', $formId) == true ? get_field('copy_subject', $formId) : __('Form submission copy', 'modularity-form-builder');
         $uploadFolder = wp_upload_dir();
         $uploadFolder = $uploadFolder['baseurl'] . '/modularity-form-builder/';
         $i = 0;
@@ -741,14 +673,7 @@ class Submission
                 foreach ($value as $subvalue) {
                     $lineBreak = $subvalue == $last ? '' : '<br>';
                     if (str_contains($subvalue, '/modularity-form-builder/')) {
-                        $message .=
-                            __('Open file', 'modularity-form-builder')
-                            . ': <a target="_blank" href="'
-                            . $this->getMailDownloadLink($uploadFolder . basename($subvalue))
-                            . '">'
-                            . basename($subvalue)
-                            . '</a>'
-                            . $lineBreak;
+                        $message .= __('Open file', 'modularity-form-builder') . ': <a target="_blank" href="' . $this->getMailDownloadLink($uploadFolder . basename($subvalue)) . '">' . basename($subvalue) . '</a>' . $lineBreak;
                     } else {
                         $message .= !empty($subvalue) ? $subvalue . $lineBreak : '';
                     }

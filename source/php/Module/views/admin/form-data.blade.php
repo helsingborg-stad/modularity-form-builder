@@ -34,13 +34,7 @@ foreach ($form_fields as $item): ?>
                     if ($filePath) {
                         echo '<a href="' . $filePath . '" class="link-item link" target="_blank">' . $fileName . '</a>';
                     } elseif ($fileName) {
-                        echo
-                            '<span class="link-item link">'
-                            . $fileName
-                            . ' ('
-                            . $translation['removed_file']
-                                . ')</span>'
-                        ;
+                        echo '<span class="link-item link">' . $fileName . ' (' . $translation['removed_file'] . ')</span>';
                     } else {
                         echo '<span class="link-item link">' . $translation['unknown_file'] . '</span>';
                     }
