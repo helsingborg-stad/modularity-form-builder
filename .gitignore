@@ -8,7 +8,7 @@ dist/js/*
 dist/css/*
 vendor
 vendor/*
-/assets
+/assets/
 
 .php_cs.cache
 .env
