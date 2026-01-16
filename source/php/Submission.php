@@ -242,7 +242,7 @@ class Submission
         self::maybeCreateFolder($uploadsFolder);
 
         //Get fields for file
-        $fields = self::getFileFields($formId);
+        $fields = self::getFileFields((int) $formId);
 
         //Declation of allowed filetypes.
         $allowedImageTypes = ['.jpeg', '.jpg', '.png', '.gif', '.svg'];
@@ -337,12 +337,12 @@ class Submission
         $sanitizedFilesList = [];
 
         foreach ($filesList as $key => $file) {
-            foreach ($file['type'] as $typeKey => $type) {
-                if (!empty($type)) {
-                    continue;
+            if (is_array($file['type'])) {
+                foreach ($file['type'] as $typeKey => $type) {
+                    if (empty($type)) {
+                        unset($filesList[$key]['type'][$typeKey]);
+                    }
                 }
-
-                unset($filesList[$key]['type'][$typeKey]);
             }
 
             if (!empty($filesList[$key]['type'])) {
