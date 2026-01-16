@@ -339,11 +339,9 @@ class Submission
         foreach ($filesList as $key => $file) {
             if (is_array($file['type'])) {
                 foreach ($file['type'] as $typeKey => $type) {
-                    if (!empty($type)) {
-                        continue;
+                    if (empty($type)) {
+                        unset($filesList[$key]['type'][$typeKey]);
                     }
-
-                    unset($filesList[$key]['type'][$typeKey]);
                 }
             }
 
