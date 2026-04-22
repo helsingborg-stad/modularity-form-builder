@@ -267,7 +267,7 @@ class Submission
                 $fileext = strtolower(pathinfo((string) $files['name'][$i], PATHINFO_EXTENSION));
 
                 //Validate that image is in correct format
-                if (in_array('image/*', $fields[$sanitizedKey]['filetypes'])) {
+                if (in_array('image/*', $fields[$sanitizedKey]['filetypes'] ?? [])) {
                     $fields[$sanitizedKey]['filetypes'] = array_unique(array_merge(
                         $fields[$sanitizedKey]['filetypes'],
                         $allowedImageTypes,
@@ -275,7 +275,7 @@ class Submission
                 }
 
                 //Validate that video is in correct format
-                if (in_array('video/*', $fields[$sanitizedKey]['filetypes'])) {
+                if (in_array('video/*', $fields[$sanitizedKey]['filetypes'] ?? [])) {
                     $fields[$sanitizedKey]['filetypes'] = array_unique(array_merge(
                         $fields[$sanitizedKey]['filetypes'],
                         $allowedVideoTypes,
@@ -283,7 +283,7 @@ class Submission
                 }
 
                 //Not a valid filetype at all
-                if (!in_array('.' . $fileext, $fields[$sanitizedKey]['filetypes'])) {
+                if (!in_array('.' . $fileext, $fields[$sanitizedKey]['filetypes'] ?? [])) {
                     error_log('Filetype not allowed');
                     $uploaded['error'] = true;
                     $uploaded['errorData'] = new \WP_Error('filetype-not-allowed', __(
