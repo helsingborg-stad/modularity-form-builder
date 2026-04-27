@@ -47,6 +47,7 @@ Thumbs.db
 
 phpunit-log.xml
 phpunit-testdox.txt
+.phpunit.result.cache
 # -------------------------
 # BEGIN Whitelisted Files
 # -------------------------

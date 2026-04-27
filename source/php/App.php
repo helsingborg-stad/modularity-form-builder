@@ -467,7 +467,7 @@ class App
      * Encrypt & decrypt data
      * @param $method  string encrypt or decrypt
      * @param $data    mixed data to encrypt or decrypt
-     * @return string
+     * @return mixed
      */
     public static function encryptDecryptData($method, $data)
     {
@@ -484,13 +484,33 @@ class App
                     ));
                     break;
                 case 'decrypt':
-                    return json_decode(openssl_decrypt(
-                        base64_decode($data),
+                    if (!is_string($data) || $data === '') {
+                        return $data;
+                    }
+
+                    $decodedData = base64_decode($data, true);
+                    if ($decodedData === false) {
+                        return $data;
+                    }
+
+                    $decryptedData = openssl_decrypt(
+                        $decodedData,
                         ENCRYPT_METHOD,
                         hash('sha256', ENCRYPT_SECRET_KEY),
                         0,
                         substr(hash('sha256', ENCRYPT_SECRET_VI), 0, 16),
-                    ));
+                    );
+
+                    if (!is_string($decryptedData)) {
+                        return $data;
+                    }
+
+                    $jsonDecodedData = json_decode($decryptedData);
+                    if (json_last_error() !== JSON_ERROR_NONE) {
+                        return $decryptedData;
+                    }
+
+                    return $jsonDecodedData;
                     break;
                 default:
                     return $data;
