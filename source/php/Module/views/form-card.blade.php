@@ -3,7 +3,9 @@
 ])
     @if (!$hideTitle && !empty($post_title))
         <div class="c-card__header">
-            <h4>{!! apply_filters('the_title', $post_title) !!}</h4>
+            @typography([ 'element' => 'h4' ])
+                {!! apply_filters('the_title', $post_title) !!}
+            @endtypography
         </div>
     @endif
 
