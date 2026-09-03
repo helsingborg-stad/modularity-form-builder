@@ -26,17 +26,6 @@ declare(strict_types=1);
     <input aria-hidden="true" autocomplete="off" class="modularity-e-field js-no-validation" type="text" id="modularity-{{ $ID }}-e-field" name="modularity-e-field" value="" style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
     <input aria-hidden="true" autocomplete="off" class="modularity-t-field js-no-validation" type="text" id="modularity-{{ $ID }}-t-field" name="modularity-t-field" value="89dwaohdwa9y8"  style="overflow: hidden; width: 1px; height: 1px; opacity: .001; position: absolute; padding: 0; margin: 0; border: none;" tabindex="-1">
 
-    <?php /* User must be on page for at least 5 seconds. Honeypot function. */ ?>  
-    <script type="text/javascript">
-        ["onload"].forEach(function(e){
-            [].forEach.call(document.querySelectorAll(".modularity-t-field"), function(item) {
-                setTimeout(function() {
-                    item.value = "5000";
-                }.bind(item), 5000); 
-            });
-        });
-    </script>
-
     @if ($submissionResult === 'failed')
         <div class="o-grid">
             <div class="o-grid-12@md">
