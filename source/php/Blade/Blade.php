@@ -5,27 +5,23 @@ declare(strict_types=1);
 namespace ModularityFormBuilder\Blade;
 
 use ComponentLibrary\Init as ComponentLibraryInit;
-use HelsingborgStad\BladeService\BladeServiceInterface;
+use Municipio\Helper\ComponentBladeService;
 
 class Blade
 {
-    private BladeServiceInterface $bladeEngine;
-
-    public function __construct(
-        private ComponentLibraryInit $componentLibrary,
-    ) {
-        $this->bladeEngine = $this->componentLibrary->getEngine();
-    }
-
     public function render($view, $data = [], $compress = true, $viewPaths = [FORM_BUILDER_MODULE_VIEW_PATH])
     {
         $markup = '';
         $data = array_merge($data, ['errorMessage' => false]);
 
+        $bladeEngine = class_exists(ComponentBladeService::class)
+            ? ComponentBladeService::create($viewPaths)
+            : (new ComponentLibraryInit($viewPaths))->getEngine();
+
         try {
-            $markup = $this->bladeEngine->makeView($view, $data, [], $viewPaths)->render();
+            $markup = $bladeEngine->makeView($view, $data, [], $viewPaths)->render();
         } catch (\Throwable $e) {
-            $this->bladeEngine->errorHandler($e)->print();
+            $bladeEngine->errorHandler($e)->print();
         }
 
         if ($compress == true) {
