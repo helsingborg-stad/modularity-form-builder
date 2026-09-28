@@ -7,7 +7,6 @@
  * Author: Kristoffer Svanmark, Sebastian Thulin
  */
 
-use ComponentLibrary\Init as ComponentLibraryInit;
 use ModularityFormBuilder\Blade\Blade;
 use WpService\Implementations\NativeWpService;
 use WpUtilService\WpUtilService;
@@ -29,7 +28,7 @@ if (file_exists(FORM_BUILDER_MODULE_PATH . 'vendor/autoload.php')) {
 
 // Acf auto import and export
 add_action('plugins_loaded', function () {
-    $bladeInstance = new Blade(new ComponentLibraryInit([]));
+    $bladeInstance = new Blade();
     $acfExportManager = new \AcfExportManager\AcfExportManager();
     $acfExportManager->setTextdomain('modularity-form-builder');
     $acfExportManager->setExportFolder(FORM_BUILDER_MODULE_PATH . 'acf-fields/');
