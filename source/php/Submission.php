@@ -479,15 +479,14 @@ class Submission
 
         $fields = get_fields($formId);
         $fields = $fields['form_fields'];
-        if (get_option('options_mod_form_crypt')) {
-            $data = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta(
-                $submissionId,
-                'form-data',
-                true,
-            )));
-        } else {
-            $data = get_post_meta($submissionId, 'form-data', true);
+        $data = get_post_meta($submissionId, 'form-data', true);
+        if (get_option('options_mod_form_crypt') && !is_array($data)) {
+            $data = \ModularityFormBuilder\App::encryptDecryptData('decrypt', $data);
+            if (is_string($data) && is_serialized($data)) {
+                $data = unserialize($data, ['allowed_classes' => false]);
+            }
         }
+        $data = is_array($data) ? $data : [];
         $formdata = [];
         $labels = Helper\SenderLabels::getLabels();
         $excludedFields = [
