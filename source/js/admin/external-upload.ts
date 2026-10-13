@@ -1,13 +1,7 @@
-export default (($) => {
-	function externalUpload() {
-		$(
-			(() => {
-				if (!formbuilder.mod_form_authorized) {
-					$('[data-name="upload_videos_external"]').hide();
-				}
-			}).bind(this),
-		);
-	}
+if (!formbuilder.mod_form_authorized) {
+	document.querySelectorAll<HTMLElement>('[data-name="upload_videos_external"]').forEach((field) => {
+		field.style.display = 'none';
+	});
+}
 
-	return new externalUpload();
-})(jQuery);
+export default undefined;

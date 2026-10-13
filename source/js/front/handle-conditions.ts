@@ -1,32 +1,43 @@
-export default (($) => {
-	function HandleConditions() {
+class HandleConditions {
+	constructor() {
 		this.handleRequired();
 		this.handleEvents();
 	}
 
-	HandleConditions.prototype.handleRequired = () => {
-		const target = $('[class*="mod-form"]');
-		$('[conditional-target]:hidden', target).find('[required]').prop('required', false).attr('hidden-required', true);
-		$('[conditional-target]:visible', target).find('[hidden-required]').prop('required', true);
-	};
-
-	HandleConditions.prototype.handleEvents = function () {
-		$('input[conditional]').change(
-			function (e) {
-				const target = $(e.target).parents('[class*="mod-form"]');
-				var conditional = $(e.target).attr('conditional');
-				if (typeof conditional !== 'undefined' && conditional.length > 0) {
-					conditional = conditional.replaceAll("'", '"'); //HTML attribute breaks when using double quotes, therefore single quotes are used
-					var conditionObj = JSON.parse(conditional);
-
-					target.find('div[conditional-target^=\'{"label":"' + conditionObj.label + '",\']').hide();
-					target.find("div[conditional-target='" + conditional + "']").show();
+	private handleRequired(): void {
+		document.querySelectorAll<HTMLElement>('[class*="mod-form"] [conditional-target]').forEach((target) => {
+			const isHidden = window.getComputedStyle(target).display === 'none';
+			target.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[required], [hidden-required]').forEach((field) => {
+				if (isHidden && field.required) {
+					field.required = false;
+					field.setAttribute('hidden-required', 'true');
+				} else if (!isHidden && field.hasAttribute('hidden-required')) {
+					field.required = true;
+					field.removeAttribute('hidden-required');
 				}
+			});
+		});
+	}
 
-				this.handleRequired();
-			}.bind(this),
-		);
-	};
+	private handleEvents(): void {
+		document.addEventListener('change', (event) => {
+			const input = event.target instanceof HTMLInputElement ? event.target : null;
+			const conditional = input?.getAttribute('conditional');
+			const form = input?.closest<HTMLElement>('[class*="mod-form"]');
 
-	return new HandleConditions();
-})(jQuery);
+			if (conditional && form) {
+				const parsedCondition = JSON.parse(conditional.replaceAll("'", '"')) as { label: string };
+				form.querySelectorAll<HTMLElement>(`div[conditional-target^='{"label":"${CSS.escape(parsedCondition.label)}",']`).forEach((target) => {
+					target.style.display = 'none';
+				});
+				form.querySelectorAll<HTMLElement>(`div[conditional-target='${CSS.escape(conditional)}']`).forEach((target) => {
+					target.style.display = '';
+				});
+			}
+
+			this.handleRequired();
+		});
+	}
+}
+
+export default new HandleConditions();
