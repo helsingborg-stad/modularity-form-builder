@@ -451,7 +451,7 @@ class Form extends \Modularity\Module
             );
         }
         $this->wpEnqueue
-            ?->add('js/modularity-form-builder-front.js', [], null, true)
+            ?->add('js/modularity-form-builder-front.js', ['jquery'], null, true)
             ->with()
             ->translation('formbuilder', [
                 'sending' => __('Sending', 'modularity-form-builder'),
