@@ -1,11 +1,4 @@
-declare const acf: unknown;
-declare const ajaxurl: string;
-declare const modularity_current_post_id: string;
-declare const notificationConditions: string | null;
 declare const formbuilder: {
-	delete_confirm: string;
-	mod_form_authorized: boolean;
-	selections_missing: string;
 	something_went_wrong: string;
 };
 declare namespace google.maps {

@@ -1,7 +1,13 @@
-if (!formbuilder.mod_form_authorized) {
-	document.querySelectorAll<HTMLElement>('[data-name="upload_videos_external"]').forEach((field) => {
-		field.style.display = 'none';
-	});
-}
+export default (($) => {
+	function externalUpload() {
+		$(
+			(() => {
+				if (!formbuilder.mod_form_authorized) {
+					$('[data-name="upload_videos_external"]').hide();
+				}
+			}).bind(this),
+		);
+	}
 
-export default undefined;
+	return new externalUpload();
+})(jQuery);

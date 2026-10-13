@@ -22,10 +22,10 @@ export default class ModularityFormBuilderReferer {
 	 * @param uriParam
 	 * @returns {boolean|string}
 	 */
-	getUrlParameter(uriParam: string): boolean | string | undefined {
+	getUrlParameter(uriParam) {
 		let pageUri = decodeURIComponent(window.location.search.substring(1)),
 			uriVars = pageUri.split('&'),
-			paramName: string[];
+			paramName;
 
 		for (let i = 0; i < uriVars.length; i++) {
 			paramName = uriVars[i].split('=');
@@ -41,7 +41,7 @@ export default class ModularityFormBuilderReferer {
 	 * @param storageType
 	 * @returns {string}
 	 */
-	checkStorage(storageType: string): string | null {
+	checkStorage(storageType) {
 		return localStorage.getItem(storageType);
 	}
 
@@ -50,20 +50,18 @@ export default class ModularityFormBuilderReferer {
 	 */
 	setStorage() {
 		if (this.checkStorage('refUrlStorage') !== window.location.href) {
-			const formParameter = this.getUrlParameter('modularityForm');
-			const referrerParameter = this.getUrlParameter('modularityReferrer');
-			if (formParameter && typeof formParameter === 'string') {
+			if (this.getUrlParameter('modularityForm')) {
 				refUrlStorageHistory = localStorage.setItem(
 					'refUrlStorageHistory',
-					decodeURIComponent(formParameter),
+					decodeURIComponent(this.getUrlParameter('modularityForm')),
 				);
 
 				refUrlStorage = localStorage.setItem(
 					'refUrlStorageHistory',
-					decodeURIComponent(typeof referrerParameter === 'string' ? referrerParameter : ''),
+					decodeURIComponent(this.getUrlParameter('modularityReferrer')),
 				);
 			} else {
-				refUrlStorageHistory = localStorage.setItem('refUrlStorageHistory', this.checkStorage('refUrlStorage') ?? '');
+				refUrlStorageHistory = localStorage.setItem('refUrlStorageHistory', this.checkStorage('refUrlStorage'));
 
 				refUrlStorage = localStorage.setItem('refUrlStorage', window.location.href);
 			}
@@ -76,10 +74,14 @@ export default class ModularityFormBuilderReferer {
 	 *  Adding referer URL to doom
 	 */
 	addStorageRefererToDoom() {
-		const historyField = document.querySelector<HTMLInputElement>("input[name='modularity-form-history']");
-		const urlField = document.querySelector<HTMLInputElement>("input[name='modularity-form-url']");
-		if (historyField) historyField.value = this.checkStorage('refUrlStorageHistory') ?? '';
-		if (urlField) urlField.value = this.checkStorage('refUrlStorage') ?? '';
+		if (
+			document.querySelector("input[name='modularity-form-history']") &&
+			document.querySelector("input[name='modularity-form-history']").length !== 0
+		) {
+			document.querySelector("input[name='modularity-form-history']").value = this.checkStorage('refUrlStorageHistory');
+
+			document.querySelector("input[name='modularity-form-url']").value = this.checkStorage('refUrlStorage');
+		}
 	}
 }
 
