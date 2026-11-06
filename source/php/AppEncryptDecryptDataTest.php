@@ -103,4 +103,69 @@ class AppEncryptDecryptDataTest extends TestCase
         $this->assertIsString($encryptedPayload);
         $this->assertSame(serialize($payload), $decryptedPayload);
     }
+
+    /**
+     * It should return array form data unchanged.
+     *
+     * @return void
+     */
+    public function testDecodeFormDataReturnsArrayUnchanged(): void
+    {
+        $payload = ['name' => 'Alice'];
+
+        $this->assertSame($payload, App::decodeFormData($payload));
+    }
+
+    /**
+     * It should decode encrypted form data to an array.
+     *
+     * @return void
+     */
+    public function testDecodeFormDataDecodesEncryptedArray(): void
+    {
+        $payload = ['name' => 'Alice', 'email' => 'alice@example.com'];
+
+        $this->assertSame($payload, App::decodeFormData(App::encryptDecryptData('encrypt', $payload)));
+    }
+
+    /**
+     * It should decode form data that was encrypted twice.
+     *
+     * @return void
+     */
+    public function testDecodeFormDataDecodesDoubleEncryptedArray(): void
+    {
+        $payload = ['name' => 'Alice'];
+        $encryptedTwice = App::encryptDecryptData('encrypt', App::encryptDecryptData('encrypt', $payload));
+
+        $this->assertSame($payload, App::decodeFormData($encryptedTwice));
+    }
+
+    /**
+     * It should return an empty array, without warnings, for data that cannot be decoded.
+     *
+     * @return void
+     */
+    public function testDecodeFormDataReturnsEmptyArrayForUndecodableData(): void
+    {
+        $warnings = [];
+        set_error_handler(static function (int $errno, string $errstr) use (&$warnings): bool {
+            $warnings[] = $errstr;
+            return true;
+        });
+
+        try {
+            $results = [
+                App::decodeFormData(base64_encode(random_bytes(64))),
+                App::decodeFormData('plain text'),
+                App::decodeFormData(''),
+                App::decodeFormData(null),
+            ];
+        } finally {
+            restore_error_handler();
+        }
+
+        $this->assertSame([[], [], [], []], $results);
+        $this->assertSame([], $warnings);
+    }
 }

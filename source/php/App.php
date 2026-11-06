@@ -431,11 +431,7 @@ class App
             if (!get_option('options_mod_form_crypt')) {
                 $currentData = get_post_meta($postId, 'form-data', true);
             } else {
-                $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta(
-                    $postId,
-                    'form-data',
-                    true,
-                )));
+                $currentData = self::decodeFormData(get_post_meta($postId, 'form-data', true));
             }
 
             // Merge old values with new ones
@@ -518,6 +514,56 @@ class App
         } else {
             return $data;
         }
+    }
+
+    /**
+     * Decode stored form data into an array.
+     *
+     * Handles plain arrays, encrypted payloads and payloads that were encrypted
+     * more than once. Returns an empty array when the data cannot be decoded
+     * instead of passing undecodable strings to unserialize().
+     *
+     * @param mixed $data Raw form-data meta value.
+     * @return array
+     */
+    public static function decodeFormData($data): array
+    {
+        for ($attempt = 0; $attempt < 10 && !is_array($data); $attempt++) {
+            if (!is_string($data) || $data === '') {
+                return [];
+            }
+
+            $decoded = self::encryptDecryptData('decrypt', $data);
+
+            if (is_string($decoded) && self::isSerialized($decoded)) {
+                $decoded = unserialize($decoded, ['allowed_classes' => false]);
+            }
+
+            if ($decoded === $data) {
+                break;
+            }
+
+            $data = $decoded;
+        }
+
+        return is_array($data) ? $data : [];
+    }
+
+    /**
+     * Check whether a string looks like PHP serialized data.
+     *
+     * @param string $value
+     * @return bool
+     */
+    private static function isSerialized(string $value): bool
+    {
+        if (function_exists('is_serialized')) {
+            return is_serialized($value);
+        }
+
+        $value = trim($value);
+
+        return $value === 'N;' || (bool) preg_match('/^(a|O|s):\\d+:|^(i|d|b):[^;]*;$/s', $value);
     }
 
     /**
