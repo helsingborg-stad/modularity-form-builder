@@ -197,13 +197,12 @@ class Submission
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
             $this->autoreply($fromEmail, $submission, $autoReplyFrom);
         }
-        $referer = parse_url($referer, PHP_URL_PATH);
+        // parse_url() returns null for URLs without a path and false for malformed URLs.
+        // The path never contains a query string, so the success param always starts with '?'.
+        $refererPath = parse_url($referer, PHP_URL_PATH);
+        $referer = is_string($refererPath) && $refererPath !== '' ? $refererPath : '/';
         // Redirect
-        if (strpos($referer, '?') > -1) {
-            $referer .= '&form=success';
-        } else {
-            $referer .= '?form=success-' . $_POST['modularity-form-id'];
-        }
+        $referer .= '?form=success-' . $_POST['modularity-form-id'];
         if (empty($postReferer) || $checkReferer !== 0 || $checkReferer !== null) {
             $referer .= '&modularityReferrer=' . urlencode($postReferer);
         }
