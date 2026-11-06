@@ -360,13 +360,7 @@ class PostType
         }
 
         if (is_admin()) {
-            $indata = is_array(get_post_meta($post->ID, 'form-data', true))
-                ? get_post_meta($post->ID, 'form-data', true)
-                : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta(
-                    $post->ID,
-                    'form-data',
-                    true,
-                )));
+            $indata = \ModularityFormBuilder\App::decodeFormData(get_post_meta($post->ID, 'form-data', true));
 
             if (isset($indata['modularity-form-history'])) {
                 echo '<p><strong>' . __('Previous page', 'modularity-form-builder') . '</strong><br />';
@@ -390,7 +384,7 @@ class PostType
     {
         $data = [];
         $getData = get_post_meta($post->ID, 'form-data', true);
-        $indata = is_array($getData) ? $getData : unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', $getData));
+        $indata = \ModularityFormBuilder\App::decodeFormData($getData);
 
         // Get the form id
         if (!empty($indata['modularity-form-id'])) {
@@ -675,11 +669,7 @@ class PostType
         if (!get_option('options_mod_form_crypt')) {
             $currentData = get_post_meta($postId, 'form-data', true);
         } else {
-            $currentData = unserialize(\ModularityFormBuilder\App::encryptDecryptData('decrypt', get_post_meta(
-                $postId,
-                'form-data',
-                true,
-            )));
+            $currentData = \ModularityFormBuilder\App::decodeFormData(get_post_meta($postId, 'form-data', true));
         }
 
         // Merge old values with new ones
