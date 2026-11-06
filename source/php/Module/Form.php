@@ -159,16 +159,17 @@ class Form extends \Modularity\Module
             'firstname' => '',
             'lastname' => '',
             'email' => '',
+            'phone' => '',
         ];
 
         //Fill array if logged in
         if (is_user_logged_in()) {
             $current_user = wp_get_current_user(get_current_user_id());
-            $data['user_details'] = [
+            $data['user_details'] = array_merge($data['user_details'], [
                 'firstname' => $current_user->first_name,
                 'lastname' => $current_user->last_name,
                 'email' => $current_user->user_email,
-            ];
+            ]);
         }
 
         if (isset($_GET['form'])) {
