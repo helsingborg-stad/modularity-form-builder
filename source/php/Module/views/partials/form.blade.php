@@ -61,7 +61,7 @@ declare(strict_types=1);
 
         <div class="o-grid">
             <div class="o-grid-12@md">
-                @includeWhen($submission_public_act || $gdpr_complience_notice, 'partials.policy')
+                @includeWhen(!empty($submission_public_act) || !empty($gdpr_complience_notice), 'partials.policy')
             
                 <button type="submit" class="c-button c-button__filled c-button__filled--primary c-button--md">{{ $submit_button_text ? $submit_button_text : 'Send' }}</button>
                 
