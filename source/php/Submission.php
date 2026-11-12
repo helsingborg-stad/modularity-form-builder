@@ -197,13 +197,14 @@ class Submission
         if (get_field('autoreply', $_POST['modularity-form-id'])) {
             $this->autoreply($fromEmail, $submission, $autoReplyFrom);
         }
-        $referer = parse_url($referer, PHP_URL_PATH);
+        // parse_url() returns null for URLs without a path and false for malformed URLs.
+        // Only accept a local path starting with exactly one '/' – '//host' or '/\host'
+        // would be treated as an off-site URL by browsers (open redirect).
+        // The path never contains a query string, so the success param always starts with '?'.
+        $refererPath = parse_url($referer, PHP_URL_PATH);
+        $referer = is_string($refererPath) && preg_match('#^/(?![/\\\\])#', $refererPath) === 1 ? $refererPath : '/';
         // Redirect
-        if (strpos($referer, '?') > -1) {
-            $referer .= '&form=success';
-        } else {
-            $referer .= '?form=success-' . $_POST['modularity-form-id'];
-        }
+        $referer .= '?form=success-' . $_POST['modularity-form-id'];
         if (empty($postReferer) || $checkReferer !== 0 || $checkReferer !== null) {
             $referer .= '&modularityReferrer=' . urlencode($postReferer);
         }
@@ -215,7 +216,7 @@ class Submission
             wp_delete_post($submission, true);
         }
 
-        wp_redirect($referer);
+        wp_safe_redirect($referer);
         exit();
     }
 
