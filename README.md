@@ -2,6 +2,8 @@
 
 Simple form builder that uses ACF for forms.
 
+The locked wpservice 3.0.0 dependency requires PHP 8.2 through 8.5.
+
 ## Constants
 
 #### Google Maps Geocoding API key
